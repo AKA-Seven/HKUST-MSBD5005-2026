@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q1 Temporal Pattern Explorer Sketch</title>
+  <style>
+    :root {
+      --bg: #f4efe4;
+      --panel: #fffaf0;
+      --ink: #14213d;
+      --muted: #5c6b73;
+      --grid: #d8ccb6;
+      --accent: #0f766e;
+      --accent-soft: rgba(15, 118, 110, 0.16);
+      --accent-2: #b45309;
+      --accent-3: #8b1e3f;
+      --alert: #c2410c;
+      --line: #233554;
+      --shadow: 0 18px 40px rgba(20, 33, 61, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Avenir Next", "Segoe UI", "PingFang SC", "Noto Sans SC", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(15, 118, 110, 0.12), transparent 24%),
+        radial-gradient(circle at bottom right, rgba(180, 83, 9, 0.10), transparent 20%),
+        linear-gradient(180deg, #f6f1e8 0%, #efe7d8 100%);
+      color: var(--ink);
+    }
+
+    .page {
+      max-width: 1560px;
+      margin: 0 auto;
+      padding: 28px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .hero-card,
+    .meta-card,
+    .panel,
+    .footer-panel {
+      background: rgba(255, 250, 240, 0.88);
+      border: 1px solid rgba(20, 33, 61, 0.10);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-card {
+      padding: 26px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -60px -100px auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(15, 118, 110, 0.10);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(20, 33, 61, 0.08);
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 34px;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle {
+      margin: 0;
+      max-width: 840px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .hero-tags,
+    .top-nav,
+    .pill-list,
+    .output-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .top-nav {
+      margin: 0 0 18px;
+    }
+
+    .top-nav a {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(20, 33, 61, 0.10);
+      background: rgba(255, 255, 255, 0.7);
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .top-nav a.active {
+      background: rgba(15, 118, 110, 0.12);
+      border-color: rgba(15, 118, 110, 0.32);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .tag,
+    .pill,
+    .output-pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      border: 1px solid rgba(20, 33, 61, 0.10);
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .meta-card {
+      padding: 22px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .meta-title {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .meta-item {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(20, 33, 61, 0.05);
+      border: 1px solid rgba(20, 33, 61, 0.08);
+    }
+
+    .meta-item strong {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: 300px minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .sidebar,
+    .main,
+    .right {
+      display: grid;
+      gap: 18px;
+    }
+
+    .panel {
+      padding: 18px;
+    }
+
+    .panel h2 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .panel .panel-desc {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .control-group {
+      margin-bottom: 16px;
+    }
+
+    .control-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .label-row label,
+    .mini-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    select,
+    input[type="range"] {
+      width: 100%;
+    }
+
+    select {
+      appearance: none;
+      border: 1px solid rgba(20, 33, 61, 0.12);
+      border-radius: 14px;
+      background: #fff;
+      color: var(--ink);
+      padding: 10px 12px;
+      font: inherit;
+    }
+
+    input[type="range"] {
+      accent-color: var(--accent);
+    }
+
+    .timeline-caption {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 6px;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+
+    .chart-shell {
+      padding: 12px;
+      border-radius: 20px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.56)),
+        repeating-linear-gradient(
+          0deg,
+          transparent 0,
+          transparent 28px,
+          rgba(20, 33, 61, 0.04) 28px,
+          rgba(20, 33, 61, 0.04) 29px
+        );
+      border: 1px dashed rgba(20, 33, 61, 0.14);
+    }
+
+    svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .pattern-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .pattern-card {
+      border-radius: 18px;
+      border: 1px solid rgba(20, 33, 61, 0.10);
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.64);
+      cursor: pointer;
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .pattern-card:hover,
+    .pattern-card.active {
+      transform: translateY(-2px);
+      border-color: rgba(15, 118, 110, 0.45);
+      background: rgba(15, 118, 110, 0.09);
+    }
+
+    .pattern-card strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 15px;
+    }
+
+    .pattern-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .pattern-foot {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .section-head .badge {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(180, 83, 9, 0.12);
+      color: var(--accent-2);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .evidence-card {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(20, 33, 61, 0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.62));
+    }
+
+    .evidence-card h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .evidence-card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .evidence-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--ink);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .footer-panel {
+      margin-top: 18px;
+      padding: 18px 20px;
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 18px;
+    }
+
+    .footer-panel h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .footer-panel p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .note-box {
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(20, 33, 61, 0.05);
+      border: 1px dashed rgba(20, 33, 61, 0.14);
+    }
+
+    .callout {
+      padding: 12px 14px;
+      border-left: 4px solid var(--accent);
+      background: rgba(15, 118, 110, 0.08);
+      border-radius: 0 14px 14px 0;
+      color: var(--ink);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 1280px) {
+      .workspace {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar,
+      .main,
+      .right {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .footer-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .page {
+        padding: 18px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <div class="hero-card">
+        <div class="eyebrow">Phase 1 Sketch • Q1 Temporal Pattern Explorer</div>
+        <h1>FishFlow Q1 初始设计草图</h1>
+        <p class="subtitle">
+          这是一页面向 Phase 1 PPT 的低保真原型，用于展示我们如何围绕 Q1 的任务目标识别
+          <strong>单公司活动模式</strong>、<strong>公司对关系模式</strong>，并把时间模式与
+          <strong>局部网络切片</strong>联动起来，为后续 Q2-Q4 提供判断框架。
+        </p>
+        <div class="hero-tags">
+          <span class="tag">真实字段映射: <code>id</code></span>
+          <span class="tag">时间字段: <code>arrivaldate</code></span>
+          <span class="tag">关系字段: <code>source</code> / <code>target</code></span>
+          <span class="tag">草图定位: Initial Design / Low-Fidelity</span>
+        </div>
+      </div>
+      <aside class="meta-card">
+        <p class="meta-title">Q1 设计要点</p>
+        <div class="meta-grid">
+          <div class="meta-item">
+            <strong>4</strong>
+            核心视图
+          </div>
+          <div class="meta-item">
+            <strong>12</strong>
+            演示时间切片
+          </div>
+          <div class="meta-item">
+            <strong>5</strong>
+            时间模式类别
+          </div>
+          <div class="meta-item">
+            <strong>6</strong>
+            草图成果输出
+          </div>
+        </div>
+        <div class="callout">
+          设计重点不是给出最终结论，而是证明我们已经构建了一套
+          “时间模式发现 → 局部结构验证 → 案例沉淀” 的分析工作流。
+        </div>
+      </aside>
+    </section>
+
+    <nav class="top-nav" aria-label="Phase 1 sketch navigation">
+      <a href="./index.html" class="active">Q1 Temporal Pattern</a>
+      <a href="./q2.html">Q2 Bundle Reliability</a>
+      <a href="./q3.html">Q3 Completion Comparator</a>
+      <a href="./q4.html">Q4 Suspicious Company</a>
+    </nav>
+
+    <main class="workspace">
+      <section class="sidebar">
+        <div class="panel">
+          <h2>Control Panel</h2>
+          <p class="panel-desc">左侧保持低保真控件布局，展示 Q1 分析时需要的过滤与联动入口。</p>
+          <div class="control-group">
+            <div class="label-row">
+              <label for="companySelect">Focus Company</label>
+              <span class="small">click to sync</span>
+            </div>
+            <select id="companySelect"></select>
+          </div>
+          <div class="control-group">
+            <div class="label-row">
+              <label for="patternSelect">Pattern Filter</label>
+              <span class="small">taxonomy-driven</span>
+            </div>
+            <select id="patternSelect"></select>
+          </div>
+          <div class="control-group">
+            <div class="label-row">
+              <label for="countrySelect">Country Context</label>
+              <span class="small">shipper / receiver</span>
+            </div>
+            <select id="countrySelect">
+              <option>All corridors</option>
+              <option>Oceanus inbound</option>
+              <option>Oceanus internal</option>
+              <option>Polarinda → Oceanus</option>
+              <option>Marebak → Oceanus</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <div class="label-row">
+              <label for="timeSlice">Time Slice</label>
+              <span id="sliceLabel" class="small">2032-Q3</span>
+            </div>
+            <input id="timeSlice" type="range" min="0" max="11" value="7">
+            <div class="timeline-caption">
+              <span>2031-Q1</span>
+              <span>2033-Q4</span>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="mini-title">Expected Outputs</div>
+            <div class="output-list">
+              <span class="output-pill">模式分类表</span>
+              <span class="output-pill">代表案例</span>
+              <span class="output-pill">单公司时间线</span>
+              <span class="output-pill">接力关系图</span>
+              <span class="output-pill">网络切片图</span>
+              <span class="output-pill">Q1 摘要卡</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <h2>Pattern Taxonomy</h2>
+              <p class="panel-desc">右侧类别在这里做成可点击卡片，代表“先归类，再追证据”的分析逻辑。</p>
+            </div>
+            <span class="badge">View 3</span>
+          </div>
+          <div id="patternList" class="pattern-list"></div>
+        </div>
+      </section>
+
+      <section class="main">
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <h2>Company Activity Timeline</h2>
+              <p class="panel-desc">按公司展示季度活跃强度，快速识别持续活跃、周期性、停顿后复活与短时爆发。</p>
+            </div>
+            <span class="badge">View 1</span>
+          </div>
+          <div class="chart-shell">
+            <svg id="companyTimeline" viewBox="0 0 860 360" role="img" aria-label="Company activity timeline heatmap"></svg>
+          </div>
+          <div class="legend">
+            <span><i class="swatch" style="background:#e4d7c4"></i> low activity</span>
+            <span><i class="swatch" style="background:#79b8b1"></i> medium</span>
+            <span><i class="swatch" style="background:#0f766e"></i> high</span>
+            <span><i class="swatch" style="background:#b45309"></i> selected company</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <h2>Pairwise Relation Timeline</h2>
+              <p class="panel-desc">按公司对展示关系随时间的活动强度，重点识别同步、接力、替代与断裂后恢复。</p>
+            </div>
+            <span class="badge">View 2</span>
+          </div>
+          <div class="chart-shell">
+            <svg id="pairTimeline" viewBox="0 0 860 310" role="img" aria-label="Pairwise relation timeline heatmap"></svg>
+          </div>
+          <div class="pill-list" id="pairPills"></div>
+        </div>
+      </section>
+
+      <section class="right">
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <h2>Local Network Snapshot</h2>
+              <p class="panel-desc">用时间切片验证模式是否伴随局部结构变化，尤其观察 relay / shell replacement 候选。</p>
+            </div>
+            <span class="badge">View 4</span>
+          </div>
+          <div class="chart-shell">
+            <svg id="networkSnapshot" viewBox="0 0 560 400" role="img" aria-label="Local network snapshot"></svg>
+          </div>
+          <div class="legend">
+            <span><i class="swatch" style="background:#0f766e"></i> active node</span>
+            <span><i class="swatch" style="background:#8b1e3f"></i> suspicious relay</span>
+            <span><i class="swatch" style="background:#233554"></i> stable partner</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <h2>Evidence Summary Card</h2>
+              <p class="panel-desc">把当前选中的公司、公司对和模式类别沉淀成一张可放进 PPT 的结论摘要卡。</p>
+            </div>
+            <span class="badge">Q1 Output</span>
+          </div>
+          <div id="evidenceCard" class="evidence-card"></div>
+        </div>
+      </section>
+    </main>
+
+    <section class="footer-panel">
+      <div>
+        <h3>Why This Sketch Fits Q1</h3>
+        <p>
+          页面同时覆盖了 Q1 任务定义中的三层目标：先看单公司时间行为，再看公司对之间的关系节奏，
+          最后用局部网络切片验证这些时间模式是否对应真实的结构变化。当前草图用 12 个演示季度说明交互逻辑，
+          后续可以扩展回数据全量的 28 个季度。这样在 Q2 评估 bundle 时，
+          就可以直接用这些模式作为“合理性模板”。
+        </p>
+      </div>
+      <div class="note-box">
+        <h3>Sketch Notes</h3>
+        <p>
+          本页使用贴近真实数据语义的示例公司与字段，但数值强度为草图级演示数据。适合在 Phase 1 PPT 中作为
+          “初始设计展示页”，后续可继续替换成真实计算结果与高保真交互。
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const quarters = [
+      "2031-Q1", "2031-Q2", "2031-Q3", "2031-Q4",
+      "2032-Q1", "2032-Q2", "2032-Q3", "2032-Q4",
+      "2033-Q1", "2033-Q2", "2033-Q3", "2033-Q4"
+    ];
+
+    const companies = [
+      {
+        id: "AquaDelight Inc and Son's",
+        pattern: "stable_periodic",
+        country: "Polarinda → Oceanus",
+        signal: [6, 4, 7, 4, 6, 4, 7, 4, 6, 4, 7, 5],
+        note: "稳定且呈季度性重复，是典型的 stable periodic 模式。"
+      },
+      {
+        id: "BaringoAmerica Marine Ges.m.b.H.",
+        pattern: "bursty_short_term",
+        country: "Oceanus internal",
+        signal: [0, 1, 0, 7, 9, 8, 1, 0, 0, 0, 0, 0],
+        note: "在短时间内集中爆发，之后快速沉寂，适合归入 bursty short-term。"
+      },
+      {
+        id: "Yu gan Sea spray GmbH Industrial",
+        pattern: "dormant_reactivated",
+        country: "Oceanus internal",
+        signal: [5, 4, 4, 0, 0, 0, 0, 2, 4, 6, 7, 7],
+        note: "中期长期停顿，后段恢复活跃，符合 dormant then reactivated。"
+      },
+      {
+        id: "Olas del Mar Worldwide",
+        pattern: "relay_handoff",
+        country: "Marebak → Oceanus",
+        signal: [8, 7, 6, 5, 4, 2, 0, 0, 0, 0, 0, 0],
+        note: "活动逐季衰减并退出，疑似被后续新公司接替。"
+      },
+      {
+        id: "French Crab S.p.A. Worldwide",
+        pattern: "relay_handoff",
+        country: "Kondanovia → Utoporiana",
+        signal: [0, 0, 0, 0, 1, 3, 5, 6, 7, 8, 8, 7],
+        note: "与前序公司形成明显 handoff，适合做替代关系案例。"
+      },
+      {
+        id: "Panope Limited Liability Company",
+        pattern: "shell_replacement",
+        country: "Vesperanda → Oceanus",
+        signal: [0, 0, 0, 1, 2, 2, 4, 7, 9, 8, 7, 8],
+        note: "在旧关系衰退后快速接手相似节点组合，是 shell replacement 候选。"
+      }
+    ];
+
+    const pairs = [
+      {
+        id: "AquaDelight → BaringoAmerica",
+        members: ["AquaDelight Inc and Son's", "BaringoAmerica Marine Ges.m.b.H."],
+        pattern: "synchronous",
+        signal: [3, 2, 4, 4, 5, 4, 5, 4, 4, 3, 5, 4],
+        note: "两端同步抬升，同步模式强。"
+      },
+      {
+        id: "Olas del Mar → Oceanus Buyers",
+        members: ["Olas del Mar Worldwide"],
+        pattern: "relay_handoff",
+        signal: [8, 8, 7, 5, 4, 1, 0, 0, 0, 0, 0, 0],
+        note: "旧公司关系链快速退出。"
+      },
+      {
+        id: "French Crab → Oceanus Buyers",
+        members: ["French Crab S.p.A. Worldwide"],
+        pattern: "relay_handoff",
+        signal: [0, 0, 0, 0, 1, 3, 5, 6, 8, 8, 7, 7],
+        note: "与上方形成接力式替代。"
+      },
+      {
+        id: "Yu gan Sea spray → Local Hub",
+        members: ["Yu gan Sea spray GmbH Industrial"],
+        pattern: "dormant_reactivated",
+        signal: [5, 4, 4, 0, 0, 0, 0, 1, 4, 6, 6, 7],
+        note: "长时间断裂后重新恢复。"
+      },
+      {
+        id: "Panope LLC → Oceanus Buyers",
+        members: ["Panope Limited Liability Company"],
+        pattern: "shell_replacement",
+        signal: [0, 0, 0, 0, 0, 2, 4, 6, 8, 9, 8, 8],
+        note: "在旧通路消失后占据近似结构位置。"
+      }
+    ];
+
+    const patternMeta = {
+      stable_periodic: {
+        label: "Stable Periodic",
+        desc: "规律重复、季度节奏稳定，可作为正常基线模式。",
+        count: 18,
+        output: "单公司时间线案例"
+      },
+      bursty_short_term: {
+        label: "Bursty Short-term",
+        desc: "短时间内异常密集，可能对应临时项目或规避性操作。",
+        count: 11,
+        output: "爆发型公司清单"
+      },
+      dormant_reactivated: {
+        label: "Dormant Reactivated",
+        desc: "长时间沉寂后重新出现，需要检查是否伴随关系重组。",
+        count: 9,
+        output: "停顿后复活案例"
+      },
+      relay_handoff: {
+        label: "Relay / Handoff",
+        desc: "旧公司退场与新公司接手在时间上连续，是 Q1 的重点模式。",
+        count: 7,
+        output: "公司对接力图"
+      },
+      shell_replacement: {
+        label: "Shell Replacement Candidate",
+        desc: "新公司沿用旧通路或旧伙伴，是后续嫌疑识别的重要线索。",
+        count: 4,
+        output: "高风险候选摘要"
+      }
+    };
+
+    const networkLayouts = [
+      {
+        quarter: "2031-Q1",
+        nodes: [
+          { id: "Olas del Mar Worldwide", x: 120, y: 200, type: "relay" },
+          { id: "Oceanus Buyer Hub", x: 280, y: 150, type: "hub" },
+          { id: "Cold Chain Broker", x: 430, y: 215, type: "stable" },
+          { id: "AquaDelight Inc and Son's", x: 160, y: 90, type: "active" }
+        ],
+        links: [
+          ["Olas del Mar Worldwide", "Oceanus Buyer Hub", 8],
+          ["Oceanus Buyer Hub", "Cold Chain Broker", 5],
+          ["AquaDelight Inc and Son's", "Oceanus Buyer Hub", 4]
+        ]
+      },
+      {
+        quarter: "2031-Q2",
+        nodes: [
+          { id: "Olas del Mar Worldwide", x: 120, y: 200, type: "relay" },
+          { id: "Oceanus Buyer Hub", x: 280, y: 150, type: "hub" },
+          { id: "Cold Chain Broker", x: 430, y: 215, type: "stable" },
+          { id: "AquaDelight Inc and Son's", x: 160, y: 90, type: "active" }
+        ],
+        links: [
+          ["Olas del Mar Worldwide", "Oceanus Buyer Hub", 7],
+          ["Oceanus Buyer Hub", "Cold Chain Broker", 5],
+          ["AquaDelight Inc and Son's", "Oceanus Buyer Hub", 4]
+        ]
+      },
+      {
+        quarter: "2031-Q3",
+        nodes: [
+          { id: "Olas del Mar Worldwide", x: 120, y: 200, type: "relay" },
+          { id: "Oceanus Buyer Hub", x: 280, y: 150, type: "hub" },
+          { id: "Cold Chain Broker", x: 430, y: 215, type: "stable" },
+          { id: "AquaDelight Inc and Son's", x: 160, y: 90, type: "active" }
+        ],
+        links: [
+          ["Olas del Mar Worldwide", "Oceanus Buyer Hub", 6],
+          ["Oceanus Buyer Hub", "Cold Chain Broker", 5],
+          ["AquaDelight Inc and Son's", "Oceanus Buyer Hub", 5]
+        ]
+      },
+      {
+        quarter: "2031-Q4",
+        nodes: [
+          { id: "Olas del Mar Worldwide", x: 120, y: 200, type: "relay" },
+          { id: "Oceanus Buyer Hub", x: 280, y: 150, type: "hub" },
+          { id: "Cold Chain Broker", x: 430, y: 215, type: "stable" },
+          { id: "Panope Limited Liability Company", x: 155, y: 305, type: "active" }
+        ],
+        links: [
+          ["Olas del Mar Worldwide", "Oceanus Buyer Hub", 5],
+          ["Oceanus Buyer Hub", "Cold Chain Broker", 5],
+          ["Panope Limited Liability Company", "Oceanus Buyer Hub", 2]
+        ]
+      },
+      {
+        quarter: "2032-Q1",
+        nodes: [
+          { id: "Olas del Mar Worldwide", x: 120, y: 200, type: "relay" },
+          { id: "Oceanus Buyer Hub", x: 280, y: 150, type: "hub" },
+          { id: "Cold Chain Broker", x: 430, y: 215, type: "stable" },
+          { id: "Panope Limited Liability Company", x: 155, y: 305, type: "active" }
+        ],
+        links: [
+          ["Olas del Mar Worldwide", "Oceanus Buyer Hub", 4],
+          ["Oceanus Buyer Hub", "Cold Chain Broker", 5],
+          ["Panope Limited Liability Company", "Oceanus Buyer Hub", 3]
+        ]
+      },
+      {
+        quarter: "2032-Q2",
+        nodes: [
+          { id: "Olas del Mar Worldwide", x: 120, y: 200, type: "relay" },
+          { id: "Oceanus Buyer Hub", x: 280, y: 150, type: "hub" },
+          { id: "Cold Chain Broker", x: 430, y: 215, type: "stable" },
+          { id: "Panope Limited Liability Company", x: 155, y: 305, type: "active" },
+          { id: "French Crab S.p.A. Worldwide", x: 420, y: 90, type: "active" }
+        ],
+        links: [
+          ["Olas del Mar Worldwide", "Oceanus Buyer Hub", 2],
+          ["Oceanus Buyer Hub", "Cold Chain Broker", 5],
+          ["Panope Limited Liability Company", "Oceanus Buyer Hub", 3],
+          ["French Crab S.p.A. Worldwide", "Oceanus Buyer Hub", 2]
+        ]
+      },
+      {
+        quarter: "2032-Q3",
+        nodes: [
+          { id: "Olas del Mar Worldwide", x: 120, y: 200, type: "relay" },
+          { id: "Oceanus Buyer Hub", x: 280, y: 150, type: "hub" },
+          { id: "Cold Chain Broker", x: 430, y: 215, type: "stable" },
+          { id: "Panope Limited Liability Company", x: 155, y: 305, type: "active" },
+          { id: "French Crab S.p.A. Worldwide", x: 420, y: 90, type: "active" }
+        ],
+        links: [
+          ["Olas del Mar Worldwide", "Oceanus Buyer Hub", 1],
+          ["Oceanus Buyer Hub", "Cold Chain Broker", 5],
+          ["Panope Limited Liability Company", "Oceanus Buyer Hub", 4],
+          ["French Crab S.p.A. Worldwide", "Oceanus Buyer Hub", 5]
+        ]
+      },
+      {
+        quarter: "2032-Q4",
+        nodes: [
+          { id: "Oceanus Buyer Hub", x: 280, y: 150, type: "hub" },
+          { id: "Cold Chain Broker", x: 430, y: 215, type: "stable" },
+          { id: "Panope Limited Liability Company", x: 155, y: 305, type: "active" },
+          { id: "French Crab S.p.A. Worldwide", x: 420, y: 90, type: "active" }
+        ],
+        links: [
+          ["Oceanus Buyer Hub", "Cold Chain Broker", 5],
+          ["Panope Limited Liability Company", "Oceanus Buyer Hub", 6],
+          ["French Crab S.p.A. Worldwide", "Oceanus Buyer Hub", 6]
+        ]
+      },
+      {
+        quarter: "2033-Q1",
+        nodes: [
+          { id: "Oceanus Buyer Hub", x: 280, y: 150, type: "hub" },
+          { id: "Cold Chain Broker", x: 430, y: 215, type: "stable" },
+          { id: "Panope Limited Liability Company", x: 155, y: 305, type: "active" },
+          { id: "French Crab S.p.A. Worldwide", x: 420, y: 90, type: "active" },
+          { id: "Yu gan Sea spray GmbH Industrial", x: 120, y: 90, type: "active" }
+        ],
+        links: [
+          ["Oceanus Buyer Hub", "Cold Chain Broker", 5],
+          ["Panope Limited Liability Company", "Oceanus Buyer Hub", 8],
+          ["French Crab S.p.A. Worldwide", "Oceanus Buyer Hub", 7],
+          ["Yu gan Sea spray GmbH Industrial", "Oceanus Buyer Hub", 4]
+        ]
+      },
+      {
+        quarter: "2033-Q2",
+        nodes: [
+          { id: "Oceanus Buyer Hub", x: 280, y: 150, type: "hub" },
+          { id: "Cold Chain Broker", x: 430, y: 215, type: "stable" },
+          { id: "Panope Limited Liability Company", x: 155, y: 305, type: "active" },
+          { id: "French Crab S.p.A. Worldwide", x: 420, y: 90, type: "active" },
+          { id: "Yu gan Sea spray GmbH Industrial", x: 120, y: 90, type: "active" }
+        ],
+        links: [
+          ["Oceanus Buyer Hub", "Cold Chain Broker", 5],
+          ["Panope Limited Liability Company", "Oceanus Buyer Hub", 9],
+          ["French Crab S.p.A. Worldwide", "Oceanus Buyer Hub", 8],
+          ["Yu gan Sea spray GmbH Industrial", "Oceanus Buyer Hub", 6]
+        ]
+      },
+      {
+        quarter: "2033-Q3",
+        nodes: [
+          { id: "Oceanus Buyer Hub", x: 280, y: 150, type: "hub" },
+          { id: "Cold Chain Broker", x: 430, y: 215, type: "stable" },
+          { id: "Panope Limited Liability Company", x: 155, y: 305, type: "active" },
+          { id: "French Crab S.p.A. Worldwide", x: 420, y: 90, type: "active" },
+          { id: "Yu gan Sea spray GmbH Industrial", x: 120, y: 90, type: "active" }
+        ],
+        links: [
+          ["Oceanus Buyer Hub", "Cold Chain Broker", 5],
+          ["Panope Limited Liability Company", "Oceanus Buyer Hub", 8],
+          ["French Crab S.p.A. Worldwide", "Oceanus Buyer Hub", 7],
+          ["Yu gan Sea spray GmbH Industrial", "Oceanus Buyer Hub", 6]
+        ]
+      },
+      {
+        quarter: "2033-Q4",
+        nodes: [
+          { id: "Oceanus Buyer Hub", x: 280, y: 150, type: "hub" },
+          { id: "Cold Chain Broker", x: 430, y: 215, type: "stable" },
+          { id: "Panope Limited Liability Company", x: 155, y: 305, type: "active" },
+          { id: "French Crab S.p.A. Worldwide", x: 420, y: 90, type: "active" },
+          { id: "Yu gan Sea spray GmbH Industrial", x: 120, y: 90, type: "active" }
+        ],
+        links: [
+          ["Oceanus Buyer Hub", "Cold Chain Broker", 5],
+          ["Panope Limited Liability Company", "Oceanus Buyer Hub", 8],
+          ["French Crab S.p.A. Worldwide", "Oceanus Buyer Hub", 7],
+          ["Yu gan Sea spray GmbH Industrial", "Oceanus Buyer Hub", 7]
+        ]
+      }
+    ];
+
+    const state = {
+      selectedCompany: companies[5].id,
+      selectedPattern: "shell_replacement",
+      selectedSlice: 7
+    };
+
+    const companySelect = document.getElementById("companySelect");
+    const patternSelect = document.getElementById("patternSelect");
+    const timeSlice = document.getElementById("timeSlice");
+    const sliceLabel = document.getElementById("sliceLabel");
+    const patternList = document.getElementById("patternList");
+    const pairPills = document.getElementById("pairPills");
+    const evidenceCard = document.getElementById("evidenceCard");
+
+    companies.forEach((company) => {
+      const option = document.createElement("option");
+      option.value = company.id;
+      option.textContent = company.id;
+      companySelect.appendChild(option);
+    });
+
+    Object.entries(patternMeta).forEach(([key, value]) => {
+      const option = document.createElement("option");
+      option.value = key;
+      option.textContent = value.label;
+      patternSelect.appendChild(option);
+    });
+
+    companySelect.value = state.selectedCompany;
+    patternSelect.value = state.selectedPattern;
+    timeSlice.value = state.selectedSlice;
+
+    function colorScale(value, highlight = false) {
+      if (highlight) return "#b45309";
+      if (value >= 8) return "#0f766e";
+      if (value >= 5) return "#5ea8a1";
+      if (value >= 2) return "#b7d4cf";
+      if (value > 0) return "#d9e5e2";
+      return "#e8dcc8";
+    }
+
+    function nodeColor(type, highlighted) {
+      if (highlighted) return "#b45309";
+      if (type === "relay") return "#8b1e3f";
+      if (type === "hub") return "#233554";
+      if (type === "stable") return "#325a79";
+      return "#0f766e";
+    }
+
+    function escapeHtml(value) {
+      return value
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    }
+
+    function renderPatternCards() {
+      patternList.innerHTML = "";
+      Object.entries(patternMeta).forEach(([key, info]) => {
+        const card = document.createElement("button");
+        card.className = `pattern-card${state.selectedPattern === key ? " active" : ""}`;
+        card.type = "button";
+        card.innerHTML = `
+          <strong>${info.label}</strong>
+          <p>${info.desc}</p>
+          <div class="pattern-foot">
+            <span>${info.count} candidates</span>
+            <span>${info.output}</span>
+          </div>
+        `;
+        card.addEventListener("click", () => {
+          state.selectedPattern = key;
+          patternSelect.value = key;
+          const firstMatch = companies.find((company) => company.pattern === key);
+          if (firstMatch) {
+            state.selectedCompany = firstMatch.id;
+            companySelect.value = firstMatch.id;
+          }
+          renderAll();
+        });
+        patternList.appendChild(card);
+      });
+    }
+
+    function renderCompanyTimeline() {
+      const svg = document.getElementById("companyTimeline");
+      const rowH = 42;
+      const cellW = 48;
+      const left = 210;
+      const top = 40;
+      let content = "";
+
+      quarters.forEach((quarter, i) => {
+        const x = left + i * cellW;
+        content += `<text x="${x + cellW / 2}" y="24" text-anchor="middle" font-size="11" fill="#5c6b73">${quarter.replace("203", "'3")}</text>`;
+      });
+
+      companies.forEach((company, row) => {
+        const y = top + row * rowH;
+        const selected = company.id === state.selectedCompany;
+        content += `<text x="0" y="${y + 22}" font-size="13" fill="${selected ? "#b45309" : "#14213d"}" font-weight="${selected ? 700 : 500}">${escapeHtml(company.id.slice(0, 28))}${company.id.length > 28 ? "..." : ""}</text>`;
+        content += `<text x="0" y="${y + 36}" font-size="11" fill="#5c6b73">${escapeHtml(patternMeta[company.pattern].label)}</text>`;
+
+        company.signal.forEach((value, col) => {
+          const x = left + col * cellW;
+          const activePattern = state.selectedPattern === company.pattern;
+          const opacity = activePattern || selected ? 1 : 0.7;
+          content += `
+            <rect
+              x="${x}"
+              y="${y}"
+              width="40"
+              height="28"
+              rx="8"
+              fill="${colorScale(value, selected)}"
+              fill-opacity="${opacity}"
+              stroke="${selected ? "#8d4107" : "rgba(20,33,61,0.06)"}"
+              stroke-width="${selected ? 1.5 : 1}"
+            />
+          `;
+          if (value >= 8) {
+            content += `<circle cx="${x + 32}" cy="${y + 8}" r="3" fill="#fffaf0" />`;
+          }
+        });
+      });
+
+      content += `<rect x="${left + state.selectedSlice * cellW - 4}" y="30" width="48" height="${companies.length * rowH + 14}" rx="10" fill="rgba(180,83,9,0.08)" stroke="rgba(180,83,9,0.32)" stroke-dasharray="5 4" />`;
+      svg.innerHTML = content;
+    }
+
+    function renderPairTimeline() {
+      const svg = document.getElementById("pairTimeline");
+      const rowH = 42;
+      const cellW = 48;
+      const left = 230;
+      const top = 34;
+      let content = "";
+
+      quarters.forEach((quarter, i) => {
+        const x = left + i * cellW;
+        content += `<text x="${x + cellW / 2}" y="20" text-anchor="middle" font-size="11" fill="#5c6b73">${quarter.replace("203", "'3")}</text>`;
+      });
+
+      pairs.forEach((pair, row) => {
+        const y = top + row * rowH;
+        const selected = pair.members.includes(state.selectedCompany) || pair.pattern === state.selectedPattern;
+        content += `<text x="0" y="${y + 20}" font-size="13" fill="${selected ? "#b45309" : "#14213d"}" font-weight="${selected ? 700 : 500}">${escapeHtml(pair.id)}</text>`;
+        content += `<text x="0" y="${y + 34}" font-size="11" fill="#5c6b73">${escapeHtml(pair.note)}</text>`;
+        pair.signal.forEach((value, col) => {
+          const x = left + col * cellW;
+          content += `
+            <rect
+              x="${x}"
+              y="${y}"
+              width="40"
+              height="28"
+              rx="8"
+              fill="${selected ? colorScale(value, true) : colorScale(value)}"
+              fill-opacity="${selected ? 0.92 : 0.76}"
+              stroke="rgba(20,33,61,0.05)"
+            />
+          `;
+        });
+      });
+
+      content += `<rect x="${left + state.selectedSlice * cellW - 4}" y="24" width="48" height="${pairs.length * rowH + 8}" rx="10" fill="rgba(139,30,63,0.08)" stroke="rgba(139,30,63,0.28)" stroke-dasharray="5 4" />`;
+      svg.innerHTML = content;
+
+      pairPills.innerHTML = "";
+      pairs
+        .filter((pair) => pair.pattern === state.selectedPattern || pair.members.includes(state.selectedCompany))
+        .forEach((pair) => {
+          const pill = document.createElement("span");
+          pill.className = "pill";
+          pill.textContent = `${pair.id} · ${pair.pattern}`;
+          pairPills.appendChild(pill);
+        });
+    }
+
+    function renderNetwork() {
+      const svg = document.getElementById("networkSnapshot");
+      const layout = networkLayouts[state.selectedSlice];
+      sliceLabel.textContent = layout.quarter;
+
+      let content = `
+        <text x="18" y="26" font-size="13" fill="#5c6b73">Selected slice: ${layout.quarter}</text>
+        <text x="18" y="46" font-size="12" fill="#5c6b73">Local network used to validate whether temporal change coincides with structural transition.</text>
+      `;
+
+      layout.links.forEach(([source, target, weight]) => {
+        const sourceNode = layout.nodes.find((node) => node.id === source);
+        const targetNode = layout.nodes.find((node) => node.id === target);
+        if (!sourceNode || !targetNode) return;
+        const highlight = source === state.selectedCompany || target === state.selectedCompany;
+        content += `
+          <line
+            x1="${sourceNode.x}"
+            y1="${sourceNode.y}"
+            x2="${targetNode.x}"
+            y2="${targetNode.y}"
+            stroke="${highlight ? "#b45309" : "rgba(35,53,84,0.55)"}"
+            stroke-width="${1 + weight * 0.6}"
+            stroke-linecap="round"
+            opacity="${highlight ? 1 : 0.75}"
+          />
+        `;
+      });
+
+      layout.nodes.forEach((node) => {
+        const highlighted = node.id === state.selectedCompany;
+        content += `
+          <circle cx="${node.x}" cy="${node.y}" r="${highlighted ? 28 : 22}" fill="${nodeColor(node.type, highlighted)}" fill-opacity="${highlighted ? 0.95 : 0.88}" />
+          <text x="${node.x}" y="${node.y + 4}" text-anchor="middle" font-size="11" fill="#fffaf0" font-weight="700">${escapeHtml(node.id.split(" ")[0].slice(0, 10))}</text>
+        `;
+      });
+
+      content += `
+        <rect x="18" y="330" width="524" height="52" rx="16" fill="rgba(20,33,61,0.05)" stroke="rgba(20,33,61,0.09)" />
+        <text x="36" y="353" font-size="13" fill="#14213d" font-weight="700">Snapshot reading</text>
+        <text x="36" y="372" font-size="12" fill="#5c6b73">In later slices, the old path fades while Panope and French Crab occupy the same buyer hub, supporting relay / replacement interpretation.</text>
+      `;
+      svg.innerHTML = content;
+    }
+
+    function renderEvidence() {
+      const company = companies.find((item) => item.id === state.selectedCompany);
+      const pattern = patternMeta[state.selectedPattern];
+      const relatedPairs = pairs.filter(
+        (pair) => pair.members.includes(company.id) || pair.pattern === state.selectedPattern
+      );
+      const topPair = relatedPairs[0];
+      const slice = networkLayouts[state.selectedSlice];
+
+      evidenceCard.innerHTML = `
+        <h3>${pattern.label}</h3>
+        <p>${company.id} currently acts as the representative case for this pattern in the sketch.</p>
+        <ul>
+          <li><strong>Company signal:</strong> ${company.note}</li>
+          <li><strong>Relation clue:</strong> ${topPair ? topPair.note : "No pair selected."}</li>
+          <li><strong>Current time slice:</strong> ${slice.quarter} network confirms whether the temporal shift is matched by partner replacement around the Oceanus hub.</li>
+          <li><strong>PPT takeaway:</strong> Q1 can output a reusable temporal taxonomy rather than isolated anecdotes.</li>
+        </ul>
+      `;
+    }
+
+    function renderAll() {
+      renderPatternCards();
+      renderCompanyTimeline();
+      renderPairTimeline();
+      renderNetwork();
+      renderEvidence();
+    }
+
+    companySelect.addEventListener("change", (event) => {
+      state.selectedCompany = event.target.value;
+      const company = companies.find((item) => item.id === state.selectedCompany);
+      if (company) {
+        state.selectedPattern = company.pattern;
+        patternSelect.value = company.pattern;
+      }
+      renderAll();
+    });
+
+    patternSelect.addEventListener("change", (event) => {
+      state.selectedPattern = event.target.value;
+      const firstMatch = companies.find((company) => company.pattern === state.selectedPattern);
+      if (firstMatch) {
+        state.selectedCompany = firstMatch.id;
+        companySelect.value = firstMatch.id;
+      }
+      renderAll();
+    });
+
+    timeSlice.addEventListener("input", (event) => {
+      state.selectedSlice = Number(event.target.value);
+      renderAll();
+    });
+
+    renderAll();
+  </script>
+</body>
+</html>

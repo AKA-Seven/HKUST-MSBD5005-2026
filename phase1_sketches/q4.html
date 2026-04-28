@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q4 Suspicious Company Investigator Sketch</title>
+  <style>
+    :root {
+      --ink: #17233f;
+      --muted: #64727d;
+      --panel: rgba(252, 249, 242, 0.9);
+      --line: rgba(23, 35, 63, 0.11);
+      --shadow: 0 18px 44px rgba(23, 35, 63, 0.12);
+      --accent: #1c6b63;
+      --accent-2: #b45f16;
+      --accent-3: #842c4b;
+      --bg-1: #f6efe1;
+      --bg-2: #ece0cc;
+      --high: #842c4b;
+      --mid: #b45f16;
+      --low: #1c6b63;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Avenir Next", "Segoe UI", "PingFang SC", "Noto Sans SC", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top right, rgba(132,44,75,0.12), transparent 22%),
+        radial-gradient(circle at left bottom, rgba(28,107,99,0.12), transparent 24%),
+        linear-gradient(180deg, var(--bg-1), var(--bg-2));
+    }
+
+    .page {
+      max-width: 1560px;
+      margin: 0 auto;
+      padding: 28px;
+    }
+
+    .hero,
+    .panel,
+    .footer {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero {
+      padding: 24px 28px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 18px;
+      margin-bottom: 16px;
+    }
+
+    .eyebrow,
+    .badge,
+    .nav a,
+    .chip,
+    .row-tag {
+      border: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(23,35,63,0.05);
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 34px;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    p { margin: 0; line-height: 1.65; }
+    .muted { color: var(--muted); }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .metric {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(23,35,63,0.05);
+      border: 1px solid rgba(23,35,63,0.08);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .nav a {
+      padding: 8px 12px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--ink);
+      background: rgba(255,255,255,0.68);
+      font-size: 13px;
+    }
+
+    .nav a.active {
+      background: rgba(132,44,75,0.10);
+      border-color: rgba(132,44,75,0.28);
+      color: var(--high);
+      font-weight: 700;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 300px minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .sidebar,
+    .main,
+    .right {
+      display: grid;
+      gap: 18px;
+    }
+
+    .panel { padding: 18px; }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .badge {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(180,95,22,0.10);
+      color: var(--accent-2);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .panel-desc {
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .control-group { margin-bottom: 16px; }
+    .control-group:last-child { margin-bottom: 0; }
+
+    .label-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+    }
+
+    .chip-row,
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.74);
+      font-size: 13px;
+    }
+
+    .table {
+      border-radius: 18px;
+      border: 1px solid rgba(23,35,63,0.09);
+      overflow: hidden;
+      background: rgba(255,255,255,0.62);
+    }
+
+    .table-header,
+    .table-row {
+      display: grid;
+      grid-template-columns: 1.45fr 0.7fr 0.8fr 0.9fr 0.9fr;
+      gap: 10px;
+      align-items: center;
+      padding: 12px 14px;
+      font-size: 13px;
+    }
+
+    .table-header {
+      background: rgba(23,35,63,0.06);
+      color: var(--muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 11px;
+    }
+
+    .table-row {
+      border-top: 1px solid rgba(23,35,63,0.06);
+      cursor: pointer;
+      transition: background 0.18s ease;
+    }
+
+    .table-row:hover,
+    .table-row.active {
+      background: rgba(132,44,75,0.08);
+    }
+
+    .row-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      width: fit-content;
+      background: rgba(255,255,255,0.8);
+    }
+
+    .row-tag.high { color: var(--high); }
+    .row-tag.mid { color: var(--mid); }
+    .row-tag.low { color: var(--low); }
+
+    .chart-shell {
+      padding: 12px;
+      border-radius: 20px;
+      border: 1px dashed rgba(23,35,63,0.14);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.76), rgba(255,255,255,0.58)),
+        repeating-linear-gradient(
+          0deg,
+          transparent 0,
+          transparent 30px,
+          rgba(23,35,63,0.04) 30px,
+          rgba(23,35,63,0.04) 31px
+        );
+    }
+
+    svg { width: 100%; height: auto; display: block; }
+
+    .legend {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+
+    .card,
+    .summary {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(23,35,63,0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.84), rgba(255,255,255,0.62));
+    }
+
+    .card h3,
+    .summary h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .card p,
+    .card li,
+    .summary p,
+    .summary li {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .card ul,
+    .summary ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .footer {
+      margin-top: 18px;
+      padding: 18px 20px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 18px;
+    }
+
+    @media (max-width: 1280px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 900px) {
+      .page { padding: 18px; }
+      .hero, .footer { grid-template-columns: 1fr; }
+      h1 { font-size: 28px; }
+      .table-header,
+      .table-row { grid-template-columns: 1.3fr 0.7fr 0.8fr 0.9fr 0.9fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Phase 1 Sketch • Q4 Suspicious Company Investigator</div>
+        <h1>FishFlow Q4 嫌疑公司调查设计草图</h1>
+        <p class="muted">
+          这一页把 Q1 的时间模式、Q2 的可信补全结果和 Q3 的新增模式汇成最终证据链，
+          目标是输出可解释的嫌疑公司排名、证据卡和 case narrative。
+        </p>
+      </div>
+      <div class="meta-grid">
+        <div class="metric"><strong>6</strong>候选公司</div>
+        <div class="metric"><strong>3</strong>置信度层级</div>
+        <div class="metric"><strong>4</strong>证据来源模块</div>
+        <div class="metric"><strong>1</strong>最终结论摘要卡</div>
+      </div>
+    </section>
+
+    <nav class="nav">
+      <a href="./index.html">Q1 Temporal Pattern</a>
+      <a href="./q2.html">Q2 Bundle Reliability</a>
+      <a href="./q3.html">Q3 Completion Comparator</a>
+      <a href="./q4.html" class="active">Q4 Suspicious Company</a>
+    </nav>
+
+    <main class="layout">
+      <section class="sidebar">
+        <div class="panel">
+          <h2>Control Panel</h2>
+          <p class="panel-desc">按模式、置信度和公司选择进行筛选，证据卡、ego network 与时间接力图会同步联动。</p>
+          <div class="control-group">
+            <div class="label-row">
+              <span>Pattern Filter</span>
+              <span>from Q1/Q3</span>
+            </div>
+            <select id="patternFilter"></select>
+          </div>
+          <div class="control-group">
+            <div class="label-row">
+              <span>Confidence Filter</span>
+              <span>ranking view</span>
+            </div>
+            <select id="confidenceFilter">
+              <option value="all">All confidence levels</option>
+              <option value="high">High only</option>
+              <option value="medium">Medium only</option>
+              <option value="low">Low only</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <div class="label-row">
+              <span>Selected Company</span>
+              <span id="companyLabel">Panope</span>
+            </div>
+            <select id="companySelect"></select>
+          </div>
+          <div class="control-group">
+            <div class="label-row">
+              <span>Expected Outputs</span>
+              <span>PPT-ready</span>
+            </div>
+            <div class="chip-row">
+              <span class="chip">嫌疑公司排名</span>
+              <span class="chip">证据卡</span>
+              <span class="chip">ego network</span>
+              <span class="chip">时间接力图</span>
+              <span class="chip">置信度分层</span>
+              <span class="chip">Q4 摘要卡</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <h2>Final Summary Card</h2>
+              <p class="panel-desc">把当前嫌疑对象的关键证据翻译成适合最终答案或 PPT 的简明结论。</p>
+            </div>
+            <span class="badge">Output</span>
+          </div>
+          <div id="finalSummary" class="summary"></div>
+        </div>
+      </section>
+
+      <section class="main">
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <h2>Suspicion Ranking Table</h2>
+              <p class="panel-desc">按公司输出 suspicion score、matched pattern count、trusted predicted links involved、bridge role 与 confidence。</p>
+            </div>
+            <span class="badge">View 1</span>
+          </div>
+          <div class="table">
+            <div class="table-header">
+              <div>Company</div>
+              <div>Score</div>
+              <div>Patterns</div>
+              <div>Trusted Links</div>
+              <div>Confidence</div>
+            </div>
+            <div id="rankingTable"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <h2>Time Relay View</h2>
+              <p class="panel-desc">展示嫌疑公司在时间上的接力、替代或复活节奏，帮助解释“为何可疑”。</p>
+            </div>
+            <span class="badge">Timeline</span>
+          </div>
+          <div class="chart-shell">
+            <svg id="relayTimeline" viewBox="0 0 920 280" role="img" aria-label="Suspicious company relay timeline"></svg>
+          </div>
+        </div>
+      </section>
+
+      <section class="right">
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <h2>Evidence Card Panel</h2>
+              <p class="panel-desc">整合时间行为、结构角色、补全后新增关系和命名相似性等多源证据。</p>
+            </div>
+            <span class="badge">View 2</span>
+          </div>
+          <div id="evidenceCard" class="card"></div>
+        </div>
+
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <h2>Ego Network View</h2>
+              <p class="panel-desc">展示当前嫌疑公司的一跳 / 二跳邻域，用颜色区分原始边、可信新增边与异常链路。</p>
+            </div>
+            <span class="badge">View 3</span>
+          </div>
+          <div class="chart-shell">
+            <svg id="egoNetwork" viewBox="0 0 520 350" role="img" aria-label="Suspicious company ego network"></svg>
+          </div>
+          <div class="legend">
+            <span><i class="swatch" style="background:#203553"></i> original edge</span>
+            <span><i class="swatch" style="background:#1c6b63"></i> trusted added edge</span>
+            <span><i class="swatch" style="background:#842c4b"></i> suspicious actor</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <h2>Case Narrative Panel</h2>
+              <p class="panel-desc">把复杂可视证据翻译成 why suspicious / what changed after completion / confidence and limitations。</p>
+            </div>
+            <span class="badge">View 4</span>
+          </div>
+          <div id="caseNarrative" class="card"></div>
+        </div>
+      </section>
+    </main>
+
+    <section class="footer">
+      <div>
+        <h2>Why This Sketch Fits Q4</h2>
+        <p class="muted">
+          Q4 不只是给一个名字列表，而是要让每家公司都能追溯到前面模块的证据来源。
+          所以这页把 ranking、evidence card、ego network 和 narrative 放在同一工作流里，强调“结论可追溯”。
+        </p>
+      </div>
+      <div>
+        <h2>Sketch Note</h2>
+        <p class="muted">
+          页面使用草图级嫌疑分数与案例，但视图结构、联动逻辑和证据组织方式已经完整覆盖 Q4 的任务定义，
+          可以直接放进 Phase 1 PPT。
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const companies = [
+      {
+        id: "Panope Limited Liability Company",
+        short: "Panope",
+        score: 92,
+        patterns: ["shell replacement", "new bridge", "relay handoff"],
+        matchedCount: 3,
+        trustedLinks: 4,
+        bridgeRole: 87,
+        confidence: "high",
+        why: "在旧通路衰退后快速接手 Buyer Hub 周边关系，并由 Q2 高可信 bundle 补全出更连续的桥接路径。",
+        changed: "补全后它不再是单个孤立新公司，而是成为连接 buyer hub、cold chain 和 relay chain 的关键桥。",
+        limits: "命名相似性和业务语义仍需结合领域知识进一步核验。",
+        timeline: {
+          old: [8, 7, 6, 4, 2, 0, 0, 0],
+          current: [0, 0, 1, 3, 6, 8, 9, 8],
+          target: "Olas del Mar Worldwide"
+        }
+      },
+      {
+        id: "French Crab S.p.A. Worldwide",
+        short: "French Crab",
+        score: 88,
+        patterns: ["relay handoff", "hidden relay", "new cluster entry"],
+        matchedCount: 3,
+        trustedLinks: 3,
+        bridgeRole: 79,
+        confidence: "high",
+        why: "与旧公司退场时间连续，补全后形成完整 handoff 链条。",
+        changed: "新增边让它与 Buyer Hub 和 broker 链接成连续 relay chain。",
+        limits: "仍需验证是否属于真实换壳而非正常市场接替。",
+        timeline: {
+          old: [0, 0, 0, 1, 2, 3, 5, 6],
+          current: [0, 0, 0, 1, 3, 5, 7, 8],
+          target: "Legacy relay path"
+        }
+      },
+      {
+        id: "Yu gan Sea spray GmbH Industrial",
+        short: "Yu gan",
+        score: 76,
+        patterns: ["dormant reactivated", "new cluster entry"],
+        matchedCount: 2,
+        trustedLinks: 2,
+        bridgeRole: 68,
+        confidence: "medium",
+        why: "长期停顿后重新出现在高风险 cluster 周边，且补全后路径更完整。",
+        changed: "trusted links 将其从边缘节点拉入了更密集的风险团簇。",
+        limits: "复活模式可能也对应正常业务恢复，需要谨慎区分。",
+        timeline: {
+          old: [5, 4, 3, 0, 0, 0, 1, 2],
+          current: [5, 4, 3, 0, 1, 3, 5, 6],
+          target: "Dormant then reactivated"
+        }
+      },
+      {
+        id: "BaringoAmerica Marine Ges.m.b.H.",
+        short: "Baringo",
+        score: 64,
+        patterns: ["bursty short-term"],
+        matchedCount: 1,
+        trustedLinks: 1,
+        bridgeRole: 41,
+        confidence: "medium",
+        why: "短时爆发明显，但与高风险 relay 结构的耦合有限。",
+        changed: "补全后只增加了有限上下文，嫌疑性主要仍来自 bursty 行为。",
+        limits: "缺少足够结构证据，不宜作为最高优先级目标。",
+        timeline: {
+          old: [0, 1, 0, 7, 9, 8, 1, 0],
+          current: [0, 1, 0, 7, 9, 8, 2, 1],
+          target: "Bursty short-term"
+        }
+      },
+      {
+        id: "AquaDelight Inc and Son's",
+        short: "AquaDelight",
+        score: 49,
+        patterns: ["stable periodic"],
+        matchedCount: 1,
+        trustedLinks: 1,
+        bridgeRole: 28,
+        confidence: "low",
+        why: "更像正常稳定周期活动，是对比基线而非核心嫌疑对象。",
+        changed: "补全后只增强了正常贸易路径，没有显著异常放大。",
+        limits: "应作为非嫌疑对照样本保留。",
+        timeline: {
+          old: [6, 4, 7, 4, 6, 4, 7, 5],
+          current: [6, 4, 7, 4, 6, 5, 7, 5],
+          target: "Stable periodic baseline"
+        }
+      },
+      {
+        id: "Olas del Mar Worldwide",
+        short: "Olas",
+        score: 82,
+        patterns: ["relay handoff", "legacy fade-out"],
+        matchedCount: 2,
+        trustedLinks: 2,
+        bridgeRole: 73,
+        confidence: "high",
+        why: "作为退场旧公司，与后续接手者构成显著时间接力。",
+        changed: "补全后它与新进入者之间的过渡关系更清晰，为换壳解释提供前半段证据。",
+        limits: "它本身更像证据链起点，需与后续公司一起解释。",
+        timeline: {
+          old: [8, 8, 7, 6, 4, 2, 0, 0],
+          current: [8, 8, 7, 6, 4, 2, 0, 0],
+          target: "Legacy company fade-out"
+        }
+      }
+    ];
+
+    const state = {
+      selectedCompany: "Panope Limited Liability Company",
+      patternFilter: "all",
+      confidenceFilter: "all"
+    };
+
+    const patternFilter = document.getElementById("patternFilter");
+    const confidenceFilter = document.getElementById("confidenceFilter");
+    const companySelect = document.getElementById("companySelect");
+    const companyLabel = document.getElementById("companyLabel");
+
+    const allPatterns = ["all", ...new Set(companies.flatMap((company) => company.patterns))];
+    allPatterns.forEach((pattern) => {
+      const option = document.createElement("option");
+      option.value = pattern;
+      option.textContent = pattern === "all" ? "All pattern types" : pattern;
+      patternFilter.appendChild(option);
+    });
+
+    companies.forEach((company) => {
+      const option = document.createElement("option");
+      option.value = company.id;
+      option.textContent = company.id;
+      companySelect.appendChild(option);
+    });
+    companySelect.value = state.selectedCompany;
+
+    function filteredCompanies() {
+      return companies.filter((company) => {
+        const matchPattern = state.patternFilter === "all" || company.patterns.includes(state.patternFilter);
+        const matchConfidence = state.confidenceFilter === "all" || company.confidence === state.confidenceFilter;
+        return matchPattern && matchConfidence;
+      });
+    }
+
+    function confidenceClass(value) {
+      return value === "high" ? "high" : value === "medium" ? "mid" : "low";
+    }
+
+    function renderTable() {
+      const rows = filteredCompanies().sort((a, b) => b.score - a.score);
+      if (!rows.find((company) => company.id === state.selectedCompany)) {
+        state.selectedCompany = rows[0]?.id || companies[0].id;
+        companySelect.value = state.selectedCompany;
+      }
+
+      document.getElementById("rankingTable").innerHTML = rows.map((company) => `
+        <div class="table-row ${company.id === state.selectedCompany ? "active" : ""}" data-company="${company.id}">
+          <div>${company.short}</div>
+          <div><strong>${company.score}</strong></div>
+          <div>${company.matchedCount}</div>
+          <div>${company.trustedLinks}</div>
+          <div><span class="row-tag ${confidenceClass(company.confidence)}">${company.confidence}</span></div>
+        </div>
+      `).join("");
+
+      document.querySelectorAll("[data-company]").forEach((row) => {
+        row.addEventListener("click", () => {
+          state.selectedCompany = row.dataset.company;
+          companySelect.value = state.selectedCompany;
+          renderAll();
+        });
+      });
+    }
+
+    function renderEvidence() {
+      const company = companies.find((item) => item.id === state.selectedCompany);
+      document.getElementById("evidenceCard").innerHTML = `
+        <h3>${company.short} · Evidence Card</h3>
+        <p>${company.why}</p>
+        <ul>
+          <li><strong>时间行为证据:</strong> 匹配 ${company.patterns.join(", ")}。</li>
+          <li><strong>结构角色证据:</strong> bridge role score 为 ${company.bridgeRole}，说明其在局部路径中承担连接作用。</li>
+          <li><strong>补全后新增证据:</strong> ${company.changed}</li>
+          <li><strong>可信链接参与:</strong> ${company.trustedLinks} 条 trusted predicted links 直接关联该公司。</li>
+        </ul>
+      `;
+
+      document.getElementById("caseNarrative").innerHTML = `
+        <h3>Case Narrative</h3>
+        <p><strong>Why suspicious:</strong> ${company.why}</p>
+        <p><strong>What changed after completion:</strong> ${company.changed}</p>
+        <p><strong>Confidence and limitations:</strong> ${company.limits}</p>
+      `;
+
+      document.getElementById("finalSummary").innerHTML = `
+        <h3>${company.short} · ${company.confidence.toUpperCase()} priority</h3>
+        <p>
+          该公司当前 suspicion score 为 <strong>${company.score}</strong>。它同时满足
+          <strong>${company.matchedCount}</strong> 类模式证据，并涉及 <strong>${company.trustedLinks}</strong> 条可信新增关系。
+        </p>
+        <ul>
+          <li>推荐汇报表述: “${company.short} 在补全后表现出更连续的 relay / bridge 结构，因此值得优先调查。”</li>
+          <li>风险层级: ${company.confidence}</li>
+          <li>后续动作: 导出单公司 case summary，进入最终答案撰写。</li>
+        </ul>
+      `;
+    }
+
+    function renderEgo() {
+      const company = companies.find((item) => item.id === state.selectedCompany);
+      const svg = document.getElementById("egoNetwork");
+      svg.innerHTML = `
+        <circle cx="260" cy="170" r="34" fill="#842c4b" fill-opacity="0.92"></circle>
+        <circle cx="118" cy="102" r="24" fill="#203553" fill-opacity="0.9"></circle>
+        <circle cx="118" cy="255" r="24" fill="#1c6b63" fill-opacity="0.9"></circle>
+        <circle cx="396" cy="98" r="24" fill="#203553" fill-opacity="0.9"></circle>
+        <circle cx="406" cy="246" r="24" fill="#1c6b63" fill-opacity="0.9"></circle>
+        <line x1="148" y1="113" x2="228" y2="154" stroke="rgba(32,53,83,0.55)" stroke-width="6" stroke-linecap="round"></line>
+        <line x1="148" y1="244" x2="228" y2="186" stroke="#1c6b63" stroke-width="7" stroke-linecap="round"></line>
+        <line x1="292" y1="154" x2="370" y2="111" stroke="rgba(32,53,83,0.55)" stroke-width="6" stroke-linecap="round"></line>
+        <line x1="292" y1="186" x2="378" y2="235" stroke="#1c6b63" stroke-width="7" stroke-linecap="round"></line>
+        <text x="260" y="175" text-anchor="middle" font-size="12" fill="#fffaf3" font-weight="700">${company.short}</text>
+        <text x="118" y="107" text-anchor="middle" font-size="11" fill="#fffaf3" font-weight="700">Old</text>
+        <text x="118" y="260" text-anchor="middle" font-size="11" fill="#fffaf3" font-weight="700">New</text>
+        <text x="396" y="103" text-anchor="middle" font-size="11" fill="#fffaf3" font-weight="700">Hub</text>
+        <text x="406" y="251" text-anchor="middle" font-size="11" fill="#fffaf3" font-weight="700">Chain</text>
+        <rect x="20" y="300" width="480" height="30" rx="12" fill="rgba(23,35,63,0.05)" stroke="rgba(23,35,63,0.08)"></rect>
+        <text x="34" y="320" font-size="12" fill="#64727d">Ego cue: original edges explain legacy context; green edges come from trusted completion and reveal the post-completion chain.</text>
+      `;
+    }
+
+    function renderTimeline() {
+      const company = companies.find((item) => item.id === state.selectedCompany);
+      const svg = document.getElementById("relayTimeline");
+      const left = 110;
+      const top = 34;
+      const width = 720;
+      const height = 180;
+      const step = width / (company.timeline.old.length - 1);
+
+      const pathFrom = (arr) => arr.map((value, i) => {
+        const x = left + i * step;
+        const y = top + height - value * 18;
+        return `${i === 0 ? "M" : "L"} ${x} ${y}`;
+      }).join(" ");
+
+      let content = `
+        <line x1="${left}" y1="${top + height}" x2="${left + width}" y2="${top + height}" stroke="rgba(23,35,63,0.24)"></line>
+        <line x1="${left}" y1="${top}" x2="${left}" y2="${top + height}" stroke="rgba(23,35,63,0.24)"></line>
+        <path d="${pathFrom(company.timeline.old)}" fill="none" stroke="#203553" stroke-width="4" stroke-linecap="round"></path>
+        <path d="${pathFrom(company.timeline.current)}" fill="none" stroke="#842c4b" stroke-width="5" stroke-linecap="round"></path>
+      `;
+
+      company.timeline.old.forEach((value, i) => {
+        const x = left + i * step;
+        const y = top + height - value * 18;
+        content += `<circle cx="${x}" cy="${y}" r="4" fill="#203553"></circle>`;
+        content += `<text x="${x}" y="${top + height + 24}" text-anchor="middle" font-size="11" fill="#64727d">T${i + 1}</text>`;
+      });
+
+      company.timeline.current.forEach((value, i) => {
+        const x = left + i * step;
+        const y = top + height - value * 18;
+        content += `<circle cx="${x}" cy="${y}" r="5" fill="#842c4b"></circle>`;
+      });
+
+      content += `
+        <text x="${left}" y="18" font-size="12" fill="#203553">${company.timeline.target}</text>
+        <text x="${left + 230}" y="18" font-size="12" fill="#842c4b">${company.short} trajectory</text>
+        <rect x="${left + 3 * step - 18}" y="${top - 8}" width="${step * 2}" height="${height + 18}" rx="14" fill="rgba(180,95,22,0.08)" stroke="rgba(180,95,22,0.30)" stroke-dasharray="5 4"></rect>
+      `;
+
+      svg.innerHTML = content;
+    }
+
+    function renderAll() {
+      const rows = filteredCompanies();
+      const selected = rows.find((company) => company.id === state.selectedCompany) || companies.find((company) => company.id === state.selectedCompany);
+      companyLabel.textContent = selected.short;
+      renderTable();
+      renderEvidence();
+      renderEgo();
+      renderTimeline();
+    }
+
+    patternFilter.addEventListener("change", (event) => {
+      state.patternFilter = event.target.value;
+      renderAll();
+    });
+
+    confidenceFilter.addEventListener("change", (event) => {
+      state.confidenceFilter = event.target.value;
+      renderAll();
+    });
+
+    companySelect.addEventListener("change", (event) => {
+      state.selectedCompany = event.target.value;
+      renderAll();
+    });
+
+    renderAll();
+  </script>
+</body>
+</html>

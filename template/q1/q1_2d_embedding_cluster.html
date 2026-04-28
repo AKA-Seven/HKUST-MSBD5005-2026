@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Q1 2D 双轴嵌入聚类动态可视化</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <script src="./q1_mock_data.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 12%, #183a5a 0%, #071322 45%, #030712 100%);
+      color: #eaf7ff;
+      font-family: Inter, "Microsoft YaHei", sans-serif;
+      overflow: hidden;
+    }
+
+    #stage {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    #haloCanvas, #chart {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    #haloCanvas {
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    #chart {
+      z-index: 2;
+    }
+
+    .panel {
+      position: fixed;
+      z-index: 5;
+      background: rgba(4, 14, 27, 0.72);
+      border: 1px solid rgba(116, 205, 255, 0.35);
+      border-radius: 14px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.32);
+      backdrop-filter: blur(12px);
+    }
+
+    .title {
+      top: 18px;
+      left: 20px;
+      width: min(460px, calc(100vw - 40px));
+      padding: 14px 16px;
+    }
+
+    .title h1 {
+      margin: 0 0 6px;
+      font-size: 18px;
+      color: #7ce6ff;
+      letter-spacing: 0.02em;
+    }
+
+    .title p {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.55;
+      color: #c8e7f7;
+    }
+
+    .legend {
+      top: 18px;
+      right: 20px;
+      width: 220px;
+      padding: 12px 14px;
+    }
+
+    .legend-title {
+      margin-bottom: 8px;
+      color: #d8f6ff;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .legend-row {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 8px 0;
+      font-size: 12px;
+      color: #dff6ff;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .legend-row input {
+      accent-color: #56d8ff;
+    }
+
+    .swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      box-shadow: 0 0 12px currentColor;
+    }
+
+    .controls {
+      left: 50%;
+      bottom: 20px;
+      width: min(760px, calc(100vw - 40px));
+      transform: translateX(-50%);
+      padding: 12px 14px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+
+    button {
+      border: 1px solid rgba(128, 220, 255, 0.45);
+      border-radius: 10px;
+      background: rgba(30, 118, 170, 0.22);
+      color: #ecfbff;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: #42d4ff;
+    }
+
+    .time-label {
+      min-width: 86px;
+      text-align: right;
+      color: #8be9ff;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+  <div id="stage">
+    <canvas id="haloCanvas"></canvas>
+    <div id="chart"></div>
+  </div>
+
+  <section class="panel title">
+    <h1>企业双维度嵌入时序聚类图</h1>
+    <p>X 轴为贸易关系嵌入值，Y 轴为交易特征嵌入值；距离越近表示贸易关系和交易特征越相似。底层半透明区域为按聚类计算的 KDE 密度晕染。</p>
+  </section>
+
+  <section class="panel legend">
+    <div class="legend-title">聚类图例（可点击显隐）</div>
+    <div id="legendList"></div>
+  </section>
+
+  <section class="panel controls">
+    <button id="playButton">暂停</button>
+    <input id="timeSlider" type="range" min="0" max="7" value="0" step="1" />
+    <div id="timeLabel" class="time-label">2025-01</div>
+  </section>
+
+  <script>
+    const { timeSlices, clusterDefs, embeddingData } = window.Q1MockData;
+    const chart = echarts.init(document.getElementById("chart"));
+    const canvas = document.getElementById("haloCanvas");
+    const ctx = canvas.getContext("2d");
+    const slider = document.getElementById("timeSlider");
+    const timeLabel = document.getElementById("timeLabel");
+    const playButton = document.getElementById("playButton");
+    const legendList = document.getElementById("legendList");
+    const transitionMs = 800;
+    const visibleClusters = new Set(clusterDefs.map((cluster) => cluster.id));
+    let currentIndex = 0;
+    let currentFrame = recordsForSlice(timeSlices[0]).map(recordToPoint);
+    let timer = null;
+    let playing = true;
+    let rafId = 0;
+
+    slider.max = String(timeSlices.length - 1);
+    buildLegend();
+    initChart();
+    resize();
+    animateTo(0, true);
+    startPlayback();
+
+    window.addEventListener("resize", () => {
+      resize();
+      renderFrame(currentFrame);
+      chart.resize();
+    });
+
+    slider.addEventListener("input", () => {
+      currentIndex = Number(slider.value);
+      animateTo(currentIndex);
+    });
+
+    playButton.addEventListener("click", () => {
+      playing = !playing;
+      playButton.textContent = playing ? "暂停" : "播放";
+      if (playing) startPlayback();
+      else window.clearInterval(timer);
+    });
+
+    function buildLegend() {
+      legendList.innerHTML = clusterDefs.map((cluster) => `
+        <label class="legend-row">
+          <input type="checkbox" checked data-cluster="${cluster.id}">
+          <span class="swatch" style="color:${cluster.color};background:${cluster.color}"></span>
+          <span>${cluster.name}</span>
+        </label>
+      `).join("");
+
+      legendList.querySelectorAll("input").forEach((input) => {
+        input.addEventListener("change", () => {
+          const clusterId = Number(input.dataset.cluster);
+          if (input.checked) visibleClusters.add(clusterId);
+          else visibleClusters.delete(clusterId);
+          renderFrame(currentFrame);
+        });
+      });
+    }
+
+    function initChart() {
+      chart.setOption({
+        animation: false,
+        backgroundColor: "transparent",
+        grid: { left: 90, right: 70, top: 110, bottom: 105 },
+        xAxis: {
+          name: "贸易关系嵌入值",
+          min: -1,
+          max: 1,
+          splitLine: { lineStyle: { color: "rgba(160,220,255,0.12)" } },
+          axisLine: { lineStyle: { color: "rgba(200,240,255,0.45)" } },
+          axisLabel: { color: "#bfe9ff" },
+          nameTextStyle: { color: "#d7f5ff", padding: [12, 0, 0, 0] }
+        },
+        yAxis: {
+          name: "交易特征嵌入值",
+          min: -1,
+          max: 1,
+          splitLine: { lineStyle: { color: "rgba(160,220,255,0.12)" } },
+          axisLine: { lineStyle: { color: "rgba(200,240,255,0.45)" } },
+          axisLabel: { color: "#bfe9ff" },
+          nameTextStyle: { color: "#d7f5ff", padding: [0, 0, 10, 0] }
+        },
+        tooltip: {
+          trigger: "item",
+          borderColor: "rgba(122,220,255,0.45)",
+          backgroundColor: "rgba(5,18,33,0.92)",
+          textStyle: { color: "#eafaff" },
+          formatter: (params) => {
+            const value = params.value;
+            return [
+              `<strong>${value[2]}</strong>`,
+              `聚类：${value[3]}`,
+              `时间切片：${value[4]}`,
+              `贸易关系嵌入：${value[0].toFixed(3)}`,
+              `交易特征嵌入：${value[1].toFixed(3)}`
+            ].join("<br>");
+          }
+        },
+        series: [{
+          type: "scatter",
+          symbolSize: 12,
+          data: [],
+          itemStyle: {
+            color: (params) => clusterColor(params.value[5]),
+            opacity: (params) => params.value[6]
+          },
+          emphasis: {
+            scale: 1.6,
+            itemStyle: {
+              borderColor: "#ffffff",
+              borderWidth: 2,
+              shadowBlur: 18,
+              shadowColor: "#8feaff"
+            }
+          }
+        }]
+      });
+    }
+
+    function startPlayback() {
+      window.clearInterval(timer);
+      timer = window.setInterval(() => {
+        if (!playing) return;
+        currentIndex = (currentIndex + 1) % timeSlices.length;
+        slider.value = String(currentIndex);
+        animateTo(currentIndex);
+      }, 2100);
+    }
+
+    function animateTo(index, immediate = false) {
+      window.cancelAnimationFrame(rafId);
+      const targetFrame = unionFrame(currentFrame, recordsForSlice(timeSlices[index]).map(recordToPoint));
+      const startFrame = currentFrame.map((point) => ({ ...point }));
+      const startedAt = performance.now();
+      timeLabel.textContent = timeSlices[index];
+
+      if (immediate) {
+        currentFrame = targetFrame.map((point) => ({ ...point, opacity: point.targetOpacity }));
+        renderFrame(currentFrame);
+        return;
+      }
+
+      const step = (now) => {
+        const progress = Math.min((now - startedAt) / transitionMs, 1);
+        const frame = targetFrame.map((target, idx) => {
+          const start = startFrame[idx] || target;
+          return {
+            ...target,
+            x: lerp(start.x, target.x, progress),
+            y: lerp(start.y, target.y, progress),
+            opacity: lerp(start.opacity ?? 1, target.targetOpacity, progress)
+          };
+        });
+        currentFrame = frame;
+        renderFrame(frame);
+        if (progress < 1) rafId = window.requestAnimationFrame(step);
+      };
+      rafId = window.requestAnimationFrame(step);
+    }
+
+    function unionFrame(previous, target) {
+      const previousMap = new Map(previous.map((point) => [point.company_id, point]));
+      const targetMap = new Map(target.map((point) => [point.company_id, point]));
+      const ids = new Set([...previousMap.keys(), ...targetMap.keys()]);
+      return Array.from(ids).map((id) => {
+        const prev = previousMap.get(id);
+        const next = targetMap.get(id);
+        if (prev && next) return { ...next, opacity: prev.opacity ?? 1, targetOpacity: 1 };
+        if (!prev && next) return { ...next, opacity: 0, targetOpacity: 1 };
+        return { ...prev, targetOpacity: 0 };
+      });
+    }
+
+    function renderFrame(points) {
+      const visiblePoints = points.filter((point) => visibleClusters.has(point.cluster_id) && point.opacity > 0.01);
+      drawKdeHalo(visiblePoints);
+      chart.setOption({
+        series: [{
+          data: visiblePoints.map((point) => [
+            point.x,
+            point.y,
+            point.company_id,
+            point.cluster_name,
+            point.time_slice,
+            point.cluster_id,
+            point.opacity
+          ])
+        }]
+      }, { lazyUpdate: true });
+    }
+
+    function drawKdeHalo(points) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const grid = chart.getModel().getComponent("grid").coordinateSystem;
+      if (!grid) return;
+
+      const ratio = window.devicePixelRatio || 1;
+      const haloCanvas = document.createElement("canvas");
+      haloCanvas.width = canvas.width;
+      haloCanvas.height = canvas.height;
+      const haloCtx = haloCanvas.getContext("2d");
+      haloCtx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+      clusterDefs.forEach((cluster) => {
+        if (!visibleClusters.has(cluster.id)) return;
+        const clusterPoints = points.filter((point) => point.cluster_id === cluster.id && point.opacity > 0.25);
+        if (!clusterPoints.length) return;
+
+        const cell = 14;
+        const sigma = 58;
+        const plot = grid.getRect();
+        for (let px = plot.x; px <= plot.x + plot.width; px += cell) {
+          for (let py = plot.y; py <= plot.y + plot.height; py += cell) {
+            let density = 0;
+            clusterPoints.forEach((point) => {
+              const screen = chart.convertToPixel({ xAxisIndex: 0, yAxisIndex: 0 }, [point.x, point.y]);
+              const dx = px - screen[0];
+              const dy = py - screen[1];
+              density += Math.exp(-(dx * dx + dy * dy) / (2 * sigma * sigma)) * point.opacity;
+            });
+            const alpha = Math.min(0.34, density * 0.105);
+            if (alpha <= 0.012) continue;
+            haloCtx.fillStyle = hexToRgba(cluster.color, alpha);
+            haloCtx.fillRect(px - cell / 2, py - cell / 2, cell * 1.35, cell * 1.35);
+          }
+        }
+      });
+      ctx.save();
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.filter = "blur(8px)";
+      ctx.drawImage(haloCanvas, 0, 0);
+      ctx.filter = "none";
+      ctx.restore();
+    }
+
+    function resize() {
+      const ratio = window.devicePixelRatio || 1;
+      canvas.width = Math.floor(window.innerWidth * ratio);
+      canvas.height = Math.floor(window.innerHeight * ratio);
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    }
+
+    function recordsForSlice(timeSlice) {
+      return embeddingData.filter((record) => record.time_slice === timeSlice);
+    }
+
+    function recordToPoint(record) {
+      return {
+        company_id: record.company_id,
+        time_slice: record.time_slice,
+        x: record.emb_relation,
+        y: record.emb_feature,
+        cluster_id: record.cluster_id,
+        cluster_name: record.cluster_name,
+        opacity: 1,
+        targetOpacity: 1
+      };
+    }
+
+    function clusterColor(clusterId) {
+      const cluster = clusterDefs.find((item) => item.id === clusterId);
+      return cluster ? cluster.color : "#ffffff";
+    }
+
+    function hexToRgba(hex, alpha) {
+      const value = hex.replace("#", "");
+      const r = parseInt(value.slice(0, 2), 16);
+      const g = parseInt(value.slice(2, 4), 16);
+      const b = parseInt(value.slice(4, 6), 16);
+      return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    }
+
+    function lerp(a, b, t) {
+      return a + (b - a) * t;
+    }
+  </script>
+</body>
+</html>

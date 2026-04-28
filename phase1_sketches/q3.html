@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q3 Graph Completion Comparator Sketch</title>
+  <style>
+    :root {
+      --ink: #14213d;
+      --muted: #61707c;
+      --panel: rgba(251, 249, 242, 0.9);
+      --line: rgba(20, 33, 61, 0.11);
+      --shadow: 0 18px 44px rgba(20, 33, 61, 0.12);
+      --accent: #196d69;
+      --accent-2: #ad5c16;
+      --accent-3: #812b49;
+      --bg-1: #f5efe2;
+      --bg-2: #ebdfca;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Avenir Next", "Segoe UI", "PingFang SC", "Noto Sans SC", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(25,109,105,0.14), transparent 24%),
+        radial-gradient(circle at right bottom, rgba(129,43,73,0.10), transparent 22%),
+        linear-gradient(180deg, var(--bg-1), var(--bg-2));
+    }
+
+    .page {
+      max-width: 1560px;
+      margin: 0 auto;
+      padding: 28px;
+    }
+
+    .hero,
+    .panel,
+    .footer {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero {
+      padding: 24px 28px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 18px;
+      margin-bottom: 16px;
+    }
+
+    .eyebrow,
+    .badge,
+    .nav a,
+    .chip,
+    .pattern-card {
+      border: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(20,33,61,0.05);
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 34px;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    p { margin: 0; line-height: 1.65; }
+    .muted { color: var(--muted); }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .metric {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(20,33,61,0.05);
+      border: 1px solid rgba(20,33,61,0.08);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .nav a {
+      padding: 8px 12px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--ink);
+      background: rgba(255,255,255,0.68);
+      font-size: 13px;
+    }
+
+    .nav a.active {
+      background: rgba(25,109,105,0.12);
+      border-color: rgba(25,109,105,0.32);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 300px minmax(0, 1.2fr) minmax(0, 0.95fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .sidebar,
+    .main,
+    .right {
+      display: grid;
+      gap: 18px;
+    }
+
+    .panel { padding: 18px; }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .badge {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(173,92,22,0.10);
+      color: var(--accent-2);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .panel-desc {
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .control-group { margin-bottom: 16px; }
+    .control-group:last-child { margin-bottom: 0; }
+
+    .label-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    select,
+    input[type="range"] {
+      width: 100%;
+    }
+
+    select {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+    }
+
+    input[type="range"] { accent-color: var(--accent); }
+
+    .chip-row,
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.74);
+      font-size: 13px;
+    }
+
+    .chart-shell {
+      padding: 12px;
+      border-radius: 20px;
+      border: 1px dashed rgba(20,33,61,0.14);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.76), rgba(255,255,255,0.58)),
+        repeating-linear-gradient(
+          0deg,
+          transparent 0,
+          transparent 30px,
+          rgba(20,33,61,0.04) 30px,
+          rgba(20,33,61,0.04) 31px
+        );
+    }
+
+    svg { width: 100%; height: auto; display: block; }
+
+    .legend {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+
+    .before-after {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .snapshot-box {
+      padding: 12px;
+      border-radius: 18px;
+      border: 1px solid rgba(20,33,61,0.08);
+      background: rgba(255,255,255,0.66);
+    }
+
+    .pattern-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .pattern-card {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.66);
+      cursor: pointer;
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .pattern-card.active,
+    .pattern-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(25,109,105,0.34);
+      background: rgba(25,109,105,0.08);
+    }
+
+    .pattern-card strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 15px;
+    }
+
+    .pattern-card p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .summary {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(20,33,61,0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.84), rgba(255,255,255,0.62));
+    }
+
+    .summary h3 { margin: 0 0 8px; font-size: 18px; }
+    .summary p,
+    .summary li {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .summary ul { margin: 0; padding-left: 18px; }
+
+    .footer {
+      margin-top: 18px;
+      padding: 18px 20px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 18px;
+    }
+
+    @media (max-width: 1280px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 900px) {
+      .page { padding: 18px; }
+      .hero, .footer, .before-after { grid-template-columns: 1fr; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Phase 1 Sketch • Q3 Graph Completion Comparator</div>
+        <h1>FishFlow Q3 补全前后对比设计草图</h1>
+        <p class="muted">
+          这一页聚焦“补全后才显现的新模式”。页面先展示 before / after 的局部网络与时间线对照，
+          再把 emergent patterns 汇总成清单，直接服务 Q4 的嫌疑公司调查。
+        </p>
+      </div>
+      <div class="meta-grid">
+        <div class="metric"><strong>3</strong>承接 Q2 的可信 bundle</div>
+        <div class="metric"><strong>4</strong>新增模式类型</div>
+        <div class="metric"><strong>2</strong>前后对照主图</div>
+        <div class="metric"><strong>1</strong>Q3 新模式摘要卡</div>
+      </div>
+    </section>
+
+    <nav class="nav">
+      <a href="./index.html">Q1 Temporal Pattern</a>
+      <a href="./q2.html">Q2 Bundle Reliability</a>
+      <a href="./q3.html" class="active">Q3 Completion Comparator</a>
+      <a href="./q4.html">Q4 Suspicious Company</a>
+    </nav>
+
+    <main class="layout">
+      <section class="sidebar">
+        <div class="panel">
+          <h2>Control Panel</h2>
+          <p class="panel-desc">从 Q2 继承可信 bundle，并在这里选择要查看的新模式、时间切片和结构对照范围。</p>
+          <div class="control-group">
+            <div class="label-row">
+              <span>Trusted Bundle Source</span>
+              <span>from Q2</span>
+            </div>
+            <select id="bundleSelect">
+              <option>Bundle 03 + 07 + 09</option>
+              <option>Bundle 07 only</option>
+              <option>Bundle 03 + 09</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <div class="label-row">
+              <span>Emergent Pattern</span>
+              <span id="patternLabel">Hidden Relay Chain</span>
+            </div>
+            <select id="patternSelect"></select>
+          </div>
+          <div class="control-group">
+            <div class="label-row">
+              <span>Reveal Slice</span>
+              <span id="sliceLabel">2033-Q2</span>
+            </div>
+            <input id="sliceRange" type="range" min="0" max="3" value="1">
+          </div>
+          <div class="control-group">
+            <div class="label-row">
+              <span>Expected Outputs</span>
+              <span>PPT-ready</span>
+            </div>
+            <div class="chip-row">
+              <span class="chip">before / after 子图</span>
+              <span class="chip">before / after 时间线</span>
+              <span class="chip">新增桥接案例</span>
+              <span class="chip">新增异常群体</span>
+              <span class="chip">Q3 摘要卡</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <h2>Emergent Pattern List</h2>
+              <p class="panel-desc">列出只在补全后变得清晰的模式，强调“新增可见性”而非重复原图信息。</p>
+            </div>
+            <span class="badge">View 3</span>
+          </div>
+          <div id="patternList" class="pattern-list"></div>
+        </div>
+      </section>
+
+      <section class="main">
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <h2>Before / After Network Comparison</h2>
+              <p class="panel-desc">同一组公司在补全前后并排呈现，用来观察新增桥接边、社群连通性变化和断裂链条是否被接通。</p>
+            </div>
+            <span class="badge">View 1</span>
+          </div>
+          <div class="before-after">
+            <div class="snapshot-box">
+              <p class="muted" style="margin-bottom:10px;"><strong>Before</strong> 原始图谱局部网络</p>
+              <div class="chart-shell">
+                <svg id="beforeNetwork" viewBox="0 0 420 300" role="img" aria-label="Before network"></svg>
+              </div>
+            </div>
+            <div class="snapshot-box">
+              <p class="muted" style="margin-bottom:10px;"><strong>After</strong> 可信补全后局部网络</p>
+              <div class="chart-shell">
+                <svg id="afterNetwork" viewBox="0 0 420 300" role="img" aria-label="After network"></svg>
+              </div>
+            </div>
+          </div>
+          <div class="legend">
+            <span><i class="swatch" style="background:#203553"></i> original structure</span>
+            <span><i class="swatch" style="background:#196d69"></i> trusted added edge</span>
+            <span><i class="swatch" style="background:#ad5c16"></i> highlighted actor</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <h2>Before / After Timeline Comparison</h2>
+              <p class="panel-desc">展示同一关系在补全前后如何从断裂、不清晰变成连续、可解释的时间结构。</p>
+            </div>
+            <span class="badge">View 2</span>
+          </div>
+          <div class="chart-shell">
+            <svg id="timelineCompare" viewBox="0 0 920 280" role="img" aria-label="Before and after timeline comparison"></svg>
+          </div>
+        </div>
+      </section>
+
+      <section class="right">
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <h2>Pattern Detail</h2>
+              <p class="panel-desc">当前选中新模式的业务解释、来源 bundle 和为何只在补全后可见。</p>
+            </div>
+            <span class="badge">Inspector</span>
+          </div>
+          <div id="patternDetail" class="summary"></div>
+        </div>
+
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <h2>Q3 Summary Card</h2>
+              <p class="panel-desc">把补全价值翻译成适合汇报的一张结论卡。</p>
+            </div>
+            <span class="badge">Output</span>
+          </div>
+          <div id="q3Summary" class="summary"></div>
+        </div>
+      </section>
+    </main>
+
+    <section class="footer">
+      <div>
+        <h2>Why This Sketch Fits Q3</h2>
+        <p class="muted">
+          Q3 需要证明“图谱补全带来了新的分析洞察”。所以页面不是简单展示新增边数量，而是用对照视图明确说明：
+          哪些结构在原图中断裂、在补全后闭合，以及这些变化为什么会影响后续嫌疑识别。
+        </p>
+      </div>
+      <div>
+        <h2>Sketch Note</h2>
+        <p class="muted">
+          当前采用草图级模式案例和时间强度，但交互顺序、视图职责与输出结构完全对应 Q3 任务定义，
+          可以直接用于 Phase 1 PPT 的设计展示。
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const timeSlices = ["2032-Q4", "2033-Q2", "2033-Q3", "2034-Q1"];
+
+    const patterns = {
+      new_bridge: {
+        label: "New Bridge Pattern",
+        brief: "补全后出现新的桥接公司，原本分离的两个局部团簇被接通。",
+        source: "Bundle 07",
+        reason: "新增边使 buyer hub 与 cold chain branch 首次形成连通闭环。",
+        focus: "Panope Limited Liability Company",
+        beforeSeries: [2, 2, 3, 2, 2, 3, 4, 3],
+        afterSeries: [2, 2, 3, 5, 6, 7, 7, 8]
+      },
+      hidden_relay: {
+        label: "Hidden Relay Chain",
+        brief: "补全后 old company fade-out 与 new company take-over 形成连续的 relay chain。",
+        source: "Bundle 03 + 07",
+        reason: "原图里只有退场和入场两个碎片，补全后才出现连接两者的过渡边。",
+        focus: "French Crab S.p.A. Worldwide",
+        beforeSeries: [7, 6, 4, 2, 0, 0, 0, 0],
+        afterSeries: [7, 6, 4, 2, 3, 5, 7, 7]
+      },
+      cluster_entry: {
+        label: "New Cluster Entry",
+        brief: "一个边缘公司在补全后进入高风险团簇，成为新的 cluster entry candidate。",
+        source: "Bundle 09",
+        reason: "trusted edges 将 dormant actor 与既有高风险路径接起来。",
+        focus: "Yu gan Sea spray GmbH Industrial",
+        beforeSeries: [4, 3, 3, 0, 0, 1, 2, 3],
+        afterSeries: [4, 3, 3, 1, 3, 5, 6, 6]
+      },
+      anomaly_amp: {
+        label: "Anomaly Amplification",
+        brief: "补全没有创造异常，但把原本微弱的异常路径放大成更清晰的结构。",
+        source: "Bundle 03 + 09",
+        reason: "多个 trusted links 让异常命名节点不再是孤立点，而成为可解释路径的一部分。",
+        focus: "Oceanus Buyer Hub",
+        beforeSeries: [1, 1, 2, 2, 2, 3, 3, 3],
+        afterSeries: [1, 1, 2, 4, 5, 6, 6, 7]
+      }
+    };
+
+    const layouts = {
+      new_bridge: {
+        before: {
+          nodes: [
+            { id: "Panope", x: 100, y: 210, type: "focus" },
+            { id: "Buyer Hub", x: 220, y: 120, type: "hub" },
+            { id: "Cold Chain", x: 340, y: 190, type: "stable" },
+            { id: "Remote Cluster", x: 330, y: 70, type: "stable" }
+          ],
+          links: [["Panope", "Buyer Hub", "orig"], ["Buyer Hub", "Remote Cluster", "orig"]]
+        },
+        after: {
+          nodes: [
+            { id: "Panope", x: 100, y: 210, type: "focus" },
+            { id: "Buyer Hub", x: 220, y: 120, type: "hub" },
+            { id: "Cold Chain", x: 340, y: 190, type: "stable" },
+            { id: "Remote Cluster", x: 330, y: 70, type: "stable" }
+          ],
+          links: [["Panope", "Buyer Hub", "orig"], ["Buyer Hub", "Remote Cluster", "orig"], ["Buyer Hub", "Cold Chain", "new"], ["Panope", "Cold Chain", "new"]]
+        }
+      },
+      hidden_relay: {
+        before: {
+          nodes: [
+            { id: "Olas", x: 90, y: 180, type: "focus" },
+            { id: "Buyer Hub", x: 210, y: 110, type: "hub" },
+            { id: "French Crab", x: 335, y: 185, type: "focus2" }
+          ],
+          links: [["Olas", "Buyer Hub", "orig"]]
+        },
+        after: {
+          nodes: [
+            { id: "Olas", x: 90, y: 180, type: "focus" },
+            { id: "Buyer Hub", x: 210, y: 110, type: "hub" },
+            { id: "French Crab", x: 335, y: 185, type: "focus2" },
+            { id: "Broker", x: 320, y: 70, type: "stable" }
+          ],
+          links: [["Olas", "Buyer Hub", "orig"], ["Buyer Hub", "French Crab", "new"], ["French Crab", "Broker", "new"]]
+        }
+      },
+      cluster_entry: {
+        before: {
+          nodes: [
+            { id: "Yu gan", x: 100, y: 200, type: "focus" },
+            { id: "Buyer Hub", x: 210, y: 115, type: "hub" },
+            { id: "Risk Cluster", x: 330, y: 160, type: "stable" }
+          ],
+          links: [["Yu gan", "Buyer Hub", "orig"]]
+        },
+        after: {
+          nodes: [
+            { id: "Yu gan", x: 100, y: 200, type: "focus" },
+            { id: "Buyer Hub", x: 210, y: 115, type: "hub" },
+            { id: "Risk Cluster", x: 330, y: 160, type: "stable" },
+            { id: "Relay Node", x: 320, y: 70, type: "stable" }
+          ],
+          links: [["Yu gan", "Buyer Hub", "orig"], ["Buyer Hub", "Risk Cluster", "new"], ["Buyer Hub", "Relay Node", "new"]]
+        }
+      },
+      anomaly_amp: {
+        before: {
+          nodes: [
+            { id: "Anon Node", x: 100, y: 190, type: "focus2" },
+            { id: "Buyer Hub", x: 220, y: 115, type: "hub" },
+            { id: "Panope", x: 330, y: 180, type: "focus" }
+          ],
+          links: [["Anon Node", "Buyer Hub", "orig"]]
+        },
+        after: {
+          nodes: [
+            { id: "Anon Node", x: 100, y: 190, type: "focus2" },
+            { id: "Buyer Hub", x: 220, y: 115, type: "hub" },
+            { id: "Panope", x: 330, y: 180, type: "focus" },
+            { id: "Cold Chain", x: 330, y: 70, type: "stable" }
+          ],
+          links: [["Anon Node", "Buyer Hub", "orig"], ["Buyer Hub", "Panope", "new"], ["Buyer Hub", "Cold Chain", "new"]]
+        }
+      }
+    };
+
+    const state = {
+      selectedPattern: "hidden_relay",
+      selectedSlice: 1
+    };
+
+    const patternSelect = document.getElementById("patternSelect");
+    const sliceRange = document.getElementById("sliceRange");
+    const sliceLabel = document.getElementById("sliceLabel");
+    const patternLabel = document.getElementById("patternLabel");
+
+    Object.entries(patterns).forEach(([key, value]) => {
+      const option = document.createElement("option");
+      option.value = key;
+      option.textContent = value.label;
+      patternSelect.appendChild(option);
+    });
+    patternSelect.value = state.selectedPattern;
+
+    function nodeColor(type) {
+      if (type === "focus") return "#ad5c16";
+      if (type === "focus2") return "#812b49";
+      if (type === "hub") return "#203553";
+      return "#196d69";
+    }
+
+    function renderPatternCards() {
+      const container = document.getElementById("patternList");
+      container.innerHTML = Object.entries(patterns).map(([key, value]) => `
+        <button type="button" class="pattern-card ${state.selectedPattern === key ? "active" : ""}" data-pattern="${key}">
+          <strong>${value.label}</strong>
+          <p>${value.brief}</p>
+        </button>
+      `).join("");
+
+      container.querySelectorAll("[data-pattern]").forEach((button) => {
+        button.addEventListener("click", () => {
+          state.selectedPattern = button.dataset.pattern;
+          patternSelect.value = state.selectedPattern;
+          renderAll();
+        });
+      });
+    }
+
+    function renderNetwork(svgId, mode) {
+      const svg = document.getElementById(svgId);
+      const layout = layouts[state.selectedPattern][mode];
+      let content = "";
+
+      layout.links.forEach(([source, target, kind]) => {
+        const s = layout.nodes.find((node) => node.id === source);
+        const t = layout.nodes.find((node) => node.id === target);
+        content += `<line x1="${s.x}" y1="${s.y}" x2="${t.x}" y2="${t.y}" stroke="${kind === "new" ? "#196d69" : "rgba(32,53,83,0.55)"}" stroke-width="${kind === "new" ? 7 : 5}" stroke-linecap="round" />`;
+      });
+
+      layout.nodes.forEach((node) => {
+        content += `
+          <circle cx="${node.x}" cy="${node.y}" r="24" fill="${nodeColor(node.type)}" fill-opacity="0.9"></circle>
+          <text x="${node.x}" y="${node.y + 4}" text-anchor="middle" font-size="11" fill="#fffaf3" font-weight="700">${node.id.split(" ")[0]}</text>
+        `;
+      });
+
+      svg.innerHTML = content;
+    }
+
+    function renderTimeline() {
+      const svg = document.getElementById("timelineCompare");
+      const pattern = patterns[state.selectedPattern];
+      const before = pattern.beforeSeries;
+      const after = pattern.afterSeries;
+      const left = 90;
+      const top = 34;
+      const width = 760;
+      const height = 180;
+      const step = width / (before.length - 1);
+
+      let content = `
+        <line x1="${left}" y1="${top + height}" x2="${left + width}" y2="${top + height}" stroke="rgba(20,33,61,0.24)"></line>
+        <line x1="${left}" y1="${top}" x2="${left}" y2="${top + height}" stroke="rgba(20,33,61,0.24)"></line>
+      `;
+
+      before.forEach((_, i) => {
+        const x = left + i * step;
+        content += `<text x="${x}" y="${top + height + 24}" text-anchor="middle" font-size="11" fill="#61707c">T${i + 1}</text>`;
+      });
+
+      const pathFrom = (arr) => arr.map((value, i) => {
+        const x = left + i * step;
+        const y = top + height - value * 18;
+        return `${i === 0 ? "M" : "L"} ${x} ${y}`;
+      }).join(" ");
+
+      content += `<path d="${pathFrom(before)}" fill="none" stroke="#203553" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>`;
+      content += `<path d="${pathFrom(after)}" fill="none" stroke="#196d69" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>`;
+
+      before.forEach((value, i) => {
+        const x = left + i * step;
+        const y = top + height - value * 18;
+        content += `<circle cx="${x}" cy="${y}" r="4" fill="#203553"></circle>`;
+      });
+
+      after.forEach((value, i) => {
+        const x = left + i * step;
+        const y = top + height - value * 18;
+        content += `<circle cx="${x}" cy="${y}" r="5" fill="#196d69"></circle>`;
+      });
+
+      content += `
+        <rect x="${left + state.selectedSlice * 180 - 16}" y="${top - 8}" width="160" height="${height + 18}" rx="14" fill="rgba(173,92,22,0.08)" stroke="rgba(173,92,22,0.30)" stroke-dasharray="5 4"></rect>
+        <text x="${left}" y="18" font-size="12" fill="#61707c">Original relation visibility</text>
+        <text x="${left + 210}" y="18" font-size="12" fill="#196d69">Completed graph visibility</text>
+      `;
+
+      svg.innerHTML = content;
+    }
+
+    function renderDetails() {
+      const pattern = patterns[state.selectedPattern];
+      document.getElementById("patternDetail").innerHTML = `
+        <h3>${pattern.label}</h3>
+        <p>${pattern.brief}</p>
+        <ul>
+          <li>来源 bundle: ${pattern.source}</li>
+          <li>关键对象: ${pattern.focus}</li>
+          <li>为何只在补全后可见: ${pattern.reason}</li>
+        </ul>
+      `;
+
+      document.getElementById("q3Summary").innerHTML = `
+        <h3>Q3 Summary Card</h3>
+        <p>
+          当前案例表明，图谱补全不是单纯增加连边，而是让原本看不清的 relay / bridge / cluster entry 模式
+          在时间与结构上同时变得可解释。
+        </p>
+        <ul>
+          <li>当前展示模式: ${pattern.label}</li>
+          <li>最适合放进 PPT 的一句话: “可信补全让断裂链条和桥接结构首次变得连续可见。”</li>
+          <li>后续流向: 将 ${pattern.focus} 及相关节点送入 Q4 做嫌疑调查。</li>
+        </ul>
+      `;
+    }
+
+    function renderAll() {
+      const pattern = patterns[state.selectedPattern];
+      patternLabel.textContent = pattern.label;
+      sliceLabel.textContent = timeSlices[state.selectedSlice];
+      renderPatternCards();
+      renderNetwork("beforeNetwork", "before");
+      renderNetwork("afterNetwork", "after");
+      renderTimeline();
+      renderDetails();
+    }
+
+    patternSelect.addEventListener("change", (event) => {
+      state.selectedPattern = event.target.value;
+      renderAll();
+    });
+
+    sliceRange.addEventListener("input", (event) => {
+      state.selectedSlice = Number(event.target.value);
+      renderAll();
+    });
+
+    renderAll();
+  </script>
+</body>
+</html>

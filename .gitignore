@@ -1,0 +1,40 @@
+# 原始 MC2 数据（体积大，自行放置；路径见 README）
+MC2/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+env/
+ENV/
+pip-log.txt
+pip-delete-this-directory.txt
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# 环境与密钥
+.env
+.env.*
+!.env.example
+
+# IDE / 编辑器
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# 操作系统与解压残留
+.DS_Store
+Thumbs.db
+Desktop.ini
+__MACOSX/

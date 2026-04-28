@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q2 Bundle Reliability Lab Sketch</title>
+  <style>
+    :root {
+      --ink: #132238;
+      --muted: #62717a;
+      --panel: rgba(255, 251, 243, 0.9);
+      --line: rgba(19, 34, 56, 0.12);
+      --shadow: 0 18px 44px rgba(19, 34, 56, 0.13);
+      --accent: #1d6f5f;
+      --accent-2: #b15e11;
+      --accent-3: #8f2841;
+      --bg-1: #f7f0e5;
+      --bg-2: #efe4d1;
+      --good: #176b5c;
+      --mid: #c58435;
+      --bad: #8f2841;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Avenir Next", "Segoe UI", "PingFang SC", "Noto Sans SC", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(29, 111, 95, 0.16), transparent 24%),
+        radial-gradient(circle at left bottom, rgba(177, 94, 17, 0.10), transparent 22%),
+        linear-gradient(180deg, var(--bg-1), var(--bg-2));
+    }
+
+    .page {
+      max-width: 1560px;
+      margin: 0 auto;
+      padding: 28px;
+    }
+
+    .hero,
+    .panel,
+    .footer {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero {
+      padding: 24px 28px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 18px;
+      margin-bottom: 16px;
+    }
+
+    .eyebrow,
+    .badge,
+    .chip,
+    .nav a {
+      border-radius: 999px;
+      border: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 6px 10px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: rgba(19, 34, 56, 0.06);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 34px;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    .muted { color: var(--muted); }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .metric {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(19, 34, 56, 0.05);
+      border: 1px solid rgba(19, 34, 56, 0.08);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .nav a {
+      padding: 8px 12px;
+      text-decoration: none;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.64);
+      font-size: 13px;
+    }
+
+    .nav a.active {
+      background: rgba(29, 111, 95, 0.12);
+      border-color: rgba(29, 111, 95, 0.32);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 300px minmax(0, 1.2fr) minmax(0, 0.95fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .sidebar,
+    .main,
+    .right {
+      display: grid;
+      gap: 18px;
+    }
+
+    .panel {
+      padding: 18px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .badge {
+      padding: 6px 10px;
+      background: rgba(177, 94, 17, 0.10);
+      color: var(--accent-2);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .panel-desc {
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .control-group { margin-bottom: 16px; }
+    .control-group:last-child { margin-bottom: 0; }
+
+    .label-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    select,
+    input[type="range"] {
+      width: 100%;
+    }
+
+    select {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+    }
+
+    input[type="range"] { accent-color: var(--accent); }
+
+    .check-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink);
+      font-size: 14px;
+    }
+
+    .output-list,
+    .decision-columns,
+    .legend,
+    .kpi-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.72);
+      font-size: 13px;
+    }
+
+    .chart-shell {
+      padding: 12px;
+      border-radius: 20px;
+      border: 1px dashed rgba(19, 34, 56, 0.14);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.76), rgba(255,255,255,0.58)),
+        repeating-linear-gradient(
+          0deg,
+          transparent 0,
+          transparent 30px,
+          rgba(19, 34, 56, 0.04) 30px,
+          rgba(19, 34, 56, 0.04) 31px
+        );
+    }
+
+    svg { width: 100%; height: auto; display: block; }
+
+    .legend {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+
+    .kpi {
+      flex: 1 1 140px;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(19, 34, 56, 0.05);
+      border: 1px solid rgba(19, 34, 56, 0.08);
+    }
+
+    .kpi strong {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 2px;
+    }
+
+    .inspector-list,
+    .rank-col {
+      display: grid;
+      gap: 12px;
+    }
+
+    .link-card,
+    .rank-col {
+      border-radius: 18px;
+      border: 1px solid rgba(19, 34, 56, 0.09);
+      background: rgba(255, 255, 255, 0.64);
+    }
+
+    .link-card {
+      padding: 14px;
+    }
+
+    .link-card.active {
+      border-color: rgba(29, 111, 95, 0.36);
+      background: rgba(29, 111, 95, 0.08);
+    }
+
+    .link-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 6px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .tag {
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .tag.good { background: rgba(23, 107, 92, 0.14); color: var(--good); }
+    .tag.warn { background: rgba(197, 132, 53, 0.16); color: var(--mid); }
+    .tag.bad { background: rgba(143, 40, 65, 0.16); color: var(--bad); }
+
+    .small-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--ink);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .decision-columns {
+      align-items: stretch;
+    }
+
+    .rank-col {
+      flex: 1 1 180px;
+      padding: 14px;
+    }
+
+    .rank-col h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+
+    .bundle-pill {
+      padding: 8px 10px;
+      border-radius: 12px;
+      font-size: 13px;
+      border: 1px solid rgba(19, 34, 56, 0.08);
+      background: rgba(255, 255, 255, 0.78);
+    }
+
+    .summary {
+      padding: 16px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.84), rgba(255,255,255,0.62));
+      border: 1px solid rgba(19, 34, 56, 0.10);
+    }
+
+    .summary h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .summary p,
+    .summary li {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .footer {
+      margin-top: 18px;
+      padding: 18px 20px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 18px;
+    }
+
+    @media (max-width: 1280px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 900px) {
+      .page { padding: 18px; }
+      .hero, .footer { grid-template-columns: 1fr; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Phase 1 Sketch • Q2 Bundle Reliability Lab</div>
+        <h1>FishFlow Q2 预测链接可靠性设计草图</h1>
+        <p class="muted">
+          这一页把 Q2 的核心任务落成可展示的工作台：先用评分矩阵比较 12 个 bundle，
+          再通过样例链接上下文和分档决策面板解释哪些 bundle 可以进入图谱补全。
+        </p>
+      </div>
+      <div class="meta-grid">
+        <div class="metric"><strong>12</strong>预测 bundle</div>
+        <div class="metric"><strong>6</strong>评分维度</div>
+        <div class="metric"><strong>3</strong>可信度分层</div>
+        <div class="metric"><strong>1</strong>Q2 决策摘要卡</div>
+      </div>
+    </section>
+
+    <nav class="nav">
+      <a href="./index.html">Q1 Temporal Pattern</a>
+      <a href="./q2.html" class="active">Q2 Bundle Reliability</a>
+      <a href="./q3.html">Q3 Completion Comparator</a>
+      <a href="./q4.html">Q4 Suspicious Company</a>
+    </nav>
+
+    <main class="layout">
+      <section class="sidebar">
+        <div class="panel">
+          <h2>Control Panel</h2>
+          <p class="panel-desc">从左侧选择 bundle、可信阈值和异常边过滤，主视图会同步更新。</p>
+          <div class="control-group">
+            <div class="label-row">
+              <span>Selected Bundle</span>
+              <span id="bundleLabel">Bundle 07</span>
+            </div>
+            <select id="bundleSelect"></select>
+          </div>
+          <div class="control-group">
+            <div class="label-row">
+              <span>Confidence Threshold</span>
+              <span id="thresholdLabel">62</span>
+            </div>
+            <input id="thresholdRange" type="range" min="45" max="78" value="62">
+          </div>
+          <div class="control-group">
+            <label class="check-row">
+              <input id="anomalyToggle" type="checkbox">
+              仅显示异常边反例
+            </label>
+          </div>
+          <div class="control-group">
+            <div class="label-row">
+              <span>Output Targets</span>
+              <span>PPT-ready</span>
+            </div>
+            <div class="output-list">
+              <span class="chip">评分矩阵</span>
+              <span class="chip">bundle 分档</span>
+              <span class="chip">高可信清单</span>
+              <span class="chip">低可信反例</span>
+              <span class="chip">补全候选集</span>
+              <span class="chip">Q2 摘要卡</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <h2>Bundle Decision Summary</h2>
+              <p class="panel-desc">把 Q2 的判断结果直接沉淀成可以流向 Q3 的补全候选。</p>
+            </div>
+            <span class="badge">View 4</span>
+          </div>
+          <div id="decisionSummary" class="summary"></div>
+        </div>
+      </section>
+
+      <section class="main">
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <h2>Bundle Score Matrix</h2>
+              <p class="panel-desc">横轴为 12 个 bundle，纵轴为 temporal、topology、country、business、anomaly、duplication 六个维度。</p>
+            </div>
+            <span class="badge">View 1</span>
+          </div>
+          <div class="chart-shell">
+            <svg id="scoreMatrix" viewBox="0 0 980 380" role="img" aria-label="Bundle score matrix"></svg>
+          </div>
+          <div class="legend">
+            <span><i class="swatch" style="background:#eadfcd"></i> low score</span>
+            <span><i class="swatch" style="background:#c9d9d0"></i> medium</span>
+            <span><i class="swatch" style="background:#1d6f5f"></i> high</span>
+            <span><i class="swatch" style="background:#b15e11"></i> selected bundle</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <h2>Bundle Ranking / Decision Panel</h2>
+              <p class="panel-desc">阈值滑块改变后，bundle 会自动重分到 high / medium / low confidence 三个层级。</p>
+            </div>
+            <span class="badge">Decision</span>
+          </div>
+          <div id="decisionColumns" class="decision-columns"></div>
+        </div>
+      </section>
+
+      <section class="right">
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <h2>Bundle Comparison Panel</h2>
+              <p class="panel-desc">选中 bundle 后，右侧展示新增边、覆盖范围、相似度与异常命名占比等摘要指标。</p>
+            </div>
+            <span class="badge">View 2</span>
+          </div>
+          <div id="kpiGrid" class="kpi-grid"></div>
+        </div>
+
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <h2>Example Link Inspector</h2>
+              <p class="panel-desc">通过局部上下文检视新增边是否符合时间窗、已有贸易路径和邻域结构。</p>
+            </div>
+            <span class="badge">View 3</span>
+          </div>
+          <div class="chart-shell" style="margin-bottom: 12px;">
+            <svg id="linkContext" viewBox="0 0 520 220" role="img" aria-label="Bundle link context"></svg>
+          </div>
+          <div id="inspectorList" class="inspector-list"></div>
+        </div>
+      </section>
+    </main>
+
+    <section class="footer">
+      <div>
+        <h2>Why This Sketch Fits Q2</h2>
+        <p class="muted">
+          Q2 的关键不是给 12 个 bundle 打一个黑箱分数，而是把“为什么可信 / 为什么不可信”拆成可解释证据。
+          评分矩阵给总体比较，样例链接检查器给局部反证，决策面板则明确哪些 bundle 进入 Q3。
+        </p>
+      </div>
+      <div>
+        <h2>Sketch Note</h2>
+        <p class="muted">
+          页面采用草图级示例分数与链接，但结构严格对应任务定义中的四个视图和六项成果输出，
+          可以直接作为 Phase 1 PPT 的 Q2 设计展示页。
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const metricOrder = [
+      { key: "temporal", label: "Temporal" },
+      { key: "topology", label: "Topology" },
+      { key: "country", label: "Country" },
+      { key: "business", label: "Business" },
+      { key: "anomaly", label: "Anomaly" },
+      { key: "duplication", label: "Duplication" }
+    ];
+
+    const bundles = [
+      { id: "Bundle 01", scores: [72, 70, 68, 66, 42, 48], edges: 142, nodes: 88, cover: "2031-Q4 ~ 2033-Q3", similarity: 0.76, weird: "18%", adopted: false },
+      { id: "Bundle 02", scores: [60, 54, 58, 52, 62, 65], edges: 190, nodes: 104, cover: "2030-Q2 ~ 2034-Q1", similarity: 0.58, weird: "31%", adopted: false },
+      { id: "Bundle 03", scores: [82, 80, 76, 74, 26, 34], edges: 96, nodes: 61, cover: "2032-Q1 ~ 2033-Q4", similarity: 0.84, weird: "11%", adopted: true },
+      { id: "Bundle 04", scores: [57, 48, 44, 50, 72, 74], edges: 220, nodes: 133, cover: "2029-Q4 ~ 2034-Q2", similarity: 0.49, weird: "39%", adopted: false },
+      { id: "Bundle 05", scores: [69, 65, 62, 64, 40, 45], edges: 156, nodes: 93, cover: "2031-Q2 ~ 2034-Q2", similarity: 0.71, weird: "21%", adopted: false },
+      { id: "Bundle 06", scores: [52, 58, 49, 46, 80, 68], edges: 244, nodes: 147, cover: "2028-Q3 ~ 2034-Q4", similarity: 0.43, weird: "46%", adopted: false },
+      { id: "Bundle 07", scores: [86, 88, 79, 77, 24, 31], edges: 84, nodes: 58, cover: "2032-Q2 ~ 2033-Q4", similarity: 0.89, weird: "8%", adopted: true },
+      { id: "Bundle 08", scores: [64, 61, 56, 58, 54, 52], edges: 168, nodes: 101, cover: "2031-Q1 ~ 2034-Q1", similarity: 0.63, weird: "27%", adopted: false },
+      { id: "Bundle 09", scores: [78, 75, 72, 76, 30, 36], edges: 112, nodes: 73, cover: "2032-Q1 ~ 2034-Q2", similarity: 0.81, weird: "13%", adopted: true },
+      { id: "Bundle 10", scores: [48, 45, 51, 42, 76, 82], edges: 256, nodes: 154, cover: "2028-Q1 ~ 2034-Q4", similarity: 0.38, weird: "51%", adopted: false },
+      { id: "Bundle 11", scores: [66, 68, 71, 63, 35, 40], edges: 132, nodes: 86, cover: "2031-Q3 ~ 2034-Q3", similarity: 0.74, weird: "19%", adopted: false },
+      { id: "Bundle 12", scores: [58, 55, 47, 49, 67, 69], edges: 206, nodes: 122, cover: "2030-Q1 ~ 2034-Q2", similarity: 0.51, weird: "37%", adopted: false }
+    ].map((bundle) => ({
+      ...bundle,
+      avg: Math.round(bundle.scores.reduce((a, b) => a + b, 0) / bundle.scores.length)
+    }));
+
+    const bundleLinks = {
+      "Bundle 03": [
+        { pair: "Olas del Mar → Oceanus Buyer Hub", status: "good", note: "落在原有贸易时间窗内，连接的是已存在的一跳邻域。"},
+        { pair: "French Crab → Cold Chain Broker", status: "good", note: "补全后形成连续 relay chain，结构自然。"},
+        { pair: "Unnamed Logistics 14 → Panope LLC", status: "warn", note: "命名质量略差，但与局部路径方向一致。"}
+      ],
+      "Bundle 07": [
+        { pair: "Panope LLC → Oceanus Buyer Hub", status: "good", note: "与 Q1 shell replacement 候选在时间上吻合。"},
+        { pair: "French Crab → Oceanus Buyer Hub", status: "good", note: "与 handoff 模式一致，增强桥接链条。"},
+        { pair: "AquaDelight → Cold Chain Broker", status: "warn", note: "结构合理，但业务解释仍需二次核查。"}
+      ],
+      "Bundle 09": [
+        { pair: "Yu gan Sea spray → Oceanus Buyer Hub", status: "good", note: "补全后解释 dormant reactivation 更顺畅。"},
+        { pair: "Panope LLC → Cold Chain Broker", status: "warn", note: "时间一致，但新增边略跨越常见路径长度。"},
+        { pair: "French Crab → Export Relay Node", status: "good", note: "补上断裂链条后，局部结构更闭合。"}
+      ],
+      "Bundle 04": [
+        { pair: "Anon 774 → Oceanus Buyer Hub", status: "bad", note: "异常命名比例高，节点语义不稳定。"},
+        { pair: "BaringoAmerica → Distant Cluster", status: "bad", note: "跨社区突兀连接，缺乏相邻路径支撑。"},
+        { pair: "Ghost Fleet 2 → French Crab", status: "warn", note: "时间窗太宽，可信度不足。"}
+      ],
+      "Bundle 10": [
+        { pair: "Code 4111 → Cold Chain Broker", status: "bad", note: "重复结构过多，疑似批量生成式连接。"},
+        { pair: "Panope LLC → Remote Port X", status: "bad", note: "country compatibility 明显偏低。"},
+        { pair: "AquaDelight → Ghost Fleet 7", status: "bad", note: "原图谱中几乎没有共享邻域。"}
+      ]
+    };
+
+    const state = {
+      selectedBundle: "Bundle 07",
+      threshold: 62,
+      anomaliesOnly: false
+    };
+
+    const bundleSelect = document.getElementById("bundleSelect");
+    const thresholdRange = document.getElementById("thresholdRange");
+    const thresholdLabel = document.getElementById("thresholdLabel");
+    const bundleLabel = document.getElementById("bundleLabel");
+    const anomalyToggle = document.getElementById("anomalyToggle");
+
+    bundles.forEach((bundle) => {
+      const option = document.createElement("option");
+      option.value = bundle.id;
+      option.textContent = bundle.id;
+      bundleSelect.appendChild(option);
+    });
+
+    bundleSelect.value = state.selectedBundle;
+
+    function scoreColor(value, highlight) {
+      if (highlight) return "#b15e11";
+      if (value >= 75) return "#1d6f5f";
+      if (value >= 60) return "#76aa9f";
+      if (value >= 45) return "#cfcdbf";
+      return "#eadfcd";
+    }
+
+    function classify(bundle, threshold) {
+      if (bundle.avg >= threshold + 8) return "high";
+      if (bundle.avg >= threshold - 6) return "medium";
+      return "low";
+    }
+
+    function renderMatrix() {
+      const svg = document.getElementById("scoreMatrix");
+      const left = 140;
+      const top = 44;
+      const cellW = 62;
+      const cellH = 44;
+      let content = "";
+
+      bundles.forEach((bundle, col) => {
+        const x = left + col * cellW;
+        const selected = bundle.id === state.selectedBundle;
+        content += `<text x="${x + 28}" y="24" text-anchor="middle" font-size="12" fill="${selected ? "#b15e11" : "#62717a"}" font-weight="${selected ? 700 : 500}">${bundle.id.replace("Bundle ", "B")}</text>`;
+      });
+
+      metricOrder.forEach((metric, row) => {
+        const y = top + row * cellH;
+        content += `<text x="0" y="${y + 24}" font-size="13" fill="#132238" font-weight="600">${metric.label}</text>`;
+        bundles.forEach((bundle, col) => {
+          const x = left + col * cellW;
+          const selected = bundle.id === state.selectedBundle;
+          const value = bundle.scores[row];
+          content += `
+            <rect
+              x="${x}"
+              y="${y}"
+              width="48"
+              height="32"
+              rx="10"
+              fill="${scoreColor(value, selected)}"
+              fill-opacity="${selected ? 0.96 : 0.86}"
+              stroke="${selected ? "#8f4a0d" : "rgba(19,34,56,0.06)"}"
+              stroke-width="${selected ? 1.6 : 1}"
+            />
+            <text x="${x + 24}" y="${y + 21}" text-anchor="middle" font-size="12" fill="${selected ? "#fffaf3" : "#132238"}" font-weight="700">${value}</text>
+          `;
+        });
+      });
+
+      const selectedIndex = bundles.findIndex((bundle) => bundle.id === state.selectedBundle);
+      content += `<rect x="${left + selectedIndex * cellW - 7}" y="32" width="60" height="${metricOrder.length * cellH + 14}" rx="14" fill="rgba(177,94,17,0.08)" stroke="rgba(177,94,17,0.34)" stroke-dasharray="5 4" />`;
+      svg.innerHTML = content;
+    }
+
+    function renderKpis() {
+      const bundle = bundles.find((item) => item.id === state.selectedBundle);
+      const items = [
+        { label: "新增边数", value: bundle.edges },
+        { label: "涉及节点", value: bundle.nodes },
+        { label: "时间覆盖", value: bundle.cover },
+        { label: "相似度", value: bundle.similarity.toFixed(2) },
+        { label: "异常命名比例", value: bundle.weird },
+        { label: "平均得分", value: bundle.avg }
+      ];
+      document.getElementById("kpiGrid").innerHTML = items.map((item) => `
+        <div class="kpi">
+          <strong>${item.value}</strong>
+          <span class="muted">${item.label}</span>
+        </div>
+      `).join("");
+    }
+
+    function renderInspector() {
+      const fallback = bundleLinks[state.selectedBundle] || bundleLinks["Bundle 04"];
+      const list = state.anomaliesOnly ? fallback.filter((item) => item.status !== "good") : fallback;
+      const visible = list.length ? list : [{ pair: "No anomalous edge shown", status: "good", note: "当前 bundle 没有被筛出的反例，可切回全量查看。"}];
+      document.getElementById("inspectorList").innerHTML = visible.map((item, index) => `
+        <div class="link-card ${index === 0 ? "active" : ""}">
+          <div class="link-head">
+            <span>${item.pair}</span>
+            <span class="tag ${item.status === "good" ? "good" : item.status === "warn" ? "warn" : "bad"}">${item.status}</span>
+          </div>
+          <p class="muted">${item.note}</p>
+        </div>
+      `).join("");
+
+      const svg = document.getElementById("linkContext");
+      const bundle = bundles.find((item) => item.id === state.selectedBundle);
+      const suspicious = visible[0].status === "bad";
+      const edgeColor = suspicious ? "#8f2841" : "#1d6f5f";
+      svg.innerHTML = `
+        <text x="18" y="26" font-size="13" fill="#62717a">Context preview for ${bundle.id}</text>
+        <circle cx="96" cy="128" r="28" fill="${suspicious ? "#8f2841" : "#1d6f5f"}" fill-opacity="0.88"></circle>
+        <circle cx="254" cy="84" r="26" fill="#203553" fill-opacity="0.88"></circle>
+        <circle cx="412" cy="132" r="28" fill="#b15e11" fill-opacity="0.88"></circle>
+        <line x1="124" y1="122" x2="228" y2="92" stroke="${edgeColor}" stroke-width="8" stroke-linecap="round"></line>
+        <line x1="280" y1="92" x2="384" y2="126" stroke="rgba(32,53,83,0.45)" stroke-width="5" stroke-linecap="round"></line>
+        <text x="96" y="133" text-anchor="middle" font-size="11" fill="#fffaf3" font-weight="700">New</text>
+        <text x="254" y="89" text-anchor="middle" font-size="11" fill="#fffaf3" font-weight="700">Hub</text>
+        <text x="412" y="137" text-anchor="middle" font-size="11" fill="#fffaf3" font-weight="700">Target</text>
+        <rect x="18" y="170" width="482" height="34" rx="12" fill="rgba(19,34,56,0.05)" stroke="rgba(19,34,56,0.08)"></rect>
+        <text x="34" y="191" font-size="12" fill="#62717a">Inspector cue: ${suspicious ? "cross-cluster jump with weak neighborhood support" : "fills an existing path and stays inside the expected time window"}</text>
+      `;
+    }
+
+    function renderDecisionColumns() {
+      const container = document.getElementById("decisionColumns");
+      const grouped = { high: [], medium: [], low: [] };
+      bundles.forEach((bundle) => grouped[classify(bundle, state.threshold)].push(bundle));
+      const labels = {
+        high: { title: "High Confidence", color: "#176b5c" },
+        medium: { title: "Medium Confidence", color: "#c58435" },
+        low: { title: "Low Confidence", color: "#8f2841" }
+      };
+      container.innerHTML = ["high", "medium", "low"].map((key) => `
+        <div class="rank-col">
+          <h3 style="color:${labels[key].color}">${labels[key].title}</h3>
+          ${grouped[key].map((bundle) => `<div class="bundle-pill">${bundle.id} · avg ${bundle.avg}</div>`).join("") || `<div class="bundle-pill">None</div>`}
+        </div>
+      `).join("");
+    }
+
+    function renderSummary() {
+      const bundle = bundles.find((item) => item.id === state.selectedBundle);
+      const classification = classify(bundle, state.threshold);
+      const adopted = bundles.filter((item) => classify(item, state.threshold) === "high");
+      document.getElementById("decisionSummary").innerHTML = `
+        <h3>${bundle.id} · ${classification.toUpperCase()}</h3>
+        <p>
+          当前阈值下，这个 bundle 的平均分为 <strong>${bundle.avg}</strong>。它在 temporal、topology 与 business plausibility 上表现
+          ${classification === "high" ? "稳定，可以进入可信补全候选。" : classification === "medium" ? "中等，需要保留但继续复核。" : "偏弱，更适合作为反例展示。"}
+        </p>
+        <ul class="small-list">
+          <li>推荐进入 Q3 的 bundle: ${adopted.map((item) => item.id).join(", ") || "none"}</li>
+          <li>当前选中 bundle 的时间覆盖: ${bundle.cover}</li>
+          <li>Q2 对 PPT 的一句话结论: “保留高可信 bundle，并用低可信 bundle 展示为何不能盲目补全。”</li>
+        </ul>
+      `;
+    }
+
+    function renderAll() {
+      bundleLabel.textContent = state.selectedBundle;
+      thresholdLabel.textContent = String(state.threshold);
+      renderMatrix();
+      renderKpis();
+      renderInspector();
+      renderDecisionColumns();
+      renderSummary();
+    }
+
+    bundleSelect.addEventListener("change", (event) => {
+      state.selectedBundle = event.target.value;
+      renderAll();
+    });
+
+    thresholdRange.addEventListener("input", (event) => {
+      state.threshold = Number(event.target.value);
+      renderAll();
+    });
+
+    anomalyToggle.addEventListener("change", (event) => {
+      state.anomaliesOnly = event.target.checked;
+      renderAll();
+    });
+
+    renderAll();
+  </script>
+</body>
+</html>

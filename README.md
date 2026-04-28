@@ -161,6 +161,23 @@ MC2/ 原始 JSON
 
 ---
 
+## 推送到 GitHub
+
+本仓库已在本地初始化：`main` 分支含首次提交；**`MC2/` 已通过 `.gitignore` 排除**（需在本地自行放置原始数据）。
+
+在 GitHub 网页新建空仓库（不要勾选添加 README），然后在项目根目录执行（将 `YOUR_USER` / `YOUR_REPO` 换成你的仓库地址）：
+
+```powershell
+git remote add origin https://github.com/YOUR_USER/YOUR_REPO.git
+git push -u origin main
+```
+
+若使用 SSH：`git remote add origin git@github.com:YOUR_USER/YOUR_REPO.git`
+
+首次推送前请确认已登录 GitHub（HTTPS 凭据或 SSH key）。
+
+---
+
 ## 许可证与赛程
 
 挑战赛数据与条款以 **VAST Challenge 2023** 官方要求为准。

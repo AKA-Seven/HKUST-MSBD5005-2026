@@ -13,6 +13,7 @@ from detect_anomalies import compare_anomalies
 from edge_clustering import cluster_edges
 from evaluate_bundles import evaluate_all_bundles
 from export_results import export_outputs
+from extract_relationship_patterns import extract_relationship_patterns
 from extract_temporal_patterns import extract_temporal_patterns
 from link_prediction import score_all_bundle_links
 from load_data import load_base_graph, load_bundles
@@ -59,6 +60,9 @@ def main() -> None:
     temporal_patterns = extract_temporal_patterns(base_graph, bundles)
     extra_companies = {item["company"] for item in temporal_patterns}
 
+    print("Extracting Q1 inter-company relationship patterns...")
+    relationship_patterns = extract_relationship_patterns(base_graph, temporal_patterns)
+
     print("Comparing anomaly changes after adding reliable links...")
     anomaly_delta = compare_anomalies(base_graph, reliable_links)
 
@@ -78,6 +82,7 @@ def main() -> None:
         company_clusters=company_clusters,
         edge_clusters=edge_clusters,
         temporal_patterns=temporal_patterns,
+        relationship_patterns=relationship_patterns,
     )
 
     reliable_count = sum(1 for row in bundle_scores if row["label"] == "reliable")

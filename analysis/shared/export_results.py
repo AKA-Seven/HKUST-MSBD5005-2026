@@ -37,12 +37,23 @@ def export_outputs(
     company_clusters: list[dict],
     edge_clusters: list[dict],
     temporal_patterns: list[dict] | None = None,
+    relationship_patterns: list[dict] | None = None,
 ) -> None:
     """统一导出挖掘结果（各题产物写入对应子目录）。"""
     ensure_output_dir()
     # Q1 产物
     if temporal_patterns is not None:
         export_json(temporal_patterns, OUTPUT_DIR_Q1 / "q1_temporal_patterns.json")
+    if relationship_patterns is not None:
+        export_csv(relationship_patterns, OUTPUT_DIR_Q1 / "q1_relationship_patterns.csv")
+        # 按模式分组输出 Top-50 供快速预览
+        by_pattern: dict[str, list[dict]] = {}
+        for row in relationship_patterns:
+            by_pattern.setdefault(row["relationship_pattern"], []).append(row)
+        summary = {
+            pattern: rows[:50] for pattern, rows in by_pattern.items()
+        }
+        export_json(summary, OUTPUT_DIR_Q1 / "q1_relationship_patterns_top.json")
     # Q2 产物
     export_csv(bundle_scores, OUTPUT_DIR_Q2 / "bundle_reliability.csv")
     export_json(reliable_links, OUTPUT_DIR_Q2 / "reliable_links.json")

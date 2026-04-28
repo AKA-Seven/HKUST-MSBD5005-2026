@@ -103,60 +103,86 @@ def pair_features(source: str, target: str, index: dict) -> list[float]:
     ]
 
 
-def _sample_training_pairs(index: dict) -> tuple[list[tuple[str, str]], list[int]]:
-    """用 2034 真实出现的边做正样本，随机未出现公司对做负样本。"""
+def _sample_negatives(
+    n: int,
+    existing_pairs: set,
+    nodes: list[str],
+    rng: random.Random,
+) -> list[tuple[str, str]]:
+    """从图中随机采样 n 个不存在的公司对作为负样本。"""
+    negatives: set[tuple[str, str]] = set()
+    max_attempts = max(1000, n * 30)
+    for _ in range(max_attempts):
+        if len(negatives) >= n:
+            break
+        source, target = rng.sample(nodes, 2)
+        pair = tuple(sorted((source, target)))
+        if pair not in existing_pairs:
+            negatives.add(pair)
+    return list(negatives)
+
+
+def _sample_training_pairs(
+    index: dict,
+) -> tuple[list[tuple[str, str]], list[int], list[tuple[str, str]], list[int]]:
+    """把 2034 真实边做正样本、随机未见对做负样本，按 80/20 拆分训练集和留出验证集。
+
+    返回 (train_pairs, train_labels, val_pairs, val_labels)，
+    验证集与训练集完全不重叠，避免 AUC 在训练数据上估计的乐观偏差。
+    """
     rng = random.Random(RANDOM_SEED)
     positives = list(index["validation_pairs"])
     rng.shuffle(positives)
     positives = positives[:LINK_PREDICTION_SAMPLE_SIZE]
 
+    split = max(1, int(len(positives) * 0.8))
+    pos_train, pos_val = positives[:split], positives[split:]
+
     existing_pairs = index["all_pairs"]
     nodes = index["nodes"]
-    negatives = set()
-    max_attempts = max(1000, len(positives) * 30)
+    neg_train = _sample_negatives(len(pos_train), existing_pairs, nodes, rng)
+    neg_val = _sample_negatives(len(pos_val), existing_pairs, nodes, rng)
 
-    attempts = 0
-    while len(negatives) < len(positives) and attempts < max_attempts:
-        source, target = rng.sample(nodes, 2)
-        pair = tuple(sorted((source, target)))
-        if pair not in existing_pairs:
-            negatives.add(pair)
-        attempts += 1
-
-    pairs = positives + list(negatives)
-    labels = [1] * len(positives) + [0] * len(negatives)
-    return pairs, labels
+    train_pairs = pos_train + neg_train
+    train_labels = [1] * len(pos_train) + [0] * len(neg_train)
+    val_pairs = pos_val + neg_val
+    val_labels = [1] * len(pos_val) + [0] * len(neg_val)
+    return train_pairs, train_labels, val_pairs, val_labels
 
 
 def train_link_prediction_model(base_graph: dict) -> dict:
-    """自监督训练链接预测模型，并返回模型、索引和验证 AUC。"""
+    """自监督训练链接预测模型，并返回模型、索引和留出验证 AUC。"""
     index = build_temporal_link_index(base_graph)
-    pairs, labels = _sample_training_pairs(index)
+    train_pairs, train_labels, val_pairs, val_labels = _sample_training_pairs(index)
 
-    if len(set(labels)) < 2:
+    if len(set(train_labels)) < 2 or len(set(val_labels)) < 2:
         return {
             "model": None,
             "index": index,
             "validation_auc": None,
-            "training_pairs": len(pairs),
+            "training_pairs": len(train_pairs),
         }
 
-    features = np.array([pair_features(source, target, index) for source, target in pairs], dtype=float)
-    labels_array = np.array(labels, dtype=int)
+    X_train = np.array([pair_features(s, t, index) for s, t in train_pairs], dtype=float)
+    y_train = np.array(train_labels, dtype=int)
+    X_val = np.array([pair_features(s, t, index) for s, t in val_pairs], dtype=float)
+    y_val = np.array(val_labels, dtype=int)
+
     model = make_pipeline(
         StandardScaler(),
         LogisticRegression(max_iter=1000, class_weight="balanced", random_state=RANDOM_SEED),
     )
-    model.fit(features, labels_array)
+    model.fit(X_train, y_train)
 
-    probabilities = model.predict_proba(features)[:, 1]
-    validation_auc = roc_auc_score(labels_array, probabilities)
+    # 在与训练集不重叠的留出集上计算 AUC，避免循环验证的乐观偏差。
+    val_probs = model.predict_proba(X_val)[:, 1]
+    validation_auc = roc_auc_score(y_val, val_probs)
 
     return {
         "model": model,
         "index": index,
         "validation_auc": round(float(validation_auc), 4),
-        "training_pairs": len(pairs),
+        "training_pairs": len(train_pairs),
     }
 
 

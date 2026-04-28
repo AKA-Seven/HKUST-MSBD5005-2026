@@ -72,6 +72,24 @@ def evaluate_bundle(bundle_name: str, bundle_graph: dict, base_index: dict) -> d
         if str(node.get("shpcountry")) == "-27" or str(node.get("rcvcountry")) == "-27"
     )
 
+    # 时间一致性：预测边的日期是否落在双端公司在主图中的已知活跃期内。
+    # 采用宽松的区间检查（first_date ≤ arrivaldate ≤ last_date），
+    # 避免对月度空缺做过度惩罚。
+    company_date_ranges = base_index.get("company_date_ranges", {})
+    temporal_consistent = 0
+    for link in links:
+        src = link.get("source")
+        tgt = link.get("target")
+        date = link.get("arrivaldate")
+        if not date:
+            continue
+        src_range = company_date_ranges.get(src)
+        tgt_range = company_date_ranges.get(tgt)
+        src_ok = src_range and src_range[0] <= date <= src_range[1]
+        tgt_ok = tgt_range and tgt_range[0] <= date <= tgt_range[1]
+        if src_ok and tgt_ok:
+            temporal_consistent += 1
+
     return {
         "bundle": bundle_name,
         "link_count": len(links),
@@ -87,6 +105,7 @@ def evaluate_bundle(bundle_name: str, bundle_graph: dict, base_index: dict) -> d
         "unique_pair_ratio": _safe_ratio(len(pair_counter), len(links)),
         "max_pair_repeat": max(pair_counter.values()) if pair_counter else 0,
         "bad_country_count": bad_country_count,
+        "temporal_consistency_ratio": _safe_ratio(temporal_consistent, len(links)),
     }
 
 

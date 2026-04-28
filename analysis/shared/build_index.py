@@ -26,6 +26,8 @@ def build_base_index(base_graph: dict) -> dict:
     base_hscodes = set()
     pair_counts = Counter()
     dates = []
+    # company -> [first_date, last_date]，用于时间一致性评估
+    company_date_ranges: dict[str, list[str]] = {}
 
     for link in links:
         source = link.get("source")
@@ -43,6 +45,16 @@ def build_base_index(base_graph: dict) -> dict:
             base_hscodes.add(hscode)
         if date:
             dates.append(date)
+            for node in (source, target):
+                if not node:
+                    continue
+                if node not in company_date_ranges:
+                    company_date_ranges[node] = [date, date]
+                else:
+                    if date < company_date_ranges[node][0]:
+                        company_date_ranges[node][0] = date
+                    if date > company_date_ranges[node][1]:
+                        company_date_ranges[node][1] = date
 
     return {
         "base_nodes": base_nodes,
@@ -52,4 +64,5 @@ def build_base_index(base_graph: dict) -> dict:
         "pair_counts": pair_counts,
         "date_min": min(dates) if dates else None,
         "date_max": max(dates) if dates else None,
+        "company_date_ranges": company_date_ranges,
     }

@@ -26,7 +26,9 @@ if _shared not in sys.path:
 # ── 候选对筛选参数 ────────────────────────────────────────────────────────────
 MIN_SHARED_PARTNERS = 2   # 共享合作伙伴数量下限
 HUB_PARTNER_CAP = 40      # 倒排索引中超过此值的超级枢纽伙伴跳过（避免组合爆炸）
-RELAY_GAP_MAX = 6         # 接力模式允许的最大间隔月数
+RELAY_GAP_MAX = 60        # 接力模式允许的最大间隔月数（5 年，与 Q3 实测的 36–76 月对齐）
+RELAY_PARTNER_COUNT_MIN = 3  # 共享伙伴绝对数下限（绝对计数比 Jaccard 对小公司更友好）
+RELAY_JACCARD_MIN = 0.05  # 共享伙伴 Jaccard 下限（对大公司提供独立判据）
 MIN_CONFIDENCE = 0.25     # co_active 对的置信度下限（低于此则过滤）
 
 # 每种模式最多保留的对数（分层采样，防止单一模式独占输出）
@@ -141,10 +143,17 @@ def _classify_pair(
     first_b: str,
     last_b: str,
     partner_jaccard: float,
+    shared_partner_count: int,
 ) -> tuple[str, float]:
     """对公司对打时序关系标签，返回 (pattern, confidence)。
 
-    分类优先级：synchronous > relay > substitution > short_term_collab > co_active
+    分类优先级（最具信息量的特殊模式优先）：
+      relay > substitution > synchronous > short_term_collab > co_active
+
+    relay 判别条件（满足任一即可，对大小公司都友好）：
+      - 双方时间不重叠（前者完全停活后，后者才启动），且
+      - 间隔在 RELAY_GAP_MAX 月以内（5 年），且
+      - 共享伙伴绝对数 ≥ 3（小公司）或 Jaccard ≥ 0.05（大公司）
     """
     if not months_a or not months_b:
         return "co_active", 0.0
@@ -152,25 +161,33 @@ def _classify_pair(
     overlap_count = len(months_a & months_b)
     month_jaccard = _jaccard(months_a, months_b)
 
-    # 确定哪家公司先退场（用于接力/替代判断）
+    # 确定哪家公司先退场（用于接力/替代判断）。
+    # 仅当时间段完全错位（一方 last < 另一方 first）才视为接力候选。
     gap = -999
     if last_a and first_b and last_a < first_b:
         gap = _month_gap(last_a, first_b)
     elif last_b and first_a and last_b < first_a:
         gap = _month_gap(last_b, first_a)
 
-    # 接力型：前者退场后后者在短期内启动，且共享合作伙伴（优先于同步型判断）
-    if 0 <= gap <= RELAY_GAP_MAX and partner_jaccard >= 0.08:
-        gap_score = 1.0 - gap / (RELAY_GAP_MAX + 1)
-        confidence = round(0.55 * gap_score + 0.45 * min(partner_jaccard * 3, 1.0), 3)
+    # 接力型：时间错位 + 业务承接
+    has_partner_evidence = (
+        partner_jaccard >= RELAY_JACCARD_MIN
+        or shared_partner_count >= RELAY_PARTNER_COUNT_MIN
+    )
+    if 0 <= gap <= RELAY_GAP_MAX and has_partner_evidence:
+        # gap 越小越像直接接班，5 年以上的间隔置信度递减但不归零
+        gap_score = max(0.0, 1.0 - gap / (RELAY_GAP_MAX + 1))
+        partner_score = max(min(partner_jaccard * 3, 1.0),
+                            min(shared_partner_count / 20.0, 1.0))
+        confidence = round(0.55 * gap_score + 0.45 * partner_score, 3)
         return "relay", confidence
 
-    # 替代型：伙伴高度重叠但活跃期基本不重叠（时间错位 + 业务承接）
+    # 替代型：伙伴高度重叠但活跃期基本不重叠（与 relay 的差别：无明显时间间隔）
     if partner_jaccard >= 0.18 and month_jaccard < 0.20:
         confidence = round(min(partner_jaccard * 2.5, 1.0), 3)
         return "substitution", confidence
 
-    # 同步型：月度重叠率高，且存在实质性伙伴关联（排除"两家公司都存在"的平凡情形）
+    # 同步型：月度重叠率高，且存在实质性伙伴关联
     if month_jaccard >= 0.40 and partner_jaccard >= 0.12:
         confidence = round(0.60 * month_jaccard + 0.40 * partner_jaccard, 3)
         return "synchronous", confidence
@@ -226,6 +243,7 @@ def extract_relationship_patterns(
             prof_b["first_month"],
             prof_b["last_month"],
             partner_jaccard,
+            shared_cnt,
         )
 
         if pattern == "co_active" and confidence < MIN_CONFIDENCE:

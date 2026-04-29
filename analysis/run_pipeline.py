@@ -9,7 +9,8 @@ for _sub in ("shared", "q1", "q2", "q3", "q4"):
 
 from build_index import build_base_index
 from company_clustering import cluster_and_detect_companies
-from detect_anomalies import compare_anomalies
+from synthesize_suspicion import synthesize_suspicion
+from detect_anomalies import compare_anomalies, detect_bridge_companies, detect_relay_chains
 from edge_clustering import cluster_edges
 from evaluate_bundles import evaluate_all_bundles
 from export_results import export_outputs
@@ -64,11 +65,30 @@ def main() -> None:
     relationship_patterns = extract_relationship_patterns(base_graph, temporal_patterns)
 
     print("Comparing anomaly changes after adding reliable links...")
-    anomaly_delta = compare_anomalies(base_graph, reliable_links)
+    anomaly_delta = compare_anomalies(base_graph, reliable_links, temporal_patterns)
+
+    print("Detecting bridge companies introduced by reliable links...")
+    bridge_companies = detect_bridge_companies(base_graph, reliable_links)
+
+    print("Detecting relay chains activated by reliable links...")
+    relay_chains = detect_relay_chains(base_graph, reliable_links, temporal_patterns)
 
     print("Running unsupervised company anomaly detection and clustering...")
     company_clusters = cluster_and_detect_companies(
-        base_graph, bundles, extra_companies=extra_companies
+        base_graph, bundles,
+        extra_companies=extra_companies,
+        temporal_patterns=temporal_patterns,
+        anomaly_delta=anomaly_delta,
+        bridge_companies=bridge_companies,
+        relay_chains=relay_chains,
+    )
+
+    print("Synthesizing multi-signal suspicion ranking...")
+    suspicion_ranking = synthesize_suspicion(
+        company_clusters,
+        anomaly_delta=anomaly_delta,
+        bridge_companies=bridge_companies,
+        relay_chains=relay_chains,
     )
 
     print("Clustering trade edges with mining + base graph context...")
@@ -79,8 +99,11 @@ def main() -> None:
         bundle_scores=bundle_scores,
         reliable_links=reliable_links,
         anomaly_delta=anomaly_delta,
+        bridge_companies=bridge_companies,
+        relay_chains=relay_chains,
         company_clusters=company_clusters,
         edge_clusters=edge_clusters,
+        suspicion_ranking=suspicion_ranking,
         temporal_patterns=temporal_patterns,
         relationship_patterns=relationship_patterns,
     )

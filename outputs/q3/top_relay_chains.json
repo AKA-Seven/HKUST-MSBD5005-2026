@@ -1,0 +1,1002 @@
+[
+  {
+    "predecessor": "Orange River Mouth   &",
+    "successor": "Fresh Limited Liability Company",
+    "predecessor_last_month": "2031-11",
+    "gap_months_to_2034": 26,
+    "shared_partner_count": 142,
+    "shared_partner_sample": "1 Ltd. Corporation Transport;3 Logistics Tom yum;3 Oceanography ОАО Marine life;3 Trawler Corp Distribution",
+    "predecessor_pattern": "periodic",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Fresh Limited Liability Company",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 142,
+    "shared_partner_sample": "-4;-54;-6;3 Oceanography ОАО Marine life",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Zambezi Gorge  N.V. Transport",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 135,
+    "shared_partner_sample": "-4;-54;3 Oceanography ОАО Marine life;3 Seabreeze Corporation Marine ecology",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Orange River Mouth   &",
+    "successor": "Zambezi Gorge  N.V. Transport",
+    "predecessor_last_month": "2031-11",
+    "gap_months_to_2034": 26,
+    "shared_partner_count": 124,
+    "shared_partner_sample": "1 Ltd. Corporation Transport;3 Oceanography ОАО Marine life;3 Trawler Corp Distribution;Adriatic Tuna Company Distribution",
+    "predecessor_pattern": "periodic",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Seashell s  SRL Consulting",
+    "successor": "Mar y Luna Sagl",
+    "predecessor_last_month": "2029-12",
+    "gap_months_to_2034": 49,
+    "shared_partner_count": 117,
+    "shared_partner_sample": "-11292;-14475;-1457;-1791",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Seashell s  SRL Consulting",
+    "successor": "Saltwater Symphony S.A. de C.V.",
+    "predecessor_last_month": "2029-12",
+    "gap_months_to_2034": 49,
+    "shared_partner_count": 115,
+    "shared_partner_sample": "-11292;-14475;-1457;-1791",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Konkan Coast  SE Marine biology",
+    "successor": "hǎi dǎn Corporation Wharf",
+    "predecessor_last_month": "2030-09",
+    "gap_months_to_2034": 40,
+    "shared_partner_count": 113,
+    "shared_partner_sample": "Ancla del Mar Inc;Angrapa GmbH & Co. KG Overseas;Aqua Azul Trawler GmbH Logistics;AquaBite Beach ОАО Shipping",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Gulf of Guinea   Corporation",
+    "successor": "Fresh Limited Liability Company",
+    "predecessor_last_month": "2032-10",
+    "gap_months_to_2034": 15,
+    "shared_partner_count": 107,
+    "shared_partner_sample": "-13796;-13802;-13812;-6",
+    "predecessor_pattern": "general",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Konkan Coast  SE Marine biology",
+    "successor": "Caracola del Sol Services",
+    "predecessor_last_month": "2030-09",
+    "gap_months_to_2034": 40,
+    "shared_partner_count": 104,
+    "shared_partner_sample": "Ancla del Mar Inc;Angrapa GmbH & Co. KG Overseas;Aqua Azul Trawler GmbH Logistics;AquaBite Beach ОАО Shipping",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Barents Sea Cod CJSC Export",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 103,
+    "shared_partner_sample": "3 Oceanography ОАО Marine life;3 Seabreeze Corporation Marine ecology;3 Trawler Corp Distribution;Ancla de Oro Kga Import",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Caracola del Este Corporation Express",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 101,
+    "shared_partner_sample": "-54;3 Oceanography ОАО Marine life;3 Trawler Corp Distribution;Adriatic Tuna Pic Express",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Konkan Coast  SE Marine biology",
+    "successor": "Panope Limited Liability Company",
+    "predecessor_last_month": "2030-09",
+    "gap_months_to_2034": 40,
+    "shared_partner_count": 99,
+    "shared_partner_sample": "Ancla del Mar Inc;Angrapa GmbH & Co. KG Overseas;Aqua Azul Trawler GmbH Logistics;AquaBite Beach ОАО Shipping",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "BlueWaterBites GmbH & Co. KG Export",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 96,
+    "shared_partner_sample": "-4;-54;3 Oceanography ОАО Marine life;3 Trawler Corp Distribution",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Orange River Mouth   &",
+    "successor": "Barents Sea Cod CJSC Export",
+    "predecessor_last_month": "2031-11",
+    "gap_months_to_2034": 26,
+    "shared_partner_count": 94,
+    "shared_partner_sample": "1 Ltd. Corporation Transport;3 Oceanography ОАО Marine life;3 Trawler Corp Distribution;Agua S.A. de C.V. Overseas",
+    "predecessor_pattern": "periodic",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Water Wonders Tidepool Ltd Holdings",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 94,
+    "shared_partner_sample": "-54;3 Oceanography ОАО Marine life;3 Seabreeze Corporation Marine ecology;3 Trawler Corp Distribution",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Seashell s  SRL Consulting",
+    "successor": "Fresh Limited Liability Company",
+    "predecessor_last_month": "2029-12",
+    "gap_months_to_2034": 49,
+    "shared_partner_count": 91,
+    "shared_partner_sample": "-1791;-54;3 Oceanography ОАО Marine life;Adriatic Tuna Seabass BV Transit",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Gulf of Guinea   Corporation",
+    "successor": "Zambezi Gorge  N.V. Transport",
+    "predecessor_last_month": "2032-10",
+    "gap_months_to_2034": 15,
+    "shared_partner_count": 88,
+    "shared_partner_sample": "-13796;9 Seaport SE Carriers;Adriatic  Nautical CJSC Holdings;Adriatic Tuna Seabass BV Transit",
+    "predecessor_pattern": "general",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Coastal Cruisers GmbH Logistics",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 88,
+    "shared_partner_sample": "-4;-54;3 Oceanography ОАО Marine life;3 Seabreeze Corporation Marine ecology",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Seashell s  SRL Consulting",
+    "successor": "Zambezi Gorge  N.V. Transport",
+    "predecessor_last_month": "2029-12",
+    "gap_months_to_2034": 49,
+    "shared_partner_count": 88,
+    "shared_partner_sample": "-1791;-54;3 Oceanography ОАО Marine life;Adriatic Tuna Seabass BV Transit",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Orange River Mouth   &",
+    "successor": "hǎi dǎn Corporation Wharf",
+    "predecessor_last_month": "2031-11",
+    "gap_months_to_2034": 26,
+    "shared_partner_count": 87,
+    "shared_partner_sample": "3 Logistics Tom yum;Andhra Pradesh  AG Transport;Aqua Aura Ltd Merchants;Aqua Aura SE Marine life",
+    "predecessor_pattern": "periodic",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Estrella del Mar Seafarer",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 87,
+    "shared_partner_sample": "-4;-54;3 Oceanography ОАО Marine life;3 Trawler Corp Distribution",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Ola de la Costa N.V.",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 85,
+    "shared_partner_sample": "-4;-54;3 Oceanography ОАО Marine life;3 Trawler Corp Distribution",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Orange River Mouth   &",
+    "successor": "BlueWaterBites GmbH & Co. KG Export",
+    "predecessor_last_month": "2031-11",
+    "gap_months_to_2034": 26,
+    "shared_partner_count": 82,
+    "shared_partner_sample": "1 Ltd. Corporation Transport;3 Oceanography ОАО Marine life;3 Trawler Corp Distribution;Adriatic Tuna Company Distribution",
+    "predecessor_pattern": "periodic",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Konkan Coast  SE Marine biology",
+    "successor": "Costa de la Felicidad Shipping",
+    "predecessor_last_month": "2030-09",
+    "gap_months_to_2034": 40,
+    "shared_partner_count": 82,
+    "shared_partner_sample": "Ancla del Mar Inc;Aqua Azul Trawler GmbH Logistics;AquaBite Beach ОАО Shipping;AquaBite Pelican Incorporated Transport",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Orange River Mouth   &",
+    "successor": "Ola de la Costa N.V.",
+    "predecessor_last_month": "2031-11",
+    "gap_months_to_2034": 26,
+    "shared_partner_count": 80,
+    "shared_partner_sample": "3 Oceanography ОАО Marine life;3 Trawler Corp Distribution;Ancla de Oro Kga Import;Aqua Aura SE Marine life",
+    "predecessor_pattern": "periodic",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Uttar Pradesh s AG",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 80,
+    "shared_partner_sample": "3 Oceanography ОАО Marine life;3 Trawler Corp Distribution;Adriatic Mackerel Ges.m.b.H. Family;Angrapa Ltd. Liability Co Export",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Konkan Coast  SE Marine biology",
+    "successor": "Saltwater Supreme ОАО Forwading",
+    "predecessor_last_month": "2030-09",
+    "gap_months_to_2034": 40,
+    "shared_partner_count": 80,
+    "shared_partner_sample": "Ancla del Mar Inc;Angrapa GmbH & Co. KG Overseas;Aqua Azul Trawler GmbH Logistics;AquaBite Beach ОАО Shipping",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Orange River Mouth   &",
+    "successor": "Coastal Cruisers GmbH Logistics",
+    "predecessor_last_month": "2031-11",
+    "gap_months_to_2034": 26,
+    "shared_partner_count": 79,
+    "shared_partner_sample": "3 Oceanography ОАО Marine life;3 Trawler Corp Distribution;Agua S.A. de C.V. Overseas;Ancla de Oro Kga Import",
+    "predecessor_pattern": "periodic",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Orange River Mouth   &",
+    "successor": "Jharkhand  Ltd. Liability Co Worldwide",
+    "predecessor_last_month": "2031-11",
+    "gap_months_to_2034": 26,
+    "shared_partner_count": 79,
+    "shared_partner_sample": "1 Ltd. Corporation Transport;3 Oceanography ОАО Marine life;3 Trawler Corp Distribution;Agua S.A. de C.V. Overseas",
+    "predecessor_pattern": "periodic",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Maharashtra ers Incorporated Express",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 79,
+    "shared_partner_sample": "-54;3 Oceanography ОАО Marine life;3 Seabreeze Corporation Marine ecology;3 Trawler Corp Distribution",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Orange River Mouth   &",
+    "successor": "Estrella del Mar Seafarer",
+    "predecessor_last_month": "2031-11",
+    "gap_months_to_2034": 26,
+    "shared_partner_count": 78,
+    "shared_partner_sample": "1 Ltd. Corporation Transport;3 Oceanography ОАО Marine life;3 Trawler Corp Distribution;Adriatic Tuna Company Distribution",
+    "predecessor_pattern": "periodic",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Orange River Mouth   &",
+    "successor": "Uttar Pradesh s AG",
+    "predecessor_last_month": "2031-11",
+    "gap_months_to_2034": 26,
+    "shared_partner_count": 78,
+    "shared_partner_sample": "1 Ltd. Corporation Transport;3 Oceanography ОАО Marine life;3 Trawler Corp Distribution;Agua S.A. de C.V. Overseas",
+    "predecessor_pattern": "periodic",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "River Gambia  Brine Pic Express",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 78,
+    "shared_partner_sample": "-54;3 Oceanography ОАО Marine life;3 Seabreeze Corporation Marine ecology;Adriatic Tuna Pic Express",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "hǎi dǎn Corporation Wharf",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 78,
+    "shared_partner_sample": "Andhra Pradesh   Limited Liability Company;Aquatic Adventures Ltd. Liability Co;Arena Azul AB Ferry;Arena del Sol Incorporated",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Jharkhand  Ltd. Liability Co Worldwide",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 78,
+    "shared_partner_sample": "3 Oceanography ОАО Marine life;3 Seabreeze Corporation Marine ecology;3 Trawler Corp Distribution;Angrapa Ltd. Liability Co Export",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Orange River Mouth   &",
+    "successor": "River Gambia  Brine Pic Express",
+    "predecessor_last_month": "2031-11",
+    "gap_months_to_2034": 26,
+    "shared_partner_count": 76,
+    "shared_partner_sample": "1 Ltd. Corporation Transport;3 Oceanography ОАО Marine life;Arunachal Pradesh s Brine;Arunachal Pradesh s SRL",
+    "predecessor_pattern": "periodic",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Aqua Aura SE Marine life",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 76,
+    "shared_partner_sample": "-54;3 Oceanography ОАО Marine life;3 Trawler Corp Distribution;Adriatic Mackerel Ges.m.b.H. Family",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Konkan Coast  SE Marine biology",
+    "successor": "Coral Cove BV Delivery",
+    "predecessor_last_month": "2030-09",
+    "gap_months_to_2034": 40,
+    "shared_partner_count": 76,
+    "shared_partner_sample": "Ancla del Mar Inc;AquaBite Beach ОАО Shipping;AquaBite Pelican Incorporated Transport;Arunachal Pradesh s Company",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Orange River Mouth   &",
+    "successor": "Maharashtra ers Incorporated Express",
+    "predecessor_last_month": "2031-11",
+    "gap_months_to_2034": 26,
+    "shared_partner_count": 75,
+    "shared_partner_sample": "3 Oceanography ОАО Marine life;3 Trawler Corp Distribution;Adriatic Tuna Company Distribution;Agua S.A. de C.V. Overseas",
+    "predecessor_pattern": "periodic",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Konkan Coast  SE Marine biology",
+    "successor": "Sailors and Surfers Incorporated Enterprises",
+    "predecessor_last_month": "2030-09",
+    "gap_months_to_2034": 40,
+    "shared_partner_count": 72,
+    "shared_partner_sample": "Ancla del Mar Inc;Angrapa GmbH & Co. KG Overseas;AquaBite Pelican Incorporated Transport;Arunachal Pradesh s Company",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Seashell s  SRL Consulting",
+    "successor": "Barents Sea Cod CJSC Export",
+    "predecessor_last_month": "2029-12",
+    "gap_months_to_2034": 49,
+    "shared_partner_count": 72,
+    "shared_partner_sample": "-1457;-1791;3 Oceanography ОАО Marine life;Adriatic Tuna Seabass BV Transit",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Océano de Coral N.V.",
+    "successor": "Fresh Limited Liability Company",
+    "predecessor_last_month": "2032-10",
+    "gap_months_to_2034": 15,
+    "shared_partner_count": 70,
+    "shared_partner_sample": "-116;-2053;-267;-4335",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Selous Game Reserve  A/S",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 70,
+    "shared_partner_sample": "-4;-54;3 Oceanography ОАО Marine life;3 Trawler Corp Distribution",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Madagascar   Ltd. Corporation Express",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 70,
+    "shared_partner_sample": "-4;-54;3 Oceanography ОАО Marine life;3 Trawler Corp Distribution",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Gulf of Guinea   Corporation",
+    "successor": "Barents Sea Cod CJSC Export",
+    "predecessor_last_month": "2032-10",
+    "gap_months_to_2034": 15,
+    "shared_partner_count": 69,
+    "shared_partner_sample": "Adriatic Tuna Seabass BV Transit;Arunachal  Dashi Inc Worldwide;Arunachal Pradesh s Brine;Assam  Market Tilapia Ltd Worldwide",
+    "predecessor_pattern": "general",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Orange River Mouth   &",
+    "successor": "Madagascar   Ltd. Corporation Express",
+    "predecessor_last_month": "2031-11",
+    "gap_months_to_2034": 26,
+    "shared_partner_count": 69,
+    "shared_partner_sample": "1 Ltd. Corporation Transport;3 Oceanography ОАО Marine life;3 Trawler Corp Distribution;Ancla de Oro Kga Import",
+    "predecessor_pattern": "periodic",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Jammu Ltd. Liability Co",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 68,
+    "shared_partner_sample": "3 Oceanography ОАО Marine life;3 Trawler Corp Distribution;Ancla de Oro Kga Import;Angrapa Ltd. Liability Co Export",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Orange River Mouth   &",
+    "successor": "Aqua Aura SE Marine life",
+    "predecessor_last_month": "2031-11",
+    "gap_months_to_2034": 26,
+    "shared_partner_count": 67,
+    "shared_partner_sample": "3 Oceanography ОАО Marine life;3 Trawler Corp Distribution;Agua S.A. de C.V. Overseas;Arunachal Pradesh s Brine",
+    "predecessor_pattern": "periodic",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Konkan Coast  SE Marine biology",
+    "successor": "Pao gan SE Seal",
+    "predecessor_last_month": "2030-09",
+    "gap_months_to_2034": 40,
+    "shared_partner_count": 67,
+    "shared_partner_sample": "Ancla del Mar Inc;AquaBite Pelican Incorporated Transport;Arunachal Pradesh s Company;Arunachal Pradesh s S.p.A.",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Gulf of Guinea   Corporation",
+    "successor": "Coastal Cruisers GmbH Logistics",
+    "predecessor_last_month": "2032-10",
+    "gap_months_to_2034": 15,
+    "shared_partner_count": 66,
+    "shared_partner_sample": "Adriatic Tuna Seabass BV Transit;Aqua Advancements AG Express;Arunachal  Dashi Inc Worldwide;Arunachal Pradesh s Brine",
+    "predecessor_pattern": "general",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Mar y Luna Sagl",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 66,
+    "shared_partner_sample": "-54;3 Oceanography ОАО Marine life;3 Trawler Corp Distribution;Ancla de Oro Kga Import",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "French Crab S.p.A. Worldwide",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 66,
+    "shared_partner_sample": "-47;Andhra Pradesh   Limited Liability Company;Angrapa Ltd. Liability Co Export;Arena del Sol Incorporated",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Konkan Coast  SE Marine biology",
+    "successor": "Sea Breezes GmbH & Co. KG Shark",
+    "predecessor_last_month": "2030-09",
+    "gap_months_to_2034": 40,
+    "shared_partner_count": 66,
+    "shared_partner_sample": "Ancla del Mar Inc;Aqua Azul Trawler GmbH Logistics;AquaBite Pelican Incorporated Transport;Arunachal Pradesh s Company",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Seashell s  SRL Consulting",
+    "successor": "Maharashtra ers Incorporated Express",
+    "predecessor_last_month": "2029-12",
+    "gap_months_to_2034": 49,
+    "shared_partner_count": 65,
+    "shared_partner_sample": "-3146;-54;3 Oceanography ОАО Marine life;Adriatic Tuna Seabass BV Transit",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Orange River Mouth   &",
+    "successor": "Caracola del Sol Services",
+    "predecessor_last_month": "2031-11",
+    "gap_months_to_2034": 26,
+    "shared_partner_count": 64,
+    "shared_partner_sample": "3 Logistics Tom yum;Adriatic Tuna Kga Solutions;Ancla del Mar Ltd. Corporation;Aqua Aura SE Marine life",
+    "predecessor_pattern": "periodic",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Seashell s  SRL Consulting",
+    "successor": "Coastal Cruisers GmbH Logistics",
+    "predecessor_last_month": "2029-12",
+    "gap_months_to_2034": 49,
+    "shared_partner_count": 64,
+    "shared_partner_sample": "-1791;-54;3 Oceanography ОАО Marine life;Adriatic Tuna Seabass BV Transit",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Orange River Mouth   &",
+    "successor": "Jammu Ltd. Liability Co",
+    "predecessor_last_month": "2031-11",
+    "gap_months_to_2034": 26,
+    "shared_partner_count": 63,
+    "shared_partner_sample": "3 Oceanography ОАО Marine life;3 Trawler Corp Distribution;Ancla de Oro Kga Import;Aqua Aura SE Marine life",
+    "predecessor_pattern": "periodic",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Orange River Mouth   &",
+    "successor": "Caracola del Este Corporation Express",
+    "predecessor_last_month": "2031-11",
+    "gap_months_to_2034": 26,
+    "shared_partner_count": 63,
+    "shared_partner_sample": "3 Oceanography ОАО Marine life;3 Trawler Corp Distribution;Agua S.A. de C.V. Overseas;Arunachal Pradesh s Brine",
+    "predecessor_pattern": "periodic",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Line S.A. de C.V.",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 63,
+    "shared_partner_sample": "-47;3 Oceanography ОАО Marine life;Adriatic Tuna Pic Express;Angrapa Ltd. Liability Co Export",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Océano de Coral N.V.",
+    "successor": "Zambezi Gorge  N.V. Transport",
+    "predecessor_last_month": "2032-10",
+    "gap_months_to_2034": 15,
+    "shared_partner_count": 62,
+    "shared_partner_sample": "-1717;-2053;-267;-672",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Arena del Sol Marine life",
+    "successor": "Fresh Limited Liability Company",
+    "predecessor_last_month": "2032-06",
+    "gap_months_to_2034": 19,
+    "shared_partner_count": 62,
+    "shared_partner_sample": "Ancla de Oro Kga Import;Angrapa GmbH & Co. KG Overseas;AquaFresh Foods Ltd. Corporation Worldwide;Atlantic Ocean Coast  Sp Marine",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Orange River Mouth   &",
+    "successor": "Mar y Luna Sagl",
+    "predecessor_last_month": "2031-11",
+    "gap_months_to_2034": 26,
+    "shared_partner_count": 62,
+    "shared_partner_sample": "3 Oceanography ОАО Marine life;3 Trawler Corp Distribution;Ancla de Oro Kga Import;Arunachal Pradesh s Brine",
+    "predecessor_pattern": "periodic",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Orange River Mouth   &",
+    "successor": "bái suō wěn lú Ltd Cargo",
+    "predecessor_last_month": "2031-11",
+    "gap_months_to_2034": 26,
+    "shared_partner_count": 62,
+    "shared_partner_sample": "3 Oceanography ОАО Marine life;3 Trawler Corp Distribution;Agua S.A. de C.V. Overseas;AquaDelight Inc and Son's",
+    "predecessor_pattern": "periodic",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Chhattisgarh  GmbH & Co. KG Brothers",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 62,
+    "shared_partner_sample": "-47;-54;-6;3 Oceanography ОАО Marine life",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Seashell s  SRL Consulting",
+    "successor": "Uttar Pradesh s AG",
+    "predecessor_last_month": "2029-12",
+    "gap_months_to_2034": 49,
+    "shared_partner_count": 62,
+    "shared_partner_sample": "3 Oceanography ОАО Marine life;Adriatic Tuna Seabass BV Transit;Arunachal Pradesh s Brine;Benguela Current   GmbH Carriers",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Gulf of Guinea   Corporation",
+    "successor": "Jharkhand  Ltd. Liability Co Worldwide",
+    "predecessor_last_month": "2032-10",
+    "gap_months_to_2034": 15,
+    "shared_partner_count": 61,
+    "shared_partner_sample": "Adriatic Tuna Seabass BV Transit;Arunachal  Dashi Inc Worldwide;Arunachal Pradesh s Brine;Atlántico Sur Cargo ship",
+    "predecessor_pattern": "general",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Ancla del Este SE",
+    "successor": "Zambezi Gorge  N.V. Transport",
+    "predecessor_last_month": "2032-06",
+    "gap_months_to_2034": 19,
+    "shared_partner_count": 61,
+    "shared_partner_sample": "3 Oceanography ОАО Marine life;3 Seabreeze Corporation Marine ecology;Ancla Marina AB Holdings;Andhra Pradesh  Ltd. Liability Co",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Ancla del Este SE",
+    "successor": "Fresh Limited Liability Company",
+    "predecessor_last_month": "2032-06",
+    "gap_months_to_2034": 19,
+    "shared_partner_count": 61,
+    "shared_partner_sample": "3 Oceanography ОАО Marine life;3 Seabreeze Corporation Marine ecology;Ancla Marina AB Holdings;Andhra Pradesh  Ltd. Liability Co",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Orange River Mouth   &",
+    "successor": "Estrella de Mar Consultants -",
+    "predecessor_last_month": "2031-11",
+    "gap_months_to_2034": 26,
+    "shared_partner_count": 61,
+    "shared_partner_sample": "3 Logistics Tom yum;3 Oceanography ОАО Marine life;Adriatic Tuna Company Distribution;Agua S.A. de C.V. Overseas",
+    "predecessor_pattern": "periodic",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Konkan Coast  SE Marine biology",
+    "successor": "Caracola Azul Oyj &",
+    "predecessor_last_month": "2030-09",
+    "gap_months_to_2034": 40,
+    "shared_partner_count": 61,
+    "shared_partner_sample": "Angrapa GmbH & Co. KG Overseas;AquaBite Pelican Incorporated Transport;Arena del Sol Tide SE and Son's;Arunachal Pradesh s Company",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Orange River Mouth   &",
+    "successor": "Selous Game Reserve  A/S",
+    "predecessor_last_month": "2031-11",
+    "gap_months_to_2034": 26,
+    "shared_partner_count": 60,
+    "shared_partner_sample": "3 Oceanography ОАО Marine life;3 Trawler Corp Distribution;Ancla de Oro Kga Import;Aqua Aura SE Marine life",
+    "predecessor_pattern": "periodic",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Saltwater Symphony S.A. de C.V.",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 60,
+    "shared_partner_sample": "-54;3 Oceanography ОАО Marine life;3 Trawler Corp Distribution;Arunachal Pradesh s Brine",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "biān yú AG Forwading",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 60,
+    "shared_partner_sample": "3 Oceanography ОАО Marine life;Adriatic Tuna Company Distribution;Ancla de Oro Kga Import;Andhra Pradesh   Limited Liability Company",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Oceanic Oracle GmbH America",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 60,
+    "shared_partner_sample": "-4;3 Trawler Corp Distribution;Adriatic Tuna Pic Express;Angrapa Ltd. Liability Co Export",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Gulf of Guinea   Corporation",
+    "successor": "Jammu Ltd. Liability Co",
+    "predecessor_last_month": "2032-10",
+    "gap_months_to_2034": 15,
+    "shared_partner_count": 59,
+    "shared_partner_sample": "Adriatic Tuna Seabass BV Transit;Arunachal  Dashi Inc Worldwide;Arunachal Pradesh s Brine;Atlántico Sur Cargo ship",
+    "predecessor_pattern": "general",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Náutica del Norte Kga Holdings",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 59,
+    "shared_partner_sample": "-54;Adriatic Tuna Pic Express;Angrapa Ltd. Liability Co Export;Arunachal Pradesh s Brine",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Uttar Pradesh s CJSC",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 59,
+    "shared_partner_sample": "-54;3 Trawler Corp Distribution;Ancla de Oro Kga Import;Angrapa Ltd. Liability Co Export",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Konkan Coast  SE Marine biology",
+    "successor": "Rift Valley fishery Inc",
+    "predecessor_last_month": "2030-09",
+    "gap_months_to_2034": 40,
+    "shared_partner_count": 59,
+    "shared_partner_sample": "Ancla del Mar Inc;Angrapa GmbH & Co. KG Overseas;AquaBite Pelican Incorporated Transport;Arunachal Pradesh s Company",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Seashell s  SRL Consulting",
+    "successor": "Estrella del Mar Seafarer",
+    "predecessor_last_month": "2029-12",
+    "gap_months_to_2034": 49,
+    "shared_partner_count": 59,
+    "shared_partner_sample": "-54;3 Oceanography ОАО Marine life;Adriatic Tuna Seabass BV Transit;Arunachal Pradesh s Brine",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Seashell s  SRL Consulting",
+    "successor": "Jharkhand  Ltd. Liability Co Worldwide",
+    "predecessor_last_month": "2029-12",
+    "gap_months_to_2034": 49,
+    "shared_partner_count": 59,
+    "shared_partner_sample": "-1791;3 Oceanography ОАО Marine life;Adriatic Tuna Seabass BV Transit;AquaFare S.A. de C.V. Marine",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Seashell s  SRL Consulting",
+    "successor": "BlueWaterBites GmbH & Co. KG Export",
+    "predecessor_last_month": "2029-12",
+    "gap_months_to_2034": 49,
+    "shared_partner_count": 59,
+    "shared_partner_sample": "-1791;-54;3 Oceanography ОАО Marine life;Adriatic Tuna Seabass BV Transit",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Gulf of Guinea   Corporation",
+    "successor": "Ola de la Costa N.V.",
+    "predecessor_last_month": "2032-10",
+    "gap_months_to_2034": 15,
+    "shared_partner_count": 58,
+    "shared_partner_sample": "9 Seaport SE Carriers;Adriatic Tuna Seabass BV Transit;Aqua Advancements AG Express;Arunachal  Dashi Inc Worldwide",
+    "predecessor_pattern": "general",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Gulf of Guinea   Corporation",
+    "successor": "BlueWaterBites GmbH & Co. KG Export",
+    "predecessor_last_month": "2032-10",
+    "gap_months_to_2034": 15,
+    "shared_partner_count": 58,
+    "shared_partner_sample": "Adriatic Tuna Seabass BV Transit;Arunachal  Dashi Inc Worldwide;Arunachal Pradesh s Brine;Atlántico Sur Cargo ship",
+    "predecessor_pattern": "general",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Náutica del Este ОАО",
+    "successor": "Fresh Limited Liability Company",
+    "predecessor_last_month": "2031-12",
+    "gap_months_to_2034": 25,
+    "shared_partner_count": 58,
+    "shared_partner_sample": "-2053;Adriatic Tuna Seabass BV Transit;Agua Oceanfront Limited Liability Company Transportation;Angrapa Ltd. Liability Co Export",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Caracola del Sol Services",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 58,
+    "shared_partner_sample": "-47;Andhra Pradesh   Limited Liability Company;Aquatic Adventures Ltd. Liability Co;Arena del Sol Incorporated",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Seashell s  SRL Consulting",
+    "successor": "Ola de la Costa N.V.",
+    "predecessor_last_month": "2029-12",
+    "gap_months_to_2034": 49,
+    "shared_partner_count": 58,
+    "shared_partner_sample": "-54;3 Oceanography ОАО Marine life;Adriatic Tuna Seabass BV Transit;Arunachal Pradesh s Brine",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Gulf of Guinea   Corporation",
+    "successor": "hǎi dǎn Corporation Wharf",
+    "predecessor_last_month": "2032-10",
+    "gap_months_to_2034": 15,
+    "shared_partner_count": 57,
+    "shared_partner_sample": "9 Seaport SE Carriers;Adriatic Tuna Seabass BV Transit;Aqua Advancements AG Express;Arawak Ltd. Liability Co Transport",
+    "predecessor_pattern": "general",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Gulf of Guinea   Corporation",
+    "successor": "Uttar Pradesh s AG",
+    "predecessor_last_month": "2032-10",
+    "gap_months_to_2034": 15,
+    "shared_partner_count": 57,
+    "shared_partner_sample": "Adriatic Tuna Seabass BV Transit;Arunachal  Dashi Inc Worldwide;Arunachal Pradesh s Brine;Assam  Market Tilapia Ltd Worldwide",
+    "predecessor_pattern": "general",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Gulf of Guinea   Corporation",
+    "successor": "Maharashtra ers Incorporated Express",
+    "predecessor_last_month": "2032-10",
+    "gap_months_to_2034": 15,
+    "shared_partner_count": 57,
+    "shared_partner_sample": "Adriatic Tuna Seabass BV Transit;Arunachal  Dashi Inc Worldwide;Arunachal Pradesh s Brine;Atlántico Sur Cargo ship",
+    "predecessor_pattern": "general",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Orange River Mouth   &",
+    "successor": "Uttar Pradesh s CJSC",
+    "predecessor_last_month": "2031-11",
+    "gap_months_to_2034": 26,
+    "shared_partner_count": 57,
+    "shared_partner_sample": "3 Trawler Corp Distribution;Ancla de Oro Kga Import;Aqua Aura Ltd Merchants;Arunachal Pradesh s Brine",
+    "predecessor_pattern": "periodic",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Orange River Mouth   &",
+    "successor": "Pao gan SE Seal",
+    "predecessor_last_month": "2031-11",
+    "gap_months_to_2034": 26,
+    "shared_partner_count": 57,
+    "shared_partner_sample": "3 Logistics Tom yum;3 Oceanography ОАО Marine life;Aqua Aura SE Marine life;Arunachal Pradesh s SRL",
+    "predecessor_pattern": "periodic",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Estrella de Mar Consultants -",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 57,
+    "shared_partner_sample": "3 Oceanography ОАО Marine life;Adriatic Tuna Company Distribution;Angrapa Ltd. Liability Co Export;Arena Azul AB Ferry",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Konkan Coast  SE Marine biology",
+    "successor": "Océano de Coral Corporation Express",
+    "predecessor_last_month": "2030-09",
+    "gap_months_to_2034": 40,
+    "shared_partner_count": 57,
+    "shared_partner_sample": "Ancla del Mar Inc;AquaBite Pelican Incorporated Transport;Arunachal Pradesh s Company;Barents Sea  Co Import",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Konkan Coast  SE Marine biology",
+    "successor": "Kong zhong diao yu  Ges.m.b.H.",
+    "predecessor_last_month": "2030-09",
+    "gap_months_to_2034": 40,
+    "shared_partner_count": 57,
+    "shared_partner_sample": "Ancla del Mar Inc;AquaBite Pelican Incorporated Transport;Arunachal Pradesh s Company;Barents Sea Cod CJSC Export",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Gulf of Guinea   Corporation",
+    "successor": "River Gambia  Brine Pic Express",
+    "predecessor_last_month": "2032-10",
+    "gap_months_to_2034": 15,
+    "shared_partner_count": 56,
+    "shared_partner_sample": "Adriatic Tuna Seabass BV Transit;Aqua Advancements AG Express;Arunachal  Dashi Inc Worldwide;Arunachal Pradesh s Brine",
+    "predecessor_pattern": "general",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Náutica del Este ОАО",
+    "successor": "Zambezi Gorge  N.V. Transport",
+    "predecessor_last_month": "2031-12",
+    "gap_months_to_2034": 25,
+    "shared_partner_count": 56,
+    "shared_partner_sample": "-2053;Adriatic Tuna Seabass BV Transit;Agua Oceanfront Limited Liability Company Transportation;Angrapa Ltd. Liability Co Export",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Orange River Mouth   &",
+    "successor": "French Crab S.p.A. Worldwide",
+    "predecessor_last_month": "2031-11",
+    "gap_months_to_2034": 26,
+    "shared_partner_count": 56,
+    "shared_partner_sample": "Arunachal Pradesh s Brine;Bay of Bengal's Surfboard;Black Sea Tuna Sagl;Black Sea Tuna Snapper",
+    "predecessor_pattern": "periodic",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Costa del Sol Co",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 56,
+    "shared_partner_sample": "-4;-47;-54;-6",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Zambezi Valley  Marine biology",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 56,
+    "shared_partner_sample": "-54;3 Oceanography ОАО Marine life;3 Seabreeze Corporation Marine ecology;Adriatic Tuna Pic Express",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  },
+  {
+    "predecessor": "Portuguese Cuttle GmbH Freight ",
+    "successor": "Oceanic Oracle GmbH & Co. KG",
+    "predecessor_last_month": "2031-01",
+    "gap_months_to_2034": 36,
+    "shared_partner_count": 55,
+    "shared_partner_sample": "Adriatic Tuna Company Distribution;Arunachal Pradesh s Brine;Assam  Market Cargo ship Company Marine conservation;Baltic Catch Ltd Coral Reef",
+    "predecessor_pattern": "stable",
+    "successor_pattern": "stable"
+  }
+]

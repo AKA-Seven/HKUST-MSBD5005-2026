@@ -30,6 +30,14 @@ from config import FISH_HSCODE_PREFIXES
 # 按活跃度选取的公司数量上限。
 TOP_ACTIVE_COMPANIES = 800
 
+# 早退场公司池阈值：在该日期前停活的公司视为接力关系的"前任候选"。
+# 选 2033-07-01 是为了和 Q3 detect_relay_chains 的 RELAY_STOP_BEFORE=2033-01-01
+# 留半年缓冲（Q1 召回更宽，Q3 在此基础上做更严格的时间过滤）。
+EARLY_STOP_BEFORE = "2033-07-01"
+
+# 前任候选最低活跃度：避免引入只贸易过 1-2 次的极端噪声节点。
+MIN_PREDECESSOR_ACTIVITY = 20
+
 
 def _bundle_companies(bundles: dict[str, dict]) -> set[str]:
     """收集所有 bundle 中的公司端点。"""
@@ -48,21 +56,38 @@ def select_representative_companies(
     bundles: dict[str, dict],
     top_n: int = TOP_ACTIVE_COMPANIES,
 ) -> set[str]:
-    """从主图中按总贸易次数选取最活跃的公司，并合并 bundle 涉及公司。
+    """选取代表性公司池，三类来源取并集：
+      1. Top-N 活跃公司（高交易量主体）
+      2. 12 个 bundle 涉及的公司端点（与 Q2-Q4 一致）
+      3. 早退场公司（last_date < EARLY_STOP_BEFORE 且活跃度达标）—— 接力关系前任候选
 
-    只遍历一次边列表，避免对 1.5 GB 图做多次 IO。
+    第 3 类是新增项，专门解决 Q1 relay 模式 0 对的问题：原 Top-N 偏向
+    高活跃度，会把"短暂活跃后停业"的潜在前任公司排除在分析池外。
+    单次遍历主图，同时累计活跃度和最后日期。
     """
     activity: Counter[str] = Counter()
+    last_date: dict[str, str] = {}
+
     for link in base_graph.get("links", []):
         src = link.get("source")
         tgt = link.get("target")
+        date = link.get("arrivaldate") or ""
         if src:
             activity[src] += 1
+            if date and (src not in last_date or date > last_date[src]):
+                last_date[src] = date
         if tgt:
             activity[tgt] += 1
+            if date and (tgt not in last_date or date > last_date[tgt]):
+                last_date[tgt] = date
 
     top = {company for company, _ in activity.most_common(top_n)}
-    return top | _bundle_companies(bundles)
+    bundle_companies = _bundle_companies(bundles)
+    predecessors = {
+        c for c, ld in last_date.items()
+        if ld and ld < EARLY_STOP_BEFORE and activity[c] >= MIN_PREDECESSOR_ACTIVITY
+    }
+    return top | bundle_companies | predecessors
 
 
 def _classify_pattern(

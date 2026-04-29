@@ -30,17 +30,32 @@ def _pair_key(source: str, target: str) -> tuple[str, str]:
 
 
 def _edge_cluster_label(row: dict) -> str:
-    """根据边特征生成可解释的边簇语义标签。"""
-    if row["predicted_count"] >= 15 and row["fish_ratio"] >= 0.35:
-        return "fish_dense_bridge"
-    if row["base_count"] == 0 and row["predicted_count"] >= 5:
-        return "novel_predicted_route"
-    if row["month_span"] >= 8 and row["bundle_count"] >= 2:
-        return "persistent_cross_bundle"
-    if row["base_count"] > row["predicted_count"] and row["month_span"] >= 4:
-        return "historical_backbone"
-    if row["bundle_count"] >= 3:
+    """根据边特征生成可解释的边簇语义标签。
+
+    阈值基于 394 条可靠链接分散后的实际分布校准：
+      - 单对最多约 10 余条链接，月跨度最多 12 个月，bundle 最多 3-4 个。
+    """
+    fish   = row["fish_ratio"]
+    pred   = row["predicted_count"]
+    base   = row["base_count"]
+    span   = row["month_span"]
+    nbundles = row["bundle_count"]
+
+    # 多个可靠 bundle 同时预测该对：多工具汇聚证据最强
+    if nbundles >= 2:
         return "multi_tool_bridge"
+    # 新出现贸易对（原图完全没有），海产品占比高
+    if base == 0 and fish >= 0.5 and pred >= 2:
+        return "fish_dense_bridge"
+    # 新出现贸易对，多个月份出现
+    if base == 0 and pred >= 2:
+        return "novel_predicted_route"
+    # 原图中已有大量历史，预测链接只是补充
+    if base >= 10 and base > pred:
+        return "historical_backbone"
+    # 跨多月持续出现（即使单 bundle）
+    if span >= 3:
+        return "persistent_cross_bundle"
     return "opportunistic_route"
 
 

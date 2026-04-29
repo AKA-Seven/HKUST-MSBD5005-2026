@@ -16,6 +16,16 @@ from build_index import month_key, normalize_hscode
 from config import FISH_HSCODE_PREFIXES, RANDOM_SEED
 
 
+_Q1_PATTERN_RISK = {
+    "short_term": 3,   # 最高风险：历史上短暂注册即停业
+    "bursty":     2,   # 中高风险：突发性交易
+    "general":    1,
+    "periodic":   1,
+    "stable":     0,   # 最低风险：稳定合规
+    "":           1,
+}
+
+
 def _empty_company_features() -> dict:
     """公司行为画像的原始累加容器。"""
     return {
@@ -41,20 +51,37 @@ def affected_companies_from_bundles(bundles: dict[str, dict]) -> set[str]:
     return companies
 
 
-def build_company_feature_table(base_graph: dict, companies: set[str]) -> list[dict]:
-    """从主图中抽取公司级行为特征，供聚类和异常检测使用。"""
+def build_company_feature_table(
+    base_graph: dict,
+    companies: set[str],
+    q1_index: dict[str, dict] | None = None,
+    q3_index: dict[str, dict] | None = None,
+    bridge_index: dict[str, int] | None = None,
+    relay_successors: set[str] | None = None,
+) -> list[dict]:
+    """从主图中抽取公司级行为特征，并融合 Q1/Q3 外部信号。
+
+    q1_index   : company → Q1 temporal pattern 记录
+    q3_index   : company → anomaly_delta 记录（含 suspicious_revival_score）
+    bridge_index: company → bridge_scope（桥接可达节点数）
+    relay_successors: 作为接力接班方的公司集合
+    """
+    q1_index       = q1_index or {}
+    q3_index       = q3_index or {}
+    bridge_index   = bridge_index or {}
+    relay_successors = relay_successors or set()
+
     raw_profiles = defaultdict(_empty_company_features)
 
     for link in base_graph.get("links", []):
         source = link.get("source")
         target = link.get("target")
-        month = month_key(link.get("arrivaldate"))
+        month  = month_key(link.get("arrivaldate"))
         hscode = normalize_hscode(link.get("hscode"))
 
         for company, partner in ((source, target), (target, source)):
             if company not in companies:
                 continue
-
             profile = raw_profiles[company]
             if month:
                 profile["monthly_counts"][month] += 1
@@ -72,65 +99,134 @@ def build_company_feature_table(base_graph: dict, companies: set[str]) -> list[d
     for company in sorted(companies):
         profile = raw_profiles.get(company, _empty_company_features())
         monthly_values = list(profile["monthly_counts"].values())
-        total_links = profile["total_links"]
-        active_months = len(monthly_values)
-        max_monthly_count = max(monthly_values) if monthly_values else 0
-        avg_monthly_count = (sum(monthly_values) / active_months) if active_months else 0.0
+        total_links    = profile["total_links"]
+        active_months  = len(monthly_values)
+        max_monthly    = max(monthly_values) if monthly_values else 0
+        avg_monthly    = (sum(monthly_values) / active_months) if active_months else 0.0
 
-        rows.append(
-            {
-                "company": company,
-                "total_links": total_links,
-                "active_months": active_months,
-                "max_monthly_count": max_monthly_count,
-                "avg_monthly_count": round(avg_monthly_count, 4),
-                "partner_count": len(profile["partners"]),
-                "hscode_count": len(profile["hscodes"]),
-                "fish_hscode_ratio": round(profile["fish_hscode_count"] / total_links, 4) if total_links else 0.0,
-                "total_weightkg": round(profile["total_weightkg"], 2),
-                "total_value_omu": round(profile["total_value_omu"], 2),
-            }
-        )
+        # 变异系数：衡量月活跃度的波动程度
+        if active_months > 1 and avg_monthly > 0:
+            variance = sum((v - avg_monthly) ** 2 for v in monthly_values) / active_months
+            cv = variance ** 0.5 / avg_monthly
+        else:
+            cv = 0.0
+
+        # Q1 时序模式信号
+        q1 = q1_index.get(company, {})
+        q1_pattern = q1.get("temporal_pattern", "")
+        q1_pattern_risk = _Q1_PATTERN_RISK.get(q1_pattern, 1)
+
+        # Q3 复活信号
+        q3 = q3_index.get(company, {})
+        revival_score  = float(q3.get("suspicious_revival_score", 0.0))
+        dormancy_months = int(q3.get("dormancy_months", 0))
+        dormancy_weight = float(q3.get("dormancy_weight", 1.0))
+        has_extended   = 1 if q3.get("extended_months") else 0
+        q1_inconsistent = 1 if q3.get("q1_inconsistency_reason") else 0
+
+        # Q3 网络模式信号
+        bridge_scope   = int(bridge_index.get(company, 0))
+        is_relay_succ  = 1 if company in relay_successors else 0
+
+        row = {
+            "company": company,
+            # ── 行为特征（原有）──
+            "total_links":        total_links,
+            "active_months":      active_months,
+            "max_monthly_count":  max_monthly,
+            "avg_monthly_count":  round(avg_monthly, 4),
+            "activity_cv":        round(cv, 4),
+            "partner_count":      len(profile["partners"]),
+            "hscode_count":       len(profile["hscodes"]),
+            "fish_hscode_ratio":  round(profile["fish_hscode_count"] / total_links, 4) if total_links else 0.0,
+            "total_weightkg":     round(profile["total_weightkg"], 2),
+            "total_value_omu":    round(profile["total_value_omu"], 2),
+            # ── Q1 信号 ──
+            "q1_temporal_pattern": q1_pattern,
+            "q1_pattern_risk":     q1_pattern_risk,
+            # ── Q3 信号 ──
+            "revival_score":       round(revival_score, 1),
+            "dormancy_months":     dormancy_months,
+            "dormancy_weight":     round(dormancy_weight, 2),
+            "has_extended_months": has_extended,
+            "q1_inconsistent":     q1_inconsistent,
+            # ── Q3 网络信号 ──
+            "bridge_scope":        bridge_scope,
+            "is_relay_successor":  is_relay_succ,
+        }
+        row["business_mode"] = _business_mode_label(row)
+        rows.append(row)
 
     return rows
 
 
 def _feature_matrix(rows: list[dict]) -> tuple[np.ndarray, list[str]]:
-    """把公司画像转成机器学习矩阵。"""
+    """把公司画像转成机器学习矩阵（含 Q1/Q3 外部信号）。"""
     feature_names = [
+        # 行为特征
         "total_links",
         "active_months",
         "max_monthly_count",
         "avg_monthly_count",
+        "activity_cv",
         "partner_count",
         "hscode_count",
         "fish_hscode_ratio",
         "total_weightkg",
         "total_value_omu",
+        # Q1 信号
+        "q1_pattern_risk",
+        # Q3 信号
+        "revival_score",
+        "dormancy_months",
+        "has_extended_months",
+        "q1_inconsistent",
+        # 网络信号
+        "bridge_scope",
+        "is_relay_successor",
     ]
     matrix = np.array([[row[name] for name in feature_names] for row in rows], dtype=float)
     return matrix, feature_names
 
 
 def _business_mode_label(row: dict) -> str:
-    """基于公司行为特征给出可解释的商业模式标签。"""
-    fish_ratio = float(row.get("fish_hscode_ratio", 0))
-    partner_count = float(row.get("partner_count", 0))
-    hscode_count = float(row.get("hscode_count", 0))
-    max_monthly = float(row.get("max_monthly_count", 0))
-    total_links = float(row.get("total_links", 0))
+    """基于公司行为特征给出可解释的商业模式标签。
 
-    if fish_ratio >= 0.35 and max_monthly >= 1200:
-        return "fish_intensive_hub"
-    if fish_ratio >= 0.2 and partner_count >= 1000:
-        return "fish_network_expander"
-    if partner_count >= 2200 and hscode_count >= 1500:
+    判别顺序从"最特殊"到"最普通"，降低 niche_or_shell 的误伤率。
+    """
+    fish_ratio    = float(row.get("fish_hscode_ratio", 0))
+    partner_count = float(row.get("partner_count", 0))
+    hscode_count  = float(row.get("hscode_count", 0))
+    max_monthly   = float(row.get("max_monthly_count", 0))
+    total_links   = float(row.get("total_links", 0))
+    active_months = float(row.get("active_months", 0))
+    revival_score = float(row.get("revival_score", 0))
+    dormancy      = float(row.get("dormancy_months", 0))
+    q1_risk       = int(row.get("q1_pattern_risk", 1))
+
+    # 大型多品类经纪商
+    if partner_count >= 2000 and hscode_count >= 1000:
         return "diversified_broker"
-    if total_links >= 100000 and max_monthly >= 2000:
+    # 大规模高频分发商
+    if total_links >= 50000 and max_monthly >= 1500:
         return "high_volume_distributor"
-    if hscode_count < 300 and partner_count < 400:
-        return "niche_or_shell"
-    return "general_trader"
+    # 海产品密集枢纽（鱼类比例高 + 有一定规模）
+    if fish_ratio >= 0.3 and partner_count >= 200:
+        return "fish_intensive_hub"
+    # 鱼类扩张者（中规模，鱼类比例适中）
+    if fish_ratio >= 0.15 and partner_count >= 100:
+        return "fish_network_expander"
+    # 复活嫌疑公司：停活后重新出现，历史交易少
+    if revival_score >= 30 or (dormancy >= 12 and q1_risk >= 2 and total_links < 200):
+        return "dormant_revival"
+    # 短暂活跃 / 周期短（注册即用）
+    if active_months <= 6 and total_links < 500:
+        return "short_lived"
+    # 中等活跃的普通贸易商
+    if total_links >= 500 or partner_count >= 50:
+        return "general_trader"
+    # 小规模 / 低活跃（默认兜底，覆盖率应大幅降低）
+    return "niche_or_shell"
 
 
 def _second_level_clusters(scaled: np.ndarray, level1_labels: np.ndarray) -> np.ndarray:
@@ -188,16 +284,39 @@ def cluster_and_detect_companies(
     base_graph: dict,
     bundles: dict[str, dict],
     extra_companies: set[str] | None = None,
+    temporal_patterns: list[dict] | None = None,
+    anomaly_delta: list[dict] | None = None,
+    bridge_companies: list[dict] | None = None,
+    relay_chains: list[dict] | None = None,
 ) -> list[dict]:
-    """对公司做无监督异常检测和行为相似聚类。
+    """对公司做无监督异常检测和行为相似聚类（融合 Q1/Q3 外部信号）。
 
-    默认只处理 bundle 中涉及的公司；传入 extra_companies 可扩展至
-    原始图谱中更广泛的代表性公司集合（用于 Q1 时序分析覆盖）。
+    temporal_patterns : Q1 时序模式列表（每项含 company, temporal_pattern）
+    anomaly_delta     : Q3 公司级复活评分列表
+    bridge_companies  : Q3 桥接公司列表
+    relay_chains      : Q3 接力链列表
     """
+    # 构建外部信号索引
+    q1_index: dict[str, dict] = {r["company"]: r for r in (temporal_patterns or [])}
+    q3_index: dict[str, dict] = {r["company"]: r for r in (anomaly_delta or [])}
+    bridge_index: dict[str, int] = {
+        r["company"]: int(r["bridge_scope"])
+        for r in (bridge_companies or [])
+    }
+    relay_successors: set[str] = {
+        r["successor"] for r in (relay_chains or [])
+    }
+
     companies = affected_companies_from_bundles(bundles)
     if extra_companies:
         companies = companies | extra_companies
-    rows = build_company_feature_table(base_graph, companies)
+    rows = build_company_feature_table(
+        base_graph, companies,
+        q1_index=q1_index,
+        q3_index=q3_index,
+        bridge_index=bridge_index,
+        relay_successors=relay_successors,
+    )
     if not rows:
         return []
 

@@ -36,6 +36,9 @@ def export_outputs(
     anomaly_delta: list[dict],
     company_clusters: list[dict],
     edge_clusters: list[dict],
+    bridge_companies: list[dict] | None = None,
+    relay_chains: list[dict] | None = None,
+    suspicion_ranking: list[dict] | None = None,
     temporal_patterns: list[dict] | None = None,
     relationship_patterns: list[dict] | None = None,
 ) -> None:
@@ -60,8 +63,22 @@ def export_outputs(
     # Q3 产物
     export_csv(anomaly_delta, OUTPUT_DIR_Q3 / "anomaly_delta.csv")
     export_json(anomaly_delta[:100], OUTPUT_DIR_Q3 / "top_anomaly_delta.json")
+    if bridge_companies:
+        export_csv(bridge_companies, OUTPUT_DIR_Q3 / "bridge_companies.csv")
+        export_json(bridge_companies[:50], OUTPUT_DIR_Q3 / "top_bridge_companies.json")
+    if relay_chains:
+        export_csv(relay_chains, OUTPUT_DIR_Q3 / "relay_chains.csv")
+        export_json(relay_chains[:100], OUTPUT_DIR_Q3 / "top_relay_chains.json")
     # Q4 产物
     export_csv(company_clusters, OUTPUT_DIR_Q4 / "company_clusters.csv")
     export_json(company_clusters[:100], OUTPUT_DIR_Q4 / "top_company_anomalies.json")
     export_csv(edge_clusters, OUTPUT_DIR_Q4 / "edge_clusters.csv")
     export_json(edge_clusters[:300], OUTPUT_DIR_Q4 / "top_edge_clusters.json")
+    if suspicion_ranking:
+        export_csv(suspicion_ranking, OUTPUT_DIR_Q4 / "suspicion_ranking.csv")
+        # HIGH 置信度公司单独输出，供可视化焦点展示
+        high = [r for r in suspicion_ranking if r["confidence_tier"] == "HIGH"]
+        medium = [r for r in suspicion_ranking if r["confidence_tier"] in ("HIGH", "MEDIUM")]
+        export_json(high,                  OUTPUT_DIR_Q4 / "suspects_high.json")
+        export_json(medium[:100],          OUTPUT_DIR_Q4 / "suspects_medium.json")
+        export_json(suspicion_ranking[:50], OUTPUT_DIR_Q4 / "top_suspects.json")

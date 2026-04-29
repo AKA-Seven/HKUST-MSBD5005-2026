@@ -1,364 +1,364 @@
 ﻿source,target,predicted_count,base_count,total_count,fish_ratio,bundle_count,month_span,avg_weightkg,avg_value_omu,source_l1,source_l2,source_l3,target_l1,target_l2,target_l3,source_business_mode,target_business_mode,months,edge_semantic_label,edge_cluster,edge_cluster_color,edge_width_score
-Oceanic Explorers Sashimi Inc Solutions,Oceanic Explorers Sashimi Inc Solutions,3,46205,46208,0.0,2,3,65.0,113.33,0,1,1,0,1,1,general_trader,general_trader,2034-05;2034-06;2034-11,opportunistic_route,0,#FF1744,10.7409
-Mar y Luna Sagl,Saltwater Supreme ОАО Forwading,1,16547,16548,0.0,1,1,9025.0,0.0,0,1,1,0,0,0,general_trader,high_volume_distributor,2034-08,opportunistic_route,1,#FF6D00,9.7141
-Arunachal Pradesh s A/S Transport,Arunachal Pradesh s A/S Transport,1,14052,14053,0.0,1,1,175.0,530.0,0,1,0,0,1,0,general_trader,general_trader,2034-11,opportunistic_route,1,#FF6D00,9.5507
-Uttar Pradesh s CJSC,hǎi dǎn Corporation Wharf,3,11367,11370,0.0,2,3,9880.0,43680.0,0,1,1,7,0,0,high_volume_distributor,diversified_broker,2034-02;2034-08;2034-11,opportunistic_route,0,#FF1744,9.3388
-Saltwater Sisters Inc Seafaring,Togo  S.A. de C.V.,1,10359,10360,0.0,1,1,515.0,0.0,4,0,0,4,0,0,general_trader,general_trader,2034-02,opportunistic_route,1,#FF6D00,9.2458
-Mar del Este CJSC,Ola Azul Ges.m.b.H. Services,1,8265,8266,0.0,1,1,16390.0,50725.0,0,0,1,1,1,1,fish_intensive_hub,niche_or_shell,2034-09,opportunistic_route,1,#FF6D00,9.02
-Coral Cove BV Delivery,Ianira Starfish Sagl Import,1,7113,7114,0.0,1,1,237285.0,0.0,0,1,0,4,1,0,high_volume_distributor,niche_or_shell,2034-07,opportunistic_route,2,#FFC400,8.87
-Coastal Cruisers Pic Shipping,hǎi dǎn Corporation Wharf,3,6679,6682,0.0,2,3,5465.0,74905.0,0,1,1,7,0,0,general_trader,diversified_broker,2034-09;2034-10;2034-12,opportunistic_route,0,#FF1744,8.8073
-Costa de la Felicidad Shipping,suō yú Incorporated Brothers,1,6665,6666,0.0,1,1,3650.0,66320.0,0,0,0,4,0,0,diversified_broker,general_trader,2034-12,opportunistic_route,1,#FF6D00,8.8049
-Haryana Sea  Mussel Inc Export,Uttar Pradesh s Barracuda,2,5876,5878,0.0,2,2,21990.0,302540.0,1,0,2,1,0,0,niche_or_shell,niche_or_shell,2034-10;2034-11,opportunistic_route,0,#FF1744,8.6791
-Brisa del Mar LC,Coastal Cruisers Pic Shipping,1,5209,5210,0.0,1,1,810.0,0.0,1,1,0,0,1,1,general_trader,general_trader,2034-02,opportunistic_route,1,#FF6D00,8.5585
-Chuan gou  Ltd Marine ecology,Mar del Este CJSC,1,5183,5184,0.0,1,1,43105.0,143025.0,4,1,0,0,0,1,general_trader,fish_intensive_hub,2034-02,opportunistic_route,1,#FF6D00,8.5535
-Costa de la Felicidad Shipping,Selous Game Reserve  Sp Distribution,1,4330,4331,0.0,1,1,24600.0,0.0,0,0,0,1,1,0,diversified_broker,general_trader,2034-12,opportunistic_route,1,#FF6D00,8.3738
-Manipur  Market Corporation Cargo,Sea Breeze Corporation Marine sanctuary,1,4056,4057,1.0,1,1,18525.0,176055.0,5,2,1,5,0,0,niche_or_shell,general_trader,2034-11,opportunistic_route,3,#D500F9,8.3084
-Mar del Este CJSC,Wave Watchers Ltd. Liability Co,1,3789,3790,1.0,1,1,17225.0,200130.0,0,0,1,5,2,1,fish_intensive_hub,niche_or_shell,2034-07,opportunistic_route,3,#D500F9,8.2404
-Arunachal Pradesh s Brine,West Bengal  A/S Freight ,1,3574,3575,0.0,1,1,18215.0,0.0,3,0,0,1,0,0,general_trader,niche_or_shell,2034-08,opportunistic_route,1,#FF6D00,8.182
-Océano de Coral Corporation Express,Uttar Pradesh s CJSC,2,3137,3139,0.0,1,2,15645.0,0.0,0,1,0,0,1,1,general_trader,high_volume_distributor,2034-07;2034-11,opportunistic_route,1,#FF6D00,8.052
-Coastal Cruisers Pic Shipping,Océano de Coral Corporation Express,3,2889,2892,0.0,2,3,20926.67,0.0,0,1,1,0,1,0,general_trader,general_trader,2034-03;2034-06;2034-09,opportunistic_route,0,#FF1744,7.97
-Nile Crocodile  Deep-sea Oyj Brothers,Nile Crocodile  Deep-sea Oyj Brothers,1,2695,2696,0.0,1,1,11635.0,0.0,1,0,2,1,0,2,niche_or_shell,niche_or_shell,2034-07,opportunistic_route,1,#FF6D00,7.8999
-Barents Sea Cod CJSC Export,hǎi dǎn Corporation Wharf,1,2685,2686,0.0,1,1,44220.0,525425.0,4,0,0,7,0,0,general_trader,diversified_broker,2034-01,opportunistic_route,1,#FF6D00,7.8962
-Ancla Azul Transportation Seafaring,Oceanic Oracle GmbH & Co. KG,1,2626,2627,0.0,1,1,29355.0,0.0,4,0,2,4,0,2,general_trader,general_trader,2034-05,opportunistic_route,1,#FF6D00,7.874
-Chhattisgarh  A/S & Son's,Chhattisgarh  A/S & Son's,1,2579,2580,0.0,1,1,1610.0,3805.0,1,0,2,1,0,2,niche_or_shell,niche_or_shell,2034-08,opportunistic_route,1,#FF6D00,7.8559
-Caracola Azul Oyj &,Estrella de Mar Consultants -,2,2444,2446,0.0,2,1,12537.5,0.0,4,0,1,1,1,1,general_trader,general_trader,2034-12,opportunistic_route,1,#FF6D00,7.8026
-Estrella del Mar Seafarer,Estrella del Mar Seafarer,1,2306,2307,0.0,1,1,2630.0,0.0,0,1,0,0,1,0,general_trader,general_trader,2034-01,opportunistic_route,1,#FF6D00,7.7441
-Océano de Coral Corporation Express,Zambezi Valley  Marine biology,1,2294,2295,0.0,1,1,2350.0,0.0,0,1,0,1,1,1,general_trader,niche_or_shell,2034-11,opportunistic_route,1,#FF6D00,7.7389
-Mar del Este CJSC,Yu xian  Ltd. Liability Co Freight ,3,2235,2238,0.0,2,2,19318.33,20645.0,0,0,1,2,0,1,fish_intensive_hub,niche_or_shell,2034-08;2034-09,opportunistic_route,0,#FF1744,7.7138
-Ronan Catfish Corp Solutions,Yu wo  CJSC Marine sanctuary,1,2179,2180,0.0,1,1,32295.0,69260.0,1,0,1,1,0,2,niche_or_shell,niche_or_shell,2034-02,opportunistic_route,1,#FF6D00,7.6875
-French Crab S.p.A. Worldwide,hǎi dǎn Corporation Wharf,1,2052,2053,0.0,1,1,8395.0,0.0,0,1,1,7,0,0,general_trader,diversified_broker,2034-02,opportunistic_route,1,#FF6D00,7.6275
-Danish Shrimp Kga Solutions,Lake Turkana  Charter Boat  NV Marine,1,1975,1976,0.0,1,1,68675.0,0.0,3,0,1,1,3,0,niche_or_shell,general_trader,2034-08,opportunistic_route,1,#FF6D00,7.5893
-Aqua Aura SE Marine life,hǎi dǎn Corporation Wharf,1,1948,1949,1.0,1,1,22695.0,379090.0,4,0,2,7,0,0,general_trader,diversified_broker,2034-08,opportunistic_route,3,#D500F9,7.5756
-Portuguese Tuna Incorporated Marine,zhāng yú Ges.m.b.H. Solutions,1,1880,1881,0.0,1,1,54775.0,0.0,4,0,1,1,0,1,general_trader,niche_or_shell,2034-04,opportunistic_route,1,#FF6D00,7.5401
-Arunachal Pradesh s A/S Transport,Gulf of Guinea   Enterprises,1,1813,1814,0.0,1,1,15.0,0.0,0,1,0,1,3,2,general_trader,general_trader,2034-12,opportunistic_route,1,#FF6D00,7.5038
-Oceanic Oracle GmbH America,hǎi dǎn Corporation Wharf,1,1716,1717,0.0,1,1,16930.0,60215.0,1,1,1,7,0,0,niche_or_shell,diversified_broker,2034-07,opportunistic_route,1,#FF6D00,7.4489
-Pao gan SE Seal,Salt WaterCo Sp Marine life,1,1573,1574,0.0,1,1,15910.0,37330.0,0,1,0,1,0,1,fish_intensive_hub,niche_or_shell,2034-05,opportunistic_route,1,#FF6D00,7.362
-Náutica del Norte Kga Holdings,Sea Breezes GmbH & Co. KG Shark,1,1330,1331,0.0,1,1,6250.0,25125.0,0,1,1,0,1,1,general_trader,general_trader,2034-11,opportunistic_route,1,#FF6D00,7.1944
-Saltwater Supreme ОАО Forwading,Yu gou  SRL Merchants,1,1309,1310,0.0,1,1,120.0,0.0,0,0,0,1,1,0,high_volume_distributor,niche_or_shell,2034-09,opportunistic_route,1,#FF6D00,7.1785
-Kilimajaro Slopes   Oceanfront AB Overseas,Lake Victoria Catch  SE,1,1308,1309,0.0,1,1,3595.0,0.0,1,3,2,1,1,0,general_trader,niche_or_shell,2034-12,opportunistic_route,1,#FF6D00,7.1778
-Cymopoleia & Son's Estuary,Saltwater Supreme ОАО Forwading,1,1281,1282,0.0,1,1,6090.0,0.0,1,0,1,0,0,0,niche_or_shell,high_volume_distributor,2034-07,opportunistic_route,1,#FF6D00,7.157
-Mar y Luna Sagl,Marine Mates NV Worldwide,1,1254,1255,0.0,1,1,50300.0,60840.0,0,1,1,1,3,0,general_trader,general_trader,2034-03,opportunistic_route,1,#FF6D00,7.1357
-Black Sea Tuna Snapper,Coastal Cruisers Pic Shipping,1,1211,1212,0.0,1,1,18555.0,37215.0,4,0,1,0,1,1,general_trader,general_trader,2034-01,opportunistic_route,1,#FF6D00,7.1009
-Black Sea Tuna Snapper,Fresh Limited Liability Company,1,1192,1193,0.0,1,1,8435.0,0.0,4,0,1,0,0,0,general_trader,diversified_broker,2034-03,opportunistic_route,1,#FF6D00,7.0851
-Uttar Pradesh s AG,hǎi dǎn Corporation Wharf,1,1187,1188,0.0,1,1,23290.0,0.0,1,3,0,7,0,0,general_trader,diversified_broker,2034-08,opportunistic_route,1,#FF6D00,7.0809
-Mar de la Vida S.p.A.,Mar del Placer Manatee,1,1152,1153,1.0,1,1,17980.0,179100.0,5,2,1,5,2,0,niche_or_shell,niche_or_shell,2034-10,opportunistic_route,3,#D500F9,7.051
-Mar y Luna Sagl,Sailors and Surfers Incorporated Enterprises,1,1132,1133,0.0,1,1,24900.0,374015.0,0,1,1,0,0,1,general_trader,diversified_broker,2034-07,opportunistic_route,1,#FF6D00,7.0335
-Coral del Sur Ltd. Corporation Investment,Náutica del Sol A/S,1,1089,1090,0.0,1,1,45515.0,0.0,1,3,2,1,0,2,general_trader,niche_or_shell,2034-07,opportunistic_route,1,#FF6D00,6.9948
-Fresh Limited Liability Company,Kong zhong diao yu  Ges.m.b.H.,1,1072,1073,0.0,1,1,4645.0,80665.0,0,0,0,0,1,0,diversified_broker,fish_network_expander,2034-05,opportunistic_route,1,#FF6D00,6.9791
-Ancla Azul Transportation Seafaring,Barents Sea  GmbH Cargo ,1,1062,1063,0.0,1,1,16595.0,0.0,4,0,2,1,0,2,general_trader,niche_or_shell,2034-06,opportunistic_route,1,#FF6D00,6.9698
-Olas del Mar Worldwide,xiǎo lóng xiā GmbH,1,1034,1035,0.0,1,1,133210.0,137090.0,3,0,0,1,0,0,general_trader,niche_or_shell,2034-01,opportunistic_route,1,#FF6D00,6.9431
-Baltic Sprat Seafaring Co Holdings,Saltwater Supreme ОАО Forwading,1,1024,1025,0.0,1,1,13655.0,0.0,2,1,1,0,0,0,niche_or_shell,high_volume_distributor,2034-08,opportunistic_route,1,#FF6D00,6.9334
-Caracola del Este Plc United,Saltwater Supreme ОАО Forwading,2,952,954,0.0,2,2,14897.5,21365.0,1,1,0,0,0,0,niche_or_shell,high_volume_distributor,2034-10;2034-12,opportunistic_route,0,#FF1744,6.8617
-Mizoram  GmbH & Co. KG,Portuguese Tuna A/S Cargo,1,922,923,0.0,1,1,18985.0,29420.0,1,0,1,1,3,0,niche_or_shell,general_trader,2034-05,opportunistic_route,1,#FF6D00,6.8287
-bái suō wěn lú AS,hǎi dǎn Corporation Wharf,1,907,908,0.0,1,1,27970.0,0.0,1,1,0,7,0,0,general_trader,diversified_broker,2034-09,opportunistic_route,1,#FF6D00,6.8123
-hǎi dǎn Corporation Wharf,jīng Coral LLC Carriers,1,891,892,0.0,1,1,72895.0,0.0,7,0,0,1,1,1,diversified_broker,niche_or_shell,2034-11,opportunistic_route,1,#FF6D00,6.7946
-Tsha wamba Pic Barracuda,hǎi dǎn Corporation Wharf,1,870,871,0.0,1,1,18945.0,98460.0,1,0,1,7,0,0,niche_or_shell,diversified_broker,2034-06,opportunistic_route,1,#FF6D00,6.7708
-Diao yu bi sai  Company,hǎi dǎn Corporation Wharf,1,856,857,0.0,1,1,21395.0,24110.0,1,0,2,7,0,0,niche_or_shell,diversified_broker,2034-06,opportunistic_route,1,#FF6D00,6.7546
-Coastal Cruisers Pic Shipping,Sailors and Surfers Incorporated Enterprises,1,756,757,0.0,1,1,4260.0,24405.0,0,1,1,0,0,1,general_trader,diversified_broker,2034-12,opportunistic_route,1,#FF6D00,6.6307
-Sea Breezes GmbH & Co. KG Shark,Selous Game Reserve  A/S,1,739,740,0.0,1,1,725.0,0.0,0,1,1,4,1,1,general_trader,general_trader,2034-12,opportunistic_route,1,#FF6D00,6.608
-Line S.A. de C.V.,Sailors and Surfers Incorporated Enterprises,2,695,697,0.0,1,2,16027.5,0.0,4,0,2,0,0,1,general_trader,diversified_broker,2034-01;2034-02,opportunistic_route,1,#FF6D00,6.5482
-Nile Crocodile  Deep-sea Oyj Brothers,Surf's Up  Kga Shipping,1,687,688,0.0,1,1,3495.0,0.0,1,0,2,1,0,0,niche_or_shell,niche_or_shell,2034-07,opportunistic_route,1,#FF6D00,6.5352
-Oceanic Oracle GmbH & Co. KG,hǎi dǎn Corporation Wharf,1,671,672,0.0,1,1,19735.0,0.0,4,0,2,7,0,0,general_trader,diversified_broker,2034-11,opportunistic_route,1,#FF6D00,6.5117
-Lake Turkana  Charter Boat  NV Marine,Selous Game Reserve  A/S,1,658,659,0.0,1,1,6950.0,0.0,1,3,0,4,1,1,general_trader,general_trader,2034-07,opportunistic_route,1,#FF6D00,6.4922
-Arena del Mar Marine Marine biology,Kilimajaro Slopes   Incorporated and Son's,1,655,656,1.0,1,1,20660.0,97600.0,5,0,1,2,3,0,niche_or_shell,niche_or_shell,2034-03,opportunistic_route,3,#D500F9,6.4877
-Uttarakhand   Tidepool Oyj International,Yu xian  SRL Industrial,1,643,644,1.0,1,1,18310.0,26725.0,5,2,1,4,0,1,niche_or_shell,fish_network_expander,2034-07,opportunistic_route,3,#D500F9,6.4693
-Chhattisgarh  GmbH & Co. KG Brothers,Costa de la Felicidad Shipping,2,626,628,0.0,2,2,86695.0,455262.5,1,1,1,0,0,0,niche_or_shell,diversified_broker,2034-08;2034-09,opportunistic_route,0,#FF1744,6.4441
-Oceanic Explorers Sagl Chart,hǎi dǎn Corporation Wharf,1,610,611,0.0,1,1,19390.0,0.0,1,1,0,7,0,0,niche_or_shell,diversified_broker,2034-06,opportunistic_route,1,#FF6D00,6.4167
-Arena del Mar Marine Marine biology,Danish Plaice Ltd. Liability Co Logistics,1,605,606,1.0,1,1,18540.0,318235.0,5,0,1,5,2,1,niche_or_shell,niche_or_shell,2034-06,opportunistic_route,3,#D500F9,6.4085
-TunaTreat Company Marine sanctuary,xiǎo lóng xiā LC,4,602,606,0.0,4,3,12341.25,0.0,4,0,2,1,1,0,general_trader,general_trader,2034-09;2034-10;2034-12,multi_tool_bridge,5,#FF9100,6.4085
-Brisa del Este ОАО,Selous Game Reserve  S.A. de C.V.,1,605,606,0.0,1,1,12860.0,0.0,1,0,1,0,0,1,niche_or_shell,fish_network_expander,2034-02,opportunistic_route,1,#FF6D00,6.4085
-Ancla Azul Transportation Seafaring,Mar de Estrellas N.V.,1,599,600,0.0,1,1,16430.0,0.0,4,0,2,1,0,1,general_trader,niche_or_shell,2034-06,opportunistic_route,1,#FF6D00,6.3986
-Ancla de Oro Ltd. Corporation,hǎi dǎn Corporation Wharf,1,549,550,0.0,1,1,20365.0,130060.0,1,0,1,7,0,0,niche_or_shell,diversified_broker,2034-06,opportunistic_route,1,#FF6D00,6.3117
-Belgian Cod BV Solutions,Cape of Good Hope   Corporation,1,542,543,1.0,1,1,23225.0,164145.0,5,0,1,5,2,2,niche_or_shell,niche_or_shell,2034-11,opportunistic_route,3,#D500F9,6.2989
-Kong zhong diao yu  Ges.m.b.H.,Simien Mountains   Company Transport,1,540,541,0.0,1,1,366605.0,0.0,0,1,0,1,3,0,fish_network_expander,general_trader,2034-04,opportunistic_route,2,#FFC400,6.2953
-Caracola del Sol Services,Chuan gou  N.V. Delivery,1,530,531,1.0,1,1,19500.0,168075.0,0,0,0,5,2,1,fish_network_expander,niche_or_shell,2034-07,opportunistic_route,3,#D500F9,6.2766
-Costa de la Felicidad Shipping,Victoria Falls   S.A. de C.V.,1,506,507,0.0,1,1,79890.0,0.0,0,0,0,1,0,1,diversified_broker,niche_or_shell,2034-09,opportunistic_route,1,#FF6D00,6.2305
-Pao gan SE Seal,Rajasthan  Market CJSC Tide,1,503,504,0.0,1,1,7680.0,0.0,0,1,0,1,0,1,fish_intensive_hub,niche_or_shell,2034-09,opportunistic_route,1,#FF6D00,6.2246
-Mar del Oeste Transport,Saltwater Supreme ОАО Forwading,1,495,496,0.0,1,1,11680.0,45900.0,1,3,2,0,0,0,general_trader,high_volume_distributor,2034-08,opportunistic_route,1,#FF6D00,6.2086
-Caracola Marina - Plc Enterprises,Caracola Marina - Plc Enterprises,2,488,490,0.0,2,2,17035.0,33065.0,1,1,0,1,1,0,niche_or_shell,niche_or_shell,2034-05;2034-07,opportunistic_route,0,#FF1744,6.1964
-Coral Rojo Ltd. Liability Co Express,bái suō wěn lú Ltd Cargo,1,474,475,0.0,1,1,78220.0,0.0,1,0,1,1,1,0,niche_or_shell,niche_or_shell,2034-12,opportunistic_route,1,#FF6D00,6.1654
-Costa de la Felicidad Shipping,Mar de la Vida S.p.A.,1,473,474,1.0,1,1,16995.0,171150.0,0,0,0,5,2,1,diversified_broker,niche_or_shell,2034-09,opportunistic_route,3,#D500F9,6.1633
-Costa de la Felicidad Shipping,Surf and Sand & Son's,1,467,468,0.0,1,1,7595.0,12210.0,0,0,0,1,0,1,diversified_broker,niche_or_shell,2034-10,opportunistic_route,1,#FF6D00,6.1506
-Blue Horizon Family &,Pao gan SE Seal,1,453,454,1.0,1,1,18585.0,155005.0,5,2,1,0,1,0,niche_or_shell,fish_intensive_hub,2034-07,opportunistic_route,3,#D500F9,6.1203
-Coastal Currents Ltd. Liability Co Delivery,biān yú AG Forwading,1,452,453,0.0,1,1,21005.0,19115.0,1,0,1,1,0,2,niche_or_shell,niche_or_shell,2034-05,opportunistic_route,1,#FF6D00,6.1181
-Mar de Cielo S.A. de C.V. Manatee,hǎi dǎn Corporation Wharf,1,429,430,0.0,1,1,14205.0,57410.0,1,1,0,7,0,0,niche_or_shell,diversified_broker,2034-04,opportunistic_route,1,#FF6D00,6.0661
-Italian Sardines Inc Carriers,Vespuci Limited Liability Company Enterprises,1,423,424,0.0,1,1,3210.0,0.0,1,0,0,1,0,1,niche_or_shell,niche_or_shell,2034-06,opportunistic_route,1,#FF6D00,6.0521
-Zambezi Valley  Marine biology,hǎi dǎn Corporation Wharf,1,396,397,0.0,1,1,295.0,0.0,1,1,1,7,0,0,niche_or_shell,diversified_broker,2034-12,opportunistic_route,1,#FF6D00,5.9865
-Aqua Advancements Corp Marine mist,Olas del Mar N.V.,1,375,376,0.0,1,1,24430.0,85945.0,1,2,2,5,2,0,niche_or_shell,niche_or_shell,2034-04,opportunistic_route,1,#FF6D00,5.9322
-Wave Watchers SE Express,hǎi dǎn Corporation Wharf,1,374,375,0.0,1,1,24765.0,79440.0,1,2,2,7,0,0,niche_or_shell,diversified_broker,2034-11,opportunistic_route,1,#FF6D00,5.9296
-Coral del Sur Ltd. Corporation Investment,The Sea Turtle AB,1,370,371,0.0,1,1,3100.0,0.0,1,3,2,1,0,1,general_trader,niche_or_shell,2034-07,opportunistic_route,1,#FF6D00,5.9189
-Asiotr Green  SE Marine sanctuary,Coral Cove BV Delivery,2,334,336,0.0,2,2,21000.0,52012.5,1,0,1,0,1,0,niche_or_shell,high_volume_distributor,2034-06;2034-08,opportunistic_route,0,#FF1744,5.8201
-1 Ltd. Liability Co Cargo,Pao gan SE Seal,1,333,334,1.0,1,1,19785.0,226040.0,5,2,2,0,1,0,niche_or_shell,fish_intensive_hub,2034-06,opportunistic_route,3,#D500F9,5.8141
-Mar de Cristalino Ges.m.b.H.,Marine Mates NV Worldwide,1,328,329,0.0,1,1,5230.0,82925.0,1,0,1,1,3,0,niche_or_shell,general_trader,2034-04,opportunistic_route,1,#FF6D00,5.7991
-Mar del Caribe Sagl,hǎi dǎn Corporation Wharf,1,323,324,0.0,1,1,24490.0,0.0,1,1,0,7,0,0,niche_or_shell,diversified_broker,2034-01,opportunistic_route,1,#FF6D00,5.7838
-Manipur  Market Ltd. Liability Co,Olas del Sur Ltd,1,319,320,1.0,1,1,23315.0,50105.0,1,2,1,5,0,1,niche_or_shell,niche_or_shell,2034-12,opportunistic_route,3,#D500F9,5.7714
-Olas del Sur Ltd,Playa del Cielo ОАО,1,310,311,1.0,1,1,18725.0,210110.0,5,0,1,5,3,0,niche_or_shell,niche_or_shell,2034-06,opportunistic_route,3,#D500F9,5.743
-Mar del Caribe LLC,Pao gan SE Seal,2,309,311,0.0,1,2,14565.0,0.0,1,2,1,0,1,0,niche_or_shell,fish_intensive_hub,2034-08;2034-10,opportunistic_route,1,#FF6D00,5.743
-BlueWater Bistro Ltd. Liability Co,Makumba Ltd. Liability Co,1,309,310,0.0,1,1,8220.0,0.0,1,0,1,1,1,1,niche_or_shell,general_trader,2034-07,opportunistic_route,1,#FF6D00,5.7398
-Nautical Navigators Limited Liability Company Holdings,Sea Breeze Corporation Marine sanctuary,1,309,310,0.0,1,1,9215.0,0.0,1,0,2,5,0,0,niche_or_shell,general_trader,2034-07,opportunistic_route,1,#FF6D00,5.7398
-Barents Sea  GmbH Cargo ,Coral Cove Corporation Delivery,1,308,309,0.0,1,1,7780.0,0.0,1,0,2,1,3,0,niche_or_shell,general_trader,2034-12,opportunistic_route,1,#FF6D00,5.7366
-Costa del Viento Fish  S.p.A. United,Odisha  Limited Liability Company,1,307,308,0.0,1,1,1080.0,0.0,1,2,1,1,1,0,niche_or_shell,niche_or_shell,2034-01,opportunistic_route,1,#FF6D00,5.7333
-BlueWaterBites GmbH & Co. KG Export,Cape of Good Hope   S.p.A.,1,297,298,0.0,1,1,9210.0,0.0,4,0,2,1,3,0,general_trader,general_trader,2034-02,opportunistic_route,1,#FF6D00,5.7004
-Turkish Calamari AB Marine conservation,hǎi dǎn Corporation Wharf,1,294,295,0.0,1,1,18295.0,47335.0,1,0,2,7,0,0,niche_or_shell,diversified_broker,2034-12,opportunistic_route,1,#FF6D00,5.6904
-Fresh Limited Liability Company,Sea Breezes GmbH & Co. KG Shark,1,287,288,0.0,1,1,3165.0,35310.0,0,0,0,0,1,1,diversified_broker,general_trader,2034-08,opportunistic_route,1,#FF6D00,5.6664
-Panope Limited Liability Company,SRL Ltd. Liability Co,1,279,280,0.0,1,1,6600.0,0.0,0,0,0,1,0,1,high_volume_distributor,niche_or_shell,2034-07,opportunistic_route,1,#FF6D00,5.6384
-Adriatic Tuna Company Distribution,Kong zhong diao yu  NV Export,1,275,276,0.0,1,1,18015.0,0.0,1,1,0,1,1,1,niche_or_shell,niche_or_shell,2034-09,opportunistic_route,1,#FF6D00,5.624
-Cameroon Estuary  Co Investment,hǎi dǎn Corporation Wharf,1,265,266,0.0,1,1,7900.0,0.0,1,0,1,7,0,0,niche_or_shell,diversified_broker,2034-07,opportunistic_route,1,#FF6D00,5.5872
-Mar de Estrellas Incorporated,hǎi dǎn Corporation Wharf,1,264,265,0.0,1,1,9585.0,49515.0,1,1,0,7,0,0,niche_or_shell,diversified_broker,2034-12,opportunistic_route,1,#FF6D00,5.5835
-Bahía del Sol ОАО,Océano de Coral Corporation Express,1,260,261,0.0,1,1,15935.0,0.0,1,0,1,0,1,0,niche_or_shell,general_trader,2034-10,opportunistic_route,1,#FF6D00,5.5683
-Tamil  Nautilus CJSC Consulting,xiǎo lóng xiā LC,1,256,257,0.0,1,1,6475.0,0.0,4,0,2,1,1,0,general_trader,general_trader,2034-08,opportunistic_route,1,#FF6D00,5.553
-Dutch Bill  BV Marine,Lake Victoria Nile    Inc,1,251,252,0.0,1,1,1500.0,0.0,1,0,1,1,2,0,niche_or_shell,niche_or_shell,2034-01,opportunistic_route,1,#FF6D00,5.5334
-Coral Cove Sagl Chart,Sailors and Surfers Incorporated Enterprises,1,248,249,0.0,1,1,18000.0,0.0,1,0,0,0,0,1,niche_or_shell,diversified_broker,2034-02,opportunistic_route,1,#FF6D00,5.5215
-Belgian Cod BV Solutions,David Limited Liability Company Worldwide,3,246,249,1.0,2,3,22578.33,134763.33,5,0,1,5,3,0,niche_or_shell,niche_or_shell,2034-06;2034-07;2034-12,opportunistic_route,0,#FF1744,5.5215
-Lake Kivu   BV United,Saltwater Symphony S.A. de C.V.,1,235,236,0.0,1,1,18910.0,0.0,1,2,1,4,0,0,general_trader,general_trader,2034-10,opportunistic_route,1,#FF6D00,5.4681
-Fresh Limited Liability Company,TunaTreat Company Marine sanctuary,1,235,236,0.0,1,1,2100.0,0.0,0,0,0,4,0,2,diversified_broker,general_trader,2034-07,opportunistic_route,1,#FF6D00,5.4681
-French Crab S.p.A. Worldwide,Nile Crocodile  Sailboat Sp Line,1,235,236,0.0,1,1,7940.0,0.0,0,1,1,1,0,0,general_trader,niche_or_shell,2034-10,opportunistic_route,1,#FF6D00,5.4681
-Adriatic Squid Limited Liability Company Current,Greek Sea Bass LLC,1,231,232,0.0,1,1,5510.0,0.0,1,0,1,4,1,1,niche_or_shell,general_trader,2034-07,opportunistic_route,1,#FF6D00,5.451
-Mandalore S.A. de C.V. Logistics,Oceanic Oracle GmbH America,1,231,232,0.0,1,1,81225.0,0.0,4,0,2,1,1,1,general_trader,niche_or_shell,2034-04,opportunistic_route,1,#FF6D00,5.451
-Mar del Este CJSC,SeaSelect Foods Oyj Transport,1,230,231,0.0,1,1,23190.0,30820.0,0,0,1,5,3,0,fish_intensive_hub,niche_or_shell,2034-12,opportunistic_route,1,#FF6D00,5.4467
-Ola Azul Ges.m.b.H. Services,Playa de Coral Distribution Marine sanctuary,1,229,230,0.0,1,1,23975.0,46110.0,1,1,1,1,2,2,niche_or_shell,niche_or_shell,2034-07,opportunistic_route,1,#FF6D00,5.4424
-Arunachal Pradesh s A/S Transport,Oka  Ltd. Liability Co,1,228,229,0.0,1,1,360.0,0.0,0,1,0,1,3,2,general_trader,general_trader,2034-04,opportunistic_route,1,#FF6D00,5.4381
-Barents Sea Shrimp N.V.,hǎi dǎn Corporation Wharf,1,223,224,0.0,1,1,17695.0,0.0,1,0,0,7,0,0,niche_or_shell,diversified_broker,2034-09,opportunistic_route,1,#FF6D00,5.4161
-Bujagali Falls  Oyj Marine,Sailors and Surfers Incorporated Enterprises,1,217,218,0.0,1,1,7855.0,0.0,1,0,1,0,0,1,niche_or_shell,diversified_broker,2034-11,opportunistic_route,1,#FF6D00,5.3891
-LLC Limited Liability Company,The Salty Pearl Tsunami Corp Express,1,207,208,0.0,1,1,18885.0,106005.0,1,0,1,1,1,0,niche_or_shell,niche_or_shell,2034-07,opportunistic_route,1,#FF6D00,5.3423
-Caracola del Sol Services,Mount Kenya  Tsunami GmbH & Co. KG Cargo,1,207,208,0.0,1,1,18365.0,64215.0,0,0,0,1,2,0,fish_network_expander,niche_or_shell,2034-10,opportunistic_route,1,#FF6D00,5.3423
-Playa del Sol LC -,Zambezi Valley  Marine biology,1,206,207,0.0,1,1,17750.0,159015.0,1,1,0,1,1,1,niche_or_shell,niche_or_shell,2034-02,opportunistic_route,1,#FF6D00,5.3375
-Gujarat  S.A. de C.V.,xiǎo lóng xiā LC,1,201,202,0.0,1,1,8805.0,48410.0,4,0,2,1,1,0,general_trader,general_trader,2034-05,opportunistic_route,1,#FF6D00,5.3132
-Kallianassa Fish  AG Solutions,Mar del Este CJSC,1,192,193,0.0,1,1,8380.0,9500.0,1,2,0,0,0,1,niche_or_shell,fish_intensive_hub,2034-06,opportunistic_route,1,#FF6D00,5.2679
-Surf and Sea Dashi Oyj Marine ecology,hǎi dǎn Corporation Wharf,1,186,187,0.0,1,1,1690.0,6805.0,1,0,1,7,0,0,niche_or_shell,diversified_broker,2034-08,opportunistic_route,1,#FF6D00,5.2364
-Bahía del Este SE,West Bengal  SE Family,1,186,187,0.0,1,1,10425.0,100045.0,1,1,0,1,0,1,niche_or_shell,niche_or_shell,2034-01,opportunistic_route,1,#FF6D00,5.2364
-Costa de la Felicidad Shipping,Jammu Ltd. Liability Co,1,186,187,0.0,1,1,5185.0,0.0,0,0,0,1,3,0,diversified_broker,general_trader,2034-12,opportunistic_route,1,#FF6D00,5.2364
-Mar de Plata BV Marine,Meris Current Corp Transportation,1,177,178,0.0,1,1,21620.0,94435.0,1,3,0,1,0,1,general_trader,niche_or_shell,2034-07,opportunistic_route,1,#FF6D00,5.1874
-Bahía de Plata GmbH,Mar de Coral GmbH and Son's,1,177,178,0.0,1,1,365.0,0.0,1,0,1,1,0,1,niche_or_shell,niche_or_shell,2034-07,opportunistic_route,1,#FF6D00,5.1874
-Mar de Estrellas Ltd,hǎi dǎn Corporation Wharf,1,175,176,0.0,1,1,5805.0,0.0,1,0,1,7,0,0,niche_or_shell,diversified_broker,2034-03,opportunistic_route,1,#FF6D00,5.1761
-Mar del Este CJSC,SeaSiren Limited Liability Company,1,165,166,1.0,1,1,19875.0,70820.0,0,0,1,5,2,1,fish_intensive_hub,niche_or_shell,2034-05,opportunistic_route,3,#D500F9,5.118
-Marine Muse Ltd. Corporation,Sailors and Surfers Incorporated Enterprises,1,164,165,0.0,1,1,195.0,0.0,2,1,1,0,0,1,niche_or_shell,diversified_broker,2034-04,opportunistic_route,1,#FF6D00,5.112
-Oceanic Oracle GmbH & Co. KG,SeaLion Marine AG Express,1,163,164,0.0,1,1,17530.0,489215.0,4,0,2,1,3,1,general_trader,general_trader,2034-07,opportunistic_route,1,#FF6D00,5.1059
-Haryana s Sagl Transport,Zambezi Gorge  N.V. Transport,1,162,163,0.0,1,1,4475.0,0.0,4,1,1,0,1,0,general_trader,diversified_broker,2034-07,opportunistic_route,1,#FF6D00,5.0999
-Jammu & Kashmir  GmbH & Co. KG and Son's,Rift Valley fishery Inc,1,162,163,0.0,1,1,9545.0,588460.0,1,0,0,4,0,1,niche_or_shell,general_trader,2034-04,opportunistic_route,1,#FF6D00,5.0999
-Ethiopian Highlands  Incorporated Marine biology,Madagascar Coast  AG Freight ,1,153,154,0.0,1,1,17210.0,130005.0,5,2,0,5,0,0,niche_or_shell,general_trader,2034-10,opportunistic_route,1,#FF6D00,5.0434
-Agua Limited Liability Company Transit,Kong zhong diao yu  Ges.m.b.H.,1,153,154,0.0,1,1,34910.0,0.0,1,0,1,0,1,0,niche_or_shell,fish_network_expander,2034-03,opportunistic_route,1,#FF6D00,5.0434
-Bay of Bengal's A/S,Costa de la Felicidad Shipping,1,151,152,0.0,1,1,15900.0,0.0,1,1,0,0,0,0,general_trader,diversified_broker,2034-07,opportunistic_route,1,#FF6D00,5.0304
-Gulf of Tadjoura  AS,Sailors and Surfers Incorporated Enterprises,1,149,150,0.0,1,1,69820.0,0.0,1,0,1,0,0,1,niche_or_shell,diversified_broker,2034-04,opportunistic_route,1,#FF6D00,5.0173
-Estrella de Mar SE,Playa de la Luna Incorporated,1,146,147,0.0,1,1,190.0,0.0,1,0,1,6,1,0,niche_or_shell,general_trader,2034-02,opportunistic_route,1,#FF6D00,4.9972
-Punjab s A/S Marine,The Salty Dog Oyj,1,142,143,0.0,1,1,88740.0,86030.0,1,3,0,4,1,0,general_trader,niche_or_shell,2034-12,opportunistic_route,1,#FF6D00,4.9698
-Saltwater Symphony - CJSC Marine,Scottish Oysters SE Consulting,1,140,141,0.0,1,1,5075.0,0.0,1,1,0,1,1,0,niche_or_shell,niche_or_shell,2034-09,opportunistic_route,1,#FF6D00,4.9558
-Dutch Mussels GmbH Carriers,Fresh Limited Liability Company,1,139,140,0.0,1,1,6285.0,74115.0,1,1,0,0,0,0,general_trader,diversified_broker,2034-06,opportunistic_route,1,#FF6D00,4.9488
-Mar de Cristal CJSC,William Inc Marine sanctuary,1,139,140,0.0,1,1,8600.0,69360.0,1,0,1,1,2,2,niche_or_shell,niche_or_shell,2034-07,opportunistic_route,1,#FF6D00,4.9488
-Maharashtra  Ltd. Liability Co Shipping,biān yú AG Forwading,1,137,138,0.0,1,1,21870.0,0.0,4,0,2,1,0,2,general_trader,niche_or_shell,2034-11,opportunistic_route,1,#FF6D00,4.9345
-Icelandic Oysters S.A. de C.V. Lighthouse,Orange River   Incorporated Shipping,1,137,138,1.0,1,1,17670.0,59430.0,5,3,0,5,0,0,niche_or_shell,general_trader,2034-05,opportunistic_route,3,#D500F9,4.9345
-BlueWaterBites GmbH & Co. KG Export,Mar del Caribe Express Surf,1,135,136,0.0,1,1,15100.0,0.0,4,0,2,1,0,0,general_trader,niche_or_shell,2034-07,opportunistic_route,1,#FF6D00,4.92
-Caracola del Este N.V.,hǎi dǎn Corporation Wharf,1,134,135,1.0,1,1,20210.0,301045.0,5,3,1,7,0,0,niche_or_shell,diversified_broker,2034-07,opportunistic_route,3,#D500F9,4.9127
-Marine Mates NV Worldwide,Saltwater Symphony S.A. de C.V.,1,133,134,0.0,1,1,4275.0,92825.0,1,3,0,4,0,0,general_trader,general_trader,2034-05,opportunistic_route,1,#FF6D00,4.9053
-Caracola del Sol Services,CoralCrest Inc and Son's,1,133,134,0.0,1,1,40820.0,48020.0,0,0,0,1,0,1,fish_network_expander,niche_or_shell,2034-01,opportunistic_route,1,#FF6D00,4.9053
-The Salty Dog Limited Liability Company,hǎi dǎn Corporation Wharf,1,132,133,0.0,1,1,19145.0,20610.0,5,2,0,7,0,0,niche_or_shell,diversified_broker,2034-10,opportunistic_route,1,#FF6D00,4.8978
-3 Oceanography ОАО Marine life,Sea Spray AS Cargo,1,132,133,1.0,1,1,19380.0,62360.0,4,0,2,5,2,2,general_trader,niche_or_shell,2034-11,opportunistic_route,3,#D500F9,4.8978
-Marine Masterminds Sp Solutions,Playa de Oro ОАО,1,131,132,0.0,1,1,16985.0,22310.0,1,0,1,1,0,0,niche_or_shell,niche_or_shell,2034-08,opportunistic_route,1,#FF6D00,4.8903
-Ola Marina Company Line,Perla del Mar CJSC,1,124,125,0.0,1,1,4430.0,0.0,1,3,0,1,1,0,general_trader,niche_or_shell,2034-06,opportunistic_route,1,#FF6D00,4.8363
-Mar de la Costa Company,Olas del Sur Corp,1,123,124,0.0,1,1,1030.0,0.0,1,1,0,1,2,2,general_trader,niche_or_shell,2034-12,opportunistic_route,1,#FF6D00,4.8283
-Caspian Sea   Ltd. Corporation Export,Uttarakhand s Inc United,1,122,123,0.0,1,1,525.0,0.0,1,0,1,1,0,1,niche_or_shell,niche_or_shell,2034-01,opportunistic_route,1,#FF6D00,4.8203
-Caracola Azul Ltd. Corporation,Estrella de Mar Consultants -,1,122,123,0.0,1,1,1910.0,0.0,4,0,1,1,1,1,general_trader,general_trader,2034-08,opportunistic_route,1,#FF6D00,4.8203
-Diao er  Limited Liability Company,Portuguese Sea Bass &,1,121,122,0.0,1,1,3330.0,0.0,1,2,0,1,0,1,niche_or_shell,niche_or_shell,2034-09,opportunistic_route,1,#FF6D00,4.8122
-2 Limited Liability Company,Mar del Este CJSC,2,117,119,1.0,2,2,21997.5,31117.5,5,2,2,0,0,1,niche_or_shell,fish_intensive_hub,2034-07;2034-09,opportunistic_route,0,#FF1744,4.7875
-Mar del Este CJSC,Yu er he  Bonito,1,115,116,1.0,1,1,21015.0,128115.0,0,0,1,5,2,0,fish_intensive_hub,niche_or_shell,2034-01,opportunistic_route,3,#D500F9,4.7622
-Paul AG Marine biology,Zambezi River   GmbH Marine,1,112,113,0.0,1,1,20000.0,0.0,1,0,1,1,0,1,niche_or_shell,niche_or_shell,2034-05,opportunistic_route,1,#FF6D00,4.7362
-Chituku Trout Inc Cargo,Yu xian  SRL Industrial,1,111,112,0.0,1,1,14505.0,94305.0,2,0,1,4,0,1,niche_or_shell,fish_network_expander,2034-01,opportunistic_route,1,#FF6D00,4.7274
-AquaBite Limited Liability Company Marine,Mar del Este CJSC,1,109,110,1.0,1,1,20775.0,63125.0,5,2,2,0,0,1,niche_or_shell,fish_intensive_hub,2034-04,opportunistic_route,3,#D500F9,4.7095
-French Sardine LLC Transit,Tamil  Marina N.V. Family,1,108,109,0.0,1,1,7100.0,0.0,1,0,1,1,1,0,niche_or_shell,general_trader,2034-08,opportunistic_route,1,#FF6D00,4.7005
-Arunachal Pradesh s Plc,Náutica del Sol Corporation,1,107,108,1.0,1,1,17325.0,122045.0,1,2,0,4,0,2,niche_or_shell,general_trader,2034-05,opportunistic_route,3,#D500F9,4.6913
-Dutch  Ltd. Liability Co Consultants,Mar de la Aventura & Incorporated Shipping,1,103,104,0.0,1,1,4540.0,0.0,4,0,2,1,1,1,general_trader,niche_or_shell,2034-06,opportunistic_route,1,#FF6D00,4.654
-Assam  Market Cargo ship Company Marine conservation,Ocean Oasis SRL Anchor,1,101,102,0.0,1,1,9580.0,64335.0,5,0,0,1,0,1,general_trader,niche_or_shell,2034-01,opportunistic_route,1,#FF6D00,4.6347
-Logistics Ltd. Liability Co,hǎi dǎn Corporation Wharf,1,101,102,1.0,1,1,62395.0,609385.0,1,2,1,7,0,0,niche_or_shell,diversified_broker,2034-12,opportunistic_route,3,#D500F9,4.6347
-Costa de la Felicidad and Sagl Marine,Selous Game Reserve  S.A. de C.V.,1,100,101,0.0,1,1,4405.0,20510.0,1,0,1,0,0,1,niche_or_shell,fish_network_expander,2034-11,opportunistic_route,1,#FF6D00,4.625
-Caracola del Sol Services,Green Valley Sp Current,1,97,98,0.0,1,1,5825.0,60535.0,0,0,0,1,0,1,fish_network_expander,niche_or_shell,2034-09,opportunistic_route,1,#FF6D00,4.5951
-Mar del Caribe Sagl,Nile Crocodile  OJSC Express,1,94,95,0.0,1,1,24600.0,110040.0,1,1,0,2,1,0,niche_or_shell,niche_or_shell,2034-07,opportunistic_route,1,#FF6D00,4.5643
-Sea Breezes GmbH & Co. KG Shark,The Salty Dog Logistics Leska,1,91,92,0.0,1,1,19895.0,0.0,0,1,1,1,0,2,general_trader,niche_or_shell,2034-12,opportunistic_route,1,#FF6D00,4.5326
-Estrella de la Costa Ltd Distribution,Jiyu  Barracuda A/S Line,1,90,91,0.0,1,1,5075.0,0.0,1,0,1,1,0,1,niche_or_shell,niche_or_shell,2034-12,opportunistic_route,1,#FF6D00,4.5218
-Oceanic Oracle GmbH America,Scottish Oysters Pic Transport,1,88,89,0.0,1,1,9710.0,31530.0,1,1,1,1,0,1,niche_or_shell,niche_or_shell,2034-01,opportunistic_route,1,#FF6D00,4.4998
-Mar y Luna Co,hǎi dǎn Corporation Wharf,1,88,89,0.0,1,1,17055.0,0.0,1,0,1,7,0,0,niche_or_shell,diversified_broker,2034-05,opportunistic_route,1,#FF6D00,4.4998
-Ocean Observers Ges.m.b.H. Export,guī yú Corporation Solutions,1,87,88,0.0,1,1,22125.0,271255.0,1,0,1,2,1,0,niche_or_shell,niche_or_shell,2034-05,opportunistic_route,1,#FF6D00,4.4886
-Caracola del Sol Services,SE Ltd. Liability Co,1,83,84,0.0,1,1,1105.0,0.0,0,0,0,1,2,2,fish_network_expander,niche_or_shell,2034-11,opportunistic_route,1,#FF6D00,4.4427
-Kilimajaro Slopes   N.V. Logistics,Sailors and Surfers Incorporated Enterprises,1,79,80,0.0,1,1,25815.0,0.0,1,1,0,0,0,1,niche_or_shell,diversified_broker,2034-03,opportunistic_route,1,#FF6D00,4.3944
-Daniel Ferry N.V. Transit,Olas del Sur Ltd,1,79,80,1.0,1,1,18295.0,156020.0,5,2,1,5,0,1,niche_or_shell,niche_or_shell,2034-05,opportunistic_route,3,#D500F9,4.3944
-Selous Game Reserve  S.A. de C.V.,The Sea Turtle Sagl Cargo ship,1,78,79,0.0,1,1,155.0,2000.0,0,0,1,1,0,1,fish_network_expander,niche_or_shell,2034-03,opportunistic_route,1,#FF6D00,4.382
-Mar de la Luna S.p.A.,Mar del Paraíso Corporation Logistics,1,73,74,1.0,1,1,21520.0,191165.0,5,3,0,1,2,0,niche_or_shell,niche_or_shell,2034-11,opportunistic_route,3,#D500F9,4.3175
-Isla del Tesoro SE Transport,Pao gan SE Seal,1,68,69,1.0,1,1,19075.0,239145.0,5,2,1,0,1,0,niche_or_shell,fish_intensive_hub,2034-11,opportunistic_route,3,#D500F9,4.2485
-Dry Creek Incorporated Laksa,Saltwater Solutions AB Marine conservation,1,68,69,0.0,1,1,6560.0,0.0,1,0,1,1,0,1,niche_or_shell,niche_or_shell,2034-03,opportunistic_route,1,#FF6D00,4.2485
-Black Sea Tuna Snapper,Mar y Luna Ltd. Liability Co Enterprises,1,67,68,1.0,1,1,21590.0,334320.0,4,0,1,5,2,2,general_trader,niche_or_shell,2034-05,opportunistic_route,3,#D500F9,4.2341
-Congo River  AG Transit,Selous Game Reserve  A/S,1,67,68,0.0,1,1,2070.0,0.0,2,1,0,4,1,1,niche_or_shell,general_trader,2034-04,opportunistic_route,1,#FF6D00,4.2341
-Mar del Oeste Transport,Sailors and Surfers Incorporated Enterprises,2,66,68,0.0,1,2,10252.5,11352.5,1,3,2,0,0,1,general_trader,diversified_broker,2034-04;2034-06,opportunistic_route,1,#FF6D00,4.2341
-Belgian Shrimps Ocean Corp Holdings,Blue Nile  OJSC Logistics,1,66,67,1.0,1,1,22905.0,596535.0,4,0,0,5,2,2,general_trader,niche_or_shell,2034-12,opportunistic_route,3,#D500F9,4.2195
-Madagascar Coast  AG Freight ,Surf's Up s Sp,1,64,65,1.0,1,1,24185.0,102040.0,5,0,0,5,2,1,general_trader,niche_or_shell,2034-10,opportunistic_route,3,#D500F9,4.1897
-Arunachal Pradesh s Brine,Victoria Falls   Pier Corp Solutions,1,64,65,0.0,1,1,4765.0,0.0,3,0,0,1,0,0,general_trader,niche_or_shell,2034-11,opportunistic_route,1,#FF6D00,4.1897
-Irish Trout Inc Solutions,hǎi dǎn Corporation Wharf,1,62,63,0.0,1,1,19145.0,19505.0,1,2,2,7,0,0,niche_or_shell,diversified_broker,2034-09,opportunistic_route,1,#FF6D00,4.1589
-Coral del Sur LC Export,Mar y Viento A/S,1,59,60,0.0,1,1,19885.0,113010.0,2,0,1,1,0,1,niche_or_shell,niche_or_shell,2034-12,opportunistic_route,1,#FF6D00,4.1109
-Caracola de Coral Oyj,Mar de la Felicidad NV Investment,1,58,59,0.0,1,1,1935.0,127125.0,1,0,1,1,0,1,niche_or_shell,niche_or_shell,2034-11,opportunistic_route,1,#FF6D00,4.0943
-Neptune's Harvest LC Transport,Wave Watchers Co Holdings,1,57,58,0.0,1,1,3435.0,0.0,1,1,0,1,0,1,niche_or_shell,niche_or_shell,2034-09,opportunistic_route,1,#FF6D00,4.0775
-Caracola del Sol Services,Saltwater Serenity Inc Caviar,1,56,57,0.0,1,1,21580.0,52350.0,0,0,0,1,0,1,fish_network_expander,niche_or_shell,2034-05,opportunistic_route,1,#FF6D00,4.0604
-mán yú AB International,mán yú AB International,1,55,56,0.0,1,1,1910.0,0.0,1,0,1,1,0,1,niche_or_shell,niche_or_shell,2034-01,opportunistic_route,1,#FF6D00,4.0431
-Portuguese Tuna Incorporated Marine,S.A. de C.V. AG,1,54,55,0.0,1,1,20735.0,0.0,4,0,1,2,0,1,general_trader,niche_or_shell,2034-02,opportunistic_route,1,#FF6D00,4.0254
-Thundwa S.A. de C.V.,hǎi dǎn Corporation Wharf,1,53,54,1.0,1,1,19075.0,0.0,1,2,2,7,0,0,niche_or_shell,diversified_broker,2034-02,opportunistic_route,3,#D500F9,4.0073
-Estrella de Mar Consultants -,Sikkim  Market Corporation Investment,1,52,53,0.0,1,1,320.0,0.0,1,1,1,1,1,0,general_trader,niche_or_shell,2034-05,opportunistic_route,1,#FF6D00,3.989
-OceanSavor Seafoam Ltd. Liability Co Transit,Oceanic Oracle GmbH America,1,51,52,0.0,1,1,25720.0,60705.0,2,1,2,1,1,1,niche_or_shell,niche_or_shell,2034-02,opportunistic_route,1,#FF6D00,3.9703
-Ancla de Oro Kga Import,Greek Octopus Ltd. Corporation,1,51,52,1.0,1,1,21220.0,41125.0,1,2,1,5,2,0,niche_or_shell,niche_or_shell,2034-12,opportunistic_route,3,#D500F9,3.9703
-Fisherman's Best Marine conservation,Náutica del Mar AG,1,51,52,0.0,1,1,15615.0,48330.0,4,0,1,1,0,1,general_trader,niche_or_shell,2034-12,opportunistic_route,1,#FF6D00,3.9703
-Mar y Luna Ltd. Corporation,Mar y Luna Sagl,1,50,51,0.0,1,1,18905.0,0.0,1,0,1,0,1,1,niche_or_shell,general_trader,2034-12,opportunistic_route,1,#FF6D00,3.9512
-Arunachal Pradesh s A/S Transport,Bu yu wang Motorboat,1,50,51,0.0,1,1,2705.0,0.0,0,1,0,1,0,0,general_trader,niche_or_shell,2034-04,opportunistic_route,1,#FF6D00,3.9512
-Ola de la Costa N.V.,Punjab Sea  CJSC Estuary,1,50,51,0.0,1,1,42470.0,459420.0,1,3,0,1,3,0,general_trader,general_trader,2034-07,opportunistic_route,1,#FF6D00,3.9512
-Mar del Este CJSC,Turkish Salmon A/S Marine,1,50,51,0.0,1,1,26265.0,0.0,0,0,1,1,3,0,fish_intensive_hub,general_trader,2034-08,opportunistic_route,1,#FF6D00,3.9512
-Baltic Sprat Corp Roe,Selous Game Reserve  S.A. de C.V.,1,47,48,0.0,1,1,6745.0,77515.0,1,0,1,0,0,1,niche_or_shell,fish_network_expander,2034-03,opportunistic_route,1,#FF6D00,3.8918
-Mar del Paraíso Corporation Logistics,Turkish Salmon A/S Marine,1,46,47,1.0,1,1,27785.0,251115.0,1,2,0,1,3,0,niche_or_shell,general_trader,2034-12,opportunistic_route,3,#D500F9,3.8712
-Isla del Este Kga Tidepool,Kong zhong diao yu  Ges.m.b.H.,1,44,45,1.0,1,1,53315.0,890845.0,1,2,2,0,1,0,niche_or_shell,fish_network_expander,2034-08,opportunistic_route,3,#D500F9,3.8286
-hǎi dǎn Corporation Wharf,mán yú AB International,1,44,45,0.0,1,1,505.0,0.0,7,0,0,1,0,1,diversified_broker,niche_or_shell,2034-12,opportunistic_route,1,#FF6D00,3.8286
-Belgian Cod BV Solutions,Marine Masterminds Kga Line,1,43,44,1.0,1,1,5205.0,41405.0,5,0,1,5,2,2,niche_or_shell,niche_or_shell,2034-08,opportunistic_route,3,#D500F9,3.8067
-Jammu Ltd. Liability Co,Meghalaya  Ltd. Liability Co Marine conservation,1,41,42,0.0,1,1,2250.0,0.0,1,3,0,1,0,0,general_trader,niche_or_shell,2034-07,opportunistic_route,1,#FF6D00,3.7612
-Malabar Sea Catch -,West Bengal  Company Nori,1,39,40,0.0,1,1,25135.0,37310.0,2,1,0,1,1,0,niche_or_shell,general_trader,2034-06,opportunistic_route,1,#FF6D00,3.7136
-Arena del Mar Marine Marine biology,Playa de Arena Submarine S.A. de C.V. Marine,1,37,38,1.0,1,1,19625.0,171010.0,5,0,1,4,1,1,niche_or_shell,general_trader,2034-08,opportunistic_route,3,#D500F9,3.6636
-Pao gan SE Seal,The Sea Turtle A/S,2,36,38,0.0,2,1,35942.5,142802.5,0,1,0,1,0,1,fish_intensive_hub,niche_or_shell,2034-01,opportunistic_route,1,#FF6D00,3.6636
-Saltwater Solitude N.V. International,Tsha wamba S.A. de C.V.,1,35,36,1.0,1,1,41405.0,85350.0,5,1,1,5,3,1,niche_or_shell,niche_or_shell,2034-02,opportunistic_route,3,#D500F9,3.6109
-Mar del Este CJSC,TideTurner Tidepool Co Enterprises,1,35,36,1.0,1,1,16330.0,38225.0,0,0,1,5,2,1,fish_intensive_hub,niche_or_shell,2034-01,opportunistic_route,3,#D500F9,3.6109
-Assam  Market Tilapia Ltd Worldwide,Náutica del Sol S.A. de C.V.,1,35,36,0.0,1,1,12810.0,238155.0,1,2,1,1,0,0,niche_or_shell,niche_or_shell,2034-06,opportunistic_route,1,#FF6D00,3.6109
-Maharashtra   Limited Liability Company,Náutica del Sol Corporation,1,35,36,0.0,1,1,10535.0,0.0,1,1,1,4,0,2,niche_or_shell,general_trader,2034-11,opportunistic_route,1,#FF6D00,3.6109
-Mar del Este CJSC,Saltwater Sisters Ltd. Corporation Shipping,1,33,34,1.0,1,1,198505.0,5649615.0,0,0,1,5,2,2,fish_intensive_hub,niche_or_shell,2034-06,opportunistic_route,4,#FF3D00,3.5553
-Wave Watchers Underwater Ltd. Corporation Solutions,Yu xian  SRL Industrial,1,33,34,1.0,1,1,24215.0,72870.0,5,2,1,4,0,1,niche_or_shell,fish_network_expander,2034-09,opportunistic_route,3,#D500F9,3.5553
-Saltwater Supreme ОАО Forwading,Surf and Sea Seal Ltd Forwading,1,31,32,0.0,1,1,78155.0,0.0,0,0,0,2,0,1,high_volume_distributor,niche_or_shell,2034-10,opportunistic_route,1,#FF6D00,3.4965
-Nagaland Sea Catch Ltd. Liability Co,Saltwater Supreme ОАО Forwading,1,31,32,1.0,1,1,26755.0,912415.0,2,3,0,0,0,0,niche_or_shell,high_volume_distributor,2034-02,opportunistic_route,3,#D500F9,3.4965
-Marine Adventures Seabreeze AS Forwading,hǎi dǎn Corporation Wharf,1,31,32,0.0,1,1,22400.0,888565.0,2,3,0,7,0,0,niche_or_shell,diversified_broker,2034-10,opportunistic_route,1,#FF6D00,3.4965
-Kafue River  Seagrass Limited Liability Company Marine,Playa de Coral OJSC,1,30,31,0.0,1,1,41030.0,160120.0,1,1,0,1,0,1,niche_or_shell,niche_or_shell,2034-04,opportunistic_route,1,#FF6D00,3.4657
-Ocean Outfitters Limited Liability Company Distribution,Sea Breezes GmbH & Co. KG Shark,1,29,30,0.0,1,1,5375.0,0.0,1,0,0,0,1,1,niche_or_shell,general_trader,2034-12,opportunistic_route,1,#FF6D00,3.434
-Diao yu bi sai  Ltd. Liability Co,Seashore Sanctuary N.V. Consultants,1,29,30,1.0,1,1,23300.0,168030.0,5,1,0,5,1,0,niche_or_shell,niche_or_shell,2034-01,opportunistic_route,3,#D500F9,3.434
-Angrapa Ltd. Liability Co Export,Mar Azul Ltd. Liability Co,1,28,29,0.0,1,1,19230.0,0.0,4,0,2,2,1,1,general_trader,niche_or_shell,2034-07,opportunistic_route,1,#FF6D00,3.4012
-Caspian Sea   Company Seafarer,Kilimajaro Slopes   Oceanfront AB Overseas,1,27,28,0.0,1,1,12705.0,0.0,1,0,1,1,3,2,niche_or_shell,general_trader,2034-11,opportunistic_route,1,#FF6D00,3.3673
-Irtysh  Dredge A/S Distribution,Olas del Sur Sp,1,26,27,0.0,1,1,8890.0,0.0,2,0,1,1,1,0,niche_or_shell,niche_or_shell,2034-06,opportunistic_route,1,#FF6D00,3.3322
-Drakensberg  S.A. de C.V. Marine ecology,Mar de la Vida SRL,1,26,27,0.0,1,1,3145.0,0.0,1,1,0,1,1,0,niche_or_shell,niche_or_shell,2034-05,opportunistic_route,1,#FF6D00,3.3322
-Océano del Este Corporation,River Gambia  Brine Pic Express,1,25,26,0.0,1,1,4390.0,39125.0,1,0,0,1,3,0,niche_or_shell,general_trader,2034-11,opportunistic_route,1,#FF6D00,3.2958
-Coral Cove BV Delivery,biān yú Dry dock,1,25,26,0.0,1,1,26170.0,0.0,0,1,0,1,0,1,high_volume_distributor,niche_or_shell,2034-07,opportunistic_route,1,#FF6D00,3.2958
-Mar de Cristalino Beach,Marine Mates Cruise ship,1,25,26,0.0,1,1,198550.0,238065.0,4,1,0,4,1,1,niche_or_shell,general_trader,2034-07,opportunistic_route,2,#FFC400,3.2958
-Atlantic Ocean Coast  _ Ges.m.b.H. Express,SilverStream CJSC Marine conservation,1,25,26,0.0,1,1,7400.0,0.0,2,1,0,4,0,2,niche_or_shell,general_trader,2034-10,opportunistic_route,1,#FF6D00,3.2958
-Delhi ers Ltd. Liability Co,xiǎo lóng xiā Kga,1,25,26,0.0,1,1,20610.0,0.0,1,0,1,1,1,0,niche_or_shell,niche_or_shell,2034-04,opportunistic_route,1,#FF6D00,3.2958
-Mar del Este CJSC,ReefRider S.A. de C.V.,1,25,26,0.0,1,1,16535.0,0.0,0,0,1,1,0,1,fish_intensive_hub,niche_or_shell,2034-10,opportunistic_route,1,#FF6D00,3.2958
-Caracola Azul Oyj &,Paradera S.A. de C.V.,1,25,26,1.0,1,1,20970.0,79905.0,4,0,1,5,1,0,general_trader,niche_or_shell,2034-07,opportunistic_route,3,#D500F9,3.2958
-Ancla Azul Transportation Seafaring,Estrella del Mar Logistics Charter Boat ,1,24,25,0.0,1,1,18700.0,0.0,4,0,2,1,0,1,general_trader,niche_or_shell,2034-09,opportunistic_route,1,#FF6D00,3.2581
-Caracola del Este Corporation Express,Tide Turners S.A. de C.V. Marine,1,22,23,0.0,1,1,0.0,0.0,4,0,0,1,1,0,general_trader,niche_or_shell,2034-09,opportunistic_route,1,#FF6D00,3.1781
-Khundu Whale AG Cargo,Mar de la Felicidad NV Investment,1,22,23,0.0,1,1,800.0,38110.0,1,3,2,1,0,1,general_trader,niche_or_shell,2034-11,opportunistic_route,1,#FF6D00,3.1781
-Caracola del Sol Services,Okavango River  NV Marine life,1,22,23,0.0,1,1,21165.0,15810.0,0,0,0,1,0,2,fish_network_expander,niche_or_shell,2034-09,opportunistic_route,1,#FF6D00,3.1781
-Wave Watchers Ltd International,páng xiè Ltd. Liability Co Freight ,1,20,21,0.0,1,1,6130.0,0.0,2,1,0,1,0,0,niche_or_shell,niche_or_shell,2034-11,opportunistic_route,1,#FF6D00,3.091
-Kong zhong diao yu  Ges.m.b.H.,Turkish Salmon A/S Marine,1,20,21,0.0,1,1,24010.0,0.0,0,1,0,1,3,0,fish_network_expander,general_trader,2034-10,opportunistic_route,1,#FF6D00,3.091
-Caracola del Sol Services,Tshimbua GmbH & Co. KG,1,19,20,0.0,1,1,15720.0,15915.0,0,0,0,1,0,1,fish_network_expander,niche_or_shell,2034-03,opportunistic_route,1,#FF6D00,3.0445
-Gulf of Tadjoura  Ltd. Liability Co Logistics,Kong zhong diao yu  Ges.m.b.H.,1,19,20,0.0,1,1,21215.0,24720.0,1,0,1,0,1,0,niche_or_shell,fish_network_expander,2034-11,opportunistic_route,1,#FF6D00,3.0445
-Belgian Scallop Harbor ОАО Freight ,Selous Game Reserve  S.A. de C.V.,2,18,20,1.0,2,2,23325.0,71285.0,5,3,0,0,0,1,niche_or_shell,fish_network_expander,2034-09;2034-11,opportunistic_route,0,#FF1744,3.0445
-Chhattisgarh  Salt spray ОАО United,Fresh Limited Liability Company,1,18,19,0.0,1,1,5085.0,0.0,1,0,0,0,0,0,niche_or_shell,diversified_broker,2034-11,opportunistic_route,1,#FF6D00,2.9957
-Barents Sea Cod CJSC Export,Tamil Nadu s Ltd. Corporation,1,18,19,0.0,1,1,1505.0,0.0,4,0,0,1,0,1,general_trader,niche_or_shell,2034-10,opportunistic_route,1,#FF6D00,2.9957
-David Limited Liability Company Worldwide,Saltwater Sisters AS Marine life,1,18,19,1.0,1,1,16275.0,94285.0,5,3,0,1,1,0,niche_or_shell,niche_or_shell,2034-11,opportunistic_route,3,#D500F9,2.9957
-Bu yu wang Corporation Marine conservation,Uttar Pradesh s Oyj,1,18,19,0.0,1,1,540.0,6105.0,1,1,0,1,2,0,niche_or_shell,niche_or_shell,2034-02,opportunistic_route,1,#FF6D00,2.9957
-Black Sea Tuna Snapper,Costa del Sol Co,1,18,19,0.0,1,1,25310.0,70045.0,4,0,1,1,1,0,general_trader,niche_or_shell,2034-11,opportunistic_route,1,#FF6D00,2.9957
-Mar del Paraíso Sp,Turkish Salmon A/S Marine,1,18,19,0.0,1,1,650.0,0.0,1,0,1,1,3,0,niche_or_shell,general_trader,2034-08,opportunistic_route,1,#FF6D00,2.9957
-Barents Sea Cod Oyj Marine,Mar del Oeste S.p.A. United,1,17,18,1.0,1,1,24735.0,73265.0,1,0,1,5,3,0,niche_or_shell,niche_or_shell,2034-08,opportunistic_route,3,#D500F9,2.9444
-Fresh Limited Liability Company,Mar del Oeste Corp Transportation,1,17,18,0.0,1,1,6165.0,73125.0,0,0,0,1,0,1,diversified_broker,niche_or_shell,2034-01,opportunistic_route,1,#FF6D00,2.9444
-Black Sea Tuna Sagl,Saltwater Sanctuary NV Delivery,1,16,17,0.0,1,1,22005.0,82320.0,4,0,1,1,0,1,general_trader,niche_or_shell,2034-08,opportunistic_route,1,#FF6D00,2.8904
-Norwegian King Crab S.A. de C.V.,xiǎo lóng xiā LC,1,16,17,0.0,1,1,18535.0,0.0,2,0,1,1,1,0,niche_or_shell,general_trader,2034-12,opportunistic_route,1,#FF6D00,2.8904
-Chobe River   Distribution Pelican,Playa de Arena Ltd,1,15,16,0.0,1,1,15945.0,0.0,1,1,0,1,0,0,niche_or_shell,niche_or_shell,2034-08,opportunistic_route,1,#FF6D00,2.8332
-Belgian Shrimps Ocean Corp Holdings,Vleikurper Limited Liability Company Transport,1,15,16,1.0,1,1,3250.0,70305.0,4,0,0,1,3,2,general_trader,general_trader,2034-08,opportunistic_route,3,#D500F9,2.8332
-Caracola del Sol Services,Ola Azul SRL United,1,14,15,1.0,1,1,16360.0,140010.0,0,0,0,5,3,1,fish_network_expander,niche_or_shell,2034-07,opportunistic_route,3,#D500F9,2.7726
-Kong zhong diao yu  Ges.m.b.H.,Rufiji Delta  Inc Cargo,1,13,14,0.0,1,1,16665.0,37715.0,0,1,0,1,0,1,fish_network_expander,niche_or_shell,2034-10,opportunistic_route,1,#FF6D00,2.7081
-Estrella del Mar Sp Transit,Mar del Este Brine SRL Investment,1,13,14,1.0,1,1,27700.0,525035.0,2,0,1,5,2,2,niche_or_shell,niche_or_shell,2034-06,opportunistic_route,3,#D500F9,2.7081
-Turkish Salmon A/S Marine,Victoria Falls   N.V. Carriers,1,13,14,1.0,1,1,15270.0,253230.0,1,3,0,1,2,2,general_trader,niche_or_shell,2034-08,opportunistic_route,3,#D500F9,2.7081
-Gvardeysk S.A. de C.V.,Ola de la Costa N.V.,1,13,14,0.0,1,1,8305.0,0.0,1,0,1,1,3,0,niche_or_shell,general_trader,2034-07,opportunistic_route,1,#FF6D00,2.7081
-Costa del Mar BV Consulting,SaltwaterSatisfactions Incorporated Marine ecology,1,13,14,0.0,1,1,1565.0,0.0,1,0,1,1,0,0,niche_or_shell,niche_or_shell,2034-12,opportunistic_route,1,#FF6D00,2.7081
-Bu yu wang Limited Liability Company,Orange River Mouth   Incorporated Distribution,1,12,13,1.0,1,1,20105.0,46930.0,2,0,1,1,2,2,niche_or_shell,niche_or_shell,2034-03,opportunistic_route,3,#D500F9,2.6391
-Barents Sea Cod CJSC Export,Mar del Placer Limited Liability Company,1,12,13,0.0,1,1,15475.0,128100.0,4,0,0,1,0,1,general_trader,niche_or_shell,2034-11,opportunistic_route,1,#FF6D00,2.6391
-Ancla Azul Transportation Seafaring,Madhya GmbH & Co. KG Family,1,12,13,0.0,1,1,65.0,230.0,4,0,2,1,0,1,general_trader,niche_or_shell,2034-12,opportunistic_route,1,#FF6D00,2.6391
-Coastal Cruisers GmbH Logistics,Spanish Shrimp Ltd. Corporation Transport,1,11,12,0.0,1,1,21370.0,178015.0,1,3,0,1,0,1,general_trader,niche_or_shell,2034-06,opportunistic_route,1,#FF6D00,2.5649
-Southeast S.A. de C.V.,Yu xian  SRL Industrial,1,11,12,0.0,1,1,6095.0,0.0,2,0,1,4,0,1,niche_or_shell,fish_network_expander,2034-12,opportunistic_route,1,#FF6D00,2.5649
-Jharkhand  Ltd. Liability Co Worldwide,TunaTreat Company Marine sanctuary,1,11,12,0.0,1,1,4690.0,0.0,1,3,0,4,0,2,general_trader,general_trader,2034-08,opportunistic_route,1,#FF6D00,2.5649
-Dutch  Ltd. Liability Co Consultants,Lake Tana  N.V. Enterprises,1,9,10,0.0,1,1,11830.0,18315.0,4,0,2,1,1,1,general_trader,niche_or_shell,2034-11,opportunistic_route,1,#FF6D00,2.3979
-Neptune's Kingdom Sailboat LLC Cargo,Vespuci Sagl Marine sanctuary,1,9,10,0.0,1,1,2030.0,3300.0,5,1,0,4,0,2,niche_or_shell,general_trader,2034-05,opportunistic_route,1,#FF6D00,2.3979
-Oceanic Oracle GmbH & Co. KG,Sahara  LLC Co Consultants,1,9,10,0.0,1,1,2090.0,0.0,4,0,2,1,2,1,general_trader,niche_or_shell,2034-06,opportunistic_route,1,#FF6D00,2.3979
-Beach Breakers Ltd. Corporation Marine conservation,Mar de Estrellas GmbH & Co. KG,1,9,10,0.0,1,1,1500.0,0.0,1,0,1,1,0,1,niche_or_shell,niche_or_shell,2034-12,opportunistic_route,1,#FF6D00,2.3979
-Bahía del Sol SRL Solutions,Madagascar Coast  AG Freight ,1,8,9,0.0,1,1,245.0,0.0,1,0,1,5,0,0,niche_or_shell,general_trader,2034-02,opportunistic_route,1,#FF6D00,2.3026
-Caracola Azul Ltd. Corporation,Monarch Ltd. Liability Co Transport,1,8,9,0.0,1,1,22670.0,30905.0,4,0,1,2,1,2,general_trader,niche_or_shell,2034-05,opportunistic_route,1,#FF6D00,2.3026
-Delphinia Trout OJSC Transportation,Zambezi Gorge  N.V. Transport,1,8,9,0.0,1,1,19935.0,68125.0,1,0,1,0,1,0,niche_or_shell,diversified_broker,2034-04,opportunistic_route,1,#FF6D00,2.3026
-Estrella del Mar Logistics Charter Boat ,Mar de Estrellas N.V.,1,8,9,0.0,1,1,4160.0,0.0,1,0,1,1,0,1,niche_or_shell,niche_or_shell,2034-12,opportunistic_route,1,#FF6D00,2.3026
-Barents Sea Cod CJSC Export,Niger Bend   Dry dock,1,7,8,0.0,1,1,14460.0,154140.0,4,0,0,1,0,1,general_trader,niche_or_shell,2034-08,opportunistic_route,1,#FF6D00,2.1972
-BlueWater Bistro A/S Holdings,Lake Rukwa  Ltd Logistics,1,7,8,0.0,1,1,15335.0,0.0,2,0,1,2,3,0,niche_or_shell,niche_or_shell,2034-01,opportunistic_route,1,#FF6D00,2.1972
-Ola Marina Company Line,Saltwater Solitude Marine biology,1,7,8,0.0,1,1,260.0,0.0,1,3,0,1,1,0,general_trader,niche_or_shell,2034-04,opportunistic_route,1,#FF6D00,2.1972
-Jammu & Kashmir  GmbH & Co. KG and Son's,Turkish Sword Investment Catfish,1,7,8,0.0,1,1,2710.0,0.0,1,0,0,1,0,0,niche_or_shell,niche_or_shell,2034-09,opportunistic_route,1,#FF6D00,2.1972
-Mar del Este CJSC,Yu er he  Corporation,1,6,7,1.0,1,1,20775.0,137120.0,0,0,1,2,3,0,fish_intensive_hub,niche_or_shell,2034-03,opportunistic_route,3,#D500F9,2.0794
-Karnataka  Ltd. Corporation Manatee,katushka Barracuda Inc and Son's,1,6,7,0.0,1,1,2070.0,0.0,1,1,0,2,1,1,niche_or_shell,niche_or_shell,2034-07,opportunistic_route,1,#FF6D00,2.0794
-Namib Desert  Ltd. Corporation,Saltwater Supreme ОАО Forwading,1,6,7,0.0,1,1,1150.0,0.0,2,1,0,0,0,0,niche_or_shell,high_volume_distributor,2034-08,opportunistic_route,1,#FF6D00,2.0794
-Saltwater Supreme Pelican Ltd Enterprises,Zambezi Delta  Limited Liability Company,1,6,7,1.0,1,1,21555.0,56130.0,4,0,1,5,3,0,fish_network_expander,niche_or_shell,2034-07,opportunistic_route,3,#D500F9,2.0794
-Faroe Islands Halibut N.V. Transport,Madhya Pradesh   Ltd. Corporation,1,6,7,0.0,1,1,290.0,2700.0,1,0,1,1,1,0,niche_or_shell,general_trader,2034-11,opportunistic_route,1,#FF6D00,2.0794
-Arunachal Pradesh s A/S Transport,FinestSea Ltd. Corporation Enterprises,1,5,6,0.0,1,1,125.0,0.0,0,1,0,1,0,1,general_trader,niche_or_shell,2034-11,opportunistic_route,1,#FF6D00,1.9459
-Caracola del Sol LLC,Sea Breezes N.V. Canal,1,5,6,0.0,1,1,8130.0,0.0,1,2,2,1,1,0,niche_or_shell,general_trader,2034-12,opportunistic_route,1,#FF6D00,1.9459
-Icelandic Cod Pier ОАО Transport,Mar del Este CJSC,1,4,5,0.0,1,1,148595.0,0.0,4,1,0,0,0,1,general_trader,fish_intensive_hub,2034-08,opportunistic_route,1,#FF6D00,1.7918
-Fin Flair Marine life Incorporated Holdings,Mar del Paraíso Corporation Logistics,1,4,5,0.0,1,1,285.0,0.0,1,0,1,1,2,0,niche_or_shell,niche_or_shell,2034-04,opportunistic_route,1,#FF6D00,1.7918
-Black Sea Tuna Snapper,xún yú S.A. de C.V.,1,4,5,0.0,1,1,840.0,0.0,4,0,1,1,2,0,general_trader,niche_or_shell,2034-03,opportunistic_route,1,#FF6D00,1.7918
-Beach Breakers Ltd Import,Jammu & Kashmir Sea  AS Marine,1,4,5,0.0,1,1,5315.0,51140.0,1,0,1,1,0,1,niche_or_shell,niche_or_shell,2034-12,opportunistic_route,1,#FF6D00,1.7918
-Bahía Azul Ltd Holdings,Yu xian  SRL Industrial,1,3,4,0.0,1,1,3260.0,0.0,2,1,0,4,0,1,niche_or_shell,fish_network_expander,2034-12,opportunistic_route,1,#FF6D00,1.6094
--54,Estrella del Mar Seafarer,1,2,3,0.0,1,1,1090.0,0.0,4,0,1,0,1,0,general_trader,general_trader,2034-01,opportunistic_route,1,#FF6D00,1.3863
-Náutica del Norte LC,Tide Turners Ltd Transport,1,2,3,0.0,1,1,3295.0,29705.0,1,1,0,1,1,0,niche_or_shell,niche_or_shell,2034-08,opportunistic_route,1,#FF6D00,1.3863
--49,xiǎo lóng xiā LC,3,0,3,0.0,2,2,9583.33,0.0,2,2,1,1,1,0,niche_or_shell,general_trader,2034-07;2034-11,opportunistic_route,0,#FF1744,1.3863
-Meghalaya  Sandbar S.p.A. Services,SurfSide Limited Liability Company,1,2,3,0.0,1,1,990.0,0.0,1,1,0,2,1,0,niche_or_shell,niche_or_shell,2034-09,opportunistic_route,1,#FF6D00,1.3863
-0,Danish Shrimp Kga Solutions,2,0,2,0.0,2,1,65880.0,0.0,2,2,0,3,0,1,niche_or_shell,niche_or_shell,2034-08,opportunistic_route,1,#FF6D00,1.0986
-Arunachal Pradesh s A/S Transport,SeaTrekker Salt spray S.p.A. Freight ,1,1,2,0.0,1,1,15.0,0.0,0,1,0,5,3,0,general_trader,niche_or_shell,2034-08,opportunistic_route,1,#FF6D00,1.0986
-French Crab AG Express,Gulf of Guinea   Incorporated Ray,1,1,2,0.0,1,1,3670.0,0.0,1,1,0,2,1,0,niche_or_shell,niche_or_shell,2034-07,opportunistic_route,1,#FF6D00,1.0986
--46,Estrella del Mar Seafarer,1,1,2,0.0,1,1,15.0,15.0,2,2,0,0,1,0,niche_or_shell,general_trader,2034-03,opportunistic_route,1,#FF6D00,1.0986
-Norwegian Haddock Ltd. Corporation Logistics,Uttar Pradesh Sea  Company Seafoam,1,1,2,1.0,1,1,19875.0,149105.0,5,2,2,1,2,1,niche_or_shell,niche_or_shell,2034-06,opportunistic_route,3,#D500F9,1.0986
-Fisherman's Best Inc Marine,Seaside Sojourns Creek N.V. Transit,1,1,2,0.0,1,1,20860.0,19515.0,2,1,2,1,0,1,niche_or_shell,niche_or_shell,2034-11,opportunistic_route,1,#FF6D00,1.0986
-Dry Creek Ltd. Corporation,Perla del Mar SRL,1,1,2,0.0,1,1,22105.0,0.0,1,0,0,1,1,0,niche_or_shell,general_trader,2034-12,opportunistic_route,1,#FF6D00,1.0986
--55,French Crab Pic Marine conservation,1,0,1,0.0,1,1,19200.0,41205.0,2,2,1,1,0,2,niche_or_shell,niche_or_shell,2034-08,opportunistic_route,1,#FF6D00,0.6931
--56,Danish Mackerel S.A. de C.V.,1,0,1,0.0,1,1,19505.0,0.0,2,2,1,1,0,1,niche_or_shell,niche_or_shell,2034-11,opportunistic_route,1,#FF6D00,0.6931
-Deep Sea Divers Tom yum ОАО Marine sanctuary,Okavango River  S.A. de C.V. Solutions,1,0,1,0.0,1,1,960.0,0.0,1,0,1,5,2,2,niche_or_shell,niche_or_shell,2034-11,opportunistic_route,1,#FF6D00,0.6931
--40,Arunachal Pradesh s &,1,0,1,0.0,1,1,6150.0,0.0,2,3,1,1,0,2,niche_or_shell,niche_or_shell,2034-10,opportunistic_route,1,#FF6D00,0.6931
--57,Tripura  BV and Son's,1,0,1,0.0,1,1,31860.0,290010.0,2,2,1,1,0,1,niche_or_shell,niche_or_shell,2034-01,opportunistic_route,1,#FF6D00,0.6931
-Beachcomber's Bounty CJSC Sea,Zambezi Gorge  N.V. Transport,1,0,1,0.0,1,1,13565.0,0.0,1,0,1,0,1,0,niche_or_shell,diversified_broker,2034-11,opportunistic_route,1,#FF6D00,0.6931
--58,Maharashtra ers Incorporated Express,1,0,1,0.0,1,1,2745.0,0.0,2,2,1,4,0,2,niche_or_shell,general_trader,2034-06,opportunistic_route,1,#FF6D00,0.6931
--23,Caracola del Este Corporation Express,1,0,1,0.0,1,1,0.0,0.0,2,2,1,4,0,0,niche_or_shell,general_trader,2034-12,opportunistic_route,1,#FF6D00,0.6931
--60,Caracola del Este Corporation Express,1,0,1,0.0,1,1,135.0,290.0,2,3,1,4,0,0,niche_or_shell,general_trader,2034-07,opportunistic_route,1,#FF6D00,0.6931
-Asveja GmbH & Co. KG Transit,Mar del Oeste N.V.,1,0,1,0.0,1,1,5760.0,0.0,1,0,1,1,0,1,niche_or_shell,niche_or_shell,2034-10,opportunistic_route,1,#FF6D00,0.6931
--59,Senegal Coast  LC Solutions,1,0,1,0.0,1,1,21250.0,18705.0,2,2,1,1,0,1,niche_or_shell,niche_or_shell,2034-12,opportunistic_route,1,#FF6D00,0.6931
-Mar de Estrellas Incorporated,Seaside Summit S.A. de C.V.,1,0,1,0.0,1,1,150.0,0.0,1,1,0,1,1,0,niche_or_shell,niche_or_shell,2034-01,opportunistic_route,1,#FF6D00,0.6931
--61,SaltwaterSatisfactions S.A. de C.V. Overseas,1,0,1,0.0,1,1,17995.0,0.0,2,2,1,1,0,1,niche_or_shell,niche_or_shell,2034-03,opportunistic_route,1,#FF6D00,0.6931
--28,Ocean Quest A/S Logistics,1,0,1,1.0,1,1,2430.0,12210.0,2,1,0,5,1,1,niche_or_shell,niche_or_shell,2034-08,opportunistic_route,3,#D500F9,0.6931
--29,Ocean Quest A/S Logistics,1,0,1,0.0,1,1,23295.0,76535.0,2,2,0,5,1,1,niche_or_shell,niche_or_shell,2034-06,opportunistic_route,1,#FF6D00,0.6931
--30,Ocean Quest A/S Logistics,1,0,1,1.0,1,1,21985.0,107025.0,2,2,1,5,1,1,niche_or_shell,niche_or_shell,2034-06,opportunistic_route,3,#D500F9,0.6931
-Black Sea Tuna Sagl,Matthew Oyj Marine sanctuary,1,0,1,1.0,1,1,22420.0,96630.0,4,0,1,5,2,0,general_trader,niche_or_shell,2034-07,opportunistic_route,3,#D500F9,0.6931
--31,French Crab S.p.A. Worldwide,1,0,1,0.0,1,1,27145.0,0.0,2,2,1,0,1,1,niche_or_shell,general_trader,2034-01,opportunistic_route,1,#FF6D00,0.6931
--39,French Crab S.p.A. Worldwide,1,0,1,0.0,1,1,7275.0,0.0,2,1,1,0,1,1,niche_or_shell,general_trader,2034-02,opportunistic_route,1,#FF6D00,0.6931
--32,Norwegian Fjord  S.A. de C.V. Brothers,1,0,1,0.0,1,1,22605.0,95360.0,2,3,0,2,1,0,niche_or_shell,niche_or_shell,2034-05,opportunistic_route,1,#FF6D00,0.6931
--33,Lake Nasser  AB Logistics,1,0,1,1.0,1,1,5825.0,110045.0,2,2,1,1,2,2,niche_or_shell,niche_or_shell,2034-05,opportunistic_route,3,#D500F9,0.6931
--34,Leucosia Limited Liability Company,1,0,1,0.0,1,1,11675.0,67660.0,2,3,1,2,1,1,niche_or_shell,niche_or_shell,2034-01,opportunistic_route,1,#FF6D00,0.6931
--35,Estrella de Mar Consultants -,1,0,1,0.0,1,1,6580.0,0.0,2,2,1,1,1,1,niche_or_shell,general_trader,2034-06,opportunistic_route,1,#FF6D00,0.6931
--36,Caracola del Este Corporation Express,1,0,1,0.0,1,1,0.0,0.0,2,3,1,4,0,0,niche_or_shell,general_trader,2034-11,opportunistic_route,1,#FF6D00,0.6931
--37,Ola de la Costa SE Forwading,1,0,1,1.0,1,1,26765.0,84450.0,1,0,0,5,3,0,niche_or_shell,niche_or_shell,2034-04,opportunistic_route,3,#D500F9,0.6931
--38,Ocean Quest Corporation Seaside,1,0,1,0.0,1,1,17225.0,115025.0,2,3,1,1,0,0,niche_or_shell,niche_or_shell,2034-10,opportunistic_route,1,#FF6D00,0.6931
--40,Sander Ltd. Corporation Leska,1,0,1,1.0,1,1,23325.0,185070.0,2,3,1,1,2,0,niche_or_shell,niche_or_shell,2034-02,opportunistic_route,3,#D500F9,0.6931
--41,jīng Coral LLC Carriers,1,0,1,0.0,1,1,17900.0,0.0,1,1,0,1,1,1,niche_or_shell,niche_or_shell,2034-06,opportunistic_route,1,#FF6D00,0.6931
--42,Estrella del Mar Forwading,1,0,1,1.0,1,1,137630.0,246105.0,2,3,1,5,3,0,niche_or_shell,niche_or_shell,2034-11,opportunistic_route,3,#D500F9,0.6931
--43,Sudd Swamp   Marine life,1,0,1,0.0,1,1,660.0,1000.0,2,2,1,5,1,1,niche_or_shell,niche_or_shell,2034-12,opportunistic_route,1,#FF6D00,0.6931
--44,Greek Sea Bass Co,1,0,1,0.0,1,1,13345.0,46520.0,2,2,1,1,1,1,niche_or_shell,niche_or_shell,2034-03,opportunistic_route,1,#FF6D00,0.6931
--45,Playa de Arena Pic,1,0,1,1.0,1,1,28325.0,151095.0,2,2,1,1,0,1,niche_or_shell,niche_or_shell,2034-06,opportunistic_route,3,#D500F9,0.6931
--47,Water Wonders Tidepool Ltd Holdings,1,0,1,0.0,1,1,10.0,20.0,1,2,1,4,0,2,niche_or_shell,general_trader,2034-09,opportunistic_route,1,#FF6D00,0.6931
-Bujagali Falls  Pic Family,bái suō wěn lú AS,1,0,1,0.0,1,1,4095.0,0.0,1,3,0,1,1,0,general_trader,general_trader,2034-09,opportunistic_route,1,#FF6D00,0.6931
--1,Uttar Pradesh s CJSC,1,0,1,0.0,1,1,4960.0,0.0,2,2,1,0,1,1,niche_or_shell,high_volume_distributor,2034-11,opportunistic_route,1,#FF6D00,0.6931
--2,Andhra Pradesh   Limited Liability Company Tilapia,1,0,1,0.0,1,1,16940.0,39520.0,5,3,1,1,0,1,niche_or_shell,niche_or_shell,2034-02,opportunistic_route,1,#FF6D00,0.6931
--3,Coastal Cruisers Pic Shipping,1,0,1,0.0,1,1,4255.0,0.0,2,2,1,0,1,1,niche_or_shell,general_trader,2034-10,opportunistic_route,1,#FF6D00,0.6931
--4,Jharkhand  Ltd. Liability Co Worldwide,1,0,1,0.0,1,1,195.0,0.0,1,2,1,1,3,0,niche_or_shell,general_trader,2034-08,opportunistic_route,1,#FF6D00,0.6931
-Oceanfront Oases Oyj Sea,Whale Ltd. Liability Co,1,0,1,0.0,1,1,7090.0,0.0,2,0,1,1,1,0,niche_or_shell,niche_or_shell,2034-02,opportunistic_route,1,#FF6D00,0.6931
--5,Danish Lobster Kga Motorboat,1,0,1,0.0,1,1,25.0,0.0,2,2,1,2,0,1,niche_or_shell,niche_or_shell,2034-07,opportunistic_route,1,#FF6D00,0.6931
--6,Ianira Starfish Sagl Import,1,0,1,0.0,1,1,4585.0,0.0,1,2,1,4,1,0,niche_or_shell,niche_or_shell,2034-09,opportunistic_route,1,#FF6D00,0.6931
--8,bái suō wěn lú Ltd Cargo,1,0,1,0.0,1,1,11830.0,0.0,2,2,1,1,1,0,niche_or_shell,niche_or_shell,2034-11,opportunistic_route,1,#FF6D00,0.6931
--7,Zale Limited Liability Company,1,0,1,0.0,1,1,19960.0,309240.0,2,3,1,1,0,2,niche_or_shell,niche_or_shell,2034-07,opportunistic_route,1,#FF6D00,0.6931
--9,Lake Tana  N.V. Enterprises,1,0,1,0.0,1,1,1540.0,5905.0,5,1,1,1,1,1,niche_or_shell,niche_or_shell,2034-11,opportunistic_route,1,#FF6D00,0.6931
--10,Himachal Pradesh   Limited Liability Company,1,0,1,0.0,1,1,13415.0,53220.0,2,2,1,1,0,0,niche_or_shell,niche_or_shell,2034-09,opportunistic_route,1,#FF6D00,0.6931
--11,Estrella de Mar Consultants -,1,0,1,0.0,1,1,17430.0,0.0,2,2,1,1,1,1,niche_or_shell,general_trader,2034-12,opportunistic_route,1,#FF6D00,0.6931
--12,Madagascar   Ltd. Corporation Express,1,0,1,0.0,1,1,17915.0,93590.0,2,2,1,1,1,0,niche_or_shell,general_trader,2034-02,opportunistic_route,1,#FF6D00,0.6931
--50,Maharashtra ers Incorporated Express,1,0,1,0.0,1,1,3750.0,0.0,2,3,1,4,0,2,niche_or_shell,general_trader,2034-02,opportunistic_route,1,#FF6D00,0.6931
--51,Limpopo River  AB Consultants,1,0,1,0.0,1,1,10240.0,0.0,2,3,1,5,3,1,niche_or_shell,niche_or_shell,2034-03,opportunistic_route,1,#FF6D00,0.6931
--13,Victoria Falls   Pier Corp Solutions,1,0,1,0.0,1,1,9015.0,0.0,2,1,1,1,0,0,niche_or_shell,niche_or_shell,2034-10,opportunistic_route,1,#FF6D00,0.6931
--52,Selous Game Reserve  A/S,1,0,1,0.0,1,1,545920.0,0.0,2,2,1,4,1,1,niche_or_shell,general_trader,2034-12,opportunistic_route,2,#FFC400,0.6931
-Greek Octopus Company Distribution,TunaTreat Company Marine sanctuary,1,0,1,0.0,1,1,23400.0,0.0,1,0,1,4,0,2,niche_or_shell,general_trader,2034-03,opportunistic_route,1,#FF6D00,0.6931
--48,Danish Shrimp Kga Solutions,1,0,1,0.0,1,1,140950.0,0.0,2,3,1,3,0,1,niche_or_shell,niche_or_shell,2034-10,opportunistic_route,1,#FF6D00,0.6931
--2,Kerala  Market SRL Wave,1,0,1,1.0,1,1,22005.0,107090.0,5,3,1,5,1,0,niche_or_shell,niche_or_shell,2034-07,opportunistic_route,3,#D500F9,0.6931
-Ola de la Costa N.V.,Serengeti  Inc. Ltd Seabed,1,0,1,0.0,1,1,4405.0,0.0,1,3,0,2,0,1,general_trader,niche_or_shell,2034-11,opportunistic_route,1,#FF6D00,0.6931
-Coral del Cielo A/S,Kong zhong diao yu  Ges.m.b.H.,1,0,1,0.0,1,1,24200.0,416005.0,1,0,0,0,1,0,niche_or_shell,fish_network_expander,2034-11,opportunistic_route,1,#FF6D00,0.6931
+Oceanic Explorers Sashimi Inc Solutions,Oceanic Explorers Sashimi Inc Solutions,3,46205,46208,0.0,2,3,65.0,113.33,1,1,0,1,1,0,high_volume_distributor,high_volume_distributor,2034-05;2034-06;2034-11,multi_tool_bridge,0,#FF1744,10.7409
+Mar y Luna Sagl,Saltwater Supreme ОАО Forwading,1,16547,16548,0.0,1,1,9025.0,0.0,1,1,0,5,0,1,high_volume_distributor,high_volume_distributor,2034-08,historical_backbone,1,#FF6D00,9.7141
+Arunachal Pradesh s A/S Transport,Arunachal Pradesh s A/S Transport,1,14052,14053,0.0,1,1,175.0,530.0,1,1,2,1,1,2,general_trader,general_trader,2034-11,historical_backbone,1,#FF6D00,9.5507
+Uttar Pradesh s CJSC,hǎi dǎn Corporation Wharf,3,11367,11370,0.0,2,3,9880.0,43680.0,1,1,0,6,0,0,high_volume_distributor,diversified_broker,2034-02;2034-08;2034-11,multi_tool_bridge,0,#FF1744,9.3388
+Saltwater Sisters Inc Seafaring,Togo  S.A. de C.V.,1,10359,10360,0.0,1,1,515.0,0.0,2,1,0,2,1,0,general_trader,general_trader,2034-02,historical_backbone,1,#FF6D00,9.2458
+Mar del Este CJSC,Ola Azul Ges.m.b.H. Services,1,8265,8266,0.0,1,1,16390.0,50725.0,5,1,0,1,1,1,diversified_broker,general_trader,2034-09,historical_backbone,1,#FF6D00,9.02
+Coral Cove BV Delivery,Ianira Starfish Sagl Import,1,7113,7114,0.0,1,1,237285.0,0.0,5,0,0,0,2,0,diversified_broker,general_trader,2034-07,historical_backbone,2,#FFC400,8.87
+Coastal Cruisers Pic Shipping,hǎi dǎn Corporation Wharf,3,6679,6682,0.0,2,3,5465.0,74905.0,1,1,0,6,0,0,high_volume_distributor,diversified_broker,2034-09;2034-10;2034-12,multi_tool_bridge,0,#FF1744,8.8073
+Costa de la Felicidad Shipping,suō yú Incorporated Brothers,1,6665,6666,0.0,1,1,3650.0,66320.0,5,0,0,1,1,1,diversified_broker,general_trader,2034-12,historical_backbone,1,#FF6D00,8.8049
+Haryana Sea  Mussel Inc Export,Uttar Pradesh s Barracuda,2,5876,5878,0.0,2,2,21990.0,302540.0,0,0,0,0,0,2,general_trader,general_trader,2034-10;2034-11,multi_tool_bridge,0,#FF1744,8.6791
+Brisa del Mar LC,Coastal Cruisers Pic Shipping,1,5209,5210,0.0,1,1,810.0,0.0,0,0,0,1,1,0,general_trader,high_volume_distributor,2034-02,historical_backbone,1,#FF6D00,8.5585
+Chuan gou  Ltd Marine ecology,Mar del Este CJSC,1,5183,5184,0.0,1,1,43105.0,143025.0,1,1,1,5,1,0,general_trader,diversified_broker,2034-02,historical_backbone,1,#FF6D00,8.5535
+Costa de la Felicidad Shipping,Selous Game Reserve  Sp Distribution,1,4330,4331,0.0,1,1,24600.0,0.0,5,0,0,0,3,0,diversified_broker,general_trader,2034-12,historical_backbone,1,#FF6D00,8.3738
+Manipur  Market Corporation Cargo,Sea Breeze Corporation Marine sanctuary,1,4056,4057,1.0,1,1,18525.0,176055.0,2,3,1,0,2,2,general_trader,fish_intensive_hub,2034-11,historical_backbone,3,#D500F9,8.3084
+Mar del Este CJSC,Wave Watchers Ltd. Liability Co,1,3789,3790,1.0,1,1,17225.0,200130.0,5,1,0,0,3,1,diversified_broker,general_trader,2034-07,historical_backbone,3,#D500F9,8.2404
+Arunachal Pradesh s Brine,West Bengal  A/S Freight ,1,3574,3575,0.0,1,1,18215.0,0.0,1,0,1,0,0,0,fish_network_expander,general_trader,2034-08,historical_backbone,1,#FF6D00,8.182
+Océano de Coral Corporation Express,Uttar Pradesh s CJSC,2,3137,3139,0.0,1,2,15645.0,0.0,1,1,2,1,1,0,general_trader,high_volume_distributor,2034-07;2034-11,historical_backbone,1,#FF6D00,8.052
+Coastal Cruisers Pic Shipping,Océano de Coral Corporation Express,3,2889,2892,0.0,2,3,20926.67,0.0,1,1,0,1,1,2,high_volume_distributor,general_trader,2034-03;2034-06;2034-09,multi_tool_bridge,0,#FF1744,7.97
+Nile Crocodile  Deep-sea Oyj Brothers,Nile Crocodile  Deep-sea Oyj Brothers,1,2695,2696,0.0,1,1,11635.0,0.0,0,0,2,0,0,2,general_trader,general_trader,2034-07,historical_backbone,1,#FF6D00,7.8999
+Barents Sea Cod CJSC Export,hǎi dǎn Corporation Wharf,1,2685,2686,0.0,1,1,44220.0,525425.0,1,1,2,6,0,0,general_trader,diversified_broker,2034-01,historical_backbone,1,#FF6D00,7.8962
+Ancla Azul Transportation Seafaring,Oceanic Oracle GmbH & Co. KG,1,2626,2627,0.0,1,1,29355.0,0.0,0,2,1,0,1,1,general_trader,general_trader,2034-05,historical_backbone,1,#FF6D00,7.874
+Chhattisgarh  A/S & Son's,Chhattisgarh  A/S & Son's,1,2579,2580,0.0,1,1,1610.0,3805.0,0,0,0,0,0,0,general_trader,general_trader,2034-08,historical_backbone,1,#FF6D00,7.8559
+Caracola Azul Oyj &,Estrella de Mar Consultants -,2,2444,2446,0.0,2,1,12537.5,0.0,1,1,2,1,1,1,general_trader,general_trader,2034-12,multi_tool_bridge,1,#FF6D00,7.8026
+Estrella del Mar Seafarer,Estrella del Mar Seafarer,1,2306,2307,0.0,1,1,2630.0,0.0,1,1,2,1,1,2,general_trader,general_trader,2034-01,historical_backbone,1,#FF6D00,7.7441
+Océano de Coral Corporation Express,Zambezi Valley  Marine biology,1,2294,2295,0.0,1,1,2350.0,0.0,1,1,2,0,1,1,general_trader,general_trader,2034-11,historical_backbone,1,#FF6D00,7.7389
+Mar del Este CJSC,Yu xian  Ltd. Liability Co Freight ,3,2235,2238,0.0,2,2,19318.33,20645.0,5,1,0,0,3,0,diversified_broker,general_trader,2034-08;2034-09,multi_tool_bridge,0,#FF1744,7.7138
+Ronan Catfish Corp Solutions,Yu wo  CJSC Marine sanctuary,1,2179,2180,0.0,1,1,32295.0,69260.0,0,0,2,0,0,2,general_trader,general_trader,2034-02,historical_backbone,1,#FF6D00,7.6875
+French Crab S.p.A. Worldwide,hǎi dǎn Corporation Wharf,1,2052,2053,0.0,1,1,8395.0,0.0,1,1,0,6,0,0,high_volume_distributor,diversified_broker,2034-02,historical_backbone,1,#FF6D00,7.6275
+Danish Shrimp Kga Solutions,Lake Turkana  Charter Boat  NV Marine,1,1975,1976,0.0,1,1,68675.0,0.0,1,0,1,1,1,1,general_trader,fish_network_expander,2034-08,historical_backbone,1,#FF6D00,7.5893
+Aqua Aura SE Marine life,hǎi dǎn Corporation Wharf,1,1948,1949,1.0,1,1,22695.0,379090.0,0,1,1,6,0,0,fish_intensive_hub,diversified_broker,2034-08,historical_backbone,3,#D500F9,7.5756
+Portuguese Tuna Incorporated Marine,zhāng yú Ges.m.b.H. Solutions,1,1880,1881,0.0,1,1,54775.0,0.0,0,2,1,0,0,1,general_trader,general_trader,2034-04,historical_backbone,1,#FF6D00,7.5401
+Arunachal Pradesh s A/S Transport,Gulf of Guinea   Enterprises,1,1813,1814,0.0,1,1,15.0,0.0,1,1,2,0,3,2,general_trader,general_trader,2034-12,historical_backbone,1,#FF6D00,7.5038
+Oceanic Oracle GmbH America,hǎi dǎn Corporation Wharf,1,1716,1717,0.0,1,1,16930.0,60215.0,0,1,1,6,0,0,general_trader,diversified_broker,2034-07,historical_backbone,1,#FF6D00,7.4489
+Pao gan SE Seal,Salt WaterCo Sp Marine life,1,1573,1574,0.0,1,1,15910.0,37330.0,5,0,0,0,3,2,diversified_broker,general_trader,2034-05,historical_backbone,1,#FF6D00,7.362
+Náutica del Norte Kga Holdings,Sea Breezes GmbH & Co. KG Shark,1,1330,1331,0.0,1,1,6250.0,25125.0,1,1,1,1,1,0,high_volume_distributor,high_volume_distributor,2034-11,historical_backbone,1,#FF6D00,7.1944
+Saltwater Supreme ОАО Forwading,Yu gou  SRL Merchants,1,1309,1310,0.0,1,1,120.0,0.0,5,0,1,0,3,2,high_volume_distributor,general_trader,2034-09,historical_backbone,1,#FF6D00,7.1785
+Kilimajaro Slopes   Oceanfront AB Overseas,Lake Victoria Catch  SE,1,1308,1309,0.0,1,1,3595.0,0.0,0,2,2,0,0,2,general_trader,general_trader,2034-12,historical_backbone,1,#FF6D00,7.1778
+Cymopoleia & Son's Estuary,Saltwater Supreme ОАО Forwading,1,1281,1282,0.0,1,1,6090.0,0.0,0,3,2,5,0,1,general_trader,high_volume_distributor,2034-07,historical_backbone,1,#FF6D00,7.157
+Mar y Luna Sagl,Marine Mates NV Worldwide,1,1254,1255,0.0,1,1,50300.0,60840.0,1,1,0,0,2,2,high_volume_distributor,fish_network_expander,2034-03,historical_backbone,1,#FF6D00,7.1357
+Black Sea Tuna Snapper,Coastal Cruisers Pic Shipping,1,1211,1212,0.0,1,1,18555.0,37215.0,1,1,2,1,1,0,general_trader,high_volume_distributor,2034-01,historical_backbone,1,#FF6D00,7.1009
+Black Sea Tuna Snapper,Fresh Limited Liability Company,1,1192,1193,0.0,1,1,8435.0,0.0,1,1,2,5,0,0,general_trader,diversified_broker,2034-03,historical_backbone,1,#FF6D00,7.0851
+Uttar Pradesh s AG,hǎi dǎn Corporation Wharf,1,1187,1188,0.0,1,1,23290.0,0.0,0,1,1,6,0,0,general_trader,diversified_broker,2034-08,historical_backbone,1,#FF6D00,7.0809
+Mar de la Vida S.p.A.,Mar del Placer Manatee,1,1152,1153,1.0,1,1,17980.0,179100.0,0,3,1,0,0,1,general_trader,fish_network_expander,2034-10,historical_backbone,3,#D500F9,7.051
+Mar y Luna Sagl,Sailors and Surfers Incorporated Enterprises,1,1132,1133,0.0,1,1,24900.0,374015.0,1,1,0,5,1,0,high_volume_distributor,diversified_broker,2034-07,historical_backbone,1,#FF6D00,7.0335
+Coral del Sur Ltd. Corporation Investment,Náutica del Sol A/S,1,1089,1090,0.0,1,1,45515.0,0.0,0,2,2,0,0,2,general_trader,general_trader,2034-07,historical_backbone,1,#FF6D00,6.9948
+Fresh Limited Liability Company,Kong zhong diao yu  Ges.m.b.H.,1,1072,1073,0.0,1,1,4645.0,80665.0,5,0,0,1,1,2,diversified_broker,fish_network_expander,2034-05,historical_backbone,1,#FF6D00,6.9791
+Ancla Azul Transportation Seafaring,Barents Sea  GmbH Cargo ,1,1062,1063,0.0,1,1,16595.0,0.0,0,2,1,1,1,1,general_trader,general_trader,2034-06,historical_backbone,1,#FF6D00,6.9698
+Olas del Mar Worldwide,xiǎo lóng xiā GmbH,1,1034,1035,0.0,1,1,133210.0,137090.0,1,0,1,0,0,0,general_trader,general_trader,2034-01,historical_backbone,1,#FF6D00,6.9431
+Baltic Sprat Seafaring Co Holdings,Saltwater Supreme ОАО Forwading,1,1024,1025,0.0,1,1,13655.0,0.0,0,3,2,5,0,1,general_trader,high_volume_distributor,2034-08,historical_backbone,1,#FF6D00,6.9334
+Caracola del Este Plc United,Saltwater Supreme ОАО Forwading,2,952,954,0.0,2,2,14897.5,21365.0,0,3,2,5,0,1,general_trader,high_volume_distributor,2034-10;2034-12,multi_tool_bridge,0,#FF1744,6.8617
+Mizoram  GmbH & Co. KG,Portuguese Tuna A/S Cargo,1,922,923,0.0,1,1,18985.0,29420.0,0,0,1,0,2,2,general_trader,general_trader,2034-05,historical_backbone,1,#FF6D00,6.8287
+bái suō wěn lú AS,hǎi dǎn Corporation Wharf,1,907,908,0.0,1,1,27970.0,0.0,0,1,1,6,0,0,general_trader,diversified_broker,2034-09,historical_backbone,1,#FF6D00,6.8123
+hǎi dǎn Corporation Wharf,jīng Coral LLC Carriers,1,891,892,0.0,1,1,72895.0,0.0,6,0,0,0,1,1,diversified_broker,general_trader,2034-11,historical_backbone,1,#FF6D00,6.7946
+Tsha wamba Pic Barracuda,hǎi dǎn Corporation Wharf,1,870,871,0.0,1,1,18945.0,98460.0,0,1,0,6,0,0,general_trader,diversified_broker,2034-06,historical_backbone,1,#FF6D00,6.7708
+Diao yu bi sai  Company,hǎi dǎn Corporation Wharf,1,856,857,0.0,1,1,21395.0,24110.0,0,1,0,6,0,0,general_trader,diversified_broker,2034-06,historical_backbone,1,#FF6D00,6.7546
+Coastal Cruisers Pic Shipping,Sailors and Surfers Incorporated Enterprises,1,756,757,0.0,1,1,4260.0,24405.0,1,1,0,5,1,0,high_volume_distributor,diversified_broker,2034-12,historical_backbone,1,#FF6D00,6.6307
+Sea Breezes GmbH & Co. KG Shark,Selous Game Reserve  A/S,1,739,740,0.0,1,1,725.0,0.0,1,1,0,1,1,1,high_volume_distributor,general_trader,2034-12,historical_backbone,1,#FF6D00,6.608
+Line S.A. de C.V.,Sailors and Surfers Incorporated Enterprises,2,695,697,0.0,1,2,16027.5,0.0,1,1,1,5,1,0,general_trader,diversified_broker,2034-01;2034-02,historical_backbone,1,#FF6D00,6.5482
+Nile Crocodile  Deep-sea Oyj Brothers,Surf's Up  Kga Shipping,1,687,688,0.0,1,1,3495.0,0.0,0,0,2,0,0,0,general_trader,general_trader,2034-07,historical_backbone,1,#FF6D00,6.5352
+Oceanic Oracle GmbH & Co. KG,hǎi dǎn Corporation Wharf,1,671,672,0.0,1,1,19735.0,0.0,0,1,1,6,0,0,general_trader,diversified_broker,2034-11,historical_backbone,1,#FF6D00,6.5117
+Lake Turkana  Charter Boat  NV Marine,Selous Game Reserve  A/S,1,658,659,0.0,1,1,6950.0,0.0,1,1,1,1,1,1,fish_network_expander,general_trader,2034-07,historical_backbone,1,#FF6D00,6.4922
+Arena del Mar Marine Marine biology,Kilimajaro Slopes   Incorporated and Son's,1,655,656,1.0,1,1,20660.0,97600.0,2,3,2,2,0,0,fish_network_expander,general_trader,2034-03,historical_backbone,3,#D500F9,6.4877
+Uttarakhand   Tidepool Oyj International,Yu xian  SRL Industrial,1,643,644,1.0,1,1,18310.0,26725.0,2,3,0,0,2,1,general_trader,fish_intensive_hub,2034-07,historical_backbone,3,#D500F9,6.4693
+Chhattisgarh  GmbH & Co. KG Brothers,Costa de la Felicidad Shipping,2,626,628,0.0,2,2,86695.0,455262.5,1,1,1,5,0,0,general_trader,diversified_broker,2034-08;2034-09,multi_tool_bridge,0,#FF1744,6.4441
+Oceanic Explorers Sagl Chart,hǎi dǎn Corporation Wharf,1,610,611,0.0,1,1,19390.0,0.0,0,1,0,6,0,0,general_trader,diversified_broker,2034-06,historical_backbone,1,#FF6D00,6.4167
+Arena del Mar Marine Marine biology,Danish Plaice Ltd. Liability Co Logistics,1,605,606,1.0,1,1,18540.0,318235.0,2,3,2,2,3,1,fish_network_expander,fish_network_expander,2034-06,historical_backbone,3,#D500F9,6.4085
+TunaTreat Company Marine sanctuary,xiǎo lóng xiā LC,4,602,606,0.0,4,3,12341.25,0.0,0,1,0,2,2,1,general_trader,general_trader,2034-09;2034-10;2034-12,multi_tool_bridge,5,#FF9100,6.4085
+Brisa del Este ОАО,Selous Game Reserve  S.A. de C.V.,1,605,606,0.0,1,1,12860.0,0.0,0,3,2,5,1,0,general_trader,diversified_broker,2034-02,historical_backbone,1,#FF6D00,6.4085
+Ancla Azul Transportation Seafaring,Mar de Estrellas N.V.,1,599,600,0.0,1,1,16430.0,0.0,0,2,1,0,0,0,general_trader,general_trader,2034-06,historical_backbone,1,#FF6D00,6.3986
+Ancla de Oro Ltd. Corporation,hǎi dǎn Corporation Wharf,1,549,550,0.0,1,1,20365.0,130060.0,0,1,0,6,0,0,general_trader,diversified_broker,2034-06,historical_backbone,1,#FF6D00,6.3117
+Belgian Cod BV Solutions,Cape of Good Hope   Corporation,1,542,543,1.0,1,1,23225.0,164145.0,2,2,0,2,3,1,fish_network_expander,general_trader,2034-11,historical_backbone,3,#D500F9,6.2989
+Kong zhong diao yu  Ges.m.b.H.,Simien Mountains   Company Transport,1,540,541,0.0,1,1,366605.0,0.0,1,1,2,0,2,2,fish_network_expander,general_trader,2034-04,historical_backbone,2,#FFC400,6.2953
+Caracola del Sol Services,Chuan gou  N.V. Delivery,1,530,531,1.0,1,1,19500.0,168075.0,5,0,0,0,3,1,diversified_broker,general_trader,2034-07,historical_backbone,3,#D500F9,6.2766
+Costa de la Felicidad Shipping,Victoria Falls   S.A. de C.V.,1,506,507,0.0,1,1,79890.0,0.0,5,0,0,0,3,0,diversified_broker,general_trader,2034-09,historical_backbone,1,#FF6D00,6.2305
+Pao gan SE Seal,Rajasthan  Market CJSC Tide,1,503,504,0.0,1,1,7680.0,0.0,5,0,0,0,3,2,diversified_broker,general_trader,2034-09,historical_backbone,1,#FF6D00,6.2246
+Mar del Oeste Transport,Saltwater Supreme ОАО Forwading,1,495,496,0.0,1,1,11680.0,45900.0,1,1,1,5,0,1,general_trader,high_volume_distributor,2034-08,historical_backbone,1,#FF6D00,6.2086
+Caracola Marina - Plc Enterprises,Caracola Marina - Plc Enterprises,2,488,490,0.0,2,2,17035.0,33065.0,0,0,2,0,0,2,general_trader,general_trader,2034-05;2034-07,multi_tool_bridge,0,#FF1744,6.1964
+Coral Rojo Ltd. Liability Co Express,bái suō wěn lú Ltd Cargo,1,474,475,0.0,1,1,78220.0,0.0,0,0,1,1,1,1,general_trader,general_trader,2034-12,historical_backbone,1,#FF6D00,6.1654
+Costa de la Felicidad Shipping,Mar de la Vida S.p.A.,1,473,474,1.0,1,1,16995.0,171150.0,5,0,0,0,3,1,diversified_broker,general_trader,2034-09,historical_backbone,3,#D500F9,6.1633
+Costa de la Felicidad Shipping,Surf and Sand & Son's,1,467,468,0.0,1,1,7595.0,12210.0,5,0,0,0,3,0,diversified_broker,general_trader,2034-10,historical_backbone,1,#FF6D00,6.1506
+Blue Horizon Family &,Pao gan SE Seal,1,453,454,1.0,1,1,18585.0,155005.0,0,3,1,5,0,0,general_trader,diversified_broker,2034-07,historical_backbone,3,#D500F9,6.1203
+Coastal Currents Ltd. Liability Co Delivery,biān yú AG Forwading,1,452,453,0.0,1,1,21005.0,19115.0,0,0,1,1,1,1,general_trader,general_trader,2034-05,historical_backbone,1,#FF6D00,6.1181
+Mar de Cielo S.A. de C.V. Manatee,hǎi dǎn Corporation Wharf,1,429,430,0.0,1,1,14205.0,57410.0,0,1,1,6,0,0,general_trader,diversified_broker,2034-04,historical_backbone,1,#FF6D00,6.0661
+Italian Sardines Inc Carriers,Vespuci Limited Liability Company Enterprises,1,423,424,0.0,1,1,3210.0,0.0,3,0,2,0,0,2,general_trader,general_trader,2034-06,historical_backbone,1,#FF6D00,6.0521
+Zambezi Valley  Marine biology,hǎi dǎn Corporation Wharf,1,396,397,0.0,1,1,295.0,0.0,0,1,1,6,0,0,general_trader,diversified_broker,2034-12,historical_backbone,1,#FF6D00,5.9865
+Aqua Advancements Corp Marine mist,Olas del Mar N.V.,1,375,376,0.0,1,1,24430.0,85945.0,0,0,1,2,3,1,general_trader,general_trader,2034-04,historical_backbone,1,#FF6D00,5.9322
+Wave Watchers SE Express,hǎi dǎn Corporation Wharf,1,374,375,0.0,1,1,24765.0,79440.0,0,1,0,6,0,0,general_trader,diversified_broker,2034-11,historical_backbone,1,#FF6D00,5.9296
+Coral del Sur Ltd. Corporation Investment,The Sea Turtle AB,1,370,371,0.0,1,1,3100.0,0.0,0,2,2,0,0,1,general_trader,niche_or_shell,2034-07,historical_backbone,1,#FF6D00,5.9189
+Asiotr Green  SE Marine sanctuary,Coral Cove BV Delivery,2,334,336,0.0,2,2,21000.0,52012.5,0,3,2,5,0,0,general_trader,diversified_broker,2034-06;2034-08,multi_tool_bridge,0,#FF1744,5.8201
+1 Ltd. Liability Co Cargo,Pao gan SE Seal,1,333,334,1.0,1,1,19785.0,226040.0,0,3,1,5,0,0,general_trader,diversified_broker,2034-06,historical_backbone,3,#D500F9,5.8141
+Mar de Cristalino Ges.m.b.H.,Marine Mates NV Worldwide,1,328,329,0.0,1,1,5230.0,82925.0,0,0,1,0,2,2,general_trader,fish_network_expander,2034-04,historical_backbone,1,#FF6D00,5.7991
+Mar del Caribe Sagl,hǎi dǎn Corporation Wharf,1,323,324,0.0,1,1,24490.0,0.0,0,1,0,6,0,0,general_trader,diversified_broker,2034-01,historical_backbone,1,#FF6D00,5.7838
+Manipur  Market Ltd. Liability Co,Olas del Sur Ltd,1,319,320,1.0,1,1,23315.0,50105.0,0,0,1,2,3,2,fish_network_expander,fish_intensive_hub,2034-12,historical_backbone,3,#D500F9,5.7714
+Olas del Sur Ltd,Playa del Cielo ОАО,1,310,311,1.0,1,1,18725.0,210110.0,2,3,2,2,3,0,fish_intensive_hub,general_trader,2034-06,historical_backbone,3,#D500F9,5.743
+Mar del Caribe LLC,Pao gan SE Seal,2,309,311,0.0,1,2,14565.0,0.0,0,3,0,5,0,0,general_trader,diversified_broker,2034-08;2034-10,historical_backbone,1,#FF6D00,5.743
+BlueWater Bistro Ltd. Liability Co,Makumba Ltd. Liability Co,1,309,310,0.0,1,1,8220.0,0.0,0,0,1,0,2,2,niche_or_shell,general_trader,2034-07,historical_backbone,1,#FF6D00,5.7398
+Nautical Navigators Limited Liability Company Holdings,Sea Breeze Corporation Marine sanctuary,1,309,310,0.0,1,1,9215.0,0.0,0,0,1,0,2,2,general_trader,fish_intensive_hub,2034-07,historical_backbone,1,#FF6D00,5.7398
+Barents Sea  GmbH Cargo ,Coral Cove Corporation Delivery,1,308,309,0.0,1,1,7780.0,0.0,1,1,1,0,2,2,general_trader,general_trader,2034-12,historical_backbone,1,#FF6D00,5.7366
+Costa del Viento Fish  S.p.A. United,Odisha  Limited Liability Company,1,307,308,0.0,1,1,1080.0,0.0,0,0,2,0,0,2,fish_network_expander,general_trader,2034-01,historical_backbone,1,#FF6D00,5.7333
+BlueWaterBites GmbH & Co. KG Export,Cape of Good Hope   S.p.A.,1,297,298,0.0,1,1,9210.0,0.0,1,1,1,0,2,2,general_trader,general_trader,2034-02,historical_backbone,1,#FF6D00,5.7004
+Turkish Calamari AB Marine conservation,hǎi dǎn Corporation Wharf,1,294,295,0.0,1,1,18295.0,47335.0,0,1,0,6,0,0,general_trader,diversified_broker,2034-12,historical_backbone,1,#FF6D00,5.6904
+Fresh Limited Liability Company,Sea Breezes GmbH & Co. KG Shark,1,287,288,0.0,1,1,3165.0,35310.0,5,0,0,1,1,0,diversified_broker,high_volume_distributor,2034-08,historical_backbone,1,#FF6D00,5.6664
+Panope Limited Liability Company,SRL Ltd. Liability Co,1,279,280,0.0,1,1,6600.0,0.0,5,0,1,0,0,1,high_volume_distributor,general_trader,2034-07,historical_backbone,1,#FF6D00,5.6384
+Adriatic Tuna Company Distribution,Kong zhong diao yu  NV Export,1,275,276,0.0,1,1,18015.0,0.0,0,0,2,0,2,2,general_trader,general_trader,2034-09,historical_backbone,1,#FF6D00,5.624
+Cameroon Estuary  Co Investment,hǎi dǎn Corporation Wharf,1,265,266,0.0,1,1,7900.0,0.0,0,1,0,6,0,0,general_trader,diversified_broker,2034-07,historical_backbone,1,#FF6D00,5.5872
+Mar de Estrellas Incorporated,hǎi dǎn Corporation Wharf,1,264,265,0.0,1,1,9585.0,49515.0,0,1,1,6,0,0,general_trader,diversified_broker,2034-12,historical_backbone,1,#FF6D00,5.5835
+Bahía del Sol ОАО,Océano de Coral Corporation Express,1,260,261,0.0,1,1,15935.0,0.0,0,3,2,1,1,2,general_trader,general_trader,2034-10,historical_backbone,1,#FF6D00,5.5683
+Tamil  Nautilus CJSC Consulting,xiǎo lóng xiā LC,1,256,257,0.0,1,1,6475.0,0.0,1,1,1,2,2,1,general_trader,general_trader,2034-08,historical_backbone,1,#FF6D00,5.553
+Dutch Bill  BV Marine,Lake Victoria Nile    Inc,1,251,252,0.0,1,1,1500.0,0.0,0,0,1,0,0,1,niche_or_shell,general_trader,2034-01,historical_backbone,1,#FF6D00,5.5334
+Coral Cove Sagl Chart,Sailors and Surfers Incorporated Enterprises,1,248,249,0.0,1,1,18000.0,0.0,0,3,0,5,1,0,general_trader,diversified_broker,2034-02,historical_backbone,1,#FF6D00,5.5215
+Belgian Cod BV Solutions,David Limited Liability Company Worldwide,3,246,249,1.0,2,3,22578.33,134763.33,2,2,0,2,3,0,fish_network_expander,general_trader,2034-06;2034-07;2034-12,multi_tool_bridge,0,#FF1744,5.5215
+Lake Kivu   BV United,Saltwater Symphony S.A. de C.V.,1,235,236,0.0,1,1,18910.0,0.0,0,2,2,1,1,1,fish_intensive_hub,general_trader,2034-10,historical_backbone,1,#FF6D00,5.4681
+Fresh Limited Liability Company,TunaTreat Company Marine sanctuary,1,235,236,0.0,1,1,2100.0,0.0,5,0,0,0,1,0,diversified_broker,general_trader,2034-07,historical_backbone,1,#FF6D00,5.4681
+French Crab S.p.A. Worldwide,Nile Crocodile  Sailboat Sp Line,1,235,236,0.0,1,1,7940.0,0.0,1,1,0,2,1,1,high_volume_distributor,general_trader,2034-10,historical_backbone,1,#FF6D00,5.4681
+Adriatic Squid Limited Liability Company Current,Greek Sea Bass LLC,1,231,232,0.0,1,1,5510.0,0.0,0,0,2,0,2,0,niche_or_shell,general_trader,2034-07,historical_backbone,1,#FF6D00,5.451
+Mandalore S.A. de C.V. Logistics,Oceanic Oracle GmbH America,1,231,232,0.0,1,1,81225.0,0.0,1,1,1,0,1,1,general_trader,general_trader,2034-04,historical_backbone,1,#FF6D00,5.451
+Mar del Este CJSC,SeaSelect Foods Oyj Transport,1,230,231,0.0,1,1,23190.0,30820.0,5,1,0,0,3,1,diversified_broker,niche_or_shell,2034-12,historical_backbone,1,#FF6D00,5.4467
+Ola Azul Ges.m.b.H. Services,Playa de Coral Distribution Marine sanctuary,1,229,230,0.0,1,1,23975.0,46110.0,1,1,1,0,0,0,general_trader,general_trader,2034-07,historical_backbone,1,#FF6D00,5.4424
+Arunachal Pradesh s A/S Transport,Oka  Ltd. Liability Co,1,228,229,0.0,1,1,360.0,0.0,1,1,2,0,3,2,general_trader,general_trader,2034-04,historical_backbone,1,#FF6D00,5.4381
+Barents Sea Shrimp N.V.,hǎi dǎn Corporation Wharf,1,223,224,0.0,1,1,17695.0,0.0,0,1,0,6,0,0,niche_or_shell,diversified_broker,2034-09,historical_backbone,1,#FF6D00,5.4161
+Bujagali Falls  Oyj Marine,Sailors and Surfers Incorporated Enterprises,1,217,218,0.0,1,1,7855.0,0.0,0,3,0,5,1,0,niche_or_shell,diversified_broker,2034-11,historical_backbone,1,#FF6D00,5.3891
+LLC Limited Liability Company,The Salty Pearl Tsunami Corp Express,1,207,208,0.0,1,1,18885.0,106005.0,0,0,1,0,0,2,general_trader,general_trader,2034-07,historical_backbone,1,#FF6D00,5.3423
+Caracola del Sol Services,Mount Kenya  Tsunami GmbH & Co. KG Cargo,1,207,208,0.0,1,1,18365.0,64215.0,5,0,0,0,3,0,diversified_broker,general_trader,2034-10,historical_backbone,1,#FF6D00,5.3423
+Playa del Sol LC -,Zambezi Valley  Marine biology,1,206,207,0.0,1,1,17750.0,159015.0,0,0,2,0,1,1,general_trader,general_trader,2034-02,historical_backbone,1,#FF6D00,5.3375
+Gujarat  S.A. de C.V.,xiǎo lóng xiā LC,1,201,202,0.0,1,1,8805.0,48410.0,0,2,1,2,2,1,general_trader,general_trader,2034-05,historical_backbone,1,#FF6D00,5.3132
+Kallianassa Fish  AG Solutions,Mar del Este CJSC,1,192,193,0.0,1,1,8380.0,9500.0,0,3,0,5,1,0,niche_or_shell,diversified_broker,2034-06,historical_backbone,1,#FF6D00,5.2679
+Surf and Sea Dashi Oyj Marine ecology,hǎi dǎn Corporation Wharf,1,186,187,0.0,1,1,1690.0,6805.0,0,1,0,6,0,0,general_trader,diversified_broker,2034-08,historical_backbone,1,#FF6D00,5.2364
+Bahía del Este SE,West Bengal  SE Family,1,186,187,0.0,1,1,10425.0,100045.0,0,0,2,0,0,1,general_trader,general_trader,2034-01,historical_backbone,1,#FF6D00,5.2364
+Costa de la Felicidad Shipping,Jammu Ltd. Liability Co,1,186,187,0.0,1,1,5185.0,0.0,5,0,0,1,1,1,diversified_broker,general_trader,2034-12,historical_backbone,1,#FF6D00,5.2364
+Mar de Plata BV Marine,Meris Current Corp Transportation,1,177,178,0.0,1,1,21620.0,94435.0,0,2,2,0,0,1,general_trader,general_trader,2034-07,historical_backbone,1,#FF6D00,5.1874
+Bahía de Plata GmbH,Mar de Coral GmbH and Son's,1,177,178,0.0,1,1,365.0,0.0,0,0,1,0,0,0,general_trader,general_trader,2034-07,historical_backbone,1,#FF6D00,5.1874
+Mar de Estrellas Ltd,hǎi dǎn Corporation Wharf,1,175,176,0.0,1,1,5805.0,0.0,0,1,0,6,0,0,general_trader,diversified_broker,2034-03,historical_backbone,1,#FF6D00,5.1761
+Mar del Este CJSC,SeaSiren Limited Liability Company,1,165,166,1.0,1,1,19875.0,70820.0,5,1,0,0,3,1,diversified_broker,general_trader,2034-05,historical_backbone,3,#D500F9,5.118
+Marine Muse Ltd. Corporation,Sailors and Surfers Incorporated Enterprises,1,164,165,0.0,1,1,195.0,0.0,0,3,0,5,1,0,niche_or_shell,diversified_broker,2034-04,historical_backbone,1,#FF6D00,5.112
+Oceanic Oracle GmbH & Co. KG,SeaLion Marine AG Express,1,163,164,0.0,1,1,17530.0,489215.0,0,1,1,0,0,1,general_trader,general_trader,2034-07,historical_backbone,1,#FF6D00,5.1059
+Haryana s Sagl Transport,Zambezi Gorge  N.V. Transport,1,162,163,0.0,1,1,4475.0,0.0,0,2,0,1,1,2,general_trader,diversified_broker,2034-07,historical_backbone,1,#FF6D00,5.0999
+Jammu & Kashmir  GmbH & Co. KG and Son's,Rift Valley fishery Inc,1,162,163,0.0,1,1,9545.0,588460.0,0,3,2,1,1,2,general_trader,general_trader,2034-04,historical_backbone,1,#FF6D00,5.0999
+Ethiopian Highlands  Incorporated Marine biology,Madagascar Coast  AG Freight ,1,153,154,0.0,1,1,17210.0,130005.0,2,3,1,2,2,0,general_trader,fish_intensive_hub,2034-10,historical_backbone,1,#FF6D00,5.0434
+Agua Limited Liability Company Transit,Kong zhong diao yu  Ges.m.b.H.,1,153,154,0.0,1,1,34910.0,0.0,0,3,2,1,1,2,general_trader,fish_network_expander,2034-03,historical_backbone,1,#FF6D00,5.0434
+Bay of Bengal's A/S,Costa de la Felicidad Shipping,1,151,152,0.0,1,1,15900.0,0.0,1,1,1,5,0,0,general_trader,diversified_broker,2034-07,historical_backbone,1,#FF6D00,5.0304
+Gulf of Tadjoura  AS,Sailors and Surfers Incorporated Enterprises,1,149,150,0.0,1,1,69820.0,0.0,0,3,0,5,1,0,general_trader,diversified_broker,2034-04,historical_backbone,1,#FF6D00,5.0173
+Estrella de Mar SE,Playa de la Luna Incorporated,1,146,147,0.0,1,1,190.0,0.0,0,0,1,1,0,0,general_trader,general_trader,2034-02,historical_backbone,1,#FF6D00,4.9972
+Punjab s A/S Marine,The Salty Dog Oyj,1,142,143,0.0,1,1,88740.0,86030.0,0,2,2,0,2,0,fish_network_expander,general_trader,2034-12,historical_backbone,1,#FF6D00,4.9698
+Saltwater Symphony - CJSC Marine,Scottish Oysters SE Consulting,1,140,141,0.0,1,1,5075.0,0.0,0,0,2,0,0,1,general_trader,general_trader,2034-09,historical_backbone,1,#FF6D00,4.9558
+Dutch Mussels GmbH Carriers,Fresh Limited Liability Company,1,139,140,0.0,1,1,6285.0,74115.0,0,1,0,5,0,0,fish_network_expander,diversified_broker,2034-06,historical_backbone,1,#FF6D00,4.9488
+Mar de Cristal CJSC,William Inc Marine sanctuary,1,139,140,0.0,1,1,8600.0,69360.0,0,0,1,0,0,1,general_trader,general_trader,2034-07,historical_backbone,1,#FF6D00,4.9488
+Maharashtra  Ltd. Liability Co Shipping,biān yú AG Forwading,1,137,138,0.0,1,1,21870.0,0.0,0,2,1,1,1,1,fish_network_expander,general_trader,2034-11,historical_backbone,1,#FF6D00,4.9345
+Icelandic Oysters S.A. de C.V. Lighthouse,Orange River   Incorporated Shipping,1,137,138,1.0,1,1,17670.0,59430.0,2,3,0,0,2,2,general_trader,fish_intensive_hub,2034-05,historical_backbone,3,#D500F9,4.9345
+BlueWaterBites GmbH & Co. KG Export,Mar del Caribe Express Surf,1,135,136,0.0,1,1,15100.0,0.0,1,1,1,0,0,1,general_trader,niche_or_shell,2034-07,historical_backbone,1,#FF6D00,4.92
+Caracola del Este N.V.,hǎi dǎn Corporation Wharf,1,134,135,1.0,1,1,20210.0,301045.0,0,1,0,6,0,0,niche_or_shell,diversified_broker,2034-07,historical_backbone,3,#D500F9,4.9127
+Marine Mates NV Worldwide,Saltwater Symphony S.A. de C.V.,1,133,134,0.0,1,1,4275.0,92825.0,0,2,2,1,1,1,fish_network_expander,general_trader,2034-05,historical_backbone,1,#FF6D00,4.9053
+Caracola del Sol Services,CoralCrest Inc and Son's,1,133,134,0.0,1,1,40820.0,48020.0,5,0,0,0,3,0,diversified_broker,general_trader,2034-01,historical_backbone,1,#FF6D00,4.9053
+The Salty Dog Limited Liability Company,hǎi dǎn Corporation Wharf,1,132,133,0.0,1,1,19145.0,20610.0,0,1,1,6,0,0,fish_intensive_hub,diversified_broker,2034-10,historical_backbone,1,#FF6D00,4.8978
+3 Oceanography ОАО Marine life,Sea Spray AS Cargo,1,132,133,1.0,1,1,19380.0,62360.0,0,2,1,2,3,0,fish_intensive_hub,general_trader,2034-11,historical_backbone,3,#D500F9,4.8978
+Marine Masterminds Sp Solutions,Playa de Oro ОАО,1,131,132,0.0,1,1,16985.0,22310.0,0,0,1,0,0,1,niche_or_shell,niche_or_shell,2034-08,historical_backbone,1,#FF6D00,4.8903
+Ola Marina Company Line,Perla del Mar CJSC,1,124,125,0.0,1,1,4430.0,0.0,0,2,2,1,1,1,general_trader,general_trader,2034-06,historical_backbone,1,#FF6D00,4.8363
+Mar de la Costa Company,Olas del Sur Corp,1,123,124,0.0,1,1,1030.0,0.0,0,0,2,0,0,1,general_trader,general_trader,2034-12,historical_backbone,1,#FF6D00,4.8283
+Caspian Sea   Ltd. Corporation Export,Uttarakhand s Inc United,1,122,123,0.0,1,1,525.0,0.0,0,0,1,0,0,1,general_trader,niche_or_shell,2034-01,historical_backbone,1,#FF6D00,4.8203
+Caracola Azul Ltd. Corporation,Estrella de Mar Consultants -,1,122,123,0.0,1,1,1910.0,0.0,1,1,2,1,1,1,fish_network_expander,general_trader,2034-08,historical_backbone,1,#FF6D00,4.8203
+Diao er  Limited Liability Company,Portuguese Sea Bass &,1,121,122,0.0,1,1,3330.0,0.0,0,0,1,0,0,1,general_trader,general_trader,2034-09,historical_backbone,1,#FF6D00,4.8122
+2 Limited Liability Company,Mar del Este CJSC,2,117,119,1.0,2,2,21997.5,31117.5,0,3,1,5,1,0,general_trader,diversified_broker,2034-07;2034-09,multi_tool_bridge,0,#FF1744,4.7875
+Mar del Este CJSC,Yu er he  Bonito,1,115,116,1.0,1,1,21015.0,128115.0,5,1,0,0,3,1,diversified_broker,fish_network_expander,2034-01,historical_backbone,3,#D500F9,4.7622
+Paul AG Marine biology,Zambezi River   GmbH Marine,1,112,113,0.0,1,1,20000.0,0.0,0,0,2,0,0,1,general_trader,general_trader,2034-05,historical_backbone,1,#FF6D00,4.7362
+Chituku Trout Inc Cargo,Yu xian  SRL Industrial,1,111,112,0.0,1,1,14505.0,94305.0,3,2,2,0,2,1,niche_or_shell,fish_intensive_hub,2034-01,historical_backbone,1,#FF6D00,4.7274
+AquaBite Limited Liability Company Marine,Mar del Este CJSC,1,109,110,1.0,1,1,20775.0,63125.0,0,3,1,5,1,0,niche_or_shell,diversified_broker,2034-04,historical_backbone,3,#D500F9,4.7095
+French Sardine LLC Transit,Tamil  Marina N.V. Family,1,108,109,0.0,1,1,7100.0,0.0,0,0,0,0,2,2,niche_or_shell,general_trader,2034-08,historical_backbone,1,#FF6D00,4.7005
+Arunachal Pradesh s Plc,Náutica del Sol Corporation,1,107,108,1.0,1,1,17325.0,122045.0,0,0,1,1,1,1,fish_network_expander,fish_network_expander,2034-05,historical_backbone,3,#D500F9,4.6913
+Dutch  Ltd. Liability Co Consultants,Mar de la Aventura & Incorporated Shipping,1,103,104,0.0,1,1,4540.0,0.0,1,1,1,0,2,2,general_trader,general_trader,2034-06,historical_backbone,1,#FF6D00,4.654
+Assam  Market Cargo ship Company Marine conservation,Ocean Oasis SRL Anchor,1,101,102,0.0,1,1,9580.0,64335.0,0,2,2,0,0,1,fish_intensive_hub,general_trader,2034-01,historical_backbone,1,#FF6D00,4.6347
+Logistics Ltd. Liability Co,hǎi dǎn Corporation Wharf,1,101,102,1.0,1,1,62395.0,609385.0,0,1,0,6,0,0,general_trader,diversified_broker,2034-12,historical_backbone,3,#D500F9,4.6347
+Costa de la Felicidad and Sagl Marine,Selous Game Reserve  S.A. de C.V.,1,100,101,0.0,1,1,4405.0,20510.0,0,3,2,5,1,0,general_trader,diversified_broker,2034-11,historical_backbone,1,#FF6D00,4.625
+Caracola del Sol Services,Green Valley Sp Current,1,97,98,0.0,1,1,5825.0,60535.0,5,0,0,0,3,0,diversified_broker,general_trader,2034-09,historical_backbone,1,#FF6D00,4.5951
+Mar del Caribe Sagl,Nile Crocodile  OJSC Express,1,94,95,0.0,1,1,24600.0,110040.0,0,1,0,3,2,2,general_trader,niche_or_shell,2034-07,historical_backbone,1,#FF6D00,4.5643
+Sea Breezes GmbH & Co. KG Shark,The Salty Dog Logistics Leska,1,91,92,0.0,1,1,19895.0,0.0,1,1,0,1,1,1,high_volume_distributor,general_trader,2034-12,historical_backbone,1,#FF6D00,4.5326
+Estrella de la Costa Ltd Distribution,Jiyu  Barracuda A/S Line,1,90,91,0.0,1,1,5075.0,0.0,0,0,0,0,0,0,general_trader,general_trader,2034-12,historical_backbone,1,#FF6D00,4.5218
+Oceanic Oracle GmbH America,Scottish Oysters Pic Transport,1,88,89,0.0,1,1,9710.0,31530.0,0,1,1,0,0,1,general_trader,general_trader,2034-01,historical_backbone,1,#FF6D00,4.4998
+Mar y Luna Co,hǎi dǎn Corporation Wharf,1,88,89,0.0,1,1,17055.0,0.0,0,1,0,6,0,0,general_trader,diversified_broker,2034-05,historical_backbone,1,#FF6D00,4.4998
+Ocean Observers Ges.m.b.H. Export,guī yú Corporation Solutions,1,87,88,0.0,1,1,22125.0,271255.0,0,0,0,3,2,0,niche_or_shell,niche_or_shell,2034-05,historical_backbone,1,#FF6D00,4.4886
+Caracola del Sol Services,SE Ltd. Liability Co,1,83,84,0.0,1,1,1105.0,0.0,5,0,0,0,3,0,diversified_broker,general_trader,2034-11,historical_backbone,1,#FF6D00,4.4427
+Kilimajaro Slopes   N.V. Logistics,Sailors and Surfers Incorporated Enterprises,1,79,80,0.0,1,1,25815.0,0.0,0,3,0,5,1,0,general_trader,diversified_broker,2034-03,historical_backbone,1,#FF6D00,4.3944
+Daniel Ferry N.V. Transit,Olas del Sur Ltd,1,79,80,1.0,1,1,18295.0,156020.0,2,3,1,2,3,2,general_trader,fish_intensive_hub,2034-05,historical_backbone,3,#D500F9,4.3944
+Selous Game Reserve  S.A. de C.V.,The Sea Turtle Sagl Cargo ship,1,78,79,0.0,1,1,155.0,2000.0,5,1,0,0,3,2,diversified_broker,general_trader,2034-03,historical_backbone,1,#FF6D00,4.382
+Mar de la Luna S.p.A.,Mar del Paraíso Corporation Logistics,1,73,74,1.0,1,1,21520.0,191165.0,2,3,0,0,0,1,general_trader,fish_intensive_hub,2034-11,historical_backbone,3,#D500F9,4.3175
+Isla del Tesoro SE Transport,Pao gan SE Seal,1,68,69,1.0,1,1,19075.0,239145.0,0,3,1,5,0,0,general_trader,diversified_broker,2034-11,historical_backbone,3,#D500F9,4.2485
+Dry Creek Incorporated Laksa,Saltwater Solutions AB Marine conservation,1,68,69,0.0,1,1,6560.0,0.0,0,0,1,0,0,1,general_trader,general_trader,2034-03,historical_backbone,1,#FF6D00,4.2485
+Black Sea Tuna Snapper,Mar y Luna Ltd. Liability Co Enterprises,1,67,68,1.0,1,1,21590.0,334320.0,1,1,2,2,3,0,general_trader,niche_or_shell,2034-05,historical_backbone,3,#D500F9,4.2341
+Congo River  AG Transit,Selous Game Reserve  A/S,1,67,68,0.0,1,1,2070.0,0.0,3,2,2,1,1,1,niche_or_shell,general_trader,2034-04,historical_backbone,1,#FF6D00,4.2341
+Mar del Oeste Transport,Sailors and Surfers Incorporated Enterprises,2,66,68,0.0,1,2,10252.5,11352.5,1,1,1,5,1,0,general_trader,diversified_broker,2034-04;2034-06,historical_backbone,1,#FF6D00,4.2341
+Belgian Shrimps Ocean Corp Holdings,Blue Nile  OJSC Logistics,1,66,67,1.0,1,1,22905.0,596535.0,0,2,1,2,3,0,general_trader,general_trader,2034-12,historical_backbone,3,#D500F9,4.2195
+Madagascar Coast  AG Freight ,Surf's Up s Sp,1,64,65,1.0,1,1,24185.0,102040.0,2,2,0,2,3,1,fish_intensive_hub,general_trader,2034-10,historical_backbone,3,#D500F9,4.1897
+Arunachal Pradesh s Brine,Victoria Falls   Pier Corp Solutions,1,64,65,0.0,1,1,4765.0,0.0,1,0,1,0,0,0,fish_network_expander,general_trader,2034-11,historical_backbone,1,#FF6D00,4.1897
+Irish Trout Inc Solutions,hǎi dǎn Corporation Wharf,1,62,63,0.0,1,1,19145.0,19505.0,0,1,0,6,0,0,general_trader,diversified_broker,2034-09,historical_backbone,1,#FF6D00,4.1589
+Coral del Sur LC Export,Mar y Viento A/S,1,59,60,0.0,1,1,19885.0,113010.0,3,2,2,0,0,1,niche_or_shell,general_trader,2034-12,historical_backbone,1,#FF6D00,4.1109
+Caracola de Coral Oyj,Mar de la Felicidad NV Investment,1,58,59,0.0,1,1,1935.0,127125.0,0,0,2,0,0,1,general_trader,general_trader,2034-11,historical_backbone,1,#FF6D00,4.0943
+Neptune's Harvest LC Transport,Wave Watchers Co Holdings,1,57,58,0.0,1,1,3435.0,0.0,0,0,2,0,0,1,general_trader,general_trader,2034-09,historical_backbone,1,#FF6D00,4.0775
+Caracola del Sol Services,Saltwater Serenity Inc Caviar,1,56,57,0.0,1,1,21580.0,52350.0,5,0,0,0,3,0,diversified_broker,general_trader,2034-05,historical_backbone,1,#FF6D00,4.0604
+mán yú AB International,mán yú AB International,1,55,56,0.0,1,1,1910.0,0.0,0,1,0,0,1,0,general_trader,general_trader,2034-01,historical_backbone,1,#FF6D00,4.0431
+Portuguese Tuna Incorporated Marine,S.A. de C.V. AG,1,54,55,0.0,1,1,20735.0,0.0,0,2,1,0,0,0,general_trader,niche_or_shell,2034-02,historical_backbone,1,#FF6D00,4.0254
+Thundwa S.A. de C.V.,hǎi dǎn Corporation Wharf,1,53,54,1.0,1,1,19075.0,0.0,0,1,0,6,0,0,general_trader,diversified_broker,2034-02,historical_backbone,3,#D500F9,4.0073
+Estrella de Mar Consultants -,Sikkim  Market Corporation Investment,1,52,53,0.0,1,1,320.0,0.0,1,1,1,0,0,2,general_trader,general_trader,2034-05,historical_backbone,1,#FF6D00,3.989
+OceanSavor Seafoam Ltd. Liability Co Transit,Oceanic Oracle GmbH America,1,51,52,0.0,1,1,25720.0,60705.0,3,2,2,0,1,1,niche_or_shell,general_trader,2034-02,historical_backbone,1,#FF6D00,3.9703
+Ancla de Oro Kga Import,Greek Octopus Ltd. Corporation,1,51,52,1.0,1,1,21220.0,41125.0,0,2,2,2,3,1,fish_intensive_hub,general_trader,2034-12,historical_backbone,3,#D500F9,3.9703
+Fisherman's Best Marine conservation,Náutica del Mar AG,1,51,52,0.0,1,1,15615.0,48330.0,0,2,1,0,3,2,general_trader,general_trader,2034-12,historical_backbone,1,#FF6D00,3.9703
+Mar y Luna Ltd. Corporation,Mar y Luna Sagl,1,50,51,0.0,1,1,18905.0,0.0,0,0,1,1,1,0,niche_or_shell,high_volume_distributor,2034-12,historical_backbone,1,#FF6D00,3.9512
+Arunachal Pradesh s A/S Transport,Bu yu wang Motorboat,1,50,51,0.0,1,1,2705.0,0.0,1,1,2,0,3,2,general_trader,niche_or_shell,2034-04,historical_backbone,1,#FF6D00,3.9512
+Ola de la Costa N.V.,Punjab Sea  CJSC Estuary,1,50,51,0.0,1,1,42470.0,459420.0,1,1,1,0,2,2,general_trader,fish_network_expander,2034-07,historical_backbone,1,#FF6D00,3.9512
+Mar del Este CJSC,Turkish Salmon A/S Marine,1,50,51,0.0,1,1,26265.0,0.0,5,1,0,0,1,0,diversified_broker,fish_network_expander,2034-08,historical_backbone,1,#FF6D00,3.9512
+Baltic Sprat Corp Roe,Selous Game Reserve  S.A. de C.V.,1,47,48,0.0,1,1,6745.0,77515.0,0,3,2,5,1,0,general_trader,diversified_broker,2034-03,historical_backbone,1,#FF6D00,3.8918
+Mar del Paraíso Corporation Logistics,Turkish Salmon A/S Marine,1,46,47,1.0,1,1,27785.0,251115.0,0,0,1,0,1,0,fish_intensive_hub,fish_network_expander,2034-12,historical_backbone,3,#D500F9,3.8712
+Isla del Este Kga Tidepool,Kong zhong diao yu  Ges.m.b.H.,1,44,45,1.0,1,1,53315.0,890845.0,0,0,0,1,1,2,niche_or_shell,fish_network_expander,2034-08,historical_backbone,3,#D500F9,3.8286
+hǎi dǎn Corporation Wharf,mán yú AB International,1,44,45,0.0,1,1,505.0,0.0,6,0,0,0,1,0,diversified_broker,general_trader,2034-12,historical_backbone,1,#FF6D00,3.8286
+Belgian Cod BV Solutions,Marine Masterminds Kga Line,1,43,44,1.0,1,1,5205.0,41405.0,2,2,0,2,3,0,fish_network_expander,general_trader,2034-08,historical_backbone,3,#D500F9,3.8067
+Jammu Ltd. Liability Co,Meghalaya  Ltd. Liability Co Marine conservation,1,41,42,0.0,1,1,2250.0,0.0,1,1,1,0,0,1,general_trader,niche_or_shell,2034-07,historical_backbone,1,#FF6D00,3.7612
+Malabar Sea Catch -,West Bengal  Company Nori,1,39,40,0.0,1,1,25135.0,37310.0,3,2,2,0,0,0,niche_or_shell,fish_network_expander,2034-06,historical_backbone,1,#FF6D00,3.7136
+Arena del Mar Marine Marine biology,Playa de Arena Submarine S.A. de C.V. Marine,1,37,38,1.0,1,1,19625.0,171010.0,2,3,2,1,1,1,fish_network_expander,general_trader,2034-08,historical_backbone,3,#D500F9,3.6636
+Pao gan SE Seal,The Sea Turtle A/S,2,36,38,0.0,2,1,35942.5,142802.5,5,0,0,0,3,2,diversified_broker,niche_or_shell,2034-01,multi_tool_bridge,1,#FF6D00,3.6636
+Saltwater Solitude N.V. International,Tsha wamba S.A. de C.V.,1,35,36,1.0,1,1,41405.0,85350.0,2,0,2,2,0,2,niche_or_shell,niche_or_shell,2034-02,historical_backbone,3,#D500F9,3.6109
+Mar del Este CJSC,TideTurner Tidepool Co Enterprises,1,35,36,1.0,1,1,16330.0,38225.0,5,1,0,1,1,1,diversified_broker,fish_network_expander,2034-01,historical_backbone,3,#D500F9,3.6109
+Assam  Market Tilapia Ltd Worldwide,Náutica del Sol S.A. de C.V.,1,35,36,0.0,1,1,12810.0,238155.0,0,0,0,3,0,2,general_trader,niche_or_shell,2034-06,historical_backbone,1,#FF6D00,3.6109
+Maharashtra   Limited Liability Company,Náutica del Sol Corporation,1,35,36,0.0,1,1,10535.0,0.0,1,1,1,1,1,1,general_trader,fish_network_expander,2034-11,historical_backbone,1,#FF6D00,3.6109
+Mar del Este CJSC,Saltwater Sisters Ltd. Corporation Shipping,1,33,34,1.0,1,1,198505.0,5649615.0,5,1,0,0,3,1,diversified_broker,general_trader,2034-06,historical_backbone,4,#FF3D00,3.5553
+Wave Watchers Underwater Ltd. Corporation Solutions,Yu xian  SRL Industrial,1,33,34,1.0,1,1,24215.0,72870.0,2,3,0,0,2,1,general_trader,fish_intensive_hub,2034-09,historical_backbone,3,#D500F9,3.5553
+Saltwater Supreme ОАО Forwading,Surf and Sea Seal Ltd Forwading,1,31,32,0.0,1,1,78155.0,0.0,5,0,1,1,1,1,high_volume_distributor,general_trader,2034-10,historical_backbone,1,#FF6D00,3.4965
+Nagaland Sea Catch Ltd. Liability Co,Saltwater Supreme ОАО Forwading,1,31,32,1.0,1,1,26755.0,912415.0,0,3,1,5,0,1,niche_or_shell,high_volume_distributor,2034-02,historical_backbone,3,#D500F9,3.4965
+Marine Adventures Seabreeze AS Forwading,hǎi dǎn Corporation Wharf,1,31,32,0.0,1,1,22400.0,888565.0,0,1,0,6,0,0,niche_or_shell,diversified_broker,2034-10,historical_backbone,1,#FF6D00,3.4965
+Kafue River  Seagrass Limited Liability Company Marine,Playa de Coral OJSC,1,30,31,0.0,1,1,41030.0,160120.0,0,0,2,0,0,0,general_trader,general_trader,2034-04,historical_backbone,1,#FF6D00,3.4657
+Ocean Outfitters Limited Liability Company Distribution,Sea Breezes GmbH & Co. KG Shark,1,29,30,0.0,1,1,5375.0,0.0,0,0,0,1,1,0,general_trader,high_volume_distributor,2034-12,historical_backbone,1,#FF6D00,3.434
+Diao yu bi sai  Ltd. Liability Co,Seashore Sanctuary N.V. Consultants,1,29,30,1.0,1,1,23300.0,168030.0,3,2,2,2,0,0,niche_or_shell,niche_or_shell,2034-01,historical_backbone,3,#D500F9,3.434
+Angrapa Ltd. Liability Co Export,Mar Azul Ltd. Liability Co,1,28,29,0.0,1,1,19230.0,0.0,1,1,1,3,0,0,general_trader,niche_or_shell,2034-07,historical_backbone,1,#FF6D00,3.4012
+Caspian Sea   Company Seafarer,Kilimajaro Slopes   Oceanfront AB Overseas,1,27,28,0.0,1,1,12705.0,0.0,0,0,1,0,2,2,general_trader,general_trader,2034-11,historical_backbone,1,#FF6D00,3.3673
+Irtysh  Dredge A/S Distribution,Olas del Sur Sp,1,26,27,0.0,1,1,8890.0,0.0,0,0,1,1,1,1,niche_or_shell,general_trader,2034-06,historical_backbone,1,#FF6D00,3.3322
+Drakensberg  S.A. de C.V. Marine ecology,Mar de la Vida SRL,1,26,27,0.0,1,1,3145.0,0.0,0,0,2,0,0,2,general_trader,general_trader,2034-05,historical_backbone,1,#FF6D00,3.3322
+Océano del Este Corporation,River Gambia  Brine Pic Express,1,25,26,0.0,1,1,4390.0,39125.0,0,0,1,1,1,1,general_trader,general_trader,2034-11,historical_backbone,1,#FF6D00,3.2958
+Coral Cove BV Delivery,biān yú Dry dock,1,25,26,0.0,1,1,26170.0,0.0,5,0,0,0,3,2,diversified_broker,niche_or_shell,2034-07,historical_backbone,1,#FF6D00,3.2958
+Mar de Cristalino Beach,Marine Mates Cruise ship,1,25,26,0.0,1,1,198550.0,238065.0,0,2,0,0,2,0,general_trader,general_trader,2034-07,historical_backbone,2,#FFC400,3.2958
+Atlantic Ocean Coast  _ Ges.m.b.H. Express,SilverStream CJSC Marine conservation,1,25,26,0.0,1,1,7400.0,0.0,2,2,0,1,1,1,niche_or_shell,general_trader,2034-10,historical_backbone,1,#FF6D00,3.2958
+Delhi ers Ltd. Liability Co,xiǎo lóng xiā Kga,1,25,26,0.0,1,1,20610.0,0.0,0,0,1,0,0,2,general_trader,general_trader,2034-04,historical_backbone,1,#FF6D00,3.2958
+Mar del Este CJSC,ReefRider S.A. de C.V.,1,25,26,0.0,1,1,16535.0,0.0,5,1,0,0,3,0,diversified_broker,niche_or_shell,2034-10,historical_backbone,1,#FF6D00,3.2958
+Caracola Azul Oyj &,Paradera S.A. de C.V.,1,25,26,1.0,1,1,20970.0,79905.0,1,1,2,2,1,1,general_trader,general_trader,2034-07,historical_backbone,3,#D500F9,3.2958
+Ancla Azul Transportation Seafaring,Estrella del Mar Logistics Charter Boat ,1,24,25,0.0,1,1,18700.0,0.0,0,2,1,0,0,1,general_trader,general_trader,2034-09,historical_backbone,1,#FF6D00,3.2581
+Caracola del Este Corporation Express,Tide Turners S.A. de C.V. Marine,1,22,23,0.0,1,1,0.0,0.0,1,1,2,0,3,2,high_volume_distributor,general_trader,2034-09,historical_backbone,1,#FF6D00,3.1781
+Khundu Whale AG Cargo,Mar de la Felicidad NV Investment,1,22,23,0.0,1,1,800.0,38110.0,1,1,1,0,0,1,general_trader,general_trader,2034-11,historical_backbone,1,#FF6D00,3.1781
+Caracola del Sol Services,Okavango River  NV Marine life,1,22,23,0.0,1,1,21165.0,15810.0,5,0,0,1,1,1,diversified_broker,general_trader,2034-09,historical_backbone,1,#FF6D00,3.1781
+Wave Watchers Ltd International,páng xiè Ltd. Liability Co Freight ,1,20,21,0.0,1,1,6130.0,0.0,3,2,0,0,0,0,general_trader,niche_or_shell,2034-11,historical_backbone,1,#FF6D00,3.091
+Kong zhong diao yu  Ges.m.b.H.,Turkish Salmon A/S Marine,1,20,21,0.0,1,1,24010.0,0.0,1,1,2,0,1,0,fish_network_expander,fish_network_expander,2034-10,historical_backbone,1,#FF6D00,3.091
+Caracola del Sol Services,Tshimbua GmbH & Co. KG,1,19,20,0.0,1,1,15720.0,15915.0,5,0,0,0,3,0,diversified_broker,general_trader,2034-03,historical_backbone,1,#FF6D00,3.0445
+Gulf of Tadjoura  Ltd. Liability Co Logistics,Kong zhong diao yu  Ges.m.b.H.,1,19,20,0.0,1,1,21215.0,24720.0,0,3,2,1,1,2,general_trader,fish_network_expander,2034-11,historical_backbone,1,#FF6D00,3.0445
+Belgian Scallop Harbor ОАО Freight ,Selous Game Reserve  S.A. de C.V.,2,18,20,1.0,2,2,23325.0,71285.0,2,2,0,5,1,0,general_trader,diversified_broker,2034-09;2034-11,multi_tool_bridge,0,#FF1744,3.0445
+Chhattisgarh  Salt spray ОАО United,Fresh Limited Liability Company,1,18,19,0.0,1,1,5085.0,0.0,4,0,1,5,0,0,niche_or_shell,diversified_broker,2034-11,historical_backbone,1,#FF6D00,2.9957
+Barents Sea Cod CJSC Export,Tamil Nadu s Ltd. Corporation,1,18,19,0.0,1,1,1505.0,0.0,1,1,2,0,0,0,general_trader,niche_or_shell,2034-10,historical_backbone,1,#FF6D00,2.9957
+David Limited Liability Company Worldwide,Saltwater Sisters AS Marine life,1,18,19,1.0,1,1,16275.0,94285.0,2,3,0,0,0,0,general_trader,general_trader,2034-11,historical_backbone,3,#D500F9,2.9957
+Bu yu wang Corporation Marine conservation,Uttar Pradesh s Oyj,1,18,19,0.0,1,1,540.0,6105.0,1,1,1,0,0,1,general_trader,general_trader,2034-02,historical_backbone,1,#FF6D00,2.9957
+Black Sea Tuna Snapper,Costa del Sol Co,1,18,19,0.0,1,1,25310.0,70045.0,1,1,2,1,1,1,general_trader,general_trader,2034-11,historical_backbone,1,#FF6D00,2.9957
+Mar del Paraíso Sp,Turkish Salmon A/S Marine,1,18,19,0.0,1,1,650.0,0.0,0,0,1,0,1,0,niche_or_shell,fish_network_expander,2034-08,historical_backbone,1,#FF6D00,2.9957
+Barents Sea Cod Oyj Marine,Mar del Oeste S.p.A. United,1,17,18,1.0,1,1,24735.0,73265.0,0,0,2,2,3,0,general_trader,niche_or_shell,2034-08,historical_backbone,3,#D500F9,2.9444
+Fresh Limited Liability Company,Mar del Oeste Corp Transportation,1,17,18,0.0,1,1,6165.0,73125.0,5,0,0,0,3,0,diversified_broker,niche_or_shell,2034-01,historical_backbone,1,#FF6D00,2.9444
+Black Sea Tuna Sagl,Saltwater Sanctuary NV Delivery,1,16,17,0.0,1,1,22005.0,82320.0,0,2,1,0,0,1,general_trader,general_trader,2034-08,historical_backbone,1,#FF6D00,2.8904
+Norwegian King Crab S.A. de C.V.,xiǎo lóng xiā LC,1,16,17,0.0,1,1,18535.0,0.0,2,2,0,2,2,1,niche_or_shell,general_trader,2034-12,historical_backbone,1,#FF6D00,2.8904
+Chobe River   Distribution Pelican,Playa de Arena Ltd,1,15,16,0.0,1,1,15945.0,0.0,0,0,0,2,1,1,general_trader,general_trader,2034-08,historical_backbone,1,#FF6D00,2.8332
+Belgian Shrimps Ocean Corp Holdings,Vleikurper Limited Liability Company Transport,1,15,16,1.0,1,1,3250.0,70305.0,0,2,1,0,2,2,general_trader,general_trader,2034-08,historical_backbone,3,#D500F9,2.8332
+Caracola del Sol Services,Ola Azul SRL United,1,14,15,1.0,1,1,16360.0,140010.0,5,0,0,0,3,1,diversified_broker,general_trader,2034-07,historical_backbone,3,#D500F9,2.7726
+Kong zhong diao yu  Ges.m.b.H.,Rufiji Delta  Inc Cargo,1,13,14,0.0,1,1,16665.0,37715.0,1,1,2,0,3,2,fish_network_expander,general_trader,2034-10,historical_backbone,1,#FF6D00,2.7081
+Estrella del Mar Sp Transit,Mar del Este Brine SRL Investment,1,13,14,1.0,1,1,27700.0,525035.0,3,2,2,1,1,1,niche_or_shell,general_trader,2034-06,historical_backbone,3,#D500F9,2.7081
+Turkish Salmon A/S Marine,Victoria Falls   N.V. Carriers,1,13,14,1.0,1,1,15270.0,253230.0,0,1,0,0,0,1,fish_network_expander,niche_or_shell,2034-08,historical_backbone,3,#D500F9,2.7081
+Gvardeysk S.A. de C.V.,Ola de la Costa N.V.,1,13,14,0.0,1,1,8305.0,0.0,0,0,1,1,1,1,general_trader,general_trader,2034-07,historical_backbone,1,#FF6D00,2.7081
+Costa del Mar BV Consulting,SaltwaterSatisfactions Incorporated Marine ecology,1,13,14,0.0,1,1,1565.0,0.0,0,0,2,3,0,1,general_trader,niche_or_shell,2034-12,historical_backbone,1,#FF6D00,2.7081
+Bu yu wang Limited Liability Company,Orange River Mouth   Incorporated Distribution,1,12,13,1.0,1,1,20105.0,46930.0,3,2,2,0,0,1,niche_or_shell,niche_or_shell,2034-03,historical_backbone,3,#D500F9,2.6391
+Barents Sea Cod CJSC Export,Mar del Placer Limited Liability Company,1,12,13,0.0,1,1,15475.0,128100.0,1,1,2,0,3,2,general_trader,niche_or_shell,2034-11,historical_backbone,1,#FF6D00,2.6391
+Ancla Azul Transportation Seafaring,Madhya GmbH & Co. KG Family,1,12,13,0.0,1,1,65.0,230.0,0,2,1,0,0,1,general_trader,general_trader,2034-12,historical_backbone,1,#FF6D00,2.6391
+Coastal Cruisers GmbH Logistics,Spanish Shrimp Ltd. Corporation Transport,1,11,12,0.0,1,1,21370.0,178015.0,1,1,1,0,0,1,general_trader,general_trader,2034-06,historical_backbone,1,#FF6D00,2.5649
+Southeast S.A. de C.V.,Yu xian  SRL Industrial,1,11,12,0.0,1,1,6095.0,0.0,2,2,0,0,2,1,niche_or_shell,fish_intensive_hub,2034-12,historical_backbone,1,#FF6D00,2.5649
+Jharkhand  Ltd. Liability Co Worldwide,TunaTreat Company Marine sanctuary,1,11,12,0.0,1,1,4690.0,0.0,1,1,1,0,1,0,general_trader,general_trader,2034-08,historical_backbone,1,#FF6D00,2.5649
+Dutch  Ltd. Liability Co Consultants,Lake Tana  N.V. Enterprises,1,9,10,0.0,1,1,11830.0,18315.0,1,1,1,1,1,1,general_trader,general_trader,2034-11,opportunistic_route,1,#FF6D00,2.3979
+Neptune's Kingdom Sailboat LLC Cargo,Vespuci Sagl Marine sanctuary,1,9,10,0.0,1,1,2030.0,3300.0,3,2,2,0,2,1,niche_or_shell,general_trader,2034-05,opportunistic_route,1,#FF6D00,2.3979
+Oceanic Oracle GmbH & Co. KG,Sahara  LLC Co Consultants,1,9,10,0.0,1,1,2090.0,0.0,0,1,1,0,0,2,general_trader,general_trader,2034-06,opportunistic_route,1,#FF6D00,2.3979
+Beach Breakers Ltd. Corporation Marine conservation,Mar de Estrellas GmbH & Co. KG,1,9,10,0.0,1,1,1500.0,0.0,0,0,2,0,0,0,general_trader,general_trader,2034-12,opportunistic_route,1,#FF6D00,2.3979
+Bahía del Sol SRL Solutions,Madagascar Coast  AG Freight ,1,8,9,0.0,1,1,245.0,0.0,0,0,1,2,2,0,general_trader,fish_intensive_hub,2034-02,opportunistic_route,1,#FF6D00,2.3026
+Caracola Azul Ltd. Corporation,Monarch Ltd. Liability Co Transport,1,8,9,0.0,1,1,22670.0,30905.0,1,1,2,3,2,2,fish_network_expander,niche_or_shell,2034-05,opportunistic_route,1,#FF6D00,2.3026
+Delphinia Trout OJSC Transportation,Zambezi Gorge  N.V. Transport,1,8,9,0.0,1,1,19935.0,68125.0,0,3,0,1,1,2,general_trader,diversified_broker,2034-04,opportunistic_route,1,#FF6D00,2.3026
+Estrella del Mar Logistics Charter Boat ,Mar de Estrellas N.V.,1,8,9,0.0,1,1,4160.0,0.0,0,0,1,0,0,0,general_trader,general_trader,2034-12,opportunistic_route,1,#FF6D00,2.3026
+Barents Sea Cod CJSC Export,Niger Bend   Dry dock,1,7,8,0.0,1,1,14460.0,154140.0,1,1,2,0,3,2,general_trader,general_trader,2034-08,opportunistic_route,1,#FF6D00,2.1972
+BlueWater Bistro A/S Holdings,Lake Rukwa  Ltd Logistics,1,7,8,0.0,1,1,15335.0,0.0,3,3,1,2,0,1,niche_or_shell,niche_or_shell,2034-01,opportunistic_route,1,#FF6D00,2.1972
+Ola Marina Company Line,Saltwater Solitude Marine biology,1,7,8,0.0,1,1,260.0,0.0,0,2,2,1,1,1,general_trader,general_trader,2034-04,opportunistic_route,1,#FF6D00,2.1972
+Jammu & Kashmir  GmbH & Co. KG and Son's,Turkish Sword Investment Catfish,1,7,8,0.0,1,1,2710.0,0.0,0,3,2,0,0,1,general_trader,niche_or_shell,2034-09,opportunistic_route,1,#FF6D00,2.1972
+Mar del Este CJSC,Yu er he  Corporation,1,6,7,1.0,1,1,20775.0,137120.0,5,1,0,0,3,1,diversified_broker,niche_or_shell,2034-03,opportunistic_route,3,#D500F9,2.0794
+Karnataka  Ltd. Corporation Manatee,katushka Barracuda Inc and Son's,1,6,7,0.0,1,1,2070.0,0.0,0,0,2,3,3,1,general_trader,niche_or_shell,2034-07,opportunistic_route,1,#FF6D00,2.0794
+Namib Desert  Ltd. Corporation,Saltwater Supreme ОАО Forwading,1,6,7,0.0,1,1,1150.0,0.0,0,3,2,5,0,1,niche_or_shell,high_volume_distributor,2034-08,opportunistic_route,1,#FF6D00,2.0794
+Saltwater Supreme Pelican Ltd Enterprises,Zambezi Delta  Limited Liability Company,1,6,7,1.0,1,1,21555.0,56130.0,1,1,2,2,3,0,fish_network_expander,niche_or_shell,2034-07,opportunistic_route,3,#D500F9,2.0794
+Faroe Islands Halibut N.V. Transport,Madhya Pradesh   Ltd. Corporation,1,6,7,0.0,1,1,290.0,2700.0,0,0,0,2,1,1,general_trader,general_trader,2034-11,opportunistic_route,1,#FF6D00,2.0794
+Arunachal Pradesh s A/S Transport,FinestSea Ltd. Corporation Enterprises,1,5,6,0.0,1,1,125.0,0.0,1,1,2,0,3,2,general_trader,general_trader,2034-11,opportunistic_route,1,#FF6D00,1.9459
+Caracola del Sol LLC,Sea Breezes N.V. Canal,1,5,6,0.0,1,1,8130.0,0.0,0,0,0,1,1,1,general_trader,general_trader,2034-12,opportunistic_route,1,#FF6D00,1.9459
+Icelandic Cod Pier ОАО Transport,Mar del Este CJSC,1,4,5,0.0,1,1,148595.0,0.0,1,1,1,5,1,0,general_trader,diversified_broker,2034-08,opportunistic_route,1,#FF6D00,1.7918
+Fin Flair Marine life Incorporated Holdings,Mar del Paraíso Corporation Logistics,1,4,5,0.0,1,1,285.0,0.0,0,0,2,0,0,1,general_trader,fish_intensive_hub,2034-04,opportunistic_route,1,#FF6D00,1.7918
+Black Sea Tuna Snapper,xún yú S.A. de C.V.,1,4,5,0.0,1,1,840.0,0.0,1,1,2,0,0,0,general_trader,general_trader,2034-03,opportunistic_route,1,#FF6D00,1.7918
+Beach Breakers Ltd Import,Jammu & Kashmir Sea  AS Marine,1,4,5,0.0,1,1,5315.0,51140.0,1,1,1,0,0,2,general_trader,general_trader,2034-12,opportunistic_route,1,#FF6D00,1.7918
+Bahía Azul Ltd Holdings,Yu xian  SRL Industrial,1,3,4,0.0,1,1,3260.0,0.0,4,0,1,0,2,1,niche_or_shell,fish_intensive_hub,2034-12,opportunistic_route,1,#FF6D00,1.6094
+-54,Estrella del Mar Seafarer,1,2,3,0.0,1,1,1090.0,0.0,0,2,1,1,1,2,general_trader,general_trader,2034-01,opportunistic_route,1,#FF6D00,1.3863
+Náutica del Norte LC,Tide Turners Ltd Transport,1,2,3,0.0,1,1,3295.0,29705.0,0,0,2,1,1,1,general_trader,general_trader,2034-08,opportunistic_route,1,#FF6D00,1.3863
+-49,xiǎo lóng xiā LC,3,0,3,0.0,2,2,9583.33,0.0,7,0,0,2,2,1,dormant_revival,general_trader,2034-07;2034-11,multi_tool_bridge,0,#FF1744,1.3863
+Meghalaya  Sandbar S.p.A. Services,SurfSide Limited Liability Company,1,2,3,0.0,1,1,990.0,0.0,0,0,2,3,2,2,general_trader,niche_or_shell,2034-09,opportunistic_route,1,#FF6D00,1.3863
+0,Danish Shrimp Kga Solutions,2,0,2,0.0,2,1,65880.0,0.0,4,0,0,1,0,1,short_lived,general_trader,2034-08,multi_tool_bridge,1,#FF6D00,1.0986
+Arunachal Pradesh s A/S Transport,SeaTrekker Salt spray S.p.A. Freight ,1,1,2,0.0,1,1,15.0,0.0,1,1,2,0,3,0,general_trader,niche_or_shell,2034-08,opportunistic_route,1,#FF6D00,1.0986
+French Crab AG Express,Gulf of Guinea   Incorporated Ray,1,1,2,0.0,1,1,3670.0,0.0,0,0,2,3,0,2,general_trader,general_trader,2034-07,opportunistic_route,1,#FF6D00,1.0986
+-46,Estrella del Mar Seafarer,1,1,2,0.0,1,1,15.0,15.0,4,0,1,1,1,2,short_lived,general_trader,2034-03,opportunistic_route,1,#FF6D00,1.0986
+Norwegian Haddock Ltd. Corporation Logistics,Uttar Pradesh Sea  Company Seafoam,1,1,2,1.0,1,1,19875.0,149105.0,2,3,1,0,0,1,general_trader,fish_network_expander,2034-06,opportunistic_route,3,#D500F9,1.0986
+Fisherman's Best Inc Marine,Seaside Sojourns Creek N.V. Transit,1,1,2,0.0,1,1,20860.0,19515.0,3,2,1,0,0,1,niche_or_shell,general_trader,2034-11,opportunistic_route,1,#FF6D00,1.0986
+Dry Creek Ltd. Corporation,Perla del Mar SRL,1,1,2,0.0,1,1,22105.0,0.0,4,0,1,0,0,2,niche_or_shell,general_trader,2034-12,opportunistic_route,1,#FF6D00,1.0986
+-55,French Crab Pic Marine conservation,1,0,1,0.0,1,1,19200.0,41205.0,7,1,0,1,1,1,dormant_revival,general_trader,2034-08,opportunistic_route,1,#FF6D00,0.6931
+-56,Danish Mackerel S.A. de C.V.,1,0,1,0.0,1,1,19505.0,0.0,7,1,0,0,0,2,dormant_revival,general_trader,2034-11,opportunistic_route,1,#FF6D00,0.6931
+Deep Sea Divers Tom yum ОАО Marine sanctuary,Okavango River  S.A. de C.V. Solutions,1,0,1,0.0,1,1,960.0,0.0,0,0,2,2,3,1,general_trader,niche_or_shell,2034-11,opportunistic_route,1,#FF6D00,0.6931
+-40,Arunachal Pradesh s &,1,0,1,0.0,1,1,6150.0,0.0,7,0,0,0,0,1,dormant_revival,general_trader,2034-10,opportunistic_route,1,#FF6D00,0.6931
+-57,Tripura  BV and Son's,1,0,1,0.0,1,1,31860.0,290010.0,7,1,0,2,1,1,dormant_revival,general_trader,2034-01,opportunistic_route,1,#FF6D00,0.6931
+Beachcomber's Bounty CJSC Sea,Zambezi Gorge  N.V. Transport,1,0,1,0.0,1,1,13565.0,0.0,0,3,0,1,1,2,niche_or_shell,diversified_broker,2034-11,opportunistic_route,1,#FF6D00,0.6931
+-58,Maharashtra ers Incorporated Express,1,0,1,0.0,1,1,2745.0,0.0,7,1,0,1,1,1,dormant_revival,general_trader,2034-06,opportunistic_route,1,#FF6D00,0.6931
+-23,Caracola del Este Corporation Express,1,0,1,0.0,1,1,0.0,0.0,7,0,0,1,1,2,dormant_revival,high_volume_distributor,2034-12,opportunistic_route,1,#FF6D00,0.6931
+-60,Caracola del Este Corporation Express,1,0,1,0.0,1,1,135.0,290.0,7,1,0,1,1,2,dormant_revival,high_volume_distributor,2034-07,opportunistic_route,1,#FF6D00,0.6931
+Asveja GmbH & Co. KG Transit,Mar del Oeste N.V.,1,0,1,0.0,1,1,5760.0,0.0,0,0,1,0,0,1,niche_or_shell,niche_or_shell,2034-10,opportunistic_route,1,#FF6D00,0.6931
+-59,Senegal Coast  LC Solutions,1,0,1,0.0,1,1,21250.0,18705.0,7,1,0,0,0,1,dormant_revival,general_trader,2034-12,opportunistic_route,1,#FF6D00,0.6931
+Mar de Estrellas Incorporated,Seaside Summit S.A. de C.V.,1,0,1,0.0,1,1,150.0,0.0,0,1,1,0,0,1,general_trader,general_trader,2034-01,opportunistic_route,1,#FF6D00,0.6931
+-61,SaltwaterSatisfactions S.A. de C.V. Overseas,1,0,1,0.0,1,1,17995.0,0.0,7,1,0,0,0,1,dormant_revival,general_trader,2034-03,opportunistic_route,1,#FF6D00,0.6931
+-28,Ocean Quest A/S Logistics,1,0,1,1.0,1,1,2430.0,12210.0,3,2,2,3,2,2,niche_or_shell,niche_or_shell,2034-08,opportunistic_route,3,#D500F9,0.6931
+-29,Ocean Quest A/S Logistics,1,0,1,0.0,1,1,23295.0,76535.0,4,0,0,3,2,2,short_lived,niche_or_shell,2034-06,opportunistic_route,1,#FF6D00,0.6931
+-30,Ocean Quest A/S Logistics,1,0,1,1.0,1,1,21985.0,107025.0,7,0,1,3,2,2,dormant_revival,niche_or_shell,2034-06,opportunistic_route,3,#D500F9,0.6931
+Black Sea Tuna Sagl,Matthew Oyj Marine sanctuary,1,0,1,1.0,1,1,22420.0,96630.0,0,2,1,2,3,0,general_trader,general_trader,2034-07,opportunistic_route,3,#D500F9,0.6931
+-31,French Crab S.p.A. Worldwide,1,0,1,0.0,1,1,27145.0,0.0,7,0,1,1,1,0,dormant_revival,high_volume_distributor,2034-01,opportunistic_route,1,#FF6D00,0.6931
+-39,French Crab S.p.A. Worldwide,1,0,1,0.0,1,1,7275.0,0.0,3,2,2,1,1,0,niche_or_shell,high_volume_distributor,2034-02,opportunistic_route,1,#FF6D00,0.6931
+-32,Norwegian Fjord  S.A. de C.V. Brothers,1,0,1,0.0,1,1,22605.0,95360.0,4,0,0,3,3,0,short_lived,general_trader,2034-05,opportunistic_route,1,#FF6D00,0.6931
+-33,Lake Nasser  AB Logistics,1,0,1,1.0,1,1,5825.0,110045.0,7,0,1,0,0,1,dormant_revival,niche_or_shell,2034-05,opportunistic_route,3,#D500F9,0.6931
+-34,Leucosia Limited Liability Company,1,0,1,0.0,1,1,11675.0,67660.0,7,0,0,3,3,1,dormant_revival,niche_or_shell,2034-01,opportunistic_route,1,#FF6D00,0.6931
+-35,Estrella de Mar Consultants -,1,0,1,0.0,1,1,6580.0,0.0,7,0,0,1,1,1,dormant_revival,general_trader,2034-06,opportunistic_route,1,#FF6D00,0.6931
+-36,Caracola del Este Corporation Express,1,0,1,0.0,1,1,0.0,0.0,7,0,0,1,1,2,dormant_revival,high_volume_distributor,2034-11,opportunistic_route,1,#FF6D00,0.6931
+-37,Ola de la Costa SE Forwading,1,0,1,1.0,1,1,26765.0,84450.0,0,0,1,2,3,0,general_trader,niche_or_shell,2034-04,opportunistic_route,3,#D500F9,0.6931
+-38,Ocean Quest Corporation Seaside,1,0,1,0.0,1,1,17225.0,115025.0,7,0,0,0,0,1,dormant_revival,niche_or_shell,2034-10,opportunistic_route,1,#FF6D00,0.6931
+-40,Sander Ltd. Corporation Leska,1,0,1,1.0,1,1,23325.0,185070.0,7,0,0,0,0,0,dormant_revival,general_trader,2034-02,opportunistic_route,3,#D500F9,0.6931
+-41,jīng Coral LLC Carriers,1,0,1,0.0,1,1,17900.0,0.0,0,0,2,0,1,1,fish_network_expander,general_trader,2034-06,opportunistic_route,1,#FF6D00,0.6931
+-42,Estrella del Mar Forwading,1,0,1,1.0,1,1,137630.0,246105.0,7,1,1,2,3,0,dormant_revival,general_trader,2034-11,opportunistic_route,3,#D500F9,0.6931
+-43,Sudd Swamp   Marine life,1,0,1,0.0,1,1,660.0,1000.0,7,1,0,4,0,1,dormant_revival,niche_or_shell,2034-12,opportunistic_route,1,#FF6D00,0.6931
+-44,Greek Sea Bass Co,1,0,1,0.0,1,1,13345.0,46520.0,7,0,0,1,1,1,dormant_revival,general_trader,2034-03,opportunistic_route,1,#FF6D00,0.6931
+-45,Playa de Arena Pic,1,0,1,1.0,1,1,28325.0,151095.0,7,0,0,0,0,0,dormant_revival,general_trader,2034-06,opportunistic_route,3,#D500F9,0.6931
+-47,Water Wonders Tidepool Ltd Holdings,1,0,1,0.0,1,1,10.0,20.0,0,0,1,1,1,1,general_trader,general_trader,2034-09,opportunistic_route,1,#FF6D00,0.6931
+Bujagali Falls  Pic Family,bái suō wěn lú AS,1,0,1,0.0,1,1,4095.0,0.0,0,2,2,0,1,1,general_trader,general_trader,2034-09,opportunistic_route,1,#FF6D00,0.6931
+-1,Uttar Pradesh s CJSC,1,0,1,0.0,1,1,4960.0,0.0,4,0,0,1,1,0,short_lived,high_volume_distributor,2034-11,opportunistic_route,1,#FF6D00,0.6931
+-2,Andhra Pradesh   Limited Liability Company Tilapia,1,0,1,0.0,1,1,16940.0,39520.0,2,2,0,0,0,1,niche_or_shell,general_trader,2034-02,opportunistic_route,1,#FF6D00,0.6931
+-3,Coastal Cruisers Pic Shipping,1,0,1,0.0,1,1,4255.0,0.0,4,1,0,1,1,0,short_lived,high_volume_distributor,2034-10,opportunistic_route,1,#FF6D00,0.6931
+-4,Jharkhand  Ltd. Liability Co Worldwide,1,0,1,0.0,1,1,195.0,0.0,0,0,1,1,1,1,fish_intensive_hub,general_trader,2034-08,opportunistic_route,1,#FF6D00,0.6931
+Oceanfront Oases Oyj Sea,Whale Ltd. Liability Co,1,0,1,0.0,1,1,7090.0,0.0,0,0,1,0,0,2,niche_or_shell,general_trader,2034-02,opportunistic_route,1,#FF6D00,0.6931
+-5,Danish Lobster Kga Motorboat,1,0,1,0.0,1,1,25.0,0.0,4,0,0,2,1,1,short_lived,general_trader,2034-07,opportunistic_route,1,#FF6D00,0.6931
+-6,Ianira Starfish Sagl Import,1,0,1,0.0,1,1,4585.0,0.0,0,0,1,0,2,0,fish_network_expander,general_trader,2034-09,opportunistic_route,1,#FF6D00,0.6931
+-8,bái suō wěn lú Ltd Cargo,1,0,1,0.0,1,1,11830.0,0.0,4,1,0,1,1,1,short_lived,general_trader,2034-11,opportunistic_route,1,#FF6D00,0.6931
+-7,Zale Limited Liability Company,1,0,1,0.0,1,1,19960.0,309240.0,4,1,0,2,1,1,short_lived,general_trader,2034-07,opportunistic_route,1,#FF6D00,0.6931
+-9,Lake Tana  N.V. Enterprises,1,0,1,0.0,1,1,1540.0,5905.0,2,0,1,1,1,1,niche_or_shell,general_trader,2034-11,opportunistic_route,1,#FF6D00,0.6931
+-10,Himachal Pradesh   Limited Liability Company,1,0,1,0.0,1,1,13415.0,53220.0,4,0,0,1,1,1,short_lived,general_trader,2034-09,opportunistic_route,1,#FF6D00,0.6931
+-11,Estrella de Mar Consultants -,1,0,1,0.0,1,1,17430.0,0.0,7,0,1,1,1,1,dormant_revival,general_trader,2034-12,opportunistic_route,1,#FF6D00,0.6931
+-12,Madagascar   Ltd. Corporation Express,1,0,1,0.0,1,1,17915.0,93590.0,4,0,0,1,1,1,short_lived,general_trader,2034-02,opportunistic_route,1,#FF6D00,0.6931
+-50,Maharashtra ers Incorporated Express,1,0,1,0.0,1,1,3750.0,0.0,7,1,1,1,1,1,dormant_revival,general_trader,2034-02,opportunistic_route,1,#FF6D00,0.6931
+-51,Limpopo River  AB Consultants,1,0,1,0.0,1,1,10240.0,0.0,7,1,1,2,3,0,dormant_revival,general_trader,2034-03,opportunistic_route,1,#FF6D00,0.6931
+-13,Victoria Falls   Pier Corp Solutions,1,0,1,0.0,1,1,9015.0,0.0,4,0,1,0,0,0,niche_or_shell,general_trader,2034-10,opportunistic_route,1,#FF6D00,0.6931
+-52,Selous Game Reserve  A/S,1,0,1,0.0,1,1,545920.0,0.0,7,1,0,1,1,1,dormant_revival,general_trader,2034-12,opportunistic_route,2,#FFC400,0.6931
+Greek Octopus Company Distribution,TunaTreat Company Marine sanctuary,1,0,1,0.0,1,1,23400.0,0.0,0,0,1,0,1,0,general_trader,general_trader,2034-03,opportunistic_route,1,#FF6D00,0.6931
+-48,Danish Shrimp Kga Solutions,1,0,1,0.0,1,1,140950.0,0.0,7,1,1,1,0,1,dormant_revival,general_trader,2034-10,opportunistic_route,1,#FF6D00,0.6931
+-2,Kerala  Market SRL Wave,1,0,1,1.0,1,1,22005.0,107090.0,2,2,0,2,0,0,niche_or_shell,niche_or_shell,2034-07,opportunistic_route,3,#D500F9,0.6931
+Ola de la Costa N.V.,Serengeti  Inc. Ltd Seabed,1,0,1,0.0,1,1,4405.0,0.0,1,1,1,4,0,1,general_trader,niche_or_shell,2034-11,opportunistic_route,1,#FF6D00,0.6931
+Coral del Cielo A/S,Kong zhong diao yu  Ges.m.b.H.,1,0,1,0.0,1,1,24200.0,416005.0,0,3,2,1,1,2,niche_or_shell,fish_network_expander,2034-11,opportunistic_route,1,#FF6D00,0.6931

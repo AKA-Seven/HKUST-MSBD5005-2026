@@ -233,3 +233,4 @@ if 'cluster_path_3' in df_clusters.columns:
     fig4.write_html(os.path.join(OUTPUT_DIR, "fig4_treemap_clusters.html"))
 
 print(f"q4 finished")
+print(df_rank.groupby('confidence_tier')[['sig_fish', 'sig_dormancy', 'sig_revival']].mean())

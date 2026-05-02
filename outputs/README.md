@@ -420,13 +420,13 @@ visualization/data/mc2_3d_data.js + 各 q*/build_*.py 生成 2D 图表
 完整重跑（约 5–10 分钟，取决于硬件）：
 
 ```bash
-D:\AnacondaEnviroment\envs\python312\python.exe analysis/run_pipeline.py
+conda run -n dv python analysis/run_pipeline.py
 ```
 
 事后单独跑 Q3 图谱差异分析（可选，不在主管道中）：
 
 ```bash
-D:\AnacondaEnviroment\envs\python312\python.exe analysis/q3/analyze_graph_diff.py
+conda run -n dv python analysis/q3/analyze_graph_diff.py
 ```
 
 所有输出会被覆盖。如果要保留历史版本，请先备份整个 `outputs/` 目录。

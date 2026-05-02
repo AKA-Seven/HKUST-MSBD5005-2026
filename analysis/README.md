@@ -5,7 +5,7 @@
 本目录包含整个分析流水线的全部代码。运行入口：
 
 ```bash
-D:\AnacondaEnviroment\envs\python312\python.exe analysis/run_pipeline.py
+python analysis/run_pipeline.py
 ```
 
 ---

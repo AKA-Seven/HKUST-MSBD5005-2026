@@ -38,15 +38,16 @@
 
 ## 环境与 Python
 
-在本机环境中推荐使用：
+推荐使用 conda 环境 **`dv`**（与仓库内部分可视化脚本注释一致）。
 
+一行调用（无需先 `activate`）：
+
+```powershell
+conda run -n dv python analysis/run_pipeline.py
 ```
-D:\AnacondaEnviroment\envs\python312\python.exe
-```
 
-若 conda 未加入 PATH，请勿假设直接输入 `python` 或 `conda run` 可用；请将命令中的解释器路径替换为你的实际路径。
-
-依赖主要包括：`pandas`、`numpy`、`scikit-learn`、`matplotlib`、`seaborn`、`plotly` 等（用于分析与 2D 出图）。
+若已执行 `conda activate dv`，可直接使用 `python …`。  
+依赖主要包括：`pandas`、`numpy`、`scikit-learn`、`matplotlib`、`seaborn`、`plotly` 等。
 
 ---
 
@@ -57,13 +58,13 @@ D:\AnacondaEnviroment\envs\python312\python.exe
 **完整分析流水线（写入 `outputs/q1/` … `outputs/q4/`）：**
 
 ```powershell
-& "D:\AnacondaEnviroment\envs\python312\python.exe" analysis/run_pipeline.py
+conda run -n dv python analysis/run_pipeline.py
 ```
 
 **生成 3D 可视化数据（写入 `visualization/data/mc2_3d_data.js`）：**
 
 ```powershell
-& "D:\AnacondaEnviroment\envs\python312\python.exe" visualization/build_3d_data.py
+conda run -n dv python visualization/build_3d_data.py
 ```
 
 然后在浏览器中打开 **`visualization/index.html`**。页面若依赖 CDN（如 D3、Three.js、3d-force-graph），需要联网；本地 `vendor/` 用于部分离线脚本。
@@ -71,17 +72,17 @@ D:\AnacondaEnviroment\envs\python312\python.exe
 **分别生成 Q1–Q4 的 2D 图表：**
 
 ```powershell
-& "D:\AnacondaEnviroment\envs\python312\python.exe" visualization/q1/build_q1_figure.py
-& "D:\AnacondaEnviroment\envs\python312\python.exe" visualization/q1/build_q1_tech_data.py
-& "D:\AnacondaEnviroment\envs\python312\python.exe" visualization/q2/build_q2_figures.py
-& "D:\AnacondaEnviroment\envs\python312\python.exe" visualization/q3/build_q3_figures.py
-& "D:\AnacondaEnviroment\envs\python312\python.exe" visualization/q4/build_q4_figures.py
+conda run -n dv python visualization/q1/build_q1_figure.py
+conda run -n dv python visualization/q1/build_q1_tech_data.py
+conda run -n dv python visualization/q2/build_q2_figures.py
+conda run -n dv python visualization/q3/build_q3_figures.py
+conda run -n dv python visualization/q4/build_q4_figures.py
 ```
 
 **一次性生成全部 Q1–Q4 图表：**
 
 ```powershell
-& "D:\AnacondaEnviroment\envs\python312\python.exe" visualization/build_2d_advanced_figures.py
+conda run -n dv python visualization/build_2d_advanced_figures.py
 ```
 
 ---

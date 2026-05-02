@@ -127,7 +127,7 @@ def plot_png(
     out_path: Path,
 ) -> None:
     import matplotlib.pyplot as plt
-    from matplotlib.colors import Normalize
+    from matplotlib.colors import LinearSegmentedColormap, Normalize
 
     ensure_dirs()
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -142,11 +142,16 @@ def plot_png(
     fig_w = max(10.0, 0.12 * len(months))
     fig, ax = plt.subplots(figsize=(fig_w, fig_h), dpi=120)
 
+    phase1_cmap = LinearSegmentedColormap.from_list(
+        "phase1_teal",
+        ["#e8dcc8", "#d9e5e2", "#b7d4cf", "#5ea8a1", "#0f766e", "#0a5c56"],
+    )
+
     im = ax.imshow(
         z,
         aspect="auto",
         interpolation="nearest",
-        cmap="Blues",
+        cmap=phase1_cmap,
         norm=Normalize(vmin=0.0, vmax=zmax),
     )
     cbar = fig.colorbar(im, ax=ax, fraction=0.02, pad=0.02)
@@ -195,6 +200,16 @@ def export_plotly_html(
             )
         hover.append(row_h)
 
+    # Colors aligned with phase1_sketches/q1.html heat legend (cream → teal).
+    phase1_colorscale = [
+        [0.0, "#e8dcc8"],
+        [0.2, "#d9e5e2"],
+        [0.45, "#b7d4cf"],
+        [0.68, "#5ea8a1"],
+        [0.88, "#0f766e"],
+        [1.0, "#0a5c56"],
+    ]
+
     fig = go.Figure(
         data=go.Heatmap(
             z=z,
@@ -202,19 +217,37 @@ def export_plotly_html(
             y=[_short_label(c, 50) for c in companies],
             hovertext=hover,
             hoverinfo="text",
-            colorscale="Blues",
-            colorbar=dict(title="log(1+links)"),
+            colorscale=phase1_colorscale,
+            colorbar=dict(
+                title=dict(text="log(1+links)", side="right", font=dict(size=11)),
+                tickfont=dict(size=10),
+            ),
         )
     )
     fig.update_layout(
-        title=(
-            f"Top {len(companies)} companies — monthly link counts "
-            "(outputs/q1/q1_temporal_patterns.json)"
+        title=dict(
+            text=(
+                f"Top {len(companies)} companies — monthly link counts "
+                "(outputs/q1/q1_temporal_patterns.json)"
+            ),
+            font=dict(size=14, color="#14213d", family="Avenir Next, Segoe UI, PingFang SC, Noto Sans SC, sans-serif"),
         ),
-        xaxis=dict(title="Month", tickangle=-45, tickfont=dict(size=9)),
-        yaxis=dict(title="Company", tickfont=dict(size=8), autorange="reversed"),
-        margin=dict(l=280, r=24, t=56, b=120),
-        paper_bgcolor="#fafafa",
+        xaxis=dict(
+            title="Month",
+            tickangle=-45,
+            tickfont=dict(size=9, color="#5c6b73"),
+            gridcolor="rgba(20,33,61,0.06)",
+        ),
+        yaxis=dict(
+            title="Company",
+            tickfont=dict(size=8, color="#14213d"),
+            autorange="reversed",
+            gridcolor="rgba(20,33,61,0.06)",
+        ),
+        margin=dict(l=280, r=28, t=56, b=120),
+        paper_bgcolor="#fffaf0",
+        plot_bgcolor="rgba(255,250,240,0.65)",
+        font=dict(family="Avenir Next, Segoe UI, PingFang SC, Noto Sans SC, sans-serif", color="#14213d"),
         height=max(640, 14 * len(companies)),
         width=max(960, 10 * len(months)),
     )

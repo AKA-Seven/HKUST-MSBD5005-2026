@@ -66,6 +66,29 @@
     }
     .controls label { font-size: 0.86rem; color: #352f62; }
     input[type="range"] { width: min(520px, 72vw); accent-color: #6b5bbd; }
+    .anim-btns {
+      display: inline-flex;
+      gap: 8px;
+      margin-left: 4px;
+    }
+    .anim-btns button {
+      font: inherit;
+      font-size: 0.82rem;
+      font-weight: 650;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 118, 110, 0.35);
+      background: rgba(15, 118, 110, 0.12);
+      color: #0f766e;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .anim-btns button:hover {
+      background: rgba(15, 118, 110, 0.2);
+    }
+    .anim-btns button:active {
+      transform: scale(0.98);
+    }
     #monthLabel {
       font-variant-numeric: tabular-nums;
       font-weight: 600;
@@ -134,6 +157,10 @@
     <label for="timeSlider"><strong>Month</strong></label>
     <input type="range" id="timeSlider" min="0" max="0" value="0" />
     <span id="monthLabel">—</span>
+    <span class="anim-btns" title="Timeline auto-advance (default on)">
+      <button type="button" id="animPlay" aria-label="Start timeline animation">Play</button>
+      <button type="button" id="animPause" aria-label="Pause timeline animation">Pause</button>
+    </span>
   </div>
 
   <div id="chart-wrap">
@@ -148,6 +175,8 @@
   const wrap = d3.select("#chart-wrap");
   const slider = document.getElementById("timeSlider");
   const monthLabel = document.getElementById("monthLabel");
+  const animPlay = document.getElementById("animPlay");
+  const animPause = document.getElementById("animPause");
   const helpTrigger = document.getElementById("help-trigger");
   const helpPanel = document.getElementById("help-panel");
   const helpStats = document.getElementById("help-stats");
@@ -331,8 +360,37 @@
       });
   }
 
-  slider.addEventListener("input", () => render(+slider.value));
+  const AUTO_MS = 900;
+  let playTimer = null;
+
+  function stopAnimation() {
+    if (playTimer != null) {
+      clearInterval(playTimer);
+      playTimer = null;
+    }
+  }
+
+  function startAnimation() {
+    stopAnimation();
+    playTimer = window.setInterval(() => {
+      const maxV = +slider.max;
+      let v = +slider.value;
+      v = v >= maxV ? 0 : v + 1;
+      slider.value = String(v);
+      render(v);
+    }, AUTO_MS);
+  }
+
+  animPlay.addEventListener("click", () => startAnimation());
+  animPause.addEventListener("click", () => stopAnimation());
+
+  slider.addEventListener("input", () => {
+    stopAnimation();
+    render(+slider.value);
+  });
+
   render(0);
+  startAnimation();
 })();
   </script>
 </body>

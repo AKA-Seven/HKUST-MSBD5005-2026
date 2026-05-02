@@ -3,107 +3,334 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Q1 Board</title>
+  <title>Q1 · Temporal patterns · Final board</title>
   <style>
     :root {
+      --bg: #f4efe4;
+      --panel: #fffaf0;
       --ink: #14213d;
       --muted: #5c6b73;
+      --grid: #d8ccb6;
       --accent: #0f766e;
-      --panel: rgba(255, 250, 240, 0.92);
-      --shadow: 0 12px 32px rgba(20, 33, 61, 0.12);
+      --accent-soft: rgba(15, 118, 110, 0.16);
+      --accent-2: #b45309;
+      --accent-3: #8b1e3f;
+      --line: #233554;
+      --shadow: 0 18px 40px rgba(20, 33, 61, 0.12);
     }
 
     * { box-sizing: border-box; }
 
-    html, body {
-      height: 100%;
+    body {
       margin: 0;
-      overflow: hidden;
-      font-family: "Avenir Next", "Segoe UI", system-ui, sans-serif;
-      color: var(--ink);
+      font-family: "Avenir Next", "Segoe UI", "PingFang SC", "Noto Sans SC", sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(15, 118, 110, 0.12), transparent 22%),
-        radial-gradient(circle at bottom right, rgba(180, 83, 9, 0.08), transparent 18%),
+        radial-gradient(circle at top left, rgba(15, 118, 110, 0.12), transparent 24%),
+        radial-gradient(circle at bottom right, rgba(180, 83, 9, 0.10), transparent 20%),
         linear-gradient(180deg, #f6f1e8 0%, #efe7d8 100%);
+      color: var(--ink);
     }
 
-    .shell {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      padding: 12px 14px 14px;
-      max-width: 1800px;
+    .page {
+      max-width: 1560px;
       margin: 0 auto;
+      padding: 28px;
     }
 
-    header {
-      flex: 0 0 auto;
-      display: flex;
-      align-items: baseline;
-      gap: 12px;
-      padding: 4px 4px 10px;
+    .hero {
+      display: grid;
+      grid-template-columns: 1.75fr 0.82fr;
+      gap: 18px;
+      margin-bottom: 18px;
     }
 
-    header h1 {
+    .hero-card,
+    .meta-card,
+    .panel {
+      background: rgba(255, 250, 240, 0.88);
+      border: 1px solid rgba(20, 33, 61, 0.10);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-card {
+      padding: 26px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -60px -100px auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(15, 118, 110, 0.10);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(20, 33, 61, 0.08);
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 32px;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle {
       margin: 0;
-      font-size: 1.25rem;
+      max-width: 840px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      border: 1px solid rgba(20, 33, 61, 0.10);
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .meta-card {
+      padding: 22px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .meta-title {
+      margin: 0;
+      font-size: 16px;
       font-weight: 700;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .meta-item {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(20, 33, 61, 0.05);
+      border: 1px solid rgba(20, 33, 61, 0.08);
+    }
+
+    .meta-item strong {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+
+    /* Hero-only: tighter “What each column shows” */
+    .hero .meta-card {
+      padding: 14px 16px;
+      gap: 10px;
+      align-self: start;
+    }
+    .hero .meta-card .meta-title {
+      font-size: 14px;
+    }
+    .hero .meta-card .meta-grid {
+      gap: 8px;
+    }
+    .hero .meta-card .meta-item {
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-size: 12px;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+    .hero .meta-card .meta-item strong {
+      font-size: 15px;
+      margin-bottom: 2px;
+      color: var(--ink);
+    }
+
+    .top-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 18px;
+    }
+
+    .top-nav a {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(20, 33, 61, 0.10);
+      background: rgba(255, 255, 255, 0.7);
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .top-nav a.active {
+      background: rgba(15, 118, 110, 0.12);
+      border-color: rgba(15, 118, 110, 0.32);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* Layout: left 300px · wider center · narrower right (aligned with design sketches) */
+    .workspace {
+      display: grid;
+      grid-template-columns: 300px minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .sidebar,
+    .main,
+    .right {
+      display: grid;
+      gap: 18px;
+    }
+
+    .panel {
+      padding: 18px;
+    }
+
+    .panel h2 {
+      margin: 0 0 8px;
+      font-size: 20px;
       letter-spacing: -0.02em;
     }
 
-    header .hint {
+    .panel .panel-desc {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .section-head .badge {
+      flex-shrink: 0;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(180, 83, 9, 0.12);
+      color: var(--accent-2);
       font-size: 12px;
-      color: var(--muted);
-    }
-
-    .board {
-      flex: 1;
-      min-height: 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .tile {
-      position: relative;
-      border-radius: 18px;
-      border: 1px solid rgba(20, 33, 61, 0.10);
-      background: var(--panel);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      min-height: 0;
-    }
-
-    .tile-label {
-      position: absolute;
-      top: 8px;
-      left: 10px;
-      z-index: 2;
-      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--muted);
-      pointer-events: none;
-      text-shadow: 0 0 8px #fffaf0, 0 0 6px #fffaf0;
     }
 
-    .tile-frame {
+    .chart-shell {
+      padding: 12px;
+      border-radius: 20px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.56)),
+        repeating-linear-gradient(
+          0deg,
+          transparent 0,
+          transparent 28px,
+          rgba(20, 33, 61, 0.04) 28px,
+          rgba(20, 33, 61, 0.04) 29px
+        );
+      border: 1px dashed rgba(20, 33, 61, 0.14);
+    }
+
+    /* Preview: fixed design-size iframe + scale; outer height = design height × scale */
+    .preview-clip {
+      position: relative;
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fff;
+      box-sizing: border-box;
+    }
+
+    .preview-scale {
       position: absolute;
-      inset: 0;
+      top: 0;
+      left: 0;
+      transform-origin: 0 0;
+      border: 0;
+      line-height: 0;
     }
 
-    .tile-frame iframe {
+    .preview-scale iframe {
       width: 100%;
       height: 100%;
       border: 0;
       display: block;
       pointer-events: none;
-      background: #fff;
     }
 
-    .tile-hit {
+    /* Heatmap preview: wide rectangle */
+    .preview-clip--heatmap {
+      width: 100%;
+      height: calc(640px * 0.38);
+    }
+    .preview-clip--heatmap .preview-scale {
+      width: 1000px;
+      height: 640px;
+      transform: scale(0.38);
+    }
+
+    /* Ridge preview */
+    .preview-clip--ridge {
+      width: 100%;
+      height: calc(520px * 0.34);
+    }
+    .preview-clip--ridge .preview-scale {
+      width: 1280px;
+      height: 520px;
+      transform: scale(0.34);
+    }
+
+    /* Bubble preview */
+    .preview-clip--bubble {
+      width: 100%;
+      height: calc(640px * 0.36);
+    }
+    .preview-clip--bubble .preview-scale {
+      width: 920px;
+      height: 640px;
+      transform: scale(0.36);
+    }
+
+    /* Chord preview (taller: top controls) */
+    .preview-clip--chord {
+      width: 100%;
+      height: calc(1020px * 0.29);
+    }
+    .preview-clip--chord .preview-scale {
+      width: 920px;
+      height: 1020px;
+      transform: scale(0.29);
+    }
+
+    .preview-hit {
       position: absolute;
       inset: 0;
       z-index: 3;
@@ -112,20 +339,93 @@
       border: none;
       background: transparent;
       cursor: zoom-in;
-      border-radius: 18px;
+      border-radius: 16px;
     }
 
-    .tile-hit:focus {
+    .preview-hit:focus {
       outline: 2px solid var(--accent);
       outline-offset: 2px;
     }
 
-    .tile-hit:hover + .tile-hint,
-    .tile:focus-within .tile-hint {
-      opacity: 1;
+    .expand-fab {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 4;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(20, 33, 61, 0.12);
+      background: rgba(255, 250, 240, 0.94);
+      color: var(--ink);
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(20, 33, 61, 0.12);
     }
 
-    .tile-hint {
+    .expand-fab:hover {
+      background: #fff;
+      border-color: rgba(15, 118, 110, 0.35);
+      color: var(--accent);
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+
+    .source-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--ink);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .pattern-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .pattern-card {
+      border-radius: 18px;
+      border: 1px solid rgba(20, 33, 61, 0.10);
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.64);
+    }
+
+    .pattern-card strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 15px;
+    }
+
+    .pattern-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .preview-hint {
       position: absolute;
       bottom: 8px;
       right: 10px;
@@ -135,9 +435,14 @@
       opacity: 0;
       transition: opacity 0.2s;
       pointer-events: none;
-      background: rgba(255, 250, 240, 0.82);
+      background: rgba(255, 250, 240, 0.9);
       padding: 4px 8px;
       border-radius: 8px;
+    }
+
+    .preview-hit:hover ~ .preview-hint,
+    .preview-clip:focus-within .preview-hint {
+      opacity: 1;
     }
 
     /* Lightbox */
@@ -176,18 +481,12 @@
       font-weight: 650;
       cursor: pointer;
       box-shadow: 0 8px 24px rgba(20, 33, 61, 0.18);
-      transition: transform 0.15s, background 0.15s;
-    }
-
-    .lightbox-back:hover {
-      background: #fff;
-      transform: translateX(-2px);
     }
 
     .lightbox-inner {
       position: relative;
-      width: min(96vw, 1600px);
-      height: min(calc(100vh - 72px), 980px);
+      width: min(96vw, 1680px);
+      height: min(calc(100vh - 72px), 1020px);
       border-radius: 20px;
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.4);
@@ -210,60 +509,200 @@
       display: block;
     }
 
-    @media (max-width: 720px) {
-      header .hint { display: none; }
-      .board { gap: 8px; }
+    @media (max-width: 1280px) {
+      .workspace {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .page { padding: 18px; }
+      h1 { font-size: 26px; }
     }
   </style>
 </head>
 <body>
-  <div class="shell">
-    <header>
-      <h1>Q1</h1>
-      <span class="hint">Tap a chart to expand · Back returns here</span>
-    </header>
-
-    <div class="board">
-      <article class="tile">
-        <span class="tile-label">Ridge</span>
-        <div class="tile-frame">
-          <iframe title="Ridge preview" src="../visualization/figures_2d/q1/q1_ridge_river_top50.html" loading="lazy"></iframe>
+  <div class="page">
+    <section class="hero">
+      <div class="hero-card">
+        <div class="eyebrow">Final board · Q1 · Temporal trading patterns</div>
+        <h1>Company rhythm and relationship timing</h1>
+        <p class="subtitle">
+          Four linked views: monthly intensity, smoothed activity “ridges,” how busy firms are vs. how many partners they touch, and month-by-month directed flows among top partners. Previews are scaled inside each chart shell; click a preview or <strong>Expand</strong> for the full interactive figure.
+        </p>
+      </div>
+      <aside class="meta-card">
+        <p class="meta-title">What each column shows</p>
+        <div class="meta-grid">
+          <div class="meta-item">
+            <strong>Left</strong>
+            How to read the board and the five temporal pattern labels used in the analysis
+          </div>
+          <div class="meta-item">
+            <strong>Center</strong>
+            Heatmap and ridge views of the same top cohort over months
+          </div>
+          <div class="meta-item">
+            <strong>Right</strong>
+            Bubble summary and time-varying chord of partner-to-partner flows
+          </div>
+          <div class="meta-item">
+            <strong>All four</strong>
+            Open fullscreen from any preview when you need detail or animation controls
+          </div>
         </div>
-        <button type="button" class="tile-hit" data-src="../visualization/figures_2d/q1/q1_ridge_river_top50.html" data-title="Ridge" aria-label="Expand ridge chart"></button>
-        <span class="tile-hint">Click to enlarge</span>
-      </article>
+      </aside>
+    </section>
 
-      <article class="tile">
-        <span class="tile-label">Heatmap</span>
-        <div class="tile-frame">
-          <iframe title="Heatmap preview" src="../visualization/figures_2d/q1/q1_monthly_heatmap_top50.html" loading="lazy"></iframe>
-        </div>
-        <button type="button" class="tile-hit" data-src="../visualization/figures_2d/q1/q1_monthly_heatmap_top50.html" data-title="Heatmap" aria-label="Expand heatmap"></button>
-        <span class="tile-hint">Click to enlarge</span>
-      </article>
+    <nav class="top-nav" aria-label="Final board navigation">
+      <a href="./q1.html" class="active">Q1 · Temporal patterns</a>
+      <a href="./q2.html">Q2 · Bundle reliability</a>
+      <a href="./q3.html">Q3 · Graph completion</a>
+      <a href="./q4.html">Q4 · Suspicious companies</a>
+    </nav>
 
-      <article class="tile">
-        <span class="tile-label">Bubble</span>
-        <div class="tile-frame">
-          <iframe title="Bubble preview" src="../visualization/figures_2d/q1/q1_bubble_activity_partners.html" loading="lazy"></iframe>
+    <main class="workspace">
+      <section class="sidebar">
+        <div class="panel">
+          <h2>How to read the figures</h2>
+          <p class="panel-desc">Each view uses the same underlying trade graph: nodes are companies, edges are shipments with a calendar month on the horizontal axis.</p>
+          <ul class="source-list">
+            <li><strong>Heatmap:</strong> rows are high-activity companies; cell color encodes how many edges they participate in that month.</li>
+            <li><strong>Ridge:</strong> stacks smoothed monthly totals so you can compare who is persistently loud vs. briefly loud.</li>
+            <li><strong>Bubble:</strong> x-axis is overall activity, y-axis is distinct partners; size reinforces volume.</li>
+            <li><strong>Chord:</strong> arc segments are companies; ribbons are directed trade between the selected top actors for the current month.</li>
+          </ul>
         </div>
-        <button type="button" class="tile-hit" data-src="../visualization/figures_2d/q1/q1_bubble_activity_partners.html" data-title="Bubble" aria-label="Expand bubble chart"></button>
-        <span class="tile-hint">Click to enlarge</span>
-      </article>
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <h2>Temporal pattern labels</h2>
+              <p class="panel-desc">Classifier buckets used alongside the visuals (read row labels and tooltips with this key).</p>
+            </div>
+            <span class="badge">Q1</span>
+          </div>
+          <div class="pattern-list">
+            <div class="pattern-card">
+              <strong>stable</strong>
+              <p>High calendar coverage and relatively low volatility—behaves like a steady baseline.</p>
+            </div>
+            <div class="pattern-card">
+              <strong>bursty</strong>
+              <p>Short windows of very high activity compared to typical months.</p>
+            </div>
+            <div class="pattern-card">
+              <strong>periodic</strong>
+              <p>Active months recur at fairly regular spacing.</p>
+            </div>
+            <div class="pattern-card">
+              <strong>short_term</strong>
+              <p>Most observed activity is confined to a narrow span of months.</p>
+            </div>
+            <div class="pattern-card">
+              <strong>general</strong>
+              <p>Does not meet the above rules; residual catch-all category.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <article class="tile">
-        <span class="tile-label">Chord</span>
-        <div class="tile-frame">
-          <iframe title="Chord preview" src="../visualization/q1/q1_relationship_chord_time.html" loading="lazy"></iframe>
+      <section class="main">
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <h2>Company activity heatmap</h2>
+              <p class="panel-desc">Top companies by volume; each cell is one month, colored by how many trade edges involve that firm.</p>
+            </div>
+            <span class="badge">View 1</span>
+          </div>
+          <div class="chart-shell">
+            <div class="preview-clip preview-clip--heatmap">
+              <button type="button" class="expand-fab" data-src="../visualization/figures_2d/q1/q1_monthly_heatmap_top50.html" aria-label="Expand heatmap">Expand</button>
+              <div class="preview-scale">
+                <iframe title="Q1 heatmap preview" src="../visualization/figures_2d/q1/q1_monthly_heatmap_top50.html" loading="lazy"></iframe>
+              </div>
+              <button type="button" class="preview-hit" data-src="../visualization/figures_2d/q1/q1_monthly_heatmap_top50.html" aria-label="Open heatmap fullscreen"></button>
+              <span class="preview-hint">Click to expand</span>
+            </div>
+          </div>
+          <div class="legend" aria-hidden="true">
+            <span><i class="swatch" style="background:#e8dcc8"></i> low</span>
+            <span><i class="swatch" style="background:#b7d4cf"></i> mid</span>
+            <span><i class="swatch" style="background:#5ea8a1"></i> medium-high</span>
+            <span><i class="swatch" style="background:#0f766e"></i> high</span>
+          </div>
         </div>
-        <button type="button" class="tile-hit" data-src="../visualization/q1/q1_relationship_chord_time.html" data-title="Chord" aria-label="Expand chord diagram"></button>
-        <span class="tile-hint">Click to enlarge</span>
-      </article>
-    </div>
+
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <h2>Activity ridges</h2>
+              <p class="panel-desc">The same cohort as a stacked “river”: height shows relative monthly intensity after smoothing.</p>
+            </div>
+            <span class="badge">View 2</span>
+          </div>
+          <div class="chart-shell">
+            <div class="preview-clip preview-clip--ridge">
+              <button type="button" class="expand-fab" data-src="../visualization/figures_2d/q1/q1_ridge_river_top50.html" aria-label="Expand ridge chart">Expand</button>
+              <div class="preview-scale">
+                <iframe title="Ridge preview" src="../visualization/figures_2d/q1/q1_ridge_river_top50.html" loading="lazy"></iframe>
+              </div>
+              <button type="button" class="preview-hit" data-src="../visualization/figures_2d/q1/q1_ridge_river_top50.html" aria-label="Open ridge chart fullscreen"></button>
+              <span class="preview-hint">Click to expand</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="right">
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <h2>Activity vs. partners (bubble)</h2>
+              <p class="panel-desc">Scatter of total activity against number of distinct counterparties; bubble area emphasizes large traders.</p>
+            </div>
+            <span class="badge">View 3</span>
+          </div>
+          <div class="chart-shell">
+            <div class="preview-clip preview-clip--bubble">
+              <button type="button" class="expand-fab" data-src="../visualization/figures_2d/q1/q1_bubble_activity_partners.html" aria-label="Expand bubble chart">Expand</button>
+              <div class="preview-scale">
+                <iframe title="Bubble preview" src="../visualization/figures_2d/q1/q1_bubble_activity_partners.html" loading="lazy"></iframe>
+              </div>
+              <button type="button" class="preview-hit" data-src="../visualization/figures_2d/q1/q1_bubble_activity_partners.html" aria-label="Open bubble chart fullscreen"></button>
+              <span class="preview-hint">Click to expand</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <h2>Relationship chord (by month)</h2>
+              <p class="panel-desc">Ribbon thickness reflects flow between pairs in the selected month. Use fullscreen for play/pause and a clearer legend.</p>
+            </div>
+            <span class="badge">View 4</span>
+          </div>
+          <div class="chart-shell">
+            <div class="preview-clip preview-clip--chord">
+              <button type="button" class="expand-fab" data-src="../visualization/q1/q1_relationship_chord_time.html" aria-label="Expand chord diagram">Expand</button>
+              <div class="preview-scale">
+                <iframe title="Chord preview" src="../visualization/q1/q1_relationship_chord_time.html" loading="lazy"></iframe>
+              </div>
+              <button type="button" class="preview-hit" data-src="../visualization/q1/q1_relationship_chord_time.html" aria-label="Open chord diagram fullscreen"></button>
+              <span class="preview-hint">Click to expand</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   </div>
 
   <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true" hidden>
-    <button type="button" class="lightbox-back" id="lightboxBack">← Back</button>
+    <button type="button" class="lightbox-back" id="lightboxBack">Back to board</button>
     <div class="lightbox-inner">
       <iframe id="lightboxFrame" title="Expanded chart" src="about:blank"></iframe>
     </div>
@@ -271,10 +710,9 @@
 
   <script>
     (function () {
-      const lightbox = document.getElementById("lightbox");
-      const frame = document.getElementById("lightboxFrame");
-      const back = document.getElementById("lightboxBack");
-      const hits = document.querySelectorAll(".tile-hit");
+      var lightbox = document.getElementById("lightbox");
+      var frame = document.getElementById("lightboxFrame");
+      var backBtn = document.getElementById("lightboxBack");
 
       function openLb(src) {
         frame.src = src;
@@ -283,7 +721,7 @@
         requestAnimationFrame(function () {
           lightbox.classList.add("is-open");
         });
-        back.focus();
+        backBtn.focus();
       }
 
       function closeLb() {
@@ -295,18 +733,16 @@
         }, 320);
       }
 
-      hits.forEach(function (btn) {
+      document.querySelectorAll(".preview-hit, .expand-fab").forEach(function (btn) {
         btn.addEventListener("click", function () {
           openLb(btn.getAttribute("data-src"));
         });
       });
 
-      back.addEventListener("click", closeLb);
-
+      backBtn.addEventListener("click", closeLb);
       lightbox.addEventListener("click", function (e) {
         if (e.target === lightbox) closeLb();
       });
-
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape" && lightbox.classList.contains("is-open")) closeLb();
       });

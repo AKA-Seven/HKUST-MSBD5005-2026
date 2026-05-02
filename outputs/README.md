@@ -43,6 +43,10 @@ outputs/
 
 ## Q1 — 时序模式发现
 
+> **Git**：`outputs/q1/` 下 CSV/JSON **默认不纳入仓库**（见根目录 `.gitignore`）。克隆后需在本地放置 `MC2/` 并运行分析流水线生成本节所列文件。字段与脚本说明仍以本文为准；版本控制策略见 **`visualization/q1/README.md`**。
+
+- 若这些文件曾被提交过，需执行一次 `git rm -r --cached outputs/q1/` 再提交，才会停止跟踪。
+
 ### `q1_temporal_patterns.json`
 
 **生成者**：`analysis/q1/extract_temporal_patterns.py`

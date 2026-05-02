@@ -38,3 +38,12 @@ build/
 Thumbs.db
 Desktop.ini
 __MACOSX/
+
+# --- Q1：保留源码（.py）与页面（.html）；分析产物与图表派生数据不纳入版本库 ---
+# 说明见 visualization/q1/README.md
+outputs/q1/
+
+visualization/figures_2d/q1/*.png
+visualization/figures_2d/q1/*_data.json
+
+visualization/q1/data/

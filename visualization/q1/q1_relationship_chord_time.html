@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Q1 Relationship chord</title>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: #f4f3fb;
+      color: #1a1540;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px 10px;
+      background: linear-gradient(180deg, #eae8f7 0%, #f4f3fb 100%);
+      border-bottom: 1px solid #cecae8;
+    }
+    h1 { margin: 0; font-size: 1.12rem; font-weight: 650; flex: 1; }
+    #help-trigger {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #7c6fd6 0%, #5b4db8 100%);
+      color: #fff;
+      font-size: 1.15rem;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(60, 40, 120, 0.25);
+      touch-action: manipulation;
+    }
+    #help-trigger:active { transform: scale(0.96); }
+    #help-panel {
+      display: none;
+      margin: 0 16px 12px;
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid #c9c3e6;
+      border-radius: 12px;
+      font-size: 0.84rem;
+      line-height: 1.55;
+      color: #2d2658;
+      box-shadow: 0 8px 28px rgba(40, 30, 90, 0.08);
+    }
+    #help-panel.visible { display: block; }
+    #help-panel code {
+      font-size: 0.8rem;
+      background: #edeaf8;
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+    #help-panel .hint { margin-top: 10px; font-size: 0.8rem; color: #5c5488; }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 16px;
+      padding: 12px 16px 14px;
+    }
+    .controls label { font-size: 0.86rem; color: #352f62; }
+    input[type="range"] { width: min(520px, 72vw); accent-color: #6b5bbd; }
+    #monthLabel {
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+      color: #43388c;
+      min-width: 88px;
+    }
+    #chart-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 6px 12px 24px;
+      overflow: auto;
+    }
+    svg { display: block; }
+    .ribbon {
+      stroke: rgba(255, 255, 255, 0.32);
+      stroke-width: 0.35px;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .ribbon:hover { stroke: #312878; stroke-width: 1px; fill-opacity: 0.92 !important; }
+    .group-arc { stroke: #faf9ff; stroke-width: 1px; }
+    .group-label { font-size: 10px; fill: #241856; pointer-events: none; }
+    #tooltip {
+      position: fixed;
+      display: none;
+      max-width: 288px;
+      padding: 10px 12px;
+      background: rgba(255, 255, 255, 0.97);
+      border: 1px solid #aea5dc;
+      border-radius: 10px;
+      font-size: 12px;
+      line-height: 1.45;
+      box-shadow: 0 8px 28px rgba(45, 35, 100, 0.18);
+      z-index: 30;
+      pointer-events: none;
+    }
+    .empty-msg {
+      text-align: center;
+      padding: 40px 20px;
+      color: #6a6299;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Q1 Relationship chord</h1>
+    <button type="button" id="help-trigger" aria-label="Show description" aria-expanded="false" title="Tap for details">ℹ</button>
+  </header>
+
+  <div id="help-panel" role="region" aria-live="polite">
+    <p style="margin:0 0 8px;">
+      Pairs from <code>outputs/q1/q1_relationship_patterns.csv</code>. Ribbon strength uses monthly trade counts from
+      <code>q1_temporal_patterns.json</code>:
+      weight ≈ √(count<sub>a</sub>·count<sub>b</sub>) × confidence when both companies trade in the selected month.
+      Drag the slider to change month.
+    </p>
+    <p style="margin:0 0 8px;">
+      Five relationship categories (<code>synchronous</code>, <code>relay</code>, <code>substitution</code>,
+      <code>short_term_collab</code>, <code>co_active</code>) share one blue–violet palette; shade indicates category (light → deep).
+    </p>
+    <p id="help-stats" class="hint" style="margin:0;"></p>
+  </div>
+
+  <div class="controls">
+    <label for="timeSlider"><strong>Month</strong></label>
+    <input type="range" id="timeSlider" min="0" max="0" value="0" />
+    <span id="monthLabel">—</span>
+  </div>
+
+  <div id="chart-wrap">
+    <div id="tooltip"></div>
+  </div>
+
+  <script src="data/q1_relationship_chord_data.js"></script>
+  <script>
+(function () {
+  const data = window.Q1_RELATIONSHIP_CHORD;
+  const tooltip = d3.select("#tooltip");
+  const wrap = d3.select("#chart-wrap");
+  const slider = document.getElementById("timeSlider");
+  const monthLabel = document.getElementById("monthLabel");
+  const helpTrigger = document.getElementById("help-trigger");
+  const helpPanel = document.getElementById("help-panel");
+  const helpStats = document.getElementById("help-stats");
+
+  helpTrigger.addEventListener("click", () => {
+    const open = !helpPanel.classList.contains("visible");
+    helpPanel.classList.toggle("visible", open);
+    helpTrigger.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  if (!data || !data.nodes || !data.matrices) {
+    wrap.append("div").attr("class", "empty-msg").html(
+      "No data. Run:<br><code>python visualization/q1/build_q1_relationship_chord_data.py</code>"
+    );
+    return;
+  }
+
+  /** Light → deep blue-violet, one shade per relationship type (no categorical rainbow). */
+  const patternOrder = [
+    "co_active",
+    "synchronous",
+    "short_term_collab",
+    "substitution",
+    "relay",
+  ];
+  const patternHueScale = d3
+    .scaleOrdinal()
+    .domain(patternOrder)
+    .range(["#dce3f9", "#c4c2ef", "#a89fd9", "#8479c4", "#5d5399"])
+    .unknown("#aea6cf");
+
+  const months = data.months;
+  const nodes = data.nodes;
+  const labels = data.node_labels || nodes;
+  const n = nodes.length;
+
+  slider.max = String(Math.max(0, months.length - 1));
+  slider.value = "0";
+
+  const width = 920;
+  const height = 920;
+  const margin = 48;
+  const outerRadius = Math.min(width, height) / 2 - margin;
+  const innerRadius = outerRadius - 22;
+
+  const svg = wrap.insert("svg", "#tooltip")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("viewBox", `${-width / 2} ${-height / 2} ${width} ${height}`);
+
+  const gMain = svg.append("g");
+
+  const arc = d3.arc()
+    .innerRadius(innerRadius)
+    .outerRadius(outerRadius);
+
+  const ribbon = d3.ribbon().radius(innerRadius - 2);
+
+  const arcBlueViolet = d3.scaleSequential(d3.interpolateRgb("#e8e6fa", "#43388c")).domain([0, Math.max(1, n - 1)]);
+
+  function patternKey(i, j) {
+    const a = nodes[Math.min(i, j)];
+    const b = nodes[Math.max(i, j)];
+    return `${a}|||${b}`;
+  }
+
+  function ribbonFill(i, j) {
+    const pk = patternKey(i, j);
+    const pat = (data.pair_pattern && data.pair_pattern[pk]) || "";
+    return patternHueScale(pat);
+  }
+
+  function positionTooltip(event) {
+    const x = event.clientX ?? (event.touches && event.touches[0] && event.touches[0].clientX);
+    const y = event.clientY ?? (event.touches && event.touches[0] && event.touches[0].clientY);
+    if (x == null || y == null) return;
+    tooltip
+      .style("left", x + 14 + "px")
+      .style("top", y + 12 + "px");
+  }
+
+  function render(monthIndex) {
+    const mi = Math.max(0, Math.min(months.length - 1, monthIndex));
+    const matrix = data.matrices[mi];
+    monthLabel.textContent = months[mi];
+
+    let sum = 0;
+    for (let i = 0; i < n; i++) {
+      for (let j = 0; j < n; j++) sum += matrix[i][j];
+    }
+
+    helpStats.textContent =
+      `Current month: ${months[mi]} · Nodes ${n} · Total chord weight ${sum.toFixed(1)} · Timeline ${data.matrices.length} months.`;
+
+    gMain.selectAll("*").remove();
+
+    if (sum < 1e-9) {
+      gMain.append("text")
+        .attr("text-anchor", "middle")
+        .attr("dy", "0.35em")
+        .attr("fill", "#7a739f")
+        .attr("font-size", 14)
+        .text("Tap ℹ for help · No pairwise weight this month");
+      const ring = d3.arc()
+        .innerRadius(innerRadius)
+        .outerRadius(outerRadius);
+      const dummy = { startAngle: 0, endAngle: 2 * Math.PI, index: 0 };
+      gMain.append("path").attr("d", ring(dummy)).attr("fill", "#e4e2f4").attr("stroke", "#cbc4e4");
+      return;
+    }
+
+    const chordLayout = d3.chord()
+      .padAngle(0.035)
+      .sortSubgroups(d3.descending)(matrix);
+
+    const group = gMain.append("g")
+      .selectAll("g.group")
+      .data(chordLayout.groups)
+      .join("g")
+      .attr("class", "group");
+
+    group.append("path")
+      .attr("class", "group-arc")
+      .attr("fill", (d) => arcBlueViolet(d.index))
+      .attr("d", arc);
+
+    group.append("text")
+      .each(function (d) {
+        d.angle = (d.startAngle + d.endAngle) / 2;
+        d.odd = d.angle > Math.PI;
+      })
+      .attr("dy", "0.35em")
+      .attr("class", "group-label")
+      .attr("transform", (d) => `
+        rotate(${(d.angle * 180) / Math.PI - 90})
+        translate(${outerRadius + 10})
+        ${d.odd ? "rotate(180)" : ""}
+      `)
+      .attr("text-anchor", (d) => (d.odd ? "end" : "start"))
+      .text((d) => labels[d.index] || nodes[d.index]);
+
+    const ribbons = gMain.append("g")
+      .attr("fill-opacity", 0.68)
+      .selectAll("path")
+      .data(chordLayout)
+      .join("path")
+      .attr("class", "ribbon")
+      .attr("fill", (d) => ribbonFill(d.source.index, d.target.index))
+      .attr("d", ribbon);
+
+    function showTip(event, d) {
+      const i = d.source.index;
+      const j = d.target.index;
+      const pk = patternKey(i, j);
+      const pat = (data.pair_pattern && data.pair_pattern[pk]) || "—";
+      const conf =
+        data.pair_confidence && data.pair_confidence[pk] !== undefined
+          ? data.pair_confidence[pk]
+          : "—";
+      const w = matrix[i][j];
+      tooltip.style("display", "block");
+      positionTooltip(event);
+      tooltip.html(
+        `<strong>${months[mi]}</strong><br/>` +
+          `<strong>${nodes[i]}</strong> ↔ <strong>${nodes[j]}</strong><br/>` +
+          `Pattern: ${pat}<br/>` +
+          `Confidence: ${conf}<br/>` +
+          `Weight: ${w.toFixed(2)}`
+      );
+    }
+
+    ribbons
+      .on("mousemove pointermove", showTip)
+      .on("touchstart", function (event, d) {
+        event.preventDefault();
+        showTip(event, d);
+      })
+      .on("mouseleave pointerleave pointercancel", () => tooltip.style("display", "none"))
+      .on("touchend", () => {
+        setTimeout(() => tooltip.style("display", "none"), 2200);
+      });
+  }
+
+  slider.addEventListener("input", () => render(+slider.value));
+  render(0);
+})();
+  </script>
+</body>
+</html>

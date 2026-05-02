@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q1 Board</title>
+  <style>
+    :root {
+      --ink: #14213d;
+      --muted: #5c6b73;
+      --accent: #0f766e;
+      --panel: rgba(255, 250, 240, 0.92);
+      --shadow: 0 12px 32px rgba(20, 33, 61, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      font-family: "Avenir Next", "Segoe UI", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(15, 118, 110, 0.12), transparent 22%),
+        radial-gradient(circle at bottom right, rgba(180, 83, 9, 0.08), transparent 18%),
+        linear-gradient(180deg, #f6f1e8 0%, #efe7d8 100%);
+    }
+
+    .shell {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 12px 14px 14px;
+      max-width: 1800px;
+      margin: 0 auto;
+    }
+
+    header {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 4px 4px 10px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    header .hint {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .board {
+      flex: 1;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .tile {
+      position: relative;
+      border-radius: 18px;
+      border: 1px solid rgba(20, 33, 61, 0.10);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    .tile-label {
+      position: absolute;
+      top: 8px;
+      left: 10px;
+      z-index: 2;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      pointer-events: none;
+      text-shadow: 0 0 8px #fffaf0, 0 0 6px #fffaf0;
+    }
+
+    .tile-frame {
+      position: absolute;
+      inset: 0;
+    }
+
+    .tile-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      pointer-events: none;
+      background: #fff;
+    }
+
+    .tile-hit {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      margin: 0;
+      padding: 0;
+      border: none;
+      background: transparent;
+      cursor: zoom-in;
+      border-radius: 18px;
+    }
+
+    .tile-hit:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .tile-hit:hover + .tile-hint,
+    .tile:focus-within .tile-hint {
+      opacity: 1;
+    }
+
+    .tile-hint {
+      position: absolute;
+      bottom: 8px;
+      right: 10px;
+      z-index: 2;
+      font-size: 11px;
+      color: var(--muted);
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+      background: rgba(255, 250, 240, 0.82);
+      padding: 4px 8px;
+      border-radius: 8px;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 52px 16px 20px;
+      background: rgba(20, 33, 61, 0.42);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.28s ease, visibility 0.28s;
+      backdrop-filter: blur(4px);
+    }
+
+    .lightbox.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox-back {
+      position: fixed;
+      top: 14px;
+      left: 14px;
+      z-index: 1002;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      background: rgba(255, 250, 240, 0.95);
+      color: var(--ink);
+      font: inherit;
+      font-size: 14px;
+      font-weight: 650;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(20, 33, 61, 0.18);
+      transition: transform 0.15s, background 0.15s;
+    }
+
+    .lightbox-back:hover {
+      background: #fff;
+      transform: translateX(-2px);
+    }
+
+    .lightbox-inner {
+      position: relative;
+      width: min(96vw, 1600px);
+      height: min(calc(100vh - 72px), 980px);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 24px 60px rgba(20, 33, 61, 0.28);
+      background: #fff;
+      transform: scale(0.92);
+      opacity: 0.75;
+      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.28s ease;
+    }
+
+    .lightbox.is-open .lightbox-inner {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .lightbox-inner iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    @media (max-width: 720px) {
+      header .hint { display: none; }
+      .board { gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <h1>Q1</h1>
+      <span class="hint">Tap a chart to expand · Back returns here</span>
+    </header>
+
+    <div class="board">
+      <article class="tile">
+        <span class="tile-label">Ridge</span>
+        <div class="tile-frame">
+          <iframe title="Ridge preview" src="../visualization/figures_2d/q1/q1_ridge_river_top50.html" loading="lazy"></iframe>
+        </div>
+        <button type="button" class="tile-hit" data-src="../visualization/figures_2d/q1/q1_ridge_river_top50.html" data-title="Ridge" aria-label="Expand ridge chart"></button>
+        <span class="tile-hint">Click to enlarge</span>
+      </article>
+
+      <article class="tile">
+        <span class="tile-label">Heatmap</span>
+        <div class="tile-frame">
+          <iframe title="Heatmap preview" src="../visualization/figures_2d/q1/q1_monthly_heatmap_top50.html" loading="lazy"></iframe>
+        </div>
+        <button type="button" class="tile-hit" data-src="../visualization/figures_2d/q1/q1_monthly_heatmap_top50.html" data-title="Heatmap" aria-label="Expand heatmap"></button>
+        <span class="tile-hint">Click to enlarge</span>
+      </article>
+
+      <article class="tile">
+        <span class="tile-label">Bubble</span>
+        <div class="tile-frame">
+          <iframe title="Bubble preview" src="../visualization/figures_2d/q1/q1_bubble_activity_partners.html" loading="lazy"></iframe>
+        </div>
+        <button type="button" class="tile-hit" data-src="../visualization/figures_2d/q1/q1_bubble_activity_partners.html" data-title="Bubble" aria-label="Expand bubble chart"></button>
+        <span class="tile-hint">Click to enlarge</span>
+      </article>
+
+      <article class="tile">
+        <span class="tile-label">Chord</span>
+        <div class="tile-frame">
+          <iframe title="Chord preview" src="../visualization/q1/q1_relationship_chord_time.html" loading="lazy"></iframe>
+        </div>
+        <button type="button" class="tile-hit" data-src="../visualization/q1/q1_relationship_chord_time.html" data-title="Chord" aria-label="Expand chord diagram"></button>
+        <span class="tile-hint">Click to enlarge</span>
+      </article>
+    </div>
+  </div>
+
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true" hidden>
+    <button type="button" class="lightbox-back" id="lightboxBack">← Back</button>
+    <div class="lightbox-inner">
+      <iframe id="lightboxFrame" title="Expanded chart" src="about:blank"></iframe>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const lightbox = document.getElementById("lightbox");
+      const frame = document.getElementById("lightboxFrame");
+      const back = document.getElementById("lightboxBack");
+      const hits = document.querySelectorAll(".tile-hit");
+
+      function openLb(src) {
+        frame.src = src;
+        lightbox.hidden = false;
+        lightbox.setAttribute("aria-hidden", "false");
+        requestAnimationFrame(function () {
+          lightbox.classList.add("is-open");
+        });
+        back.focus();
+      }
+
+      function closeLb() {
+        lightbox.classList.remove("is-open");
+        lightbox.setAttribute("aria-hidden", "true");
+        window.setTimeout(function () {
+          frame.src = "about:blank";
+          lightbox.hidden = true;
+        }, 320);
+      }
+
+      hits.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          openLb(btn.getAttribute("data-src"));
+        });
+      });
+
+      back.addEventListener("click", closeLb);
+
+      lightbox.addEventListener("click", function (e) {
+        if (e.target === lightbox) closeLb();
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && lightbox.classList.contains("is-open")) closeLb();
+      });
+    })();
+  </script>
+</body>
+</html>

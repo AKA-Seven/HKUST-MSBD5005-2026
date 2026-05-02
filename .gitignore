@@ -47,3 +47,14 @@ visualization/figures_2d/q1/*.png
 visualization/figures_2d/q1/*_data.json
 
 visualization/q1/data/
+
+# --- Q2：保留 visualization/q2 下 .py 与 README；分析产物与 2D 派生数据不跟踪 ---
+# 说明见 visualization/q2/README.md
+outputs/q2/
+
+visualization/figures_2d/q2/*.png
+visualization/figures_2d/q2/*_data.json
+
+visualization/q2/*
+!visualization/q2/*.py
+!visualization/q2/README.md

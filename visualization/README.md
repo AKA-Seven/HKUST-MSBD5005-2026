@@ -4,11 +4,11 @@ This folder contains the new standalone 3D visualization for MC2. It does not de
 
 ## Run Order
 
-From the project root (use your conda Python if paths differ):
+From the project root, using conda env **`dv`**:
 
 ```powershell
-& "D:\AnacondaEnviroment\envs\python312\python.exe" analysis/run_pipeline.py
-& "D:\AnacondaEnviroment\envs\python312\python.exe" visualization/build_3d_data.py
+conda run -n dv python analysis/run_pipeline.py
+conda run -n dv python visualization/build_3d_data.py
 ```
 
 Then open:
@@ -16,6 +16,8 @@ Then open:
 ```text
 visualization/index.html
 ```
+
+**2D final boards（Q1/Q2 导航看板）**：生成对应图表后，可在仓库根目录打开 `final_sketches/q1.html`、`final_sketches/q2.html`（说明见 `final_sketches/README.md`）。
 
 The page loads `visualization/data/mc2_3d_data.js`, so it can be opened directly in a browser. Internet access is required for the CDN libraries: D3, Three.js, and 3d-force-graph.
 

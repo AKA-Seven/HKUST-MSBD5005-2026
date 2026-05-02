@@ -1,18 +1,18 @@
 # Q1 可视化：版本控制与本地构建
 
-本文说明 Q1 相关产物在 Git 中的取舍，以及如何在本机重新生成被忽略的数据文件。
+本文说明 Q1 图表与弦图相关产物在 Git 中的取舍，以及如何在本机重新生成被忽略的数据文件。与 **`final_sketches/q1.html`** 看板的对应关系见 `final_sketches/README.md`。
 
 ## 纳入版本库的内容
 
 | 路径 | 说明 |
 |------|------|
 | `analysis/q1/*.py` | Q1 分析脚本（始终跟踪） |
-| `visualization/q1/build_*.py` | Q1 图表构建脚本 |
-| `visualization/q1/q1_relationship_chord_time.html` | 弦图页面（静态 HTML + 内联/外链脚本占位） |
-| `visualization/figures_2d/q1/*.html` | Plotly 等导出的交互式 HTML 页面 |
-| `final_sketches/q1.html` | Q1 四图看板（若仓库中包含 `final_sketches/`） |
+| `visualization/q1/build_*.py` | Q1 图表与弦图数据构建脚本 |
+| `visualization/q1/q1_relationship_chord_time.html` | 弦图页面（加载 `data/` 下生成的数据） |
+| `visualization/figures_2d/q1/*.html` | Plotly 等导出的交互式 2D 页面 |
+| `final_sketches/q1.html` | Q1 四图英文看板（iframe + 灯箱；依赖上述 HTML） |
 
-原则：**保留全部 `.py` 与 Q1 相关的 `.html`**，便于评审代码与交互原型；**不提交由脚本写出的大数据或光栅图**。
+原则：**保留全部 `.py` 与 Q1 相关的 `.html`**，便于评审代码与交互原型；**不提交由脚本写出的大数据、光栅图或与 HTML 同名的大数据 JSON**。
 
 ## 被 `.gitignore` 忽略的内容（Q1）
 
@@ -26,7 +26,7 @@
    Matplotlib 等导出的预览图。
 
 3. **`visualization/figures_2d/q1/*_data.json`**  
-   与 HTML 同名的汇总/中间 JSON（如 `q1_ridge_river_top50_data.json`），体积可能较大。
+   与 HTML 同名的汇总/中间 JSON（如 `q1_monthly_heatmap_top50_data.json`），体积可能较大。
 
 4. **`visualization/q1/data/`**  
    弦图数据：`q1_relationship_chord.json`、`q1_relationship_chord_data.js` 等，由 `build_q1_relationship_chord_data.py` 生成，`q1_relationship_chord_time.html` 运行时加载。
@@ -38,24 +38,27 @@
 前置：将原始数据放入 `MC2/`（参见仓库根目录 `README` / `CLAUDE.md`）。
 
 1. **分析产物（写入 `outputs/q1/`）**  
-   - 全流水线：`python analysis/run_pipeline.py`  
+   - 全流水线：`conda run -n dv python analysis/run_pipeline.py`  
    - 或仅运行 Q1 分析目录下对应脚本（见 `analysis/README.md`、`outputs/README.md` 中 Q1 小节）。
 
 2. **弦图数据**  
    ```bash
-   python visualization/q1/build_q1_relationship_chord_data.py
+   conda run -n dv python visualization/q1/build_q1_relationship_chord_data.py
    ```
 
-3. **2D 图（HTML + PNG + `_data.json`）**  
+3. **2D 图（HTML；PNG / `_data.json` 默认不纳入 Git）**  
    ```bash
-   python visualization/q1/build_q1_ridge_river.py
-   python visualization/q1/build_q1_monthly_heatmap.py
-   python visualization/q1/build_q1_bubble_scatter.py
+   conda run -n dv python visualization/q1/build_q1_ridge_river.py
+   conda run -n dv python visualization/q1/build_q1_monthly_heatmap.py
+   conda run -n dv python visualization/q1/build_q1_bubble_scatter.py
    ```
 
 4. **看板**  
-   在资源生成后，用浏览器打开 `final_sketches/q1.html`（路径相对于仓库根目录；看板内 iframe 指向 `visualization/` 下各 HTML）。
+   在资源生成后，于仓库根目录用浏览器打开 `final_sketches/q1.html`。看板内 iframe 使用相对路径指向 `visualization/` 下各 HTML。
 
-## 与 `outputs/README.md` 的关系
+## 与 `outputs/README.md`、`final_sketches/README.md` 的关系
 
-`outputs/README.md` 仍详细描述 **Q1 各文件的字段与统计含义**；本文只补充 **哪些文件在 Git 中不跟踪** 以及如何 **复现**。二者配合使用即可。
+- **`outputs/README.md`**：Q1 各输出文件的字段与统计含义。  
+- **`final_sketches/README.md`**：最终演示看板的打开方式与 Q3/Q4 接入手势。
+
+本文只补充 **哪些文件在 Git 中不跟踪** 以及如何 **复现**。

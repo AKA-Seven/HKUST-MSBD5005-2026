@@ -136,8 +136,21 @@
                   repeating-linear-gradient(0deg, transparent 0, transparent 30px, rgba(19,34,56,0.04) 30px, rgba(19,34,56,0.04) 31px);
       box-shadow: inset 0 0 80px 44px rgba(255,251,243,0.78), 0 2px 14px rgba(19,34,56,0.06);
     }
-    .plot-slot { width: 100%; min-height: auto; overflow: visible; }
+    .plot-slot {
+      width: 100%;
+      min-height: auto;
+      overflow: visible;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .plot-slot > * { margin-left: auto; margin-right: auto; }
     .plot-slot .plotly-graph-div { width: 100% !important; }
+    .plot-slot iframe { display: block; margin: 0 auto; }
+    .plot-slot img { display: block; margin: 0 auto; }
+    .plot-slot .table-container { width: 100%; margin: 0 auto; }
     .chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
     .chip {
       padding: 8px 12px;
@@ -213,6 +226,174 @@
     .row-tag.high { color: #842c4b; }
     .row-tag.mid { color: #b45f16; }
     .row-tag.low { color: #1c6b63; }
+    /* ── Q1-style fixed-ratio preview shells ─────────────────────────── */
+    .preview-clip {
+      position: relative;
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fff;
+      box-sizing: border-box;
+    }
+    .preview-scale {
+      position: absolute;
+      top: 0; left: 0;
+      transform-origin: 0 0;
+      border: 0;
+      line-height: 0;
+    }
+    .preview-scale iframe {
+      width: 100%; height: 100%;
+      border: 0;
+      display: block;
+      pointer-events: none;
+    }
+    /* Fig 1 — 3D PCA iframe */
+    .preview-clip--pca {
+      width: 100%;
+      height: calc(640px * 0.42);
+    }
+    .preview-clip--pca .preview-scale {
+      width: 1000px; height: 640px;
+      transform: scale(0.42);
+    }
+    /* Fig 4 — Treemap iframe */
+    .preview-clip--treemap {
+      width: 100%;
+      height: calc(640px * 0.42);
+    }
+    .preview-clip--treemap .preview-scale {
+      width: 1000px; height: 640px;
+      transform: scale(0.42);
+    }
+    /* Fig 2 — Table (no scaling, just height cap) */
+    .preview-clip--table {
+      height: calc(640px * 0.42);
+      overflow: hidden;
+    }
+    .preview-clip--table .table-container {
+      max-height: 100%;
+      height: 100%;
+      overflow-y: auto;
+    }
+    /* Fig 3 — Radar PNG */
+    .preview-clip--image {
+      width: 100%;
+      height: calc(640px * 0.42);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+    }
+    .preview-clip--image img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .preview-hit {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      margin: 0; padding: 0;
+      border: none;
+      background: transparent;
+      cursor: zoom-in;
+      border-radius: 16px;
+    }
+    .preview-hit:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .expand-fab {
+      position: absolute;
+      top: 10px; right: 10px;
+      z-index: 4;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(19,34,56,0.12);
+      background: rgba(255,251,243,0.94);
+      color: var(--ink);
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(19,34,56,0.12);
+    }
+    .expand-fab:hover {
+      background: #fff;
+      border-color: rgba(29,111,95,0.35);
+      color: var(--accent);
+    }
+    .preview-hint {
+      position: absolute;
+      bottom: 8px; right: 10px;
+      z-index: 2;
+      font-size: 11px;
+      color: var(--muted);
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+      background: rgba(255,251,243,0.9);
+      padding: 4px 8px;
+      border-radius: 8px;
+    }
+    .preview-hit:hover ~ .preview-hint,
+    .preview-clip:focus-within .preview-hint { opacity: 1; }
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 52px 16px 20px;
+      background: rgba(19,34,56,0.42);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.28s ease, visibility 0.28s;
+      backdrop-filter: blur(4px);
+    }
+    .lightbox.is-open { opacity: 1; visibility: visible; }
+    .lightbox-back {
+      position: fixed;
+      top: 14px; left: 14px;
+      z-index: 1002;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.35);
+      background: rgba(255,251,243,0.95);
+      color: var(--ink);
+      font: inherit;
+      font-size: 14px;
+      font-weight: 650;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(19,34,56,0.18);
+    }
+    .lightbox-inner {
+      position: relative;
+      width: min(96vw, 1680px);
+      height: min(calc(100vh - 72px), 1020px);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.4);
+      box-shadow: 0 24px 60px rgba(19,34,56,0.28);
+      background: #fff;
+      transform: scale(0.92);
+      opacity: 0.75;
+      transition: transform 0.32s cubic-bezier(0.22,1,0.36,1), opacity 0.28s ease;
+    }
+    .lightbox.is-open .lightbox-inner { transform: scale(1); opacity: 1; }
+    .lightbox-inner iframe,
+    .lightbox-inner img {
+      width: 100%; height: 100%;
+      border: 0;
+      display: block;
+      object-fit: contain;
+      background: #fff;
+    }
+
     @media (max-width: 1100px) {
       .dashboard-grid { grid-template-columns: 1fr; }
       .grid-2x2 { grid-template-columns: 1fr; }
@@ -261,9 +442,14 @@
     </aside>
         <main class="main-flow">
     <div class="grid-2x2">
-        <div class="panel"><div class="section-head"><div><h2>Fig 1 · 3D PCA</h2><p class="panel-desc">Interactive 3D projection. Red = HIGH, orange = MEDIUM, green = LOW. (Auto‑rotating)</p></div><span class="badge">PCA</span></div><div class="chart-shell"><div class="plot-slot" style="overflow: hidden; height: 600px; display: flex; justify-content: center;"><iframe src="..\visualization\figures_2d\q4\fig1_3d_pca_enhanced.html" width="100%" height="600px" frameborder="0" style="display: block; border: none; overflow: hidden;" scrolling="no"></iframe></div></div></div>
-        <div class="panel"><div class="section-head"><div><h2>Fig 2 · Suspicion Ranking Table</h2><p class="panel-desc">Click any row to see evidence & narrative. Scroll for more rows. Row background = risk level.</p></div><span class="badge">Table</span></div><div class="chart-shell"><div class="plot-slot">
-<div class="table-container" style="max-height: 500px; overflow-y: auto;">
+        <div class="panel"><div class="section-head"><div><h2>Fig 1 · 3D PCA</h2><p class="panel-desc">Interactive 3D projection. Red = HIGH, orange = MEDIUM, green = LOW. (Auto‑rotating)</p></div><span class="badge">PCA</span></div><div class="chart-shell"><div class="preview-clip preview-clip--pca">
+  <button type="button" class="expand-fab" data-src="..\visualization\figures_2d\q4\fig1_3d_pca_enhanced.html" aria-label="Expand 3D PCA">Expand</button>
+  <div class="preview-scale"><iframe title="Q4 3D PCA preview" src="..\visualization\figures_2d\q4\fig1_3d_pca_enhanced.html" loading="lazy"></iframe></div>
+  <button type="button" class="preview-hit" data-src="..\visualization\figures_2d\q4\fig1_3d_pca_enhanced.html" aria-label="Open 3D PCA fullscreen"></button>
+  <span class="preview-hint">Click to expand</span>
+</div></div></div>
+        <div class="panel"><div class="section-head"><div><h2>Fig 2 · Suspicion Ranking Table</h2><p class="panel-desc">Click any row to see evidence & narrative. Scroll for more rows. Row background = risk level.</p></div><span class="badge">Table</span></div><div class="chart-shell"><div class="preview-clip preview-clip--table">
+<div class="table-container">
     <div class="table">
         <div class="table-header">
             <div>Company</div><div>Score</div><div>Signals</div><div>Trusted Links</div><div>Confidence</div>
@@ -672,11 +858,26 @@
     </div>
 </div>
 </div></div></div>
-        <div class="panel"><div class="section-head"><div><h2>Fig 3 · Radar profiles</h2><p class="panel-desc">Average signal intensity per confidence tier (0–1).</p></div><span class="badge">Radar</span></div><div class="chart-shell"><div class="plot-slot"><img src="..\visualization\figures_2d\q4\fig3_radar_signal_profiles.png" alt="Radar chart" style="width:100%; border-radius:12px;"></div></div></div>
-        <div class="panel"><div class="section-head"><div><h2>Fig 4 · Cluster treemap</h2><p class="panel-desc">Hierarchy of company clusters; colour = proportion of HIGH companies.</p></div><span class="badge">Treemap</span></div><div class="chart-shell"><div class="plot-slot" style="overflow: visible;"><iframe src="..\visualization\figures_2d\q4\fig4_treemap_clusters.html" width="100%" height="600px" frameborder="0" style="border-radius:12px; overflow: hidden;" scrolling="no"></iframe></div></div></div>
+        <div class="panel"><div class="section-head"><div><h2>Fig 3 · Radar profiles</h2><p class="panel-desc">Average signal intensity per confidence tier (0–1).</p></div><span class="badge">Radar</span></div><div class="chart-shell"><div class="preview-clip preview-clip--image">
+  <button type="button" class="expand-fab" data-src="..\visualization\figures_2d\q4\fig3_radar_signal_profiles.png" aria-label="Expand radar chart">Expand</button>
+  <img src="..\visualization\figures_2d\q4\fig3_radar_signal_profiles.png" alt="Radar chart">
+  <button type="button" class="preview-hit" data-src="..\visualization\figures_2d\q4\fig3_radar_signal_profiles.png" aria-label="Open radar chart fullscreen"></button>
+  <span class="preview-hint">Click to expand</span>
+</div></div></div>
+        <div class="panel"><div class="section-head"><div><h2>Fig 4 · Cluster treemap</h2><p class="panel-desc">Hierarchy of company clusters; colour = proportion of HIGH companies.</p></div><span class="badge">Treemap</span></div><div class="chart-shell"><div class="preview-clip preview-clip--treemap">
+  <button type="button" class="expand-fab" data-src="..\visualization\figures_2d\q4\fig4_treemap_clusters.html" aria-label="Expand treemap">Expand</button>
+  <div class="preview-scale"><iframe title="Q4 treemap preview" src="..\visualization\figures_2d\q4\fig4_treemap_clusters.html" loading="lazy"></iframe></div>
+  <button type="button" class="preview-hit" data-src="..\visualization\figures_2d\q4\fig4_treemap_clusters.html" aria-label="Open treemap fullscreen"></button>
+  <span class="preview-hint">Click to expand</span>
+</div></div></div>
     </div>
     </main>
     </div>
+</div>
+
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true" hidden>
+  <button type="button" class="lightbox-back" id="lightboxBack">Back to board</button>
+  <div class="lightbox-inner" id="lightboxContent"></div>
 </div>
 
     <script>
@@ -727,6 +928,43 @@
                 if (firstRow) firstRow.classList.add('active');
             }
         });
+
+        /* ── Lightbox: click preview / Expand → open fullscreen ───────── */
+        (function () {
+            const lightbox = document.getElementById('lightbox');
+            const box = document.getElementById('lightboxContent');
+            const backBtn = document.getElementById('lightboxBack');
+
+            function openLb(src) {
+                if (!src) return;
+                box.innerHTML = '';
+                const isImg = /\.(png|jpe?g|gif|svg|webp)$/i.test(src);
+                const node = document.createElement(isImg ? 'img' : 'iframe');
+                node.src = src;
+                if (isImg) node.alt = 'Expanded chart';
+                else node.title = 'Expanded chart';
+                box.appendChild(node);
+                lightbox.hidden = false;
+                lightbox.setAttribute('aria-hidden', 'false');
+                requestAnimationFrame(() => lightbox.classList.add('is-open'));
+                backBtn.focus();
+            }
+
+            function closeLb() {
+                lightbox.classList.remove('is-open');
+                lightbox.setAttribute('aria-hidden', 'true');
+                setTimeout(() => { box.innerHTML = ''; lightbox.hidden = true; }, 320);
+            }
+
+            document.querySelectorAll('.preview-hit, .expand-fab').forEach(btn => {
+                btn.addEventListener('click', () => openLb(btn.getAttribute('data-src')));
+            });
+            backBtn.addEventListener('click', closeLb);
+            lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLb(); });
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLb();
+            });
+        })();
     </script>
     
 </body>

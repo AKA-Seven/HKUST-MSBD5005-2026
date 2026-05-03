@@ -244,6 +244,30 @@
       font-weight: 700;
     }
 
+    .fig-intro {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px 12px;
+      margin-bottom: 8px;
+    }
+    .fig-intro h2 {
+      margin: 0 !important;
+    }
+    .viz-type {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: lowercase;
+      border: 1px dashed rgba(20, 33, 61, 0.14);
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--accent-2);
+    }
+
     .chart-shell {
       padding: 12px;
       border-radius: 20px;
@@ -502,11 +526,14 @@
       opacity: 1;
     }
 
-    .lightbox-inner iframe {
+    .lightbox-inner iframe,
+    .lightbox-inner img {
       width: 100%;
       height: 100%;
       border: 0;
       display: block;
+      object-fit: contain;
+      background: #fff;
     }
 
     @media (max-width: 1280px) {
@@ -611,13 +638,11 @@
 
       <section class="main">
         <div class="panel">
-          <div class="section-head">
-            <div>
-              <h2>Company activity heatmap</h2>
-              <p class="panel-desc">Top companies by volume; each cell is one month, colored by how many trade edges involve that firm.</p>
-            </div>
-            <span class="badge">View 1</span>
+          <div class="fig-intro">
+            <h2>Fig 1 · Company activity heatmap</h2>
+            <span class="viz-type">heatmap</span>
           </div>
+          <p class="panel-desc">Top companies by volume; each cell is one month, colored by how many trade edges involve that firm.</p>
           <div class="chart-shell">
             <div class="preview-clip preview-clip--heatmap">
               <button type="button" class="expand-fab" data-src="../visualization/figures_2d/q1/q1_monthly_heatmap_top50.html" aria-label="Expand heatmap">Expand</button>
@@ -637,13 +662,11 @@
         </div>
 
         <div class="panel">
-          <div class="section-head">
-            <div>
-              <h2>Activity ridges</h2>
-              <p class="panel-desc">The same cohort as a stacked “river”: height shows relative monthly intensity after smoothing.</p>
-            </div>
-            <span class="badge">View 2</span>
+          <div class="fig-intro">
+            <h2>Fig 2 · Activity ridges</h2>
+            <span class="viz-type">ridge</span>
           </div>
+          <p class="panel-desc">The same cohort as a stacked “river”: height shows relative monthly intensity after smoothing.</p>
           <div class="chart-shell">
             <div class="preview-clip preview-clip--ridge">
               <button type="button" class="expand-fab" data-src="../visualization/figures_2d/q1/q1_ridge_river_top50.html" aria-label="Expand ridge chart">Expand</button>
@@ -659,13 +682,11 @@
 
       <section class="right">
         <div class="panel">
-          <div class="section-head">
-            <div>
-              <h2>Activity vs. partners (bubble)</h2>
-              <p class="panel-desc">Scatter of total activity against number of distinct counterparties; bubble area emphasizes large traders.</p>
-            </div>
-            <span class="badge">View 3</span>
+          <div class="fig-intro">
+            <h2>Fig 3 · Activity vs. partners</h2>
+            <span class="viz-type">bubble</span>
           </div>
+          <p class="panel-desc">Scatter of total activity against number of distinct counterparties; bubble area emphasizes large traders.</p>
           <div class="chart-shell">
             <div class="preview-clip preview-clip--bubble">
               <button type="button" class="expand-fab" data-src="../visualization/figures_2d/q1/q1_bubble_activity_partners.html" aria-label="Expand bubble chart">Expand</button>
@@ -679,13 +700,11 @@
         </div>
 
         <div class="panel">
-          <div class="section-head">
-            <div>
-              <h2>Relationship chord (by month)</h2>
-              <p class="panel-desc">Ribbon thickness reflects flow between pairs in the selected month. Use fullscreen for play/pause and a clearer legend.</p>
-            </div>
-            <span class="badge">View 4</span>
+          <div class="fig-intro">
+            <h2>Fig 4 · Relationship chord (by month)</h2>
+            <span class="viz-type">chord</span>
           </div>
+          <p class="panel-desc">Ribbon thickness reflects flow between pairs in the selected month. Use fullscreen for play/pause and a clearer legend.</p>
           <div class="chart-shell">
             <div class="preview-clip preview-clip--chord">
               <button type="button" class="expand-fab" data-src="../visualization/q1/q1_relationship_chord_time.html" aria-label="Expand chord diagram">Expand</button>
@@ -703,19 +722,24 @@
 
   <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true" hidden>
     <button type="button" class="lightbox-back" id="lightboxBack">Back to board</button>
-    <div class="lightbox-inner">
-      <iframe id="lightboxFrame" title="Expanded chart" src="about:blank"></iframe>
-    </div>
+    <div class="lightbox-inner" id="lightboxContent"></div>
   </div>
 
   <script>
     (function () {
       var lightbox = document.getElementById("lightbox");
-      var frame = document.getElementById("lightboxFrame");
+      var box = document.getElementById("lightboxContent");
       var backBtn = document.getElementById("lightboxBack");
 
       function openLb(src) {
-        frame.src = src;
+        if (!src) return;
+        box.innerHTML = "";
+        var isImg = /\.(png|jpe?g|gif|svg|webp)$/i.test(src);
+        var node = document.createElement(isImg ? "img" : "iframe");
+        node.src = src;
+        if (isImg) node.alt = "Expanded figure";
+        else node.title = "Expanded chart";
+        box.appendChild(node);
         lightbox.hidden = false;
         lightbox.setAttribute("aria-hidden", "false");
         requestAnimationFrame(function () {
@@ -728,7 +752,7 @@
         lightbox.classList.remove("is-open");
         lightbox.setAttribute("aria-hidden", "true");
         window.setTimeout(function () {
-          frame.src = "about:blank";
+          box.innerHTML = "";
           lightbox.hidden = true;
         }, 320);
       }

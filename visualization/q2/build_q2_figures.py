@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Q2 可视化入口：3D 蒲公英网络、Q1+Q2 桑基、bundle→评级桑基、Bundle 可靠性气泡图、连通分量柱状对比。"""
+"""Q2 visuals entrypoint: runs each present script under visualization/q2/ (3D bundle graph, sankey,
+reliability bubble, bundle dashboard). Optional scripts omitted from the repo are skipped."""
 
 from __future__ import annotations
 
@@ -17,12 +18,19 @@ def _run(mod_name: str, file_name: str) -> None:
 
 
 def main() -> None:
-    _run("build_q2_dandelion_3d", "build_q2_dandelion_3d.py")
-    _run("build_q2_trade_sankey_q1_q2", "build_q2_trade_sankey_q1_q2.py")
-    _run("build_q2_sankey", "build_q2_sankey.py")
-    _run("build_q2_bundle_reliability_bubble", "build_q2_bundle_reliability_bubble.py")
-    _run("build_q2_connected_components_bar", "build_q2_connected_components_bar.py")
-    _run("build_q2_bundle_dashboard", "build_q2_bundle_dashboard.py")
+    scripts = (
+        "build_q2_dandelion_3d.py",
+        "build_q2_trade_sankey_q1_q2.py",
+        "build_q2_bundle_reliability_bubble.py",
+        "build_q2_bundle_dashboard.py",
+    )
+    here = Path(__file__).resolve().parent
+    for fname in scripts:
+        path = here / fname
+        if path.is_file():
+            _run(path.stem, fname)
+        else:
+            print(f"[build_q2_figures] skip missing script: {fname}")
 
 
 if __name__ == "__main__":

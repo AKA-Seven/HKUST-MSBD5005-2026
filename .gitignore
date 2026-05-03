@@ -39,22 +39,30 @@ Thumbs.db
 Desktop.ini
 __MACOSX/
 
-# --- Q1：保留源码（.py）与页面（.html）；分析产物与图表派生数据不纳入版本库 ---
-# 说明见 visualization/q1/README.md
-outputs/q1/
+# --- outputs/：忽略全部数据文件；仅跟踪 README.md 与各目录 .gitkeep（保留 q1–q4 结构）---
+outputs/*
+!outputs/README.md
+!outputs/.gitkeep
+!outputs/q1/
+!outputs/q2/
+!outputs/q3/
+!outputs/q4/
+outputs/q1/*
+outputs/q2/*
+outputs/q3/*
+outputs/q4/*
+!outputs/q1/.gitkeep
+!outputs/q2/.gitkeep
+!outputs/q3/.gitkeep
+!outputs/q4/.gitkeep
 
-visualization/figures_2d/q1/*.png
-visualization/figures_2d/q1/*_data.json
-
-visualization/q1/data/
-
-# --- Q2：保留 visualization/q2 下 .py 与 README；分析产物与 2D 派生数据不跟踪 ---
-# 说明见 visualization/q2/README.md
-outputs/q2/
-
-visualization/figures_2d/q2/*.png
-visualization/figures_2d/q2/*_data.json
-
-visualization/q2/*
-!visualization/q2/*.py
-!visualization/q2/README.md
+# --- visualization/：忽略所有图片产物；源码 .py 与导出 .html 保留（含 figures_* 与各 q*）---
+visualization/**/*.png
+visualization/**/*.jpg
+visualization/**/*.jpeg
+visualization/**/*.webp
+visualization/**/*.gif
+visualization/**/*.bmp
+visualization/**/*.tif
+visualization/**/*.tiff
+visualization/**/*.svg

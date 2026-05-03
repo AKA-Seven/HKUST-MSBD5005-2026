@@ -1,7 +1,5 @@
 # Python >= 3.10 recommended
 # Install: pip install -r requirements.txt
-#
-# Analysis + visualization stack for analysis/, visualization/.
 
 numpy>=1.24.0
 pandas>=2.0.0

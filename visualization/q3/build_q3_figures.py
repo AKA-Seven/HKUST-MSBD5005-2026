@@ -374,36 +374,62 @@ def _fig_embed_div(fig, div_id):
 def _missing_chart_blurb(kind):
     return f'<div class="muted plot-slot" style="display:flex;align-items:center;justify-content:center;text-align:center;padding:24px 12px;"><p>Cannot render "{kind}" — data missing.</p></div>'
 
-# ================= 最终 HTML 生成（右侧边栏 + 放大图片） =================
+def _href_from_root(abs_path: Path) -> str:
+    return os.path.relpath(abs_path, FINAL_Q3_HTML.parent).replace("\\", "/")
+
+def _write_standalone_plotly_html(fig: go.Figure, path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    pio.write_html(
+        fig, path, include_plotlyjs="cdn", full_html=True,
+        config={"responsive": True, "displayModeBar": True},
+    )
+
+# ================= 最终 HTML 生成（Expand / Back 与 Q1·Q4 对齐） =================
 def write_final_q3_board(company_view, relay_df, bridge_df, reliable_links, network_img_path, heatmap_img_path):
     FINAL_Q3_HTML.parent.mkdir(parents=True, exist_ok=True)
 
-    # 静态图片相对路径
-    img_rel_network = os.path.relpath(network_img_path, start=FINAL_Q3_HTML.parent)
-    img_rel_heat = os.path.relpath(heatmap_img_path, start=FINAL_Q3_HTML.parent)
+    img_rel_network = _href_from_root(Path(network_img_path))
+    img_rel_heat = _href_from_root(Path(heatmap_img_path))
 
-    # 点击放大的图片 slot（移除 max-height 限制，让图片填满容器）
-    network_slot = f'''
-    <div class="plot-slot clickable-img">
-        <a href="{img_rel_network}" target="_blank" style="text-decoration:none;">
-            <img src="{img_rel_network}" alt="Before/After Network Comparison" style="width:100%; height:auto; border-radius:12px;">
-            <p style="color:#14213d; text-align:center; margin-top:8px;">🔍 Click to enlarge</p>
-        </a>
-    </div>'''
-
-    heatmap_slot = f'''
-    <div class="plot-slot clickable-img">
-        <a href="{img_rel_heat}" target="_blank" style="text-decoration:none;">
-            <img src="{img_rel_heat}" alt="Revival signal matrix" style="width:100%; height:auto; border-radius:12px;">
-            <p style="color:#14213d; text-align:center; margin-top:8px;">🔍 Click to enlarge</p>
-        </a>
-    </div>'''
-
-    # Plotly 图表
     f_sankey = build_relay_sankey_figure(relay_df)
     f_bridge = build_bridge_bubble_figure(bridge_df)
-    sankey_slot = _fig_embed_div(f_sankey, 'chart-sankey') if f_sankey else _missing_chart_blurb('relay chains')
-    bridge_slot = _fig_embed_div(f_bridge, 'chart-bridge') if f_bridge else _missing_chart_blurb('bridge companies')
+
+    sankey_expand_path = FIG_DIR / "q3_board_sankey_expand.html"
+    bridge_expand_path = FIG_DIR / "q3_board_bridge_expand.html"
+    sankey_href = ""
+    bridge_href = ""
+    if f_sankey is not None:
+        _write_standalone_plotly_html(go.Figure(f_sankey), sankey_expand_path)
+        sankey_href = _href_from_root(sankey_expand_path)
+    if f_bridge is not None:
+        _write_standalone_plotly_html(go.Figure(f_bridge), bridge_expand_path)
+        bridge_href = _href_from_root(bridge_expand_path)
+
+    def slot_img(src: str, alt: str, clip_class: str = "preview-clip--q3img") -> str:
+        ae = html.escape(alt)
+        cc = html.escape(clip_class)
+        return f'''<div class="preview-clip {cc}">
+  <button type="button" class="expand-fab" data-src="{src}" aria-label="Expand figure">Expand</button>
+  <div class="preview-scale preview-scale--img"><img src="{src}" alt="{ae}"></div>
+  <button type="button" class="preview-hit" data-src="{src}" aria-label="Open fullscreen"></button>
+  <span class="preview-hint">Click to expand</span>
+</div>'''
+
+    def slot_iframe_preview(src: str, title: str, clip_css: str) -> str:
+        if not src:
+            return _missing_chart_blurb(title)
+        te = html.escape(title)
+        return f'''<div class="preview-clip {clip_css}">
+  <button type="button" class="expand-fab" data-src="{src}" aria-label="Expand chart">Expand</button>
+  <div class="preview-scale"><iframe title="{te}" src="{src}" loading="lazy"></iframe></div>
+  <button type="button" class="preview-hit" data-src="{src}" aria-label="Open fullscreen"></button>
+  <span class="preview-hint">Click to expand</span>
+</div>'''
+
+    network_slot = slot_img(img_rel_network, "Before / After network")
+    heatmap_slot = slot_img(img_rel_heat, "Revival signal heatmap", "preview-clip--q3heatmap")
+    bridge_slot = slot_iframe_preview(bridge_href, "Bridge leverage", "preview-clip--q3bridge")
+    sankey_slot = slot_iframe_preview(sankey_href, "Relay Sankey", "preview-clip--q3sankey")
 
     # 统计数据
     n_high_score = len(company_view[company_view['suspicious_revival_score'] > 50]) if 'suspicious_revival_score' in company_view.columns else 0
@@ -524,11 +550,8 @@ def write_final_q3_board(company_view, relay_df, bridge_df, reliable_links, netw
     }
     .panel { padding: 14px; }
     .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
+      align-items: flex-start;
+      margin-bottom: 8px;
     }
     .badge {
       padding: 4px 8px;
@@ -539,15 +562,34 @@ def write_final_q3_board(company_view, relay_df, bridge_df, reliable_links, netw
       border-radius: 999px;
       border: 1px solid var(--line);
     }
-    .panel-desc { margin-bottom: 10px; color: var(--muted); font-size: 12px; }
-    .chart-shell {
-      position: relative;
-      padding: 8px;
-      border-radius: 20px;
-      min-height: 600px;           /* 增加高度，让网络对比图更大 */
+    .fig-intro {
       display: flex;
       align-items: center;
-      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px 12px;
+      margin-bottom: 8px;
+    }
+    .fig-intro h2 { margin: 0 !important; }
+    .viz-type {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: lowercase;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--accent-2);
+      font-variant: normal;
+    }
+    .panel-desc { margin: 0 0 10px !important; color: var(--muted); font-size: 12px; }
+    .chart-shell {
+      position: relative;
+      padding: 10px;
+      border-radius: 20px;
+      min-height: 240px;
       background:
         linear-gradient(180deg, rgba(255,255,255,0.76), rgba(255,255,255,0.58)),
         repeating-linear-gradient(
@@ -561,9 +603,193 @@ def write_final_q3_board(company_view, relay_df, bridge_df, reliable_links, netw
         inset 0 0 80px 44px rgba(255, 251, 243, 0.78),
         0 2px 14px rgba(19, 34, 56, 0.06);
     }
-    .plot-slot { width: 100%; text-align: center; }
-    .plot-slot img { width: 100%; height: auto; border-radius: 10px; }
-    .plot-slot .plotly-graph-div { width: 100% !important; height: auto !important; }
+    .preview-clip {
+      position: relative;
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fff;
+      box-sizing: border-box;
+    }
+    .preview-scale {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-origin: 0 0;
+      border: 0;
+      line-height: 0;
+    }
+    .preview-scale iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      pointer-events: none;
+    }
+    .preview-clip--q3bridge {
+      width: 100%;
+      height: calc(520px * 0.38);
+    }
+    .preview-clip--q3bridge .preview-scale {
+      width: 920px;
+      height: 520px;
+      transform: scale(0.38);
+    }
+    .preview-clip--q3sankey {
+      width: 100%;
+      height: calc(720px * 0.42);
+    }
+    .preview-clip--q3sankey .preview-scale {
+      width: 1000px;
+      height: 720px;
+      transform: scale(0.42);
+    }
+    .preview-clip--q3img {
+      width: 100%;
+      height: calc(520px * 0.42);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+    .preview-clip--q3heatmap {
+      width: 100%;
+      height: calc(720px * 0.46);
+      min-height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+    .preview-scale--img {
+      position: static !important;
+      transform: none !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+    .preview-scale--img img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+    .preview-hit {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      margin: 0;
+      padding: 0;
+      border: none;
+      background: transparent;
+      cursor: zoom-in;
+      border-radius: 16px;
+    }
+    .preview-hit:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .expand-fab {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 4;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(19, 34, 56, 0.12);
+      background: rgba(255, 251, 243, 0.94);
+      color: var(--ink);
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(19, 34, 56, 0.12);
+    }
+    .expand-fab:hover {
+      background: #fff;
+      border-color: rgba(29, 111, 95, 0.35);
+      color: var(--accent);
+    }
+    .preview-hint {
+      position: absolute;
+      bottom: 8px;
+      right: 10px;
+      z-index: 2;
+      font-size: 11px;
+      color: var(--muted);
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+      background: rgba(255, 251, 243, 0.9);
+      padding: 4px 8px;
+      border-radius: 8px;
+    }
+    .preview-hit:hover ~ .preview-hint,
+    .preview-clip:focus-within .preview-hint {
+      opacity: 1;
+    }
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 52px 16px 20px;
+      background: rgba(19, 34, 56, 0.42);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.28s ease, visibility 0.28s;
+      backdrop-filter: blur(4px);
+    }
+    .lightbox.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .lightbox-back {
+      position: fixed;
+      top: 14px;
+      left: 14px;
+      z-index: 1002;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      background: rgba(255, 251, 243, 0.95);
+      color: var(--ink);
+      font: inherit;
+      font-size: 14px;
+      font-weight: 650;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(19, 34, 56, 0.18);
+    }
+    .lightbox-inner {
+      position: relative;
+      width: min(96vw, 1680px);
+      height: min(calc(100vh - 72px), 1040px);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 24px 60px rgba(19, 34, 56, 0.28);
+      background: #fff;
+      transform: scale(0.92);
+      opacity: 0.75;
+      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.28s ease;
+    }
+    .lightbox.is-open .lightbox-inner {
+      transform: scale(1);
+      opacity: 1;
+    }
+    .lightbox-inner iframe,
+    .lightbox-inner img {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      object-fit: contain;
+      background: #fff;
+    }
     .chip-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
     .chip {
       padding: 4px 8px;
@@ -577,13 +803,11 @@ def write_final_q3_board(company_view, relay_df, bridge_df, reliable_links, netw
     @media (max-width: 1200px) {
       .dashboard-grid { grid-template-columns: 1fr; }
       .grid-2x2 { grid-template-columns: 1fr; }
-      .chart-shell { min-height: 480px; }
     }
     @media (max-width: 900px) {
       .page { padding: 16px; }
       .hero { grid-template-columns: 1fr; }
       h1 { font-size: 24px; }
-      .chart-shell { min-height: 360px; }
     }
     """.strip()
 
@@ -593,10 +817,10 @@ def write_final_q3_board(company_view, relay_df, bridge_df, reliable_links, netw
         <h2>How to read</h2>
         <p class="panel-desc">Four views on the completed graph: nodes = companies, trusted added edges = solid green.</p>
         <div class="chip-row">
-            <span class="chip">Fig1 · Before/After</span>
-            <span class="chip">Fig2 · Bridge bubble</span>
-            <span class="chip">Fig3 · Relay Sankey</span>
-            <span class="chip">Fig4 · Signal heatmap</span>
+            <span class="chip">Fig 1 · diagram</span>
+            <span class="chip">Fig 2 · bubble</span>
+            <span class="chip">Fig 3 · sankey</span>
+            <span class="chip">Fig 4 · heatmap</span>
         </div>
         <div class="insight-text">💡 Orange nodes = high suspicion. Solid green = trusted addition. Heatmap darkness = signal strength.</div>
     </div>
@@ -641,31 +865,35 @@ def write_final_q3_board(company_view, relay_df, bridge_df, reliable_links, netw
     figures_grid = f"""
     <div class="grid-2x2">
         <div class="panel">
-            <div class="section-head">
-                <div><h2>Fig 1 · Before / After network</h2><p class="panel-desc">Original (dashed) vs added (solid green).</p></div>
-                <span class="badge">Graph</span>
+            <div class="fig-intro">
+                <h2>Fig 1 · Before / after network</h2>
+                <span class="viz-type">diagram</span>
             </div>
+            <p class="panel-desc">Original (dashed) vs added (solid green).</p>
             <div class="chart-shell">{network_slot}</div>
         </div>
         <div class="panel">
-            <div class="section-head">
-                <div><h2>Fig 2 · Bridge leverage</h2><p class="panel-desc">New links vs reachable nodes; colour = efficiency.</p></div>
-                <span class="badge">Bubble</span>
+            <div class="fig-intro">
+                <h2>Fig 2 · Bridge leverage</h2>
+                <span class="viz-type">bubble</span>
             </div>
+            <p class="panel-desc">New links vs reachable nodes; colour = efficiency.</p>
             <div class="chart-shell">{bridge_slot}</div>
         </div>
         <div class="panel">
-            <div class="section-head">
-                <div><h2>Fig 3 · Relay chains</h2><p class="panel-desc">Predecessor → successor; band = shared partners.</p></div>
-                <span class="badge">Sankey</span>
+            <div class="fig-intro">
+                <h2>Fig 3 · Relay chains</h2>
+                <span class="viz-type">sankey</span>
             </div>
+            <p class="panel-desc">Predecessor → successor; band = shared partners.</p>
             <div class="chart-shell">{sankey_slot}</div>
         </div>
         <div class="panel">
-            <div class="section-head">
-                <div><h2>Fig 4 · Revival signal matrix</h2><p class="panel-desc">Top-20 companies × six signals (darker = stronger).</p></div>
-                <span class="badge">Heatmap</span>
+            <div class="fig-intro">
+                <h2>Fig 4 · Revival signal matrix</h2>
+                <span class="viz-type">heatmap</span>
             </div>
+            <p class="panel-desc">Top-20 companies × six signals (darker = stronger).</p>
             <div class="chart-shell">{heatmap_slot}</div>
         </div>
     </div>
@@ -677,7 +905,6 @@ def write_final_q3_board(company_view, relay_df, bridge_df, reliable_links, netw
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Q3 · Graph completion · Final board</title>
-    <script src="https://cdn.plot.ly/plotly-3.5.0.min.js" charset="utf-8"></script>
     <style>{CSS}</style>
 </head>
 <body>
@@ -701,6 +928,44 @@ def write_final_q3_board(company_view, relay_df, bridge_df, reliable_links, netw
         </main>
     </div>
 </div>
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true" hidden>
+  <button type="button" class="lightbox-back" id="lightboxBack">Back to board</button>
+  <div class="lightbox-inner" id="lightboxContent"></div>
+</div>
+<script>
+(function () {{
+  const lightbox = document.getElementById('lightbox');
+  const box = document.getElementById('lightboxContent');
+  const backBtn = document.getElementById('lightboxBack');
+  function openLb(src) {{
+    if (!src) return;
+    box.innerHTML = '';
+    const isImg = /\\.(png|jpe?g|gif|svg|webp)$/i.test(src);
+    const node = document.createElement(isImg ? 'img' : 'iframe');
+    node.src = src;
+    if (isImg) node.alt = 'Expanded figure';
+    else node.title = 'Expanded chart';
+    box.appendChild(node);
+    lightbox.hidden = false;
+    lightbox.setAttribute('aria-hidden', 'false');
+    requestAnimationFrame(() => lightbox.classList.add('is-open'));
+    backBtn.focus();
+  }}
+  function closeLb() {{
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    setTimeout(() => {{ box.innerHTML = ''; lightbox.hidden = true; }}, 320);
+  }}
+  document.querySelectorAll('.preview-hit, .expand-fab').forEach(btn => {{
+    btn.addEventListener('click', () => openLb(btn.getAttribute('data-src')));
+  }});
+  backBtn.addEventListener('click', closeLb);
+  lightbox.addEventListener('click', e => {{ if (e.target === lightbox) closeLb(); }});
+  document.addEventListener('keydown', e => {{
+    if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLb();
+  }});
+}})();
+</script>
 </body>
 </html>"""
 

@@ -2,6 +2,7 @@
 
 import json
 import os
+import html
 from pathlib import Path
 
 import matplotlib
@@ -96,49 +97,50 @@ def plot_network_comparison(original_edges, trusted_edges, highlighted, top_brid
     G_full.add_edges_from(original_edges + trusted_edges)
     pos = nx.spring_layout(G_full, seed=42, k=1.8, iterations=80)
 
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(24, 12), facecolor='white')
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 9), facecolor='white')
     fig.suptitle('Before / After Network Comparison\nQ3 Graph Completion Analysis',
-                 fontsize=20, fontweight='bold', y=0.98, color='#14213d')
+                 fontsize=30, fontweight='bold', y=0.98, color='#14213d')   # 原20 → 30
 
-    # Before
+    # Before 图
     G_before = nx.Graph()
     G_before.add_edges_from(original_edges)
     if G_before.number_of_nodes() > 0:
         node_colors_before = [node_color[n] for n in G_before.nodes()]
-        node_sizes_before = [2200 if n in highlighted_set else 1600 for n in G_before.nodes()]
+        node_sizes_before = [3300 if n in highlighted_set else 2400 for n in G_before.nodes()]   # 原2200/1600 → 3300/2400
         nx.draw_networkx_nodes(G_before, pos, ax=ax1, node_color=node_colors_before,
-                               node_size=node_sizes_before, edgecolors='black', linewidths=1.8)
-        nx.draw_networkx_edges(G_before, pos, ax=ax1, edge_color='#203553', width=3.0,
+                               node_size=node_sizes_before, edgecolors='black', linewidths=2.7)   # 线宽原1.8 → 2.7
+        nx.draw_networkx_edges(G_before, pos, ax=ax1, edge_color='#203553', width=4.5,           # 原3.0 → 4.5
                                style='dashed', alpha=0.8)
         for node, (x, y) in pos.items():
             if node in G_before.nodes():
-                ax1.text(x, y, node, fontsize=12, fontweight='bold', ha='center', va='center',
-                         bbox=dict(boxstyle="round,pad=0.3", facecolor="white", edgecolor="gray", alpha=0.9))
-    ax1.set_title("Before: Original Graph", fontsize=16, fontweight='bold', pad=20, color='#14213d')
+                ax1.text(x, y, node, fontsize=12, fontweight='bold', ha='center', va='center',    
+                         bbox=dict(boxstyle="round,pad=0.45", facecolor="white", edgecolor="gray", alpha=0.9))
+    ax1.set_title("Before: Original Graph", fontsize=16, fontweight='bold', pad=20, color='#14213d')   
     ax1.set_facecolor('white')
     for spine in ax1.spines.values():
         spine.set_visible(False)
     ax1.set_xticks([]); ax1.set_yticks([])
     ax1.set_xlim(-1.8, 1.8); ax1.set_ylim(-1.5, 1.5)
 
-    # After
+    # After 图（已修复节点大小 bug）
     G_after = nx.Graph()
     G_after.add_edges_from(original_edges + trusted_edges)
     if G_after.number_of_nodes() > 0:
         node_colors_after = [node_color[n] for n in G_after.nodes()]
-        node_sizes_after = [2200 if n in highlighted_set else 1600 for n in G_after.nodes()]
+        # 修复：普通节点大小应为 2400，而不是 0
+        node_sizes_after = [3300 if n in highlighted_set else 2400 for n in G_after.nodes()]
         nx.draw_networkx_nodes(G_after, pos, ax=ax2, node_color=node_colors_after,
-                               node_size=node_sizes_after, edgecolors='black', linewidths=1.8)
+                               node_size=node_sizes_after, edgecolors='black', linewidths=2.7)
         if original_edges:
             nx.draw_networkx_edges(G_after, pos, ax=ax2, edgelist=original_edges,
-                                   edge_color='#203553', width=3.0, style='dashed', alpha=0.7)
+                                   edge_color='#203553', width=4.5, style='dashed', alpha=0.7)
         if trusted_edges:
             nx.draw_networkx_edges(G_after, pos, ax=ax2, edgelist=trusted_edges,
-                                   edge_color='#196d69', width=4.5, style='solid', alpha=0.95)
+                                   edge_color='#196d69', width=6.75, style='solid', alpha=0.95)   # 原4.5 → 6.75
         for node, (x, y) in pos.items():
             if node in G_after.nodes():
                 ax2.text(x, y, node, fontsize=12, fontweight='bold', ha='center', va='center',
-                         bbox=dict(boxstyle="round,pad=0.3", facecolor="white", edgecolor="gray", alpha=0.9))
+                         bbox=dict(boxstyle="round,pad=0.45", facecolor="white", edgecolor="gray", alpha=0.9))
     ax2.set_title("After: Completed Graph", fontsize=16, fontweight='bold', pad=20, color='#14213d')
     ax2.set_facecolor('white')
     for spine in ax2.spines.values():
@@ -149,10 +151,10 @@ def plot_network_comparison(original_edges, trusted_edges, highlighted, top_brid
     legend_elements = [
         mpatches.Patch(facecolor='#7f8c8d', edgecolor='black', label='Normal company'),
         mpatches.Patch(facecolor='#ad5c16', edgecolor='black', label='Highlighted actor'),
-        plt.Line2D([0], [0], color='#203553', lw=3, linestyle='dashed', label='original structure'),
-        plt.Line2D([0], [0], color='#196d69', lw=4, label='trusted added edge')
+        plt.Line2D([0], [0], color='#203553', lw=4.5, linestyle='dashed', label='original structure'),
+        plt.Line2D([0], [0], color='#196d69', lw=6.75, label='trusted added edge')
     ]
-    fig.legend(handles=legend_elements, loc='lower center', ncol=4, fontsize=13,
+    fig.legend(handles=legend_elements, loc='lower center', ncol=4, fontsize=16,   
                bbox_to_anchor=(0.5, -0.02), frameon=False, facecolor='white', edgecolor='none')
     plt.tight_layout(rect=[0, 0.03, 1, 0.95])
     fig.savefig(save_path, dpi=300, bbox_inches='tight', facecolor='white')
@@ -377,181 +379,354 @@ def _missing_chart_blurb(kind):
 def write_final_q3_board(company_view, relay_df, bridge_df, reliable_links, network_img_path, heatmap_img_path):
     FINAL_Q3_HTML.parent.mkdir(parents=True, exist_ok=True)
 
+    # 构建两个 Plotly 图
     f_sankey = build_relay_sankey_figure(relay_df)
     f_bridge = build_bridge_bubble_figure(bridge_df)
 
     sankey_slot = _fig_embed_div(f_sankey, 'chart-sankey') if f_sankey else _missing_chart_blurb('relay chains')
     bridge_slot = _fig_embed_div(f_bridge, 'chart-bridge') if f_bridge else _missing_chart_blurb('bridge companies')
-    
-    # 静态图片
+
+    # 静态图片相对路径
     img_rel_network = os.path.relpath(network_img_path, start=FINAL_Q3_HTML.parent)
     network_slot = f'<div class="plot-slot"><img src="{img_rel_network}" alt="Before/After Network Comparison" style="width:100%; border-radius:12px;"></div>'
-    
+
     img_rel_heat = os.path.relpath(heatmap_img_path, start=FINAL_Q3_HTML.parent)
     heatmap_slot = f'<div class="plot-slot"><img src="{img_rel_heat}" alt="Revival signal matrix" style="width:100%; border-radius:12px;"></div>'
 
+    # 准备一些统计信息用于侧边栏（可选）
+    n_high_score = len(company_view[company_view['suspicious_revival_score'] > 50]) if 'suspicious_revival_score' in company_view.columns else 0
+    n_bridge = len(bridge_df) if not bridge_df.empty else 0
+    n_relay = len(relay_df) if not relay_df.empty else 0
+
+    # ========== CSS (从 Q2 摘取并适配 Q3) ==========
     CSS = """
     :root {
-      --ink: #14213d;
-      --muted: #61707c;
-      --panel: rgba(251, 249, 242, 0.9);
-      --line: rgba(20, 33, 61, 0.11);
-      --shadow: 0 18px 44px rgba(20, 33, 61, 0.12);
-      --accent: #196d69;
-      --accent-2: #ad5c16;
-      --accent-3: #812b49;
-      --bg-1: #f5efe2;
-      --bg-2: #ebdfca;
+      --ink: #132238;
+      --muted: #62717a;
+      --panel: rgba(255, 251, 243, 0.92);
+      --line: rgba(19, 34, 56, 0.12);
+      --shadow: 0 18px 44px rgba(19, 34, 56, 0.13);
+      --accent: #1d6f5f;
+      --accent-2: #b15e11;
+      --accent-3: #8f2841;
+      --bg-1: #f7f0e5;
+      --bg-2: #efe4d1;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: "Avenir Next", "Segoe UI", "PingFang SC", "Noto Sans SC", sans-serif;
       color: var(--ink);
-      background: radial-gradient(circle at top left, rgba(25,109,105,0.14), transparent 24%),
-                  radial-gradient(circle at right bottom, rgba(129,43,73,0.10), transparent 22%),
-                  linear-gradient(180deg, var(--bg-1), var(--bg-2));
+      font-family: "Avenir Next", "Segoe UI", "PingFang SC", "Noto Sans SC", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(29, 111, 95, 0.16), transparent 24%),
+        radial-gradient(circle at left bottom, rgba(177, 94, 17, 0.10), transparent 22%),
+        linear-gradient(180deg, var(--bg-1), var(--bg-2));
     }
-    .page { max-width: 1400px; margin: 0 auto; padding: 28px; }
-    .hero {
+    .page { max-width: 1560px; margin: 0 auto; padding: 28px; }
+    .hero, .panel {
       background: var(--panel);
       border: 1px solid var(--line);
       border-radius: 24px;
       box-shadow: var(--shadow);
       backdrop-filter: blur(10px);
-      padding: 24px 28px;
-      margin-bottom: 22px;
     }
-    @media (max-width: 900px) { .page { padding: 18px; } }
+    .hero {
+      padding: 24px 28px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 18px;
+      margin-bottom: 16px;
+    }
     .eyebrow {
       display: inline-flex;
       padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(20,33,61,0.05);
-      color: var(--muted);
       font-size: 12px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 12px;
+      color: var(--muted);
+      background: rgba(19, 34, 56, 0.06);
+      border-radius: 999px;
       border: 1px solid var(--line);
+      margin-bottom: 12px;
     }
     h1 { margin: 0 0 10px; font-size: 32px; line-height: 1.08; letter-spacing: -0.03em; }
+    h2 { margin: 0 0 8px; font-size: 20px; letter-spacing: -0.02em; }
+    p { margin: 0; line-height: 1.65; }
     .muted { color: var(--muted); }
-    p.lead { margin: 0; line-height: 1.65; }
-    .top-nav {
-      display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px;
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
     }
-    .top-nav a {
-      padding: 8px 12px; border-radius: 999px; text-decoration: none; color: var(--ink);
-      background: rgba(255,255,255,0.68); font-size: 13px;
+    .metric {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(19, 34, 56, 0.05);
+      border: 1px solid rgba(19, 34, 56, 0.08);
+    }
+    .metric strong { display: block; font-size: 22px; margin-bottom: 4px; }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .nav a {
+      padding: 8px 12px;
+      text-decoration: none;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.64);
+      font-size: 13px;
+      border-radius: 999px;
       border: 1px solid var(--line);
-      transition: all 0.2s ease;
     }
-    .top-nav a:hover {
-      background: rgba(25,109,105,0.08);
-      border-color: var(--accent);
-    }
-    .top-nav a.active {
-      background: rgba(25,109,105,0.12);
-      border-color: rgba(25,109,105,0.32);
+    .nav a.active {
+      background: rgba(29, 111, 95, 0.12);
+      border-color: rgba(29, 111, 95, 0.32);
       color: var(--accent);
       font-weight: 700;
     }
-    .figures-grid {
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+    .sidebar-stack {
+      display: grid;
+      gap: 18px;
+    }
+    .main-flow {
+      display: grid;
+      gap: 18px;
+    }
+    .grid-2x2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      width: 100%;
-      margin-bottom: 8px;
+      gap: 18px;
     }
-    .panel {
-      padding: 18px;
-      background: var(--panel);
+    .panel { padding: 18px; }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .badge {
+      padding: 6px 10px;
+      background: rgba(177, 94, 17, 0.10);
+      color: var(--accent-2);
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 999px;
       border: 1px solid var(--line);
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .panel:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 24px 48px rgba(20,33,61,0.16);
-    }
-    .panel h2 { margin: 0 0 8px; font-size: 20px; letter-spacing: -0.02em; }
-    .panel-desc { margin: 0 0 14px; color: var(--muted); font-size: 13px; line-height: 1.65; }
+    .panel-desc { margin-bottom: 14px; color: var(--muted); font-size: 13px; }
     .chart-shell {
-      padding: 12px;
+      position: relative;
+      padding: 10px;
       border-radius: 20px;
-      border: 1px dashed rgba(20,33,61,0.14);
-      background: linear-gradient(180deg, rgba(255,255,255,0.76), rgba(255,255,255,0.58)),
-                  repeating-linear-gradient(0deg, transparent 0, transparent 30px, rgba(20,33,61,0.04) 30px, rgba(20,33,61,0.04) 31px);
+      border: none;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.76), rgba(255,255,255,0.58)),
+        repeating-linear-gradient(
+          0deg,
+          transparent 0,
+          transparent 30px,
+          rgba(19, 34, 56, 0.04) 30px,
+          rgba(19, 34, 56, 0.04) 31px
+        );
+      box-shadow:
+        inset 0 0 80px 44px rgba(255, 251, 243, 0.78),
+        0 2px 14px rgba(19, 34, 56, 0.06);
     }
-    .plot-slot {
-      width: 100%;
-      overflow: hidden;
-      min-height: 120px;
+    .plot-slot { width: 100%; min-height: 320px; }
+    .plot-slot .plotly-graph-div { width: 100% !important; }
+    .chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.72);
+      font-size: 12px;
     }
-    .plot-slot .plotly-graph-div {
-      width: 100% !important;
+    .summary h3 { margin: 0 0 6px; font-size: 14px; }
+    .insight-text { font-size: 13px; color: var(--accent); margin-top: 12px; }
+    @media (max-width: 1100px) {
+      .dashboard-grid { grid-template-columns: 1fr; }
+      .grid-2x2 { grid-template-columns: 1fr; }
     }
-    @media (max-width: 1000px) {
-      .figures-grid { grid-template-columns: 1fr; gap: 24px; }
+    @media (max-width: 900px) {
+      .page { padding: 18px; }
+      .hero { grid-template-columns: 1fr; }
+      h1 { font-size: 26px; }
     }
+    """.strip()
+
+    # 侧边栏第一个卡片：如何读图
+    how_to_read = """
+    <div class="panel">
+        <h2>How to read the figures</h2>
+        <p class="panel-desc">
+            All four views use the same completed trade graph: nodes are companies, trusted predicted edges are added to reveal hidden structures.
+        </p>
+        <div class="chip-row">
+            <span class="chip">Fig 1 · Before/After network</span>
+            <span class="chip">Fig 2 · Bridge leverage bubble</span>
+            <span class="chip">Fig 3 · Relay chain Sankey</span>
+            <span class="chip">Fig 4 · Revival signal matrix</span>
+        </div>
+        <div class="insight-text">
+            💡 <strong>Key</strong>: Orange nodes = high suspicion; solid green edges = trusted additions (bridge/relay/burst).<br>
+            Bubble area = reachable scope; colour = efficiency. Sankey band thickness = shared partners.<br>
+            Heatmap: darker red = stronger revival signal.
+        </div>
+    </div>
     """
 
+    # 侧边栏第二个卡片：信号总结（类似 Q2 的 Labels summary）
+    # 从 company_view 提取 top 可疑公司名
+    top_suspicious = company_view.nlargest(5, 'suspicious_revival_score')['company'].tolist() if 'suspicious_revival_score' in company_view.columns else []
+    top_susp_str = ", ".join([f"<strong>{html.escape(c[:30])}</strong>" for c in top_suspicious]) if top_suspicious else "—"
+
+    signal_summary = f"""
+    <div class="panel">
+        <div class="section-head">
+            <div>
+                <h2>Revival signal summary</h2>
+                <p class="panel-desc">Top suspicious endpoints and their dominant cues.</p>
+            </div>
+            <span class="badge">Q3 scores</span>
+        </div>
+        <div class="summary">
+            <h3>Highest revival scores</h3>
+            <p>{top_susp_str}</p>
+        </div>
+        <div class="summary" style="margin-top: 12px;">
+            <h3>Bridge & relay stats</h3>
+            <p>Bridge companies: {n_bridge} &nbsp;|&nbsp; Relay chains: {n_relay}</p>
+        </div>
+        <div class="insight-text">
+            🔍 Strongest signals combine <strong>long dormancy + sudden partner diversification + burst activity</strong>.
+        </div>
+    </div>
+    """
+
+    # 右侧四个图面板，按 2x2 网格排列
+    # 注意每个面板内使用 section-head + chart-shell
+    figures_grid = f"""
+    <div class="grid-2x2">
+        <!-- Fig 1: 网络对比图 -->
+        <div class="panel">
+            <div class="section-head">
+                <div>
+                    <h2>Fig 1 · Before / After network</h2>
+                    <p class="panel-desc">Original (dashed) vs added trusted edges (solid green).</p>
+                </div>
+                <span class="badge">Graph</span>
+            </div>
+            <div class="chart-shell">{network_slot}</div>
+        </div>
+        <!-- Fig 2: 桥接气泡图 -->
+        <div class="panel">
+            <div class="section-head">
+                <div>
+                    <h2>Fig 2 · Bridge leverage</h2>
+                    <p class="panel-desc">New links vs reachable nodes; colour = efficiency.</p>
+                </div>
+                <span class="badge">Bubble</span>
+            </div>
+            <div class="chart-shell">{bridge_slot}</div>
+        </div>
+        <!-- Fig 3: 桑基图 -->
+        <div class="panel">
+            <div class="section-head">
+                <div>
+                    <h2>Fig 3 · Relay chains</h2>
+                    <p class="panel-desc">Predecessor → successor; band width = shared partners.</p>
+                </div>
+                <span class="badge">Sankey</span>
+            </div>
+            <div class="chart-shell">{sankey_slot}</div>
+        </div>
+        <!-- Fig 4: 热力图 -->
+        <div class="panel">
+            <div class="section-head">
+                <div>
+                    <h2>Fig 4 · Revival signal matrix</h2>
+                    <p class="panel-desc">Top‑20 companies × six signals (darker = stronger).</p>
+                </div>
+                <span class="badge">Heatmap</span>
+            </div>
+            <div class="chart-shell">{heatmap_slot}</div>
+        </div>
+    </div>
+    """
+
+    # Hero 区域统计数据
+    n_high = len(company_view[company_view['suspicious_revival_score'] > 50]) if 'suspicious_revival_score' in company_view.columns else 0
+    n_normal = len(company_view[company_view['suspicious_revival_score'] < 10]) if 'suspicious_revival_score' in company_view.columns else 0
+    total_companies = len(company_view)
+
+    hero_metrics = f"""
+    <div class="meta-grid">
+        <div class="metric"><strong>{total_companies}</strong><div class="muted">companies analyzed</div></div>
+        <div class="metric"><strong>{n_high}</strong><div class="muted">high suspicion (score > 50)</div></div>
+        <div class="metric"><strong>{n_normal}</strong><div class="muted">normal (score < 10)</div></div>
+        <div class="metric"><strong>{n_bridge} / {n_relay}</strong><div class="muted">bridge / relay actors</div></div>
+    </div>
+    """
+
+    # 导航链接 (需要确保路径正确，可根据你的项目调整)
+    nav_links = f"""
+    <nav class="nav">
+        <a href="./q1.html">Q1 · Temporal patterns</a>
+        <a href="./q2.html">Q2 · Bundle reliability</a>
+        <a href="./q3.html" class="active">Q3 · Graph completion</a>
+        <a href="./q4.html">Q4 · Suspicious companies</a>
+    </nav>
+    """
+
+    # 最终 HTML 模板
     html_out = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Q3 · Graph completion · Final board</title>
-  <style>{CSS}</style>
-  <script src="https://cdn.plot.ly/plotly-2.29.0.min.js" charset="utf-8"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q3 · Graph completion · Final board</title>
+    <script src="https://cdn.plot.ly/plotly-3.5.0.min.js" charset="utf-8"></script>
+    <style>{CSS}</style>
 </head>
 <body>
-  <div class="page">
+<div class="page">
     <section class="hero">
-      <div class="eyebrow">Final board · Q3 · Graph completion</div>
-      <h1>What changes once the graph is completed</h1>
-      <p class="lead muted">Trusted predicted links materially reshape how we read timing, relays, bridging power, and endpoint-level revival patterns. Each section below translates one analytic angle into an interactive graphic.</p>
+        <div>
+            <div class="eyebrow">Final board · Q3 · Graph completion</div>
+            <h1>What changes once the graph is completed</h1>
+            <p class="muted">Trusted predicted links (bridge, relay, shell burst) reshape structural connectivity and reveal suspicious revival patterns.</p>
+        </div>
+        {hero_metrics}
     </section>
-    <nav class="top-nav">
-      <a href="./q1.html">Q1 · Temporal patterns</a>
-      <a href="./q2.html">Q2 · Bundle reliability</a>
-      <a href="./q3.html" class="active">Q3 · Graph completion</a>
-      <a href="./q4.html">Q4 · Suspicious companies</a>
-    </nav>
-    <main class="figures-grid">
-      <!-- (1) 前后对比网络图 -->
-      <section class="panel">
-        <h2>(1) Before / After Network Comparison</h2>
-        <p class="panel-desc">Same set of companies before and after graph completion. Added trusted edges (bridge, relay, shell burst) reveal hidden structural connections.</p>
-        <div class="chart-shell">{network_slot}</div>
-      </section>
-      <!-- (2) 桥接气泡图 -->
-      <section class="panel">
-        <h2>(2) Bridge leverage</h2>
-        <p class="panel-desc">Bubble area amplifies reachable scope; colour encodes efficiency (nodes gained per endorsed link). Labels mark the widest bridges.</p>
-        <div class="chart-shell">{bridge_slot}</div>
-      </section>
-      <!-- (3) 继电器链桑基图 -->
-      <section class="panel">
-        <h2>(3) Relay chains</h2>
-        <p class="panel-desc">Predecessors hand trading relationships to successors; thicker bands mean more overlapping partners, signalling possible inheritance of a dormant firm’s counterparties by a revived actor.</p>
-        <div class="chart-shell">{sankey_slot}</div>
-      </section>
-      <!-- (4) 热力图 -->
-      <section class="panel">
-        <h2>(4) Revival signal matrix</h2>
-        <p class="panel-desc">Rows are the highest-ranked suspicious-revival endpoints. Columns summarise complementary cues—extended dormancy, partner novelty, abrupt HS diversification, patched timeline gaps.</p>
-        <div class="chart-shell">{heatmap_slot}</div>
-      </section>
-    </main>
-  </div>
+
+    {nav_links}
+
+    <div class="dashboard-grid">
+        <aside class="sidebar-stack">
+            {how_to_read}
+            {signal_summary}
+        </aside>
+
+        <main class="main-flow">
+            {figures_grid}
+        </main>
+    </div>
+</div>
 </body>
 </html>"""
+
     FINAL_Q3_HTML.write_text(html_out, encoding='utf-8')
-    print("Final board written:", FINAL_Q3_HTML)
+    print("Final board (left sidebar + 2x2 grid) written:", FINAL_Q3_HTML)
 
 def main():
     FIG_DIR.mkdir(parents=True, exist_ok=True)
@@ -561,14 +736,14 @@ def main():
     trusted = build_trusted_edges(highlighted, top_bridges, top_relays, normal)
     network_img_path = FIG_DIR / "Q3_before_after_network.png"
     plot_network_comparison(original, trusted, highlighted, top_bridges, top_relays, normal, save_path=network_img_path)
-    
-    # 生成热力图（静态表格样式，无网格）
+
+    # 生成热力图
     company_df, delta_df, reliable_links, relay_df, bridge_df = load_data()
     company_view = build_company_view(company_df, delta_df)
     heatmap_img_path = FIG_DIR / "Q3_suspicion_heatmap.png"
     build_suspicion_heatmap_static(company_view, heatmap_img_path)
-    
-    # 生成最终 HTML（顺序 1-2-3-4）
+
+    # 生成最终 HTML（左侧边栏 + 右侧 2x2 网格）
     write_final_q3_board(company_view, relay_df, bridge_df, reliable_links, network_img_path, heatmap_img_path)
     print("All done. Open", FINAL_Q3_HTML)
 

@@ -56,7 +56,7 @@ outputs/q4/*
 !outputs/q3/.gitkeep
 !outputs/q4/.gitkeep
 
-# --- visualization/：忽略所有图片产物；源码 .py 与导出 .html 保留（含 figures_* 与各 q*）---
+# --- visualization/：忽略生成物；保留 .py / .html / vendor 等源码与页面 ---
 visualization/**/*.png
 visualization/**/*.jpg
 visualization/**/*.jpeg
@@ -66,3 +66,5 @@ visualization/**/*.bmp
 visualization/**/*.tif
 visualization/**/*.tiff
 visualization/**/*.svg
+visualization/**/*.json
+visualization/**/*.csv
